@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>UbuntuNotes | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人常用命令记录 终端代理123export http_proxy&#x3D;&quot;http:&#x2F;&#x2F;localhost:port&quot;export https_proxy&#x3D;&quot;http:&#x2F;&#x2F;localhost:port&quot;export ALL_PROXY&#x3D;socks5:&#x2F;&#x2F;202.204.54.76:2223  文件proxy1Acquire::http::proxy&#x3D;&quot;http:&#x2F;&#x2F;192.168.206.197:81">
+  <meta name="description" content="个人常用命令记录 终端代理123export http_proxy&#x3D;&quot;http:&#x2F;&#x2F;ip:port&quot;export https_proxy&#x3D;&quot;https:&#x2F;&#x2F;ip:port&quot;export ALL_PROXY&#x3D;socks5:&#x2F;&#x2F;ip:port  文件proxy1Acquire::http::proxy&#x3D;&quot;http:&#x2F;&#x2F;ip:port&#x2F;&quot;  docker代理1.创建docker服务插件目录 1sudo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UbuntuNotes">
 <meta property="og:url" content="http://yoursite.com/2020/01/03/UbuntuNotes/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="个人常用命令记录 终端代理123export http_proxy&#x3D;&quot;http:&#x2F;&#x2F;localhost:port&quot;export https_proxy&#x3D;&quot;http:&#x2F;&#x2F;localhost:port&quot;export ALL_PROXY&#x3D;socks5:&#x2F;&#x2F;202.204.54.76:2223  文件proxy1Acquire::http::proxy&#x3D;&quot;http:&#x2F;&#x2F;192.168.206.197:81">
+<meta property="og:description" content="个人常用命令记录 终端代理123export http_proxy&#x3D;&quot;http:&#x2F;&#x2F;ip:port&quot;export https_proxy&#x3D;&quot;https:&#x2F;&#x2F;ip:port&quot;export ALL_PROXY&#x3D;socks5:&#x2F;&#x2F;ip:port  文件proxy1Acquire::http::proxy&#x3D;&quot;http:&#x2F;&#x2F;ip:port&#x2F;&quot;  docker代理1.创建docker服务插件目录 1sudo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-03T14:02:32.000Z">
-<meta property="article:modified_time" content="2020-01-03T14:07:56.121Z">
+<meta property="article:modified_time" content="2020-01-03T16:33:00.952Z">
 <meta property="article:author" content="周 靖">
 <meta name="twitter:card" content="summary">
   
@@ -163,9 +163,37 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>个人常用命令记录</p>
-<h3 id="终端代理"><a href="#终端代理" class="headerlink" title="终端代理"></a>终端代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">"http://localhost:port"</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">"http://localhost:port"</span></span><br><span class="line"><span class="built_in">export</span> ALL_PROXY=socks5://202.204.54.76:2223</span><br></pre></td></tr></table></figure>
+<h3 id="终端代理"><a href="#终端代理" class="headerlink" title="终端代理"></a>终端代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">"http://ip:port"</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">"https://ip:port"</span></span><br><span class="line"><span class="built_in">export</span> ALL_PROXY=socks5://ip:port</span><br></pre></td></tr></table></figure>
 
-<h3 id="文件proxy"><a href="#文件proxy" class="headerlink" title="文件proxy"></a>文件proxy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Acquire::http::proxy=<span class="string">"http://192.168.206.197:8123/"</span></span><br></pre></td></tr></table></figure>
+<h3 id="文件proxy"><a href="#文件proxy" class="headerlink" title="文件proxy"></a>文件proxy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Acquire::http::proxy=<span class="string">"http://ip:port/"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="docker代理"><a href="#docker代理" class="headerlink" title="docker代理"></a>docker代理</h3><p>1.创建docker服务插件目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/systemd/system/docker.service.d</span><br></pre></td></tr></table></figure>
+
+<p>2.创建一个名为http-proxy.conf的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo touch /etc/systemd/system/docker.service.d/http-proxy.conf</span><br></pre></td></tr></table></figure>
+
+<p>3.编辑http-proxy.conf的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf</span><br></pre></td></tr></table></figure>
+
+<p>4.写入内容(将代理ip和代理端口修改)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Service]</span><br><span class="line">Environment=<span class="string">"HTTP_PROXY=socks5://ip:port/"</span></span><br></pre></td></tr></table></figure>
+
+<p>5.重新加载服务程序的配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>6.重启docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p>7.验证</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl show --property=Environment docker</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`nohup ./test.sh &amp;`</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``sudo docker start “容器ID”`</span><br><span class="line">`sudo docker <span class="built_in">exec</span> -it “容器ID” bash` </span><br><span class="line">sudo docker run --name my-pytorch -itd -p 8080:8080 -p 6622:22`</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -257,16 +285,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-  
-    <a href="/2020/01/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
