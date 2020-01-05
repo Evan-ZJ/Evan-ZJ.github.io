@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Zhoujing</title>
+  <title>tempoGAN Notes | Zhoujing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zhoujing">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow摘要 一个时间相干的生成模型，以解决流体流的超分辨率问题  用神经网络综合二维物理场  基于旨在生成三维体数据的条件生成对抗网络  常用的空间鉴别器 and 新颖的时间鉴别器  生成一致且详细的结果  其他物理量（低分辨率速度或者涡度）→生成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tempoGAN Notes">
+<meta property="og:url" content="http://yoursite.com/2020/01/05/tempoGAN-Notes/index.html">
 <meta property="og:site_name" content="Zhoujing">
+<meta property="og:description" content="tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow摘要 一个时间相干的生成模型，以解决流体流的超分辨率问题  用神经网络综合二维物理场  基于旨在生成三维体数据的条件生成对抗网络  常用的空间鉴别器 and 新颖的时间鉴别器  生成一致且详细的结果  其他物理量（低分辨率速度或者涡度）→生成">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-05T05:55:24.000Z">
+<meta property="article:modified_time" content="2020-01-05T11:11:20.941Z">
 <meta property="article:author" content="周 靖">
 <meta name="twitter:card" content="summary">
   
@@ -132,16 +136,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-tempoGAN-Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-tempoGAN-Notes" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/05/tempoGAN-Notes/">tempoGAN Notes</a>
+    <h1 class="article-title" itemprop="name">
+      tempoGAN Notes
     </h1>
   
 
@@ -171,9 +173,134 @@
 </li>
 <li><p>仅使用单个时间步长的低分辨率流体数据</p>
 <p><em>深度学习，生成模型，基于物理的动画，流体模拟</em></p>
-        
-          <a class="article-more-a" href="/2020/01/05/tempoGAN-Notes/#more">more >></a>
-        
+<a id="more"></a>
+</li>
+</ul>
+<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><ul>
+<li><p>01</p>
+</li>
+<li><p>生成模型非常成功→表示和合成复杂的自然图像  </p>
+</li>
+<li><p>CNN → 人脸照片  </p>
+</li>
+<li><p>粗略输入 → 自然的高分辨率   </p>
+</li>
+<li><p>目前研究的生成模型在其原始形式中并未考虑数据的时间演变，这对于现实的物理系统至关重要   </p>
+</li>
+<li><p>扩展目的生成模型以生成被动平流流量的高分辨率体积数据集，并确保时间连贯性</p>
+</li>
+<li><p>02</p>
+</li>
+<li><p>捕获湍流的复杂细节一直是数值模拟的长期挑战  </p>
+</li>
+<li><p>使用离散模型解决这些细节的问题对计算资源需求巨大   </p>
+</li>
+<li><p>提高模拟的表观分辨率的算法可以缓解此问题 but 它是程序模型（程序模型只是受到基础物理学的启发）   </p>
+</li>
+<li><p>本文算法基于物理的插值，不需要任何形式的随时间变化的附加时间数据或数量。   </p>
+</li>
+<li><p>本文算法基于流体仿真单帧中的体数据，超分辨率过程是瞬时的。   </p>
+</li>
+<li><p>本文发现在流设置中对高分辨率数据的推断取决于有关流的信息的可用性。这是以其他物理变量（例如速度和涡度）作为输入的形式，这反过来又产生了艺术控制的手段。</p>
+</li>
+<li><p>03</p>
+</li>
+<li><p>超分辨率流领域的一个特殊挑战是如何评估生成输出的质量。   </p>
+</li>
+<li><p>流体模拟中以湍流为主 ，因此一个粗略的近似值可以与各种明显不同的高分辨率版本相关联   </p>
+</li>
+<li><p>空间和时间分布匹配就表示正确   </p>
+</li>
+<li><p>采用生成对抗网络（GANs）→训练了生成器和鉴别器（鉴别器学会了判断所生成的输出与地面真实数据的匹配程度）   </p>
+</li>
+<li><p>生成网络旁边训练了专门的，数据驱动的损失函数，同时确保它是可区分的并且与训练过程兼容   </p>
+</li>
+<li><p>本文不仅针对烟密度输出采用这种对抗方法，而且还训练了一种专门的新颖的对抗损失函数，该函数学会了判断输出的时间一致性。   </p>
+</li>
+<li><p>发现适当的物理感知数据增强功能非常有用   </p>
+</li>
+<li><p>许多情况下：出现的大量时空数据迅速将典型的硬件环境推向了极限   </p>
+</li>
+<li><p>数据扩充对于避免过度覆盖至关重要</p>
+<p><strong>贡献：</strong></p>
+<ul>
+<li>新颖的时间鉴别器，可随着时间的流逝产生一致且高度详细的结果</li>
+<li>对输出的艺术控制，形式为附加损失条款和故意纠缠所使用的物理量作为输入</li>
+<li>物理意识增强的数据方法</li>
+<li>全面评估物理功能的对抗训练过程</li>
+</ul>
+</li>
+</ul>
+<h4 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h4><ul>
+<li>01  </li>
+<li>在计算机视觉领域，深度学习技术有许多突破：分类、目标检测、样式迁移。</li>
+<li>02  </li>
+<li>Goodfellow等人 → 生成对抗网络（GAN）：重新创建复杂数据集（例如人脸图像）的分布方面特别强大  </li>
+<li>根据它们采用的输入数据的类型，GAN可以分为无条件的和有条件的<ul>
+<li>无条件：从合成数据分布（例如高斯噪声）的样本中生成真实数据。DC-GAN （for 通用的自然图像）</li>
+<li>有条件的GAN：为网络提供某种与目标函数相关的输入，以控制生成的输出。</li>
+</ul>
+</li>
+<li>条件变体通常用于转换任务，例如图像翻译问题和超分辨率问题。</li>
+<li>03   </li>
+<li>超分辨率技术领域：<ul>
+<li>卷积网络比完全连接的架构更有效，可以使用较小的图块训练这些网络，然后将其应用于任意大小的图像</li>
+<li>批量归一化通过消除隐藏层中的价值转移和采用所谓残差块的网络</li>
+<li>……   </li>
+</ul>
+</li>
+<li>损失函数：网络输出和真实数据之间的像素级损失过去很常见，如$L_1$和$L_2$损失</li>
+<li>如今，使用GAN的对抗结构或使用预先训练的网络：会带来更高的感知质量</li>
+<li>04  </li>
+<li>本文方法同样使用<strong>残差块</strong>和<strong>条件GAN架构</strong>来推断三维流量  </li>
+<li>使用标准架构   </li>
+<li>生成器类似于图像超分辨率的方法 but 损失条件和判别器对于高质量产出至关重要   </li>
+<li>采用了相当传统的GAN训练  </li>
+<li>工作重点是<strong>时间连贯性</strong></li>
+<li>05  </li>
+<li>大多数工作集中于单张图像，少数讨论时间变化   </li>
+<li>合并时间轴：通过使用数据序列作为输入和输出   </li>
+<li>Saito提出时间生成器：顺序生成   </li>
+<li>本文则根据需要独立地以任意顺序处理单个帧   </li>
+<li>另外，对于典型的四维流体数据集，这样的方法在权重和计算资源方面将会爆炸。</li>
+<li>06   </li>
+<li>一种替代方法是生成带有其他损耗项的单帧数据，以保持结果随时间推移的连贯性。Bhattacharjee等人（2017年）通过添加经过特殊设计的距离度量作为附近帧之间的不连续性代价，提高了视频帧预测结果的一致性。</li>
+<li>对于视频样式传输，如弯曲的附近帧造成的$L_2$损失有助于缓解时间不连续性，如Ruder等人所示。</li>
+<li>Chen等人[2017]除了附近帧的$L_2$损失外，使用神经网络来学习VGG特征空间中的帧变形和帧组合。</li>
+<li>使用神经网络学习低分辨率输入的空间对齐方式，以及高分辨率输出的自适应聚合，这也改善了时间相干性。  </li>
+<li>面临的是三维数据集，因此本文也采用了单帧视图，但是<strong>使用时间区分符</strong></li>
+<li>依靠数据驱动的学习型损失函数（以鉴别器形式）有助于改善结果，而不是人工设计的损失。</li>
+<li>训练好本文的网络后，就可以丢弃该鉴别器</li>
+<li>与聚合方法不同，我们的方法不会影响运行时性能。   </li>
+<li>通过为本文的网络提供速度，扭曲层同样可以改善对时间相关内容生成的训练。</li>
+<li>07   </li>
+<li>着重于高分辨率流数据集的条件推断→着重于单相流   </li>
+<li>稳定的流体算法[Stam 1999]可以说将单相仿真引入了计算机动画中。   </li>
+<li>更精确的对流方案[Kim等，2005； Selle et al 2008]经常被使用</li>
+<li>使用过程湍流方法提高流动分辨率的方法是流行的扩展[Kim等2008年； Narain等2008]   </li>
+<li>这些方法需要在整个模拟序列上对流高分辨率密度场。相比之下，我们的方法仅基于单个数据快照就可以得出基本对流问题的瞬时解决方案。</li>
+</ul>
+<h4 id="对抗损失功能（函数？）"><a href="#对抗损失功能（函数？）" class="headerlink" title="对抗损失功能（函数？）"></a>对抗损失功能（函数？）</h4><ul>
+<li><p>基于一组低分辨率输入以及相应的高分辨率参考，目标是通过对抗训练来训练可产生时间相干的高分辨率解决方案的CNN</p>
+</li>
+<li><p>对抗训练知识 and 在时间连贯性和改变输出样式方面的扩展</p>
+</li>
+</ul>
+<h5 id="3-1生成对抗网络"><a href="#3-1生成对抗网络" class="headerlink" title="3.1生成对抗网络"></a>3.1生成对抗网络</h5><ul>
+<li><p>01   </p>
+</li>
+<li><p>GAN由两个模型组成：生成器$G$和鉴别器$D$。在本文中实现为卷积神经网络。  </p>
+</li>
+<li><p>对于常规的（即不是条件GAN），目标是训练生成器$G(x)$，该生成器将简单的数据分布（通常是噪声$x$）映射到复杂的所需输出（例如自然图像）。  代替使用人工指定的损耗项来训练生成器，使用另一个NN（鉴别器）作为复杂的，学习到的损耗函数[Goodfellow 2014]。</p>
+</li>
+<li><p>该鉴别器采用简单的二进制分类器的形式，以监督的方式对其进行训练以拒绝生成的数据，即应返回$D(G(x)) = 0$，并接受$D(y) = 1$的真实数据 。</p>
+</li>
+<li><p>对于训练，鉴权器的损失因此由“生成”和“真实”两个类别的sigmoid形交叉熵给出：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \mathcal{L}_{D}(D, G) &=\mathbb{E}_{y \sim p_{\text {data }}(y)}[-\log D(y)]+\mathbb{E}_{x \sim p_{\text {data }}(x)}[-\log (1-D(G(x)))] \\ &=\mathbb{B}_{m}\left[-\log D\left(y_{m}\right)\right]+\mathbb{E}_{n}\left[-\log \left(1-D\left(G\left(x_{n}\right)\right)\right)\right] \end{aligned}
+\tag 1</script></li>
+</ul>
+
       
 
       
@@ -184,16 +311,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/05/tempoGAN-Notes/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/05/tempoGAN-Notes/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/05/Git/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hexo显示数学公式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -213,214 +399,25 @@
 
 
 
-
   
-    <article id="post-Git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/05/Git/">Hexo显示数学公式</a>
-    </h1>
   
-
-        
-        <a href="/2020/01/05/Git/" class="archive-article-date">
-  	<time datetime="2020-01-04T16:31:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Hexo 默认使用 hexo-renderer-marked 引擎渲染网页，该引擎会把一些特殊的 markdown 符号转换为相应的 html 标签，比如在 markdown 语法中，下划线<code>_</code>代表斜体，会被渲染引擎处理为``标签。</p>
-<p>因为类 Latex 格式书写的数学公式下划线<code>_</code>表示下标，有特殊的含义，如果被强制转换为``标签，那么 MathJax 引擎在渲染数学公式的时候就会出错。</p>
-<p>类似的语义冲突的符号还包括<code>*</code>, <code>{</code>, <code>}</code>, <code>\\</code>等。</p>
-<h5 id="更换-Hexo-的-markdown-渲染引擎"><a href="#更换-Hexo-的-markdown-渲染引擎" class="headerlink" title="更换 Hexo 的 markdown 渲染引擎"></a>更换 Hexo 的 markdown 渲染引擎</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save  </span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
-<p>找到node_modules\kramed\lib\rules\inline.js，把第11行的 escape 变量的值做相应的修改：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//escape: /^\\([\\`*&#123;&#125;\[\]()<span class="comment">#$+\-.!_&gt;])/,</span></span><br><span class="line">escape: /^\\([`*\[\]()<span class="comment">#$+\-.!_&gt;])/,</span></span><br></pre></td></tr></table></figure>
-<p>同时把第20行的em变量也要做相应的修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span><br><span class="line">em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span><br></pre></td></tr></table></figure>
-<h5 id="主题中开启-MathJax-开关"><a href="#主题中开启-MathJax-开关" class="headerlink" title="主题中开启 MathJax 开关"></a>主题中开启 MathJax 开关</h5><h4 id="在文章的Front-matter里打开mathjax开关"><a href="#在文章的Front-matter里打开mathjax开关" class="headerlink" title="在文章的Front-matter里打开mathjax开关"></a>在文章的Front-matter里打开mathjax开关</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: index.html</span><br><span class="line">date: 2018-07-05 12:01:30</span><br><span class="line">tags: </span><br><span class="line">mathjax: <span class="literal">true</span></span><br><span class="line">--</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/05/Git/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-aboutLatex" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/04/aboutLatex/">Latex Notes</a>
-    </h1>
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2020/01/05/tempoGAN-Notes/", 
+    sourceId: "tempoGAN-Notes",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-        
-        <a href="/2020/01/04/aboutLatex/" class="archive-article-date">
-  	<time datetime="2020-01-03T16:42:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="latex图片布局参考"><a href="#latex图片布局参考" class="headerlink" title="latex图片布局参考"></a>latex图片布局参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;graphicx&#125; %插入图片的宏包</span><br><span class="line">\usepackage&#123;float&#125; %设置图片浮动位置的宏包</span><br><span class="line">\usepackage&#123;subfigure&#125; %插入多图时用子图显示的宏包</span><br><span class="line"></span><br><span class="line">\begin&#123;figure&#125;[H] %这里使用的是强制位置</span><br><span class="line">  \centering %图片全局居中</span><br><span class="line">  \vspace&#123;-0.35cm&#125; %设置与上面正文的距离</span><br><span class="line">  \subfigtopskip&#x3D;2pt %设置子图与上面正文或别的内容的距离</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/01/04/aboutLatex/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/04/aboutLatex/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UbuntuNotes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/03/UbuntuNotes/">日常问题01</a>
-    </h1>
   
 
-        
-        <a href="/2020/01/03/UbuntuNotes/" class="archive-article-date">
-  	<time datetime="2020-01-03T14:02:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>个人常用命令记录</p>
-<h3 id="终端代理"><a href="#终端代理" class="headerlink" title="终端代理"></a>终端代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">"http://ip:port"</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">"https://ip:port"</span></span><br><span class="line"><span class="built_in">export</span> ALL_PROXY=socks5://ip:port</span><br></pre></td></tr></table></figure>
-<h3 id="文件proxy"><a href="#文件proxy" class="headerlink" title="文件proxy"></a>文件proxy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Acquire::http::proxy=<span class="string">"http://ip:port/"</span></span><br></pre></td></tr></table></figure>
-<h3 id="docker代理"><a href="#docker代理" class="headerlink" title="docker代理"></a>docker代理</h3><p>1.创建docker服务插件目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/systemd/system/docker.service.d</span><br></pre></td></tr></table></figure>
-<p>2.创建一个名为http-proxy.conf的文件</p>
-        
-          <a class="article-more-a" href="/2020/01/03/UbuntuNotes/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/03/UbuntuNotes/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+
   
 
 
@@ -443,8 +440,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
