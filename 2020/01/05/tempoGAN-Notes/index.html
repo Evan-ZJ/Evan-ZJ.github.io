@@ -16,7 +16,7 @@
 <meta property="og:description" content="tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow摘要 一个时间相干的生成模型，以解决流体流的超分辨率问题  用神经网络综合二维物理场  基于旨在生成三维体数据的条件生成对抗网络  常用的空间鉴别器 and 新颖的时间鉴别器  生成一致且详细的结果  其他物理量（低分辨率速度或者涡度）→生成">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-05T05:55:24.000Z">
-<meta property="article:modified_time" content="2020-01-05T11:11:20.941Z">
+<meta property="article:modified_time" content="2020-01-05T13:57:16.474Z">
 <meta property="article:author" content="周 靖">
 <meta name="twitter:card" content="summary">
   
@@ -299,6 +299,99 @@
 <script type="math/tex; mode=display">
 \begin{aligned} \mathcal{L}_{D}(D, G) &=\mathbb{E}_{y \sim p_{\text {data }}(y)}[-\log D(y)]+\mathbb{E}_{x \sim p_{\text {data }}(x)}[-\log (1-D(G(x)))] \\ &=\mathbb{B}_{m}\left[-\log D\left(y_{m}\right)\right]+\mathbb{E}_{n}\left[-\log \left(1-D\left(G\left(x_{n}\right)\right)\right)\right] \end{aligned}
 \tag 1</script></li>
+</ul>
+<p>其中：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$n$</td>
+<td>绘制的输入x的数量</td>
+</tr>
+<tr>
+<td>$m$</td>
+<td>实际数据样本$y$的数量</td>
+</tr>
+<tr>
+<td>$y \sim p_{d a t a}(y)$</td>
+<td>从相应的概率数据分布$p_{data}$提取的样本$y$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> 在离散设置中，连续分布产生等式$(1)$第二行中样本$y_n$和$x_m$的平均值。 为简化起见，将省略sigmoid形交叉熵的$y \sim p_{d a t a}(y)$和$x \sim p_{d a t a}(x)$下标，以及$D(y_m)$和$D(x_n)$的$n$和$m$下标。</p>
+<ul>
+<li><p>02   </p>
+</li>
+<li><p>与鉴别器相比，训练生成器以“欺骗”鉴别器以接受其样本，从而生成与y的真实数据接近的输出。  </p>
+</li>
+<li><p>在实践中，这意味着要对生成器进行训练，以将鉴频器结果输出到一个。</p>
+</li>
+<li><p>GANs通常使用公式$(2)$代替直接使用负标识符损失：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{G}(D, G)=\mathbb{E}_{x \sim p_{\text {data}}(x)}[-\log (D(G(x)))]=\mathbb{E}_{n}[-\log (D(G(x)))]
+\tag 2</script><p>作为生成器的损失函数，是为了减小梯度下降问题[Goodfellow 2016]。当$D$被实现为一个NN时，它可以保证作为$G$的损失函数有足够的可微性。鉴别器和生成器都经过轮流训练，并且将最佳地达到平衡状态。</p>
+</li>
+<li><p>03  </p>
+</li>
+<li>目标不是生成任意的高分辨率输出，而是生成与低分辨率输入相对应的输出，因此采用条件GAN</li>
+<li>输入$x$代表低分辨率数据集，并且向鉴别符提供$x$以便建立并确保输入和输出之间的正确关系。ie. 现在拥有$D(x,y)$和$D(x,G(x))$（[Mirza and Osindero 2014]）</li>
+<li>[Zhao et al. 2015]表明，可以在生成器上增加一个附加的$L_1$损失项（权重较小），以确保其输出保持接近地面实况$y$。</li>
+<li>这样就产生了$\lambda_{L_{1}} \mathbb{B}_{n}|G(x)-y|_{1},$ where $\lambda_{L_{1}}$，其中$L_{1}$控制该术语的强度，</li>
+<li>为了保持一致，使用$\mathbb{E}$表示期望值，在这种离散情况下，它等于平均值。</li>
+</ul>
+<h4 id="特征空间的损失"><a href="#特征空间的损失" class="headerlink" title="特征空间的损失"></a>特征空间的损失</h4><ul>
+<li><p>限制基础CNN的功能→更现实的输出+有助于解决模式崩溃问题[Dosovitskiy and Brox 2016]</p>
+</li>
+<li><p>为生成器引入了神经网络的部分或整个特征空间的$L_2$损失。I.e. 生成器网络的中间结果受w.r.t约束。（一组中间参考数据）</p>
+</li>
+<li><p>建议使用区分器的功能作为约束，因此合并新得损失项：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{f}=\mathbb{E}_{n, j} \lambda_{f}^{j}\left\|F^{j}(G(x))-F^{j}(y)\right\|_{2}^{2}
+\tag 3</script></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$j$</td>
+<td>鉴别器网络中的一层</td>
+</tr>
+<tr>
+<td>$F^j$</td>
+<td>相应层的激活。</td>
+</tr>
+<tr>
+<td>$\lambda_{f}^{j}$</td>
+<td>加权项，可在每层基础上调整</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>可以在这里使用鉴别器，因为没有合适的、经过预训练的网络可用于三维流问题。</p>
+</li>
+<li><p>04  </p>
+</li>
+<li>这些损失项促进对$\lambda _f &gt;0$的实际数据集和生成的数据集的平均特征空间距离的最小化。</li>
+<li>$\lambda _f &lt;0$的训练运行也会产生出色的结果或者更好</li>
+<li>以有条件的GAN为目标，因此网络受到输入的极大限制</li>
+<li>负特征损失会鼓励优化生成结果，这些结果在特征方面有所不同，但在最终输出方面仍然相似，理想情况下无法区分。</li>
+<li>不针对单个真实结果，而让生成器自由生成最适合其接收到的输入集合的任何结果。</li>
+<li>这个损耗项使生成器趋向于逼真的细节。图 2</li>
+<li></li>
 </ul>
 
       
