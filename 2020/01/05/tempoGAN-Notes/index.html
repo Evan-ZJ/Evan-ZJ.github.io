@@ -15,10 +15,12 @@
 <meta property="og:site_name" content="Zhoujing">
 <meta property="og:description" content="tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow摘要 一个时间相干的生成模型，以解决流体流的超分辨率问题  用神经网络综合二维物理场  基于旨在生成三维体数据的条件生成对抗网络  常用的空间鉴别器 and 新颖的时间鉴别器  生成一致且详细的结果  其他物理量（低分辨率速度或者涡度）→生成">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8%202020-01-05%20222417.png">
 <meta property="article:published_time" content="2020-01-05T05:55:24.000Z">
-<meta property="article:modified_time" content="2020-01-05T13:57:16.474Z">
+<meta property="article:modified_time" content="2020-01-05T14:30:27.574Z">
 <meta property="article:author" content="周 靖">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8%202020-01-05%20222417.png">
   
     <link rel="alternative" href="/atom.xml" title="Zhoujing" type="application/atom+xml">
   
@@ -385,14 +387,21 @@
 </li>
 <li><p>04  </p>
 </li>
-<li>这些损失项促进对$\lambda _f &gt;0$的实际数据集和生成的数据集的平均特征空间距离的最小化。</li>
-<li>$\lambda _f &lt;0$的训练运行也会产生出色的结果或者更好</li>
-<li>以有条件的GAN为目标，因此网络受到输入的极大限制</li>
-<li>负特征损失会鼓励优化生成结果，这些结果在特征方面有所不同，但在最终输出方面仍然相似，理想情况下无法区分。</li>
-<li>不针对单个真实结果，而让生成器自由生成最适合其接收到的输入集合的任何结果。</li>
-<li>这个损耗项使生成器趋向于逼真的细节。图 2</li>
-<li></li>
+<li><p>这些损失项促进对$\lambda _f &gt;0$的实际数据集和生成的数据集的平均特征空间距离的最小化。</p>
+</li>
+<li><p>$\lambda _f &lt;0$的训练运行也会产生出色的结果或者更好</p>
+</li>
+<li><p>以有条件的GAN为目标，因此网络受到输入的极大限制</p>
+</li>
+<li><p>负特征损失会鼓励优化生成结果，这些结果在特征方面有所不同，但在最终输出方面仍然相似，理想情况下无法区分。</p>
+</li>
+<li><p>不针对单个真实结果，而让生成器自由生成最适合其接收到的输入集合的任何结果。</p>
+</li>
+<li><p>这个损耗项使生成器趋向于逼真的细节。图 2</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-05 222417.png" alt=""></p>
+</li>
 </ul>
+<p><em>图 2. 从左到右：a）一个样本，低分辨率输入；b）具有原始的L2损失的CNN输出（无GAN训练）；c）我们的tempoGAN输出；以及d）高分辨率参考。</em></p>
 
       
 
