@@ -154,7 +154,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="使用流程"><a href="#使用流程" class="headerlink" title="使用流程"></a>使用流程</h3><p>新建 GitHub 仓库</p>
+        <p><a href="https://www.jianshu.com/p/c82774239ddb" target="_blank" rel="noopener">原文连接</a></p>
+<h3 id="使用流程"><a href="#使用流程" class="headerlink" title="使用流程"></a>使用流程</h3><p>新建 GitHub 仓库</p>
 <p>生成一个 Token</p>
 <p>配置 PicGo 并使用 jsdelivr 作为 CDN 加速</p>
 <p>使用 Imagine 进行图片压缩</p>
@@ -227,7 +228,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow"><a href="#tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow" class="headerlink" title="tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow"></a><a href="https://arxiv.org/pdf/1801.09710.pdf" target="_blank" rel="noopener">tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow</a></h2><h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><ul>
+        <h2 id="tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow"><a href="#tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow" class="headerlink" title="tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow"></a><a href="https://arxiv.org/pdf/1801.09710.pdf" target="_blank" rel="noopener">tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow</a></h2><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-06 110009.png" alt=""></p>
+<p>图1.本文卷积神经网络学习基于包含单个时间步长的密度和速度数据的低分辨率字段，生成高度详细的时间相关特征。 引入了一种新颖的鉴别器，可确保合成的细节随时间平滑变化。</p>
+<h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><ul>
 <li><p>一个时间相干的生成模型，以解决流体流的超分辨率问题</p>
 </li>
 <li><p>用神经网络综合二维物理场</p>
@@ -312,12 +315,9 @@
 <p>因为类 Latex 格式书写的数学公式下划线<code>_</code>表示下标，有特殊的含义，如果被强制转换为``标签，那么 MathJax 引擎在渲染数学公式的时候就会出错。</p>
 <p>类似的语义冲突的符号还包括<code>*</code>, <code>{</code>, <code>}</code>, <code>\\</code>等。</p>
 <h5 id="更换-Hexo-的-markdown-渲染引擎"><a href="#更换-Hexo-的-markdown-渲染引擎" class="headerlink" title="更换 Hexo 的 markdown 渲染引擎"></a>更换 Hexo 的 markdown 渲染引擎</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save  </span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
-<p>找到node_modules\kramed\lib\rules\inline.js，把第11行的 escape 变量的值做相应的修改：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//escape: /^\\([\\`*&#123;&#125;\[\]()<span class="comment">#$+\-.!_&gt;])/,</span></span><br><span class="line">escape: /^\\([`*\[\]()<span class="comment">#$+\-.!_&gt;])/,</span></span><br></pre></td></tr></table></figure>
-<p>同时把第20行的em变量也要做相应的修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span><br><span class="line">em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span><br></pre></td></tr></table></figure>
-<h5 id="主题中开启-MathJax-开关"><a href="#主题中开启-MathJax-开关" class="headerlink" title="主题中开启 MathJax 开关"></a>主题中开启 MathJax 开关</h5><h4 id="在文章的Front-matter里打开mathjax开关"><a href="#在文章的Front-matter里打开mathjax开关" class="headerlink" title="在文章的Front-matter里打开mathjax开关"></a>在文章的Front-matter里打开mathjax开关</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: index.html</span><br><span class="line">date: 2018-07-05 12:01:30</span><br><span class="line">tags: </span><br><span class="line">mathjax: <span class="literal">true</span></span><br><span class="line">--</span><br></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2020/01/05/Git/#more">more >></a>
+        
       
 
       
