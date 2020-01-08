@@ -16,7 +16,7 @@
 <meta property="og:description" content="Multiple-Fluid SPH Simulation Using a Mixture Model0. 摘要 提出了一种适用于多流体流动的通用、鲁棒的SPH模拟方法。 不同相或组分的空间分布采用体积分数表示，多流体流动的动力学采用改进的混合模型 解决了多流体流动中遇到的复杂输运和转化过程。 可以捕获广泛的真实世界多流体现象，包括混溶&#x2F;混溶混溶流体、扩散效应和化学反应等。 容易地集成到现有的最先">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-07T07:10:29.000Z">
-<meta property="article:modified_time" content="2020-01-07T10:53:35.283Z">
+<meta property="article:modified_time" content="2020-01-08T06:58:53.668Z">
 <meta property="article:author" content="周 靖">
 <meta name="twitter:card" content="summary">
   
@@ -318,6 +318,56 @@
 </tbody>
 </table>
 </div>
+<h3 id="3-多流混合模型"><a href="#3-多流混合模型" class="headerlink" title="3. 多流混合模型"></a>3. 多流混合模型</h3><h4 id="3-1-混合模型的控制方程"><a href="#3-1-混合模型的控制方程" class="headerlink" title="3.1 混合模型的控制方程"></a>3.1 混合模型的控制方程</h4><ul>
+<li><p>在多流体流动的数学理论中，相$k$的存在由其自身的体积分数$\alpha_k$（它占据的无穷小体积的相对分数）和速度$\mathbf{u}_k$表示，并且每个相$k$的连续性和动量方程为</p>
+</li>
+<li><script type="math/tex; mode=display">
+\frac{\partial}{\partial t}\left(\alpha_{k} \rho_{k}\right)+\nabla \cdot\left(\alpha_{k} \rho_{k} \mathbf{u}_{k}\right)=0\tag 1</script></li>
+<li><script type="math/tex; mode=display">
+\frac{\partial}{\partial t}\left(\alpha_{k} \rho_{k} \mathbf{u}_{k}\right)+\nabla \cdot\left(\alpha_{k} \rho_{k} \mathbf{u}_{k} \mathbf{u}_{k}\right)=\alpha_{k} \rho_{k} \mathbf{g}-\alpha_{k} \nabla p_{k}+\nabla \cdot\left(\alpha_{k} \mathbf{T}_{k}\right)+\mathbf{F}_{k}\tag 2</script></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\rho_k$</td>
+<td>相$k$的静止密度（常数）</td>
+</tr>
+<tr>
+<td>$p_k$</td>
+<td>压力</td>
+</tr>
+<tr>
+<td>$\mathbf{g}$</td>
+<td>重力</td>
+</tr>
+<tr>
+<td>$\mathbf{T}_k$</td>
+<td>粘性应力张量</td>
+</tr>
+<tr>
+<td>$\mathbf{F}_k$</td>
+<td>界面动量源</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>除方程（2）中的最后一项外，前述方程与单相流相似。 </p>
+</li>
+<li><p>$\mathbf{F}_k$解释了相之间的相互作用，例如阻力和摩擦力。 </p>
+</li>
+<li><p>体积分数$\alpha_k$限制在0和1之间，并且必须相加为1</p>
+<script type="math/tex; mode=display">
+\sum_{k} \alpha_{k}=1, \alpha_{k} \geq 0
+\tag 3</script></li>
+</ul>
 
       
 
