@@ -15,10 +15,12 @@
 <meta property="og:site_name" content="Zhoujing">
 <meta property="og:description" content="Multiple-Fluid SPH Simulation Using a Mixture Model0. 摘要 提出了一种适用于多流体流动的通用、鲁棒的SPH模拟方法。 不同相或组分的空间分布采用体积分数表示，多流体流动的动力学采用改进的混合模型 解决了多流体流动中遇到的复杂输运和转化过程。 可以捕获广泛的真实世界多流体现象，包括混溶&#x2F;混溶混溶流体、扩散效应和化学反应等。 容易地集成到现有的最先">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8%202020-01-08%20184323.webp">
 <meta property="article:published_time" content="2020-01-07T07:10:29.000Z">
-<meta property="article:modified_time" content="2020-01-08T06:58:53.668Z">
+<meta property="article:modified_time" content="2020-01-08T11:58:19.805Z">
 <meta property="article:author" content="周 靖">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8%202020-01-08%20184323.webp">
   
     <link rel="alternative" href="/atom.xml" title="Zhoujing" type="application/atom+xml">
   
@@ -367,6 +369,109 @@
 <script type="math/tex; mode=display">
 \sum_{k} \alpha_{k}=1, \alpha_{k} \geq 0
 \tag 3</script></li>
+<li><p>混合物的连续性和动量方程式通过公式（1）和（2）相加而得出</p>
+<script type="math/tex; mode=display">
+\frac{\partial}{\partial t} \rho_{m}+\nabla \cdot\left(\rho_{m} \mathbf{u}_{m}\right)=0
+\tag 4</script><script type="math/tex; mode=display">
+\frac{\partial}{\partial t}\left(\rho_{m} \mathbf{u}_{m}\right)+\nabla \cdot\left(\rho_{m} \mathbf{u}_{m} \mathbf{u}_{m}\right)=-\nabla p_{m}+\rho_{m} \mathbf{g}+\nabla \cdot \mathbf{T}_{m}+\nabla \cdot \mathbf{T}_{D m}
+\tag 5</script></li>
+<li><p>$\rho_{m}=\sum_{k} \alpha_{k} \rho_{k}$混合密度</p>
+</li>
+<li><p>$\mathbf{u}_{m}=\frac{1}{\rho_{m}} \sum_{k} \alpha_{k} \rho_{k} \mathbf{u}_{k}$混合速度（质心速度）</p>
+</li>
+<li><p>混合物的压力$p_m$由关系$\nabla p_{m}=\sum_{k} \alpha_{k} \nabla p_{k}$定义</p>
+</li>
+<li><p>混合物的粘性应力张量$\mathbf{T}_m$满足$\nabla \cdot \mathbf{T}_m = \sum_{k} \nabla \cdot\left(\alpha_{k} \mathbf{T}_{k}\right)$</p>
+</li>
+<li><p>$\mathbf{T}_{D m}=-\sum_{k} \alpha_{k} \rho_{k} \mathbf{u}_{m k} \mathbf{u}_{m k}$从动量方程的左侧导出，表示相之间的对流动量传递。</p>
+</li>
+<li><p>漂移速度（相对速度）</p>
+<script type="math/tex; mode=display">
+\mathbf{u}_{m k}=\mathbf{u}_{k}-\mathbf{u}_{m}
+\tag 6</script></li>
+</ul>
+<ul>
+<li><p>相互作用力Fk没有明确地出现在动量方程式（5）中，因为在所有相位上求和时它们会被抵消</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-08 184323.webp" style="zoom:50%;" /></p>
+</li>
+</ul>
+<p><em>假设混合物具有单位密度的三相</em>（$\rho_{k}= 1$），<em>则上面说明了多流体变量。</em> <em>（a）体积分数</em>$\alpha_k$<em>度</em>$\mathbf{u}_k$<em>和混合速度</em>$\mathbf{u}_m$<em>之间的关系； （b）从</em>$\mathbf{u}_k$<em>和</em>$\mathbf{u}_m$<em>获得漂移m速度</em>$\mathbf{u}_{mk}$<em>*； （c）漂移速度</em></p>
+<ul>
+<li><p>代入式 （6）式 （1），可以从相$k$的连续性方程中消除相速度$\mathbf{u}_k$：</p>
+<script type="math/tex; mode=display">
+\frac{\partial \alpha_{k}}{\partial t}+\left(\mathbf{u}_{m} \cdot \nabla\right) \alpha_{k}=-\alpha_{k} \nabla \cdot \mathbf{u}_{m}-\nabla \cdot\left(\alpha_{k} \mathbf{u}_{m k}\right)
+\tag 7</script></li>
+<li><p>代入式 （4）式 （5）可以将混合动量方程重新组织为</p>
+<script type="math/tex; mode=display">
+\frac{\partial}{\partial t} \mathbf{u}_{m}+\left(\mathbf{u}_{m} | \cdot \nabla\right) \mathbf{u}_{m}=-\frac{\nabla p_{m}}{\rho_{m}}+\mathbf{g}+\frac{\nabla \cdot \mathbf{T}_{m}}{\rho_{m}}+\frac{\nabla \cdot \mathbf{T}_{D m}}{\rho_{m}}
+\tag 8</script></li>
+<li><p>（7）和（8）是用于多流体流动的混合模型的控制方程。</p>
+</li>
+<li><p>每个相$k$的空间分布完全由其体积分数$α_k$表示</p>
+</li>
+</ul>
+<h4 id="3-2-漂移（相对）速度"><a href="#3-2-漂移（相对）速度" class="headerlink" title="3.2 漂移（相对）速度"></a>3.2 漂移（相对）速度</h4><ul>
+<li>从式（7）可以明显看出，速度场的不均匀分布将导致每个相的体积分数发生变化。 </li>
+<li><p>漂移速度$\mathbf{u}_{mk}$在相互作用机制中起着关键作用，这种相互作用机制负责各种可混溶和不可混溶的现象。</p>
+</li>
+<li><p>漂移速度的解析表达式直接给出为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbf{u}_{m k}=& \tau\left(\rho_{k}-\sum_{k^{\prime}} c_{k^{\prime}} \rho_{k^{\prime}}\right) \mathbf{a}-\tau\left(\nabla p_{k}-\sum_{k^{\prime}} c_{k^{\prime}} \nabla p_{k^{\prime}}\right) \\
+&-\sigma\left(\frac{\nabla \alpha_{k}}{\alpha_{k}}-\sum_{k^{\prime}} c_{k^{\prime}} \frac{\nabla \alpha_{k^{\prime}}}{\alpha_{k^{\prime}}}\right)
+\end{aligned}
+\tag 9</script><ul>
+<li><p>$τ$和$σ$是用户定义的常数系数</p>
+</li>
+<li><p>$c_k = \frac{\alpha_k \rho_k}{\rho_m}$是第$k$个分量的质量分数</p>
+</li>
+<li><p>表示重力加速度与混合速度的基本导数之间的差</p>
+<script type="math/tex; mode=display">
+\mathbf{a}=\mathbf{g}-\left(\mathbf{u}_{m} \cdot \nabla\right) \mathbf{u}_{m}-\frac{\partial \mathbf{u}_{m}}{\partial t}
+\tag {10}</script></li>
+</ul>
+</li>
+<li><p>计算遵循式（9）的漂移速度，还必须提供相压$p_k$和混合压力$p_m$ 之间的关系</p>
+<ul>
+<li><p>标准混合物模型压力处理</p>
+<script type="math/tex; mode=display">
+p_k = p_m
+\tag {11}</script><p>对于不混溶的流体，相压$p_k$与混合压力$p_m$相同，因此等式（9）中的第二项消失。 它的直观解释是，对于在相之间建立压力平衡的不混溶流体，与混合物共享的均匀压力不会导致不混溶相彼此移动。 </p>
+</li>
+<li><p>扩展标准混合物模型：</p>
+<script type="math/tex; mode=display">
+p_k =\alpha_k p_m
+\tag {12}</script><p>对于可混溶的液体，相压$p_k$取决于体积分数，彼此互不相同，因此，不混溶的相在混合物料中被加速而彼此移动。</p>
+</li>
+</ul>
+</li>
+<li><p>由等式（9）确定，漂移速度$\mathbf{u}_{mk}$包含三个项</p>
+<ul>
+<li>第一项解释惯性效应，尤其是用该项建模由体力引起的速度差。</li>
+<li>第二项解释了压力效应，也就是说，在混合物中，相沿从高压到低压的方向加速。</li>
+<li>第三项解释了扩散效应，即，相倾向于从较集中的区域移动到较不集中的区域。</li>
+<li>较高的$τ$值将导致更强的惯性和压力效应</li>
+<li>较高的$σ$值将导致更强的扩散效应</li>
+<li>$τ$在10−8和10−6之间变化，$σ$在10−4到10−3附近。</li>
+</ul>
+</li>
+<li>公式（9）确定后，（7）和（8）的解简化为求解混合速度$\mathbf{u}_m$（而不是所有相速度$\mathbf{u}_k$）和相体积分数$α_k$。</li>
+</ul>
+<h3 id="4-使用SPH公式扩展此混合模型"><a href="#4-使用SPH公式扩展此混合模型" class="headerlink" title="4. 使用SPH公式扩展此混合模型"></a>4. 使用SPH公式扩展此混合模型</h3><ul>
+<li><p>SPH粒子携带混合质量并以混合速度um移动。 这些混合物颗粒还带有与各个相相关的所有物理量。</p>
+</li>
+<li><p>方程（8）的左侧表示混合速度$\mathbf{u}_m$的实质导数，而方程（7）的左侧代表相$k$的体积分数的实质导数，也相对于混合速度$\mathbf{u}_m$</p>
+</li>
+<li><p>等式（9）中的解析解计算了漂移速度$\mathbf{u}_{mk}$之后，如果采用明确的时间积分方案，则可以解耦等式（7）和等式（8）的解。</p>
+</li>
+<li><p>对于每个混合粒子$i$：</p>
+<script type="math/tex; mode=display">
+\left(\nabla p_{k}\right)_{i}=\sum_{j} \frac{m_{j}}{\bar{\rho}_{j}}\left(p_{k j}-p_{k i}\right) \nabla W_{i j}\tag {13}</script><script type="math/tex; mode=display">
+\left(\nabla \alpha_{k}\right)_{i}=\sum_{j} \frac{m_{j}}{\bar{\rho}_{j}}\left(\alpha_{k j}-\alpha_{k i}\right) \nabla W_{i j}\tag {14}</script></li>
+<li><p>其中对所有邻域粒子$j$和$\nabla W_{i j}=\nabla_{i} W\left(\mathbf{r}_{i}-\mathbf{r}_{j}, h\right)$进行求和是在支持$h$下的平滑核函数的梯度。</p>
+</li>
+<li><p>采用Muller等人[2003]中的公式，将poly6核用于密度插值，并将spiky核用于所有其他涉及平滑核函数导数的计算。</p>
+</li>
 </ul>
 
       
