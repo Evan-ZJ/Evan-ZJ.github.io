@@ -16,7 +16,7 @@
 <meta property="og:description" content="个人常用命令记录 终端代理123export http_proxy&#x3D;&quot;http:&#x2F;&#x2F;ip:port&quot;export https_proxy&#x3D;&quot;https:&#x2F;&#x2F;ip:port&quot;export ALL_PROXY&#x3D;socks5:&#x2F;&#x2F;ip:port 文件proxy1Acquire::http::proxy&#x3D;&quot;http:&#x2F;&#x2F;ip:port&#x2F;&quot; docker代理1.创建docker服务插件目录 1sudo mk">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-03T14:02:32.000Z">
-<meta property="article:modified_time" content="2020-01-05T11:14:20.667Z">
+<meta property="article:modified_time" content="2020-02-02T08:40:24.854Z">
 <meta property="article:author" content="周 靖">
 <meta name="twitter:card" content="summary">
   
@@ -178,6 +178,7 @@
 <h3 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`nohup ./test.sh &amp;`</span><br></pre></td></tr></table></figure>
 <h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``sudo docker start “容器ID”`</span><br><span class="line">`sudo docker <span class="built_in">exec</span> -it “容器ID” bash` </span><br><span class="line">sudo docker run --name my-pytorch -itd -p 8080:8080 -p 6622:22`</span><br></pre></td></tr></table></figure>
 <h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> ...</span><br><span class="line"></span><br><span class="line">文件复制到<span class="built_in">clone</span>的目录下</span><br><span class="line"></span><br><span class="line">打开Git bash</span><br><span class="line"></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line">git add <span class="string">"文件（夹）名"</span></span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">"..."</span></span><br><span class="line"></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h3 id="docker端口转发"><a href="#docker端口转发" class="headerlink" title="docker端口转发"></a>docker端口转发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -d -p 5000:22 -p 6000:80</span><br></pre></td></tr></table></figure>
 
       
 
