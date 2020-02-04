@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>日常问题01 | Zhoujing</title>
+  <title>日常问题 | Zhoujing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="个人常用命令记录 终端代理123export http_proxy&#x3D;&quot;http:&#x2F;&#x2F;ip:port&quot;export https_proxy&#x3D;&quot;https:&#x2F;&#x2F;ip:port&quot;export ALL_PROXY&#x3D;socks5:&#x2F;&#x2F;ip:port 文件proxy1Acquire::http::proxy&#x3D;&quot;http:&#x2F;&#x2F;ip:port&#x2F;&quot; docker代理1.创建docker服务插件目录 1sudo mk">
 <meta property="og:type" content="article">
-<meta property="og:title" content="日常问题01">
+<meta property="og:title" content="日常问题">
 <meta property="og:url" content="http://yoursite.com/2020/01/03/UbuntuNotes/index.html">
 <meta property="og:site_name" content="Zhoujing">
 <meta property="og:description" content="个人常用命令记录 终端代理123export http_proxy&#x3D;&quot;http:&#x2F;&#x2F;ip:port&quot;export https_proxy&#x3D;&quot;https:&#x2F;&#x2F;ip:port&quot;export ALL_PROXY&#x3D;socks5:&#x2F;&#x2F;ip:port 文件proxy1Acquire::http::proxy&#x3D;&quot;http:&#x2F;&#x2F;ip:port&#x2F;&quot; docker代理1.创建docker服务插件目录 1sudo mk">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-03T14:02:32.000Z">
-<meta property="article:modified_time" content="2020-02-02T08:41:31.089Z">
+<meta property="article:modified_time" content="2020-02-04T09:22:03.471Z">
 <meta property="article:author" content="周 靖">
 <meta name="twitter:card" content="summary">
   
@@ -143,7 +143,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      日常问题01
+      日常问题
     </h1>
   
 
@@ -179,6 +179,26 @@
 <h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``sudo docker start “容器ID”`</span><br><span class="line">`sudo docker <span class="built_in">exec</span> -it “容器ID” bash` </span><br><span class="line">sudo docker run --name my-pytorch -itd -p 8080:8080 -p 6622:22`</span><br></pre></td></tr></table></figure>
 <h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> ...</span><br><span class="line"></span><br><span class="line">文件复制到<span class="built_in">clone</span>的目录下</span><br><span class="line"></span><br><span class="line">打开Git bash</span><br><span class="line"></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line">git add <span class="string">"文件（夹）名"</span></span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">"..."</span></span><br><span class="line"></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 <h3 id="docker端口转发"><a href="#docker端口转发" class="headerlink" title="docker端口转发"></a>docker端口转发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -d -p 5000:22 -p 6000:80 ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+<h3 id="docker容器导入导出"><a href="#docker容器导入导出" class="headerlink" title="docker容器导入导出"></a>docker容器导入导出</h3><p>导出—-export</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">export</span> web01 &gt; /home/centos7-web01.tar</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>-o</strong>来指定导出的tar文件名，也可以直接通过重定向来实现</p>
+</blockquote>
+<p>导入—-import</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker import  centos7-web01.tar text/web02:7.4</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-c 选项可以在导入的同时执行对容器进行修改的Dockerfile指令（网络等修改）</p>
+</blockquote>
+<h3 id="docker镜像保存加载"><a href="#docker镜像保存加载" class="headerlink" title="docker镜像保存加载"></a><strong>docker镜像保存加载</strong></h3><p>导出镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save d3949e34634c &gt; /home/centos7.4.tar</span><br></pre></td></tr></table></figure>
+<p>导入镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load &lt; /home/centos7.4.tar</span><br></pre></td></tr></table></figure>
+<p>批量打包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save $(docker images | grep -v REPOSITORY | awk <span class="string">'BEGIN&#123;OFS=":";ORS=" "&#125;&#123;print $1,$2&#125;'</span>) -o haha.tar</span><br></pre></td></tr></table></figure>
+<p>加载镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i haha.tar</span><br></pre></td></tr></table></figure>
+<p>保存配置完成的容器提交成镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m <span class="string">"web01"</span> cca5f5d4c240 slave/centos:7.4.1709</span><br></pre></td></tr></table></figure>
 
       
 

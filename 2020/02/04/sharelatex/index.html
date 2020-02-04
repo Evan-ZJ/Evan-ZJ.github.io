@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Zhoujing</title>
+  <title>ShareLaTeX安装、配置与部署 | Zhoujing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zhoujing">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="服务器操作系统 Ubuntu 16.04.6 LTS 安装docker 1sudo apt install docker.io 查看是否安装成功 1docker -v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ShareLaTeX安装、配置与部署">
+<meta property="og:url" content="http://yoursite.com/2020/02/04/sharelatex/index.html">
 <meta property="og:site_name" content="Zhoujing">
+<meta property="og:description" content="服务器操作系统 Ubuntu 16.04.6 LTS 安装docker 1sudo apt install docker.io 查看是否安装成功 1docker -v">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-04T09:11:37.000Z">
+<meta property="article:modified_time" content="2020-02-04T09:14:32.030Z">
 <meta property="article:author" content="周 靖">
 <meta name="twitter:card" content="summary">
   
@@ -132,274 +136,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-sharelatex" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      ShareLaTeX安装、配置与部署
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+
+        
+        
 <a href="/2020/02/04/sharelatex/" class="archive-article-date">
   	<time datetime="2020-02-04T09:11:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/04/sharelatex/">ShareLaTeX安装、配置与部署</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>服务器操作系统</strong></p>
+<p>Ubuntu 16.04.6 LTS</p>
+<p><strong>安装docker</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install docker.io</span><br></pre></td></tr></table></figure>
+<p>查看是否安装成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>确认curl等工具已安装**</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</span><br></pre></td></tr></table></figure>
+<p><strong>下载ShareLaTeX及compose file</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull sharelatex/sharelatex</span><br></pre></td></tr></table></figure>
+<p>配置数据文件夹**</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">mkdir sharelatex</span><br><span class="line"><span class="built_in">cd</span> sharelatex</span><br><span class="line">mkdir sharelatex_data</span><br><span class="line">mkdir mongo_data</span><br><span class="line">mkdir redis_data</span><br></pre></td></tr></table></figure>
+<p>下载<a href="https://link.zhihu.com/?target=https%3A//raw.githubusercontent.com/sharelatex/sharelatex/master/docker-compose.yml">docker-compose.yml</a>，并存在<code>~/sharelatex/</code>目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">'2.2'</span></span><br><span class="line">services:</span><br><span class="line">    sharelatex:</span><br><span class="line">        restart: always</span><br><span class="line">        <span class="comment"># Server Pro users:</span></span><br><span class="line">        <span class="comment"># image: quay.io/sharelatex/sharelatex-pro</span></span><br><span class="line">        image: sharelatex/sharelatex</span><br><span class="line">        container_name: sharelatex</span><br><span class="line">        depends_on:</span><br><span class="line">            mongo:</span><br><span class="line">                condition: service_healthy</span><br><span class="line">            redis:</span><br><span class="line">                condition: service_started</span><br><span class="line">        privileged: <span class="literal">true</span></span><br><span class="line">        ports:</span><br><span class="line">            - 80:80</span><br><span class="line">        links:</span><br><span class="line">            - mongo</span><br><span class="line">            - redis</span><br><span class="line">        volumes:</span><br><span class="line">            - ~/sharelatex_data:/var/lib/sharelatex</span><br><span class="line">            - /var/run/docker.sock:/var/run/docker.sock</span><br><span class="line">        environment:</span><br><span class="line"></span><br><span class="line">            SHARELATEX_APP_NAME: Overleaf Community Edition</span><br><span class="line"></span><br><span class="line">            SHARELATEX_MONGO_URL: mongodb://mongo/sharelatex</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Same property, unfortunately with different names in</span></span><br><span class="line">            <span class="comment"># different locations</span></span><br><span class="line">            SHARELATEX_REDIS_HOST: redis</span><br><span class="line">            REDIS_HOST: redis</span><br><span class="line"></span><br><span class="line">            ENABLED_LINKED_FILE_TYPES: <span class="string">'url,project_file'</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># Enables Thumbnail generation using ImageMagick</span></span><br><span class="line">            ENABLE_CONVERSIONS: <span class="string">'true'</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># Disables email confirmation requirement</span></span><br><span class="line">            EMAIL_CONFIRMATION_DISABLED: <span class="string">'true'</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">## Set for SSL via nginx-proxy</span></span><br><span class="line">            <span class="comment">#VIRTUAL_HOST: 103.112.212.22</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># SHARELATEX_SITE_URL: http://sharelatex.mydomain.com</span></span><br><span class="line">            <span class="comment"># SHARELATEX_NAV_TITLE: Our ShareLaTeX Instance</span></span><br><span class="line">            <span class="comment"># SHARELATEX_HEADER_IMAGE_URL: http://somewhere.com/mylogo.png</span></span><br><span class="line">            <span class="comment"># SHARELATEX_ADMIN_EMAIL: support@it.com</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># SHARELATEX_LEFT_FOOTER: '[&#123;"text": "Powered by &lt;a href=\"https://www.sharelatex.com\"&gt;ShareLaTeX&lt;/a&gt; 2016"&#125;,&#123;"text": "Another page I want to link to can be found &lt;a href=\"here\"&gt;here&lt;/a&gt;"&#125; ]'</span></span><br><span class="line">            <span class="comment"># SHARELATEX_RIGHT_FOOTER: '[&#123;"text": "Hello I am on the Right"&#125; ]'</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># SHARELATEX_EMAIL_FROM_ADDRESS: "team@sharelatex.com"</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># SHARELATEX_EMAIL_AWS_SES_ACCESS_KEY_ID:</span></span><br><span class="line">            <span class="comment"># SHARELATEX_EMAIL_AWS_SES_SECRET_KEY:</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># SHARELATEX_EMAIL_SMTP_HOST: smtp.mydomain.com</span></span><br><span class="line">            <span class="comment"># SHARELATEX_EMAIL_SMTP_PORT: 587</span></span><br><span class="line">            <span class="comment"># SHARELATEX_EMAIL_SMTP_SECURE: false</span></span><br><span class="line">            <span class="comment"># SHARELATEX_EMAIL_SMTP_USER:</span></span><br><span class="line">            <span class="comment"># SHARELATEX_EMAIL_SMTP_PASS:</span></span><br><span class="line">            <span class="comment"># SHARELATEX_EMAIL_SMTP_TLS_REJECT_UNAUTH: true</span></span><br><span class="line">            <span class="comment"># SHARELATEX_EMAIL_SMTP_IGNORE_TLS: false</span></span><br><span class="line">            <span class="comment"># SHARELATEX_CUSTOM_EMAIL_FOOTER: "&lt;div&gt;This system is run by department x &lt;/div&gt;"</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">################</span></span><br><span class="line">            <span class="comment">## Server Pro ##</span></span><br><span class="line">            <span class="comment">################</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># SANDBOXED_COMPILES: 'true'</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># SANDBOXED_COMPILES_SIBLING_CONTAINERS: 'true'</span></span><br><span class="line">            <span class="comment"># SANDBOXED_COMPILES_HOST_DIR: '/var/sharelatex_data/data/compiles'</span></span><br><span class="line">            <span class="comment"># SYNCTEX_BIN_HOST_PATH: '/var/sharelatex_data/bin/synctex'</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># DOCKER_RUNNER: 'false'</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">## Works with test LDAP server shown at bottom of docker compose</span></span><br><span class="line">            <span class="comment"># SHARELATEX_LDAP_URL: 'ldap://ldap:389'</span></span><br><span class="line">            <span class="comment"># SHARELATEX_LDAP_SEARCH_BASE: 'ou=people,dc=planetexpress,dc=com'</span></span><br><span class="line">            <span class="comment"># SHARELATEX_LDAP_SEARCH_FILTER: '(uid=&#123;&#123;username&#125;&#125;)'</span></span><br><span class="line">            <span class="comment"># SHARELATEX_LDAP_BIND_DN: 'cn=admin,dc=planetexpress,dc=com'</span></span><br><span class="line">            <span class="comment"># SHARELATEX_LDAP_BIND_CREDENTIALS: 'GoodNewsEveryone'</span></span><br><span class="line">            <span class="comment"># SHARELATEX_LDAP_EMAIL_ATT: 'mail'</span></span><br><span class="line">            <span class="comment"># SHARELATEX_LDAP_NAME_ATT: 'cn'</span></span><br><span class="line">            <span class="comment"># SHARELATEX_LDAP_LAST_NAME_ATT: 'sn'</span></span><br><span class="line">            <span class="comment"># SHARELATEX_LDAP_UPDATE_USER_DETAILS_ON_LOGIN: 'true'</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># SHARELATEX_TEMPLATES_USER_ID: "578773160210479700917ee5"</span></span><br><span class="line">            <span class="comment"># SHARELATEX_NEW_PROJECT_TEMPLATE_LINKS: '[ &#123;"name":"All Templates","url":"/templates/all"&#125;]'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment"># SHARELATEX_PROXY_LEARN: "true"</span></span><br><span class="line"></span><br><span class="line">    mongo:</span><br><span class="line">        restart: always</span><br><span class="line">        image: mongo</span><br><span class="line">        container_name: mongo</span><br><span class="line">        expose:</span><br><span class="line">            - 27017</span><br><span class="line">        volumes:</span><br><span class="line">            - ~/mongo_data:/data/db</span><br><span class="line">        healthcheck:</span><br><span class="line">            <span class="built_in">test</span>: <span class="built_in">echo</span> <span class="string">'db.stats().ok'</span> | mongo localhost:27017/<span class="built_in">test</span> --quiet</span><br><span class="line">            interval: 10s</span><br><span class="line">            timeout: 10s</span><br><span class="line">            retries: 5</span><br><span class="line"></span><br><span class="line">    redis:</span><br><span class="line">        restart: always</span><br><span class="line">        image: redis</span><br><span class="line">        container_name: redis</span><br><span class="line">        expose:</span><br><span class="line">            - 6379</span><br><span class="line">        volumes:</span><br><span class="line">            - ~/redis_data:/data</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ldap:</span></span><br><span class="line">    <span class="comment">#    restart: always</span></span><br><span class="line">    <span class="comment">#    image: rroemhild/test-openldap</span></span><br><span class="line">    <span class="comment">#    container_name: ldap</span></span><br><span class="line">    <span class="comment">#    expose:</span></span><br><span class="line">    <span class="comment">#        - 389</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># See https://github.com/jwilder/nginx-proxy for documentation on how to configure the nginx-proxy container,</span></span><br><span class="line">    <span class="comment"># and https://github.com/overleaf/overleaf/wiki/HTTPS-reverse-proxy-using-Nginx for an example of some recommended</span></span><br><span class="line">    <span class="comment"># settings. We recommend using a properly managed nginx instance outside of the Overleaf Server Pro setup,</span></span><br><span class="line">    <span class="comment"># but the example here can be used if you'd prefer to run everything with docker-compose</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># nginx-proxy:</span></span><br><span class="line">    <span class="comment">#     image: jwilder/nginx-proxy</span></span><br><span class="line">    <span class="comment">#     container_name: nginx-proxy</span></span><br><span class="line">    <span class="comment">#     ports:</span></span><br><span class="line">    <span class="comment">#       #- "80:80"</span></span><br><span class="line">    <span class="comment">#       - "443:443"</span></span><br><span class="line">    <span class="comment">#     volumes:</span></span><br><span class="line">    <span class="comment">#       - /var/run/docker.sock:/tmp/docker.sock:ro</span></span><br><span class="line">    <span class="comment">#       - /home/sharelatex/tmp:/etc/nginx/certs</span></span><br></pre></td></tr></table></figure>
+<p><strong>安装ShareLaTeX</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker-compose up</span><br></pre></td></tr></table></figure>
+<p><strong>新建管理员账号</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker <span class="built_in">exec</span> sharelatex /bin/bash -c <span class="string">"cd /var/www/sharelatex; grunt user:create-admin --email=admin@university.edu"</span></span><br></pre></td></tr></table></figure>
+<p><strong>设置账号密码</strong></p>
+<p><strong>进入容器</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker <span class="built_in">exec</span> -it sharelatex bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载并运行升级脚本</span></span><br><span class="line">wget http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh</span><br><span class="line">sh update-tlmgr-latest.sh -- --upgrade</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更换texlive的下载源，例如国内的清华源</span></span><br><span class="line">tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 升级tlmgr</span></span><br><span class="line">tlmgr update --self --all</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新字体缓存（好像没成功，但是不影响下面操作）</span></span><br><span class="line">luaotfload-tool -fu</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装完整版texlive（漫长的等待，不要让shell断开）</span></span><br><span class="line">tlmgr install scheme-full</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推出sharelatex的命令行界面，并重启sharelatex容器</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">docker restart sharelatex</span><br></pre></td></tr></table></figure>
+<p><strong>配置中文写作环境</strong></p>
+<ul>
+<li>将Windows字体库（即目录C:\windows\fonts）上传到host机，如果Windows安装了Git可以使用scp命令直接上传</li>
+<li>在host机下把fonts目录打包并传到sharelatex容器中</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入fonts目录</span></span><br><span class="line"><span class="built_in">cd</span> fonts/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除其中的.fon字体文件（该种格式文件在后面建立字体目录时会报错），只保留TrueType和OpenType字体，即.ttf和.otf</span></span><br><span class="line"><span class="comment"># 一般地，如果只需要其中特定的中文字体，只需要上传需要的字体即可</span></span><br><span class="line">rm -r *.fon</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回上层目录并打包</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">tar -zcvf winfonts.tar.gz fonts/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把压缩文件传到sharelatex容器的root目录下</span></span><br><span class="line">docker cp winfonts.tar.gz sharelatex:/root</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在容器中安装Windows字体</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入容器的命令行界面</span></span><br><span class="line">$ docker <span class="built_in">exec</span> -it sharelatex bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过安装wqy字体同时安装xfont工具</span></span><br><span class="line">$ apt-get install xfonts-wqy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入root目录，解压winfonts.tar.gz，并剪切到系统字体目录下</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">tar -zxvf winfonts.tar.gz</span><br><span class="line">mv winfonts /usr/share/fonts/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入字体目录安装字体</span></span><br><span class="line"><span class="built_in">cd</span> /usr/share/fonts/winfonts</span><br><span class="line">mkfontscale</span><br><span class="line">mkfontdir</span><br><span class="line"><span class="built_in">fc</span>-cache -fv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查确认中文字体安装成功</span></span><br><span class="line"><span class="built_in">fc</span>-list :lang=zh-cn</span><br></pre></td></tr></table></figure>
+<ul>
+<li>回到ShareLaTeX网站，创建一个新项目，使用CTEX宏集和XeLaTeX编译器，即可生成中文pdf。</li>
+</ul>
+<p><strong>其他</strong></p>
+<ol>
+<li>进入数据库：<code>sudo docker exec -it mongo bash</code></li>
+<li>列出sharelatex的用户：<code>mongoexport -d sharelatex -c users -f email</code> (需要先进入数据库)</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/04/sharelatex/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/02/01/dante-server/" class="archive-article-date">
-  	<time datetime="2020-02-01T06:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/01/dante-server/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Ubuntu安装配置socket5 代理服务dante-server</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/01/dante-server/">Ubuntu安装配置socket5 代理服务dante-server</a>
-    </h1>
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2020/02/04/sharelatex/", 
+    sourceId: "sharelatex",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/07/Multiple-Fluid/" class="archive-article-date">
-  	<time datetime="2020-01-07T07:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/07/Multiple-Fluid/">Multiple-Fluid</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/05/MyPicture/" class="archive-article-date">
-  	<time datetime="2020-01-05T15:11:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/05/MyPicture/">GitHub + jsDelivr + PicGo + Imagine制作免费图床</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/05/tempoGAN-Notes/" class="archive-article-date">
-  	<time datetime="2020-01-05T05:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/05/tempoGAN-Notes/">tempoGAN Notes</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/05/Git/" class="archive-article-date">
-  	<time datetime="2020-01-04T16:31:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/05/Git/">Hexo显示数学公式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/04/hexoAndgithub/" class="archive-article-date">
-  	<time datetime="2020-01-04T05:42:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/hexoAndgithub/">hexo搭建个人博客记录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/04/aboutLatex/" class="archive-article-date">
-  	<time datetime="2020-01-03T16:42:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/aboutLatex/">Latex Notes</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/03/UbuntuNotes/" class="archive-article-date">
-  	<time datetime="2020-01-03T14:02:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/03/UbuntuNotes/">日常问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -432,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
