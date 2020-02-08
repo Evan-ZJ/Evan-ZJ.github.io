@@ -6,21 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Multiple-Fluid | Zhoujing</title>
+  <title>Hexo同时部署到GitHub和VPS | Zhoujing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Multiple-Fluid SPH Simulation Using a Mixture Model0. 摘要 提出了一种适用于多流体流动的通用、鲁棒的SPH模拟方法。 不同相或组分的空间分布采用体积分数表示，多流体流动的动力学采用改进的混合模型 解决了多流体流动中遇到的复杂输运和转化过程。 可以捕获广泛的真实世界多流体现象，包括混溶&#x2F;混溶混溶流体、扩散效应和化学反应等。 容易地集成到现有的最先">
+  <meta name="description" content="1. hexo部署到VPS安装Git1apt-get install git 配置 SSH 免密访问">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Multiple-Fluid">
-<meta property="og:url" content="http://yoursite.com/2020/01/07/Multiple-Fluid/index.html">
+<meta property="og:title" content="Hexo同时部署到GitHub和VPS">
+<meta property="og:url" content="http://yoursite.com/2020/02/08/VPSandGit/index.html">
 <meta property="og:site_name" content="Zhoujing">
-<meta property="og:description" content="Multiple-Fluid SPH Simulation Using a Mixture Model0. 摘要 提出了一种适用于多流体流动的通用、鲁棒的SPH模拟方法。 不同相或组分的空间分布采用体积分数表示，多流体流动的动力学采用改进的混合模型 解决了多流体流动中遇到的复杂输运和转化过程。 可以捕获广泛的真实世界多流体现象，包括混溶&#x2F;混溶混溶流体、扩散效应和化学反应等。 容易地集成到现有的最先">
+<meta property="og:description" content="1. hexo部署到VPS安装Git1apt-get install git 配置 SSH 免密访问">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8%202020-01-08%20184323.webp">
-<meta property="article:published_time" content="2020-01-07T07:10:29.000Z">
-<meta property="article:modified_time" content="2020-01-08T11:58:19.000Z">
+<meta property="article:published_time" content="2020-02-08T14:32:49.000Z">
+<meta property="article:modified_time" content="2020-02-08T15:25:41.286Z">
 <meta property="article:author" content="周靖 笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8%202020-01-08%20184323.webp">
   
     <link rel="alternative" href="/atom.xml" title="Zhoujing" type="application/atom+xml">
   
@@ -138,341 +136,94 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Multiple-Fluid" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-VPSandGit" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Multiple-Fluid
+      Hexo同时部署到GitHub和VPS
     </h1>
   
 
         
         
-<a href="/2020/01/07/Multiple-Fluid/" class="archive-article-date">
-  	<time datetime="2020-01-07T07:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-07</time>
+<a href="/2020/02/08/VPSandGit/" class="archive-article-date">
+  	<time datetime="2020-02-08T14:32:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Multiple-Fluid-SPH-Simulation-Using-a-Mixture-Model"><a href="#Multiple-Fluid-SPH-Simulation-Using-a-Mixture-Model" class="headerlink" title="Multiple-Fluid SPH Simulation Using a Mixture Model"></a><a href="http://orca.cf.ac.uk/94204/1/TOG_2014_Multiplefluid.pdf" target="_blank" rel="noopener">Multiple-Fluid SPH Simulation Using a Mixture Model</a></h2><h3 id="0-摘要"><a href="#0-摘要" class="headerlink" title="0. 摘要"></a>0. 摘要</h3><ul>
-<li>提出了一种适用于多流体流动的通用、鲁棒的SPH模拟方法。</li>
-<li>不同相或组分的空间分布采用体积分数表示，多流体流动的动力学采用改进的混合模型</li>
-<li>解决了多流体流动中遇到的复杂输运和转化过程。</li>
-<li>可以捕获广泛的真实世界多流体现象，包括混溶/混溶混溶流体、扩散效应和化学反应等。</li>
-<li>容易地集成到现有的最先进的SPH模拟器中</li>
-</ul>
-<p><em>基于物理的动画，流体模拟，多相和多组分流动，可混溶和不可混溶流体，平滑粒子流体动力学，体积分数模型，混合物模型</em></p>
-<a id="more"></a>
-<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><ul>
-<li><p><strong>01</strong></p>
-</li>
-<li><p>有一类多流体流涉及可混溶或分散的流体混合物，其中界面可能难以连续跟踪，甚至根本不存在  </p>
-</li>
-<li>混溶流更灵活地实现具有不断变化的颜色细节的多相外观</li>
-<li><p>一种鲁棒的平滑粒子流体动力学（SPH）方法模拟多流体流动。特别关注的是不一定具有（或难以跟踪）清晰持久的接口的多流体流。</p>
-</li>
-<li><p><strong>02</strong></p>
-</li>
-<li>界面流动可以通过与单相流动类似的方式来解决，主要的建模挑战来自对流体界面的连续跟踪。</li>
-<li>多流体流中的不同相或组分具有不同的流体特性（例如密度，粘度等），结果以不同的速度运动，从而导致相或组分之间的相对运动。</li>
-<li>对多流体流进行建模的主要挑战是解决相或组分之间的上述动态相互作用</li>
-<li><strong>03</strong></li>
-<li>引入了一种用于模拟多流体流的混合模型，其中不同相或组分的分布以其体积分数表示，而不依赖于连续跟踪流体界面。</li>
-<li>分析地计算漂移速度，该速度被定义为相对于混合物平均值的相位（或分量）速度。 </li>
-<li>即使对于由任意数量的相或组分组成的混合物，也可以保持与单相流相似的多流体流控制方程。</li>
-<li>特性：<ul>
-<li><strong>多功能数学模型</strong> 数学模型旨在同时捕获多种流体现象，包括混溶和不混溶相或组分之间的混合和解混作用，扩散作用，化学反应等。该模型还应该能够灵活地包含/排除不同的混合/ 分解现象和多物理场相互作用。</li>
-<li><strong>稳健的数值方案</strong> 数值模拟方案旨在使动画师在广泛变化的参数设置下稳定可靠，而无需了解CFD。</li>
-<li><strong>实际实施</strong> 新方法的设计易于实现，可以作为对现有单相流体模拟器的扩展，而不会增加高计算成本。 多流体流的仿真应该简单，直观地设置，并且不需要过多的参数调整。</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-相关工作"><a href="#2-相关工作" class="headerlink" title="2. 相关工作"></a>2. 相关工作</h3><ul>
-<li><p><strong>01</strong></p>
-</li>
-<li><p>Premoze等人 [2003]提出了运动粒子半隐式（MPS）方法来模拟不混溶流体</p>
-</li>
-<li>Solenthaler和Pajarola [2008]采用了改进的SPH方案来处理不混溶流体之间的高密度对比。</li>
-<li>使用基于网格的流体求解器已经进行了更多的工作，包括液体中的气泡[Kim et al 2007; Hong et al 2008; Busaryev等</li>
-<li>这些接口跟踪技术中的许多技术都与水平设置方法和流体体积方法有关</li>
-<li><p>有限元方法来直接捕获具有移动网格的界面[Misztal 等人2012]。</p>
-</li>
-<li><p><strong>02</strong></p>
-</li>
-<li><p>体积分数的概念最早是由Muller等人[2005]引入图形界的，以表示不同相或组分的空间分布。</p>
-</li>
-<li><p>两种基于网格的求解器[Kang et al 2010; Bao等[2010]和SPH求解器[Liu等2011]已与体积分数表示相结合，以模拟多流体流动。</p>
-</li>
-<li><p>所有这些工作都假定不同的相或组分以与混合物相同的体积速度运动，并且混合仅是由于浓度差引起的扩散作用而引起的。</p>
-</li>
-<li><p>基于体积分数的SPH配方虽然易于实施，但可以忠实地捕获由于相对运动，湍流相互作用以及多种流体之间的力分布不同而引起的复杂的混合和非混合现象。</p>
-</li>
-<li><p><strong>03</strong></p>
-</li>
-<li><p>Mullen等[2007]提出了一种欧拉几何处理技术，该技术可以模拟可混溶流体的某些作用。</p>
-</li>
-<li><p>Cleary等人[2007]提出了一种基于粒子的方法来产生逼真的气泡视觉效果。</p>
-</li>
-<li><p>…….</p>
-</li>
-<li><p>Gregson等[2012]引入了一种基于随机层析成像的3D成像方法来捕获现实世界中的液体混合和染料浸没。</p>
-</li>
-<li><p>从现实世界的流体中捕获的结果可能比图形模拟具有更高的分辨率，但是此类方法的应用可能会因为其在场景构建和调整中的不灵活性而受到限制。</p>
-</li>
-<li><p><strong>04</strong></p>
-</li>
-<li><p>最近，SPH方法已被用于模拟界面流[Colagrossi and Landrini 2003; Hu and Adams 2006； Monaghan and Rafiee 2013]。 </p>
-</li>
-<li><p>从基于网格的混合物模型中引入“漂移速度”的概念，并通过合并适当的压力关系和修改使其适用于SPH配方，从而实现稳定高效的SPH多流体模拟。</p>
-<p><strong>表格 1 符号定义</strong></p>
-</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$\alpha_{k}$</td>
-<td>相$k$的体积分数</td>
-</tr>
-<tr>
-<td>$c_k$</td>
-<td>相$k$的质量分数</td>
-</tr>
-<tr>
-<td>$\rho_k, \rho_m$</td>
-<td>相$k$和混合物的静密度</td>
-</tr>
-<tr>
-<td>$\mathbf{u}_k,\mathbf{u}_m$</td>
-<td>相$k$和混合物的速度</td>
-</tr>
-<tr>
-<td>$p_k,p_m$</td>
-<td>作用在$k$相和混合物上的压力</td>
-</tr>
-<tr>
-<td>$\mathbf{T}_k,\mathbf{T}_m$</td>
-<td>相$k$和混合物上的应力张量</td>
-</tr>
-<tr>
-<td>$\mathbf{u}_{mk}$</td>
-<td>漂移（相对）速度</td>
-</tr>
-<tr>
-<td>$\mathbf{g}$</td>
-<td>重力</td>
-</tr>
-<tr>
-<td>$\rho_{mj},m_j$</td>
-<td>粒子$j$的静止密度和静止质量</td>
-</tr>
-<tr>
-<td>$\overline{\rho_j}$</td>
-<td>粒子$j$的插值密度</td>
-</tr>
-<tr>
-<td>$W(\mathbf{r},h)$</td>
-<td>光滑核函数</td>
-</tr>
-<tr>
-<td>$\nabla W_{ij}$</td>
-<td>$\nabla_{i} W\left(\mathbf{r}_{i}-\mathbf{r}_{j}, h\right)$的缩写</td>
-</tr>
-<tr>
-<td>$\alpha_{ki},\alpha_{kj}$</td>
-<td>$\alpha_k$第$i$个，第$j$个粒子的值</td>
-</tr>
-<tr>
-<td>$\mathbf{u}_{mi},\mathbf{u}_{mj}$</td>
-<td>$\mathbf{u}_m$ 第$i$个，第$j$个粒子的值</td>
-</tr>
-<tr>
-<td>$\mathbf{u}_{mki},\mathbf{u}_{mkj}$</td>
-<td>$\mathbf{u}_{m k}$第$i$个，第$j$个粒子的值</td>
-</tr>
-<tr>
-<td>$\mathbf{r}_i,\mathbf{r}_j$</td>
-<td>第$i$个，第$j$个粒子的位置</td>
-</tr>
-<tr>
-<td>$\mu_{k}$</td>
-<td>相$k$的粘度</td>
-</tr>
-<tr>
-<td>$\mu_i ,\mu_j$</td>
-<td>$i,j$颗粒的总黏度</td>
-</tr>
-<tr>
-<td>$\kappa, \tau, \sigma$</td>
-<td>常数系数</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="3-多流混合模型"><a href="#3-多流混合模型" class="headerlink" title="3. 多流混合模型"></a>3. 多流混合模型</h3><h4 id="3-1-混合模型的控制方程"><a href="#3-1-混合模型的控制方程" class="headerlink" title="3.1 混合模型的控制方程"></a>3.1 混合模型的控制方程</h4><ul>
-<li><p>在多流体流动的数学理论中，相$k$的存在由其自身的体积分数$\alpha_k$（它占据的无穷小体积的相对分数）和速度$\mathbf{u}_k$表示，并且每个相$k$的连续性和动量方程为</p>
-</li>
-<li><script type="math/tex; mode=display">
-\frac{\partial}{\partial t}\left(\alpha_{k} \rho_{k}\right)+\nabla \cdot\left(\alpha_{k} \rho_{k} \mathbf{u}_{k}\right)=0\tag 1</script></li>
-<li><script type="math/tex; mode=display">
-\frac{\partial}{\partial t}\left(\alpha_{k} \rho_{k} \mathbf{u}_{k}\right)+\nabla \cdot\left(\alpha_{k} \rho_{k} \mathbf{u}_{k} \mathbf{u}_{k}\right)=\alpha_{k} \rho_{k} \mathbf{g}-\alpha_{k} \nabla p_{k}+\nabla \cdot\left(\alpha_{k} \mathbf{T}_{k}\right)+\mathbf{F}_{k}\tag 2</script></li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$\rho_k$</td>
-<td>相$k$的静止密度（常数）</td>
-</tr>
-<tr>
-<td>$p_k$</td>
-<td>压力</td>
-</tr>
-<tr>
-<td>$\mathbf{g}$</td>
-<td>重力</td>
-</tr>
-<tr>
-<td>$\mathbf{T}_k$</td>
-<td>粘性应力张量</td>
-</tr>
-<tr>
-<td>$\mathbf{F}_k$</td>
-<td>界面动量源</td>
-</tr>
-</tbody>
-</table>
-</div>
+        <h2 id="1-hexo部署到VPS"><a href="#1-hexo部署到VPS" class="headerlink" title="1. hexo部署到VPS"></a>1. hexo部署到VPS</h2><h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
+<h3 id="配置-SSH-免密访问"><a href="#配置-SSH-免密访问" class="headerlink" title="配置 SSH 免密访问"></a>配置 SSH 免密访问</h3><a id="more"></a>
 <ul>
-<li><p>除方程（2）中的最后一项外，前述方程与单相流相似。 </p>
+<li><p>本地安装 Git</p>
 </li>
-<li><p>$\mathbf{F}_k$解释了相之间的相互作用，例如阻力和摩擦力。 </p>
-</li>
-<li><p>体积分数$\alpha_k$限制在0和1之间，并且必须相加为1</p>
-<script type="math/tex; mode=display">
-\sum_{k} \alpha_{k}=1, \alpha_{k} \geq 0
-\tag 3</script></li>
-<li><p>混合物的连续性和动量方程式通过公式（1）和（2）相加而得出</p>
-<script type="math/tex; mode=display">
-\frac{\partial}{\partial t} \rho_{m}+\nabla \cdot\left(\rho_{m} \mathbf{u}_{m}\right)=0
-\tag 4</script><script type="math/tex; mode=display">
-\frac{\partial}{\partial t}\left(\rho_{m} \mathbf{u}_{m}\right)+\nabla \cdot\left(\rho_{m} \mathbf{u}_{m} \mathbf{u}_{m}\right)=-\nabla p_{m}+\rho_{m} \mathbf{g}+\nabla \cdot \mathbf{T}_{m}+\nabla \cdot \mathbf{T}_{D m}
-\tag 5</script></li>
-<li><p>$\rho_{m}=\sum_{k} \alpha_{k} \rho_{k}$混合密度</p>
-</li>
-<li><p>$\mathbf{u}_{m}=\frac{1}{\rho_{m}} \sum_{k} \alpha_{k} \rho_{k} \mathbf{u}_{k}$混合速度（质心速度）</p>
-</li>
-<li><p>混合物的压力$p_m$由关系$\nabla p_{m}=\sum_{k} \alpha_{k} \nabla p_{k}$定义</p>
-</li>
-<li><p>混合物的粘性应力张量$\mathbf{T}_m$满足$\nabla \cdot \mathbf{T}_m = \sum_{k} \nabla \cdot\left(\alpha_{k} \mathbf{T}_{k}\right)$</p>
-</li>
-<li><p>$\mathbf{T}_{D m}=-\sum_{k} \alpha_{k} \rho_{k} \mathbf{u}_{m k} \mathbf{u}_{m k}$从动量方程的左侧导出，表示相之间的对流动量传递。</p>
-</li>
-<li><p>漂移速度（相对速度）</p>
-<script type="math/tex; mode=display">
-\mathbf{u}_{m k}=\mathbf{u}_{k}-\mathbf{u}_{m}
-\tag 6</script></li>
-</ul>
+<li><p>配置本地免密ssh登陆到远程VPS</p>
+<blockquote>
+<p>先检查是否有rea文件</p>
+</blockquote>
 <ul>
-<li><p>相互作用力Fk没有明确地出现在动量方程式（5）中，因为在所有相位上求和时它们会被抵消</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-08 184323.webp" style="zoom:50%;" /></p>
+<li><p>进入 <code>~/.ssh/</code> 目录</p>
+</li>
+<li><p>创建rsa </p>
+</li>
+<li><p>```bash<br>ssh-keygen -t rsa</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  * 一路回车，会在 &#96;~&#x2F;.ssh&#x2F;&#96; 目录下生成 &#96;id_rsa&#96; 和 &#96;id_rsa.pub&#96; 两个文件</span><br><span class="line"></span><br><span class="line">  * 把生成的 &#96;id_rsa.pub&#96; 文件内容 copy到 VPS 的 root用户的 &#96;~&#x2F;.ssh&#x2F;authorized_keys&#96;文件中</span><br><span class="line"></span><br><span class="line">* 客户端免密登录到 VPS </span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;bash</span><br><span class="line">  ssh root@ip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果出现不能登录的情况，可能是文件权限有问题，VPS 上做如下修改：</p>
+</li>
+<li><p>```bash<br>chmod 700 ~/.ssh<br>chmod 600 ~/.ssh/authorized_keys</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 在 VPS 上创建仓库</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;bash</span><br><span class="line">cd ~</span><br><span class="line">mkdir hexo.git</span><br><span class="line">cd hexo.git</span><br><span class="line">git init --bare</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><em>假设混合物具有单位密度的三相</em>（$\rho_{k}= 1$），<em>则上面说明了多流体变量。</em> <em>（a）体积分数</em>$\alpha_k$<em>度</em>$\mathbf{u}_k$<em>和混合速度</em>$\mathbf{u}_m$<em>之间的关系； （b）从</em>$\mathbf{u}_k$<em>和</em>$\mathbf{u}_m$<em>获得漂移m速度</em>$\mathbf{u}_{mk}$<em>*； （c）漂移速度</em></p>
+</li>
+</ul>
+<h3 id="Git-Hook-自动-Clone-收到提交的仓库到网站根目录"><a href="#Git-Hook-自动-Clone-收到提交的仓库到网站根目录" class="headerlink" title="Git Hook 自动 Clone 收到提交的仓库到网站根目录"></a>Git Hook 自动 Clone 收到提交的仓库到网站根目录</h3><p>VPS的 hexo网站目录为 <code>/root/wwwroot/hexo/</code></p>
+<p>建立一个仓库内容转移的缓存目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/tmp/hexo_tmp</span><br></pre></td></tr></table></figure>
+<p>然后处理 hexo.git 提交的事件，自动更新内容到 hexo网站目录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /root/hexo.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
+<p>编辑 post-receive 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash -l</span></span><br><span class="line">GIT_REPO=/root/hexo.git</span><br><span class="line">TMP_GIT_CLONE=/root/tmp/hexo_tmp</span><br><span class="line">PUBLIC_HEXO=/root/wwwroot/hexo</span><br><span class="line">rm -rf <span class="variable">$&#123;TMP_GIT_CLONE&#125;</span></span><br><span class="line">git <span class="built_in">clone</span> <span class="variable">$GIT_REPO</span> <span class="variable">$TMP_GIT_CLONE</span></span><br><span class="line">rm -rf <span class="variable">$&#123;PUBLIC_HEXO&#125;</span>/*</span><br><span class="line">cp -rf <span class="variable">$&#123;TMP_GIT_CLONE&#125;</span>/* <span class="variable">$&#123;PUBLIC_HEXO&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>脚本可以实现完全更新，即先删除原网站内所有内容，再拷贝新仓库内容到网站目录</p>
+</blockquote>
+<p>给脚本加上执行权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /root/hexo.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
+<h3 id="多部署-vps-github"><a href="#多部署-vps-github" class="headerlink" title="多部署(vps+github)"></a>多部署(vps+github)</h3><p>配置 <code>_config.xml</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">- <span class="built_in">type</span>: git</span><br><span class="line">  repository:  git@github.com:Evan-ZJ/Evan-ZJ.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">- <span class="built_in">type</span>: git</span><br><span class="line">  repository:  root@39.106.97.116:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h2 id="2-nginx安装与设置"><a href="#2-nginx安装与设置" class="headerlink" title="2. nginx安装与设置"></a>2. nginx安装与设置</h2><ul>
+<li>安装nginx</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>代入式 （6）式 （1），可以从相$k$的连续性方程中消除相速度$\mathbf{u}_k$：</p>
-<script type="math/tex; mode=display">
-\frac{\partial \alpha_{k}}{\partial t}+\left(\mathbf{u}_{m} \cdot \nabla\right) \alpha_{k}=-\alpha_{k} \nabla \cdot \mathbf{u}_{m}-\nabla \cdot\left(\alpha_{k} \mathbf{u}_{m k}\right)
-\tag 7</script></li>
-<li><p>代入式 （4）式 （5）可以将混合动量方程重新组织为</p>
-<script type="math/tex; mode=display">
-\frac{\partial}{\partial t} \mathbf{u}_{m}+\left(\mathbf{u}_{m} | \cdot \nabla\right) \mathbf{u}_{m}=-\frac{\nabla p_{m}}{\rho_{m}}+\mathbf{g}+\frac{\nabla \cdot \mathbf{T}_{m}}{\rho_{m}}+\frac{\nabla \cdot \mathbf{T}_{D m}}{\rho_{m}}
-\tag 8</script></li>
-<li><p>（7）和（8）是用于多流体流动的混合模型的控制方程。</p>
-</li>
-<li><p>每个相$k$的空间分布完全由其体积分数$α_k$表示</p>
-</li>
+<li>向 nginx 写入配置，将<code>/root/wwwroot/hexo</code>作为主目录</li>
 </ul>
-<h4 id="3-2-漂移（相对）速度"><a href="#3-2-漂移（相对）速度" class="headerlink" title="3.2 漂移（相对）速度"></a>3.2 漂移（相对）速度</h4><ul>
-<li>从式（7）可以明显看出，速度场的不均匀分布将导致每个相的体积分数发生变化。 </li>
-<li><p>漂移速度$\mathbf{u}_{mk}$在相互作用机制中起着关键作用，这种相互作用机制负责各种可混溶和不可混溶的现象。</p>
-</li>
-<li><p>漂移速度的解析表达式直接给出为</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\mathbf{u}_{m k}=& \tau\left(\rho_{k}-\sum_{k^{\prime}} c_{k^{\prime}} \rho_{k^{\prime}}\right) \mathbf{a}-\tau\left(\nabla p_{k}-\sum_{k^{\prime}} c_{k^{\prime}} \nabla p_{k^{\prime}}\right) \\
-&-\sigma\left(\frac{\nabla \alpha_{k}}{\alpha_{k}}-\sum_{k^{\prime}} c_{k^{\prime}} \frac{\nabla \alpha_{k^{\prime}}}{\alpha_{k^{\prime}}}\right)
-\end{aligned}
-\tag 9</script><ul>
-<li><p>$τ$和$σ$是用户定义的常数系数</p>
-</li>
-<li><p>$c_k = \frac{\alpha_k \rho_k}{\rho_m}$是第$k$个分量的质量分数</p>
-</li>
-<li><p>表示重力加速度与混合速度的基本导数之间的差</p>
-<script type="math/tex; mode=display">
-\mathbf{a}=\mathbf{g}-\left(\mathbf{u}_{m} \cdot \nabla\right) \mathbf{u}_{m}-\frac{\partial \mathbf{u}_{m}}{\partial t}
-\tag {10}</script></li>
-</ul>
-</li>
-<li><p>计算遵循式（9）的漂移速度，还必须提供相压$p_k$和混合压力$p_m$ 之间的关系</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/nginx/sites-available </span><br><span class="line">vi default</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>标准混合物模型压力处理</p>
-<script type="math/tex; mode=display">
-p_k = p_m
-\tag {11}</script><p>对于不混溶的流体，相压$p_k$与混合压力$p_m$相同，因此等式（9）中的第二项消失。 它的直观解释是，对于在相之间建立压力平衡的不混溶流体，与混合物共享的均匀压力不会导致不混溶相彼此移动。 </p>
-</li>
-<li><p>扩展标准混合物模型：</p>
-<script type="math/tex; mode=display">
-p_k =\alpha_k p_m
-\tag {12}</script><p>对于可混溶的液体，相压$p_k$取决于体积分数，彼此互不相同，因此，不混溶的相在混合物料中被加速而彼此移动。</p>
+<li>内容删除，写上：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        listen [::]:80;</span><br><span class="line"></span><br><span class="line">        root /root/wwwroot/hexo;</span><br><span class="line">        index index.html index.htm index.nginx-debian.html;</span><br><span class="line"></span><br><span class="line">        server_name 域名;<span class="comment">#如果没有的话就别填</span></span><br><span class="line">    </span><br><span class="line">        location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ &#123;</span><br><span class="line">                root /var/www/hexo;</span><br><span class="line">                access_log   off;</span><br><span class="line">                expires      1d;</span><br><span class="line">        &#125;</span><br><span class="line">        location ~* ^.+\.(css|js|txt|xml|swf|wav)$ &#123;</span><br><span class="line">                root /var/www/hexo;</span><br><span class="line">                access_log   off;</span><br><span class="line">                expires      10m;</span><br><span class="line">        &#125;</span><br><span class="line">        location / &#123;</span><br><span class="line">                root /var/www/hexo;</span><br><span class="line">                <span class="keyword">if</span> (-f <span class="variable">$request_filename</span>) &#123;</span><br><span class="line">                        rewrite ^/(.*)$  /<span class="variable">$1</span> <span class="built_in">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存退出，然后使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
+<h2 id="3-错误解决"><a href="#3-错误解决" class="headerlink" title="3. 错误解决"></a>3. 错误解决</h2><h4 id="多rsa问题"><a href="#多rsa问题" class="headerlink" title="多rsa问题"></a>多rsa问题</h4><ul>
+<li>有时候本地的 <code>~/.ssh</code> 目录中有多个自己生成的 <code>id_rsa.pub</code>文件;</li>
+<li><p>这些 <code>id_rsa.pub</code> 文件是基于相同的用户名和邮箱生成的</p>
+<p>ssh 可以登陆，但在 hexo 部署时报错，错误是远程权限拒绝;</p>
 </li>
 </ul>
-</li>
-<li><p>由等式（9）确定，漂移速度$\mathbf{u}_{mk}$包含三个项</p>
-<ul>
-<li>第一项解释惯性效应，尤其是用该项建模由体力引起的速度差。</li>
-<li>第二项解释了压力效应，也就是说，在混合物中，相沿从高压到低压的方向加速。</li>
-<li>第三项解释了扩散效应，即，相倾向于从较集中的区域移动到较不集中的区域。</li>
-<li>较高的$τ$值将导致更强的惯性和压力效应</li>
-<li>较高的$σ$值将导致更强的扩散效应</li>
-<li>$τ$在10−8和10−6之间变化，$σ$在10−4到10−3附近。</li>
-</ul>
-</li>
-<li>公式（9）确定后，（7）和（8）的解简化为求解混合速度$\mathbf{u}_m$（而不是所有相速度$\mathbf{u}_k$）和相体积分数$α_k$。</li>
-</ul>
-<h3 id="4-使用SPH公式扩展此混合模型"><a href="#4-使用SPH公式扩展此混合模型" class="headerlink" title="4. 使用SPH公式扩展此混合模型"></a>4. 使用SPH公式扩展此混合模型</h3><ul>
-<li><p>SPH粒子携带混合质量并以混合速度um移动。 这些混合物颗粒还带有与各个相相关的所有物理量。</p>
-</li>
-<li><p>方程（8）的左侧表示混合速度$\mathbf{u}_m$的实质导数，而方程（7）的左侧代表相$k$的体积分数的实质导数，也相对于混合速度$\mathbf{u}_m$</p>
-</li>
-<li><p>等式（9）中的解析解计算了漂移速度$\mathbf{u}_{mk}$之后，如果采用明确的时间积分方案，则可以解耦等式（7）和等式（8）的解。</p>
-</li>
-<li><p>对于每个混合粒子$i$：</p>
-<script type="math/tex; mode=display">
-\left(\nabla p_{k}\right)_{i}=\sum_{j} \frac{m_{j}}{\bar{\rho}_{j}}\left(p_{k j}-p_{k i}\right) \nabla W_{i j}\tag {13}</script><script type="math/tex; mode=display">
-\left(\nabla \alpha_{k}\right)_{i}=\sum_{j} \frac{m_{j}}{\bar{\rho}_{j}}\left(\alpha_{k j}-\alpha_{k i}\right) \nabla W_{i j}\tag {14}</script></li>
-<li><p>其中对所有邻域粒子$j$和$\nabla W_{i j}=\nabla_{i} W\left(\mathbf{r}_{i}-\mathbf{r}_{j}, h\right)$进行求和是在支持$h$下的平滑核函数的梯度。</p>
-</li>
-<li><p>采用Muller等人[2003]中的公式，将poly6核用于密度插值，并将spiky核用于所有其他涉及平滑核函数导数的计算。</p>
-</li>
-</ul>
+<p>执行 <code>hexo d</code>命令时，默认使用的不是添加到 VPS中的<code>~/.ssh/authorized_keys</code>的Key的对应的 <code>id_rsa.pub</code></p>
+<p>在本地<code>~/.ssh</code>目录中，（添加一个名为<code>config</code>的文件，这样写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host 106.186.33.133</span><br><span class="line">    HostName        ip</span><br><span class="line">    User            用户名</span><br><span class="line">    IdentityFile    .ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<p>清空<code>known_hosts</code>，然后重新连接部署</p>
+<h4 id="Nginx-出现-403-Forbidden"><a href="#Nginx-出现-403-Forbidden" class="headerlink" title="Nginx 出现 403 Forbidden"></a>Nginx 出现 403 Forbidden</h4><h5 id="目录权限"><a href="#目录权限" class="headerlink" title="目录权限"></a>目录权限</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 755 /root/wwwroot/hexo</span><br></pre></td></tr></table></figure>
+<h5 id="打开nginx-conf"><a href="#打开nginx-conf" class="headerlink" title="打开nginx.conf"></a>打开nginx.conf</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<p>把<code>user 用户名</code>改为 <code>user root</code></p>
+<p><a href="https://yanzai.me/hexo-git-deploy.html" target="_blank" rel="noopener">参考</a></p>
 
       
 
@@ -531,7 +282,7 @@ p_k =\alpha_k p_m
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/07/Multiple-Fluid/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/08/VPSandGit/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -545,18 +296,9 @@ p_k =\alpha_k p_m
   
 <nav id="article-nav">
   
-    <a href="/2020/02/01/dante-server/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Ubuntu安装配置socket5 代理服务dante-server
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/05/MyPicture/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">GitHub + jsDelivr + PicGo + Imagine制作免费图床</div>
+    <a href="/2020/02/04/sharelatex/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ShareLaTeX安装、配置与部署</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -587,8 +329,8 @@ p_k =\alpha_k p_m
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2020/01/07/Multiple-Fluid/", 
-    sourceId: "Multiple-Fluid",
+    url: "http://yoursite.com/2020/02/08/VPSandGit/", 
+    sourceId: "VPSandGit",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
