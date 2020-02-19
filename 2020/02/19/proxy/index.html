@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Zhoujing</title>
+  <title>proxy | Zhoujing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zhoujing">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="使用ProxyChains终端代理在源里有这个软件，直接安装 1sudo apt-get install proxychains 编辑&#x2F;etc&#x2F;proxychains.conf 1vi &#x2F;etc&#x2F;proxychains.conf 在最后的ProxyList里加入Shawdowsocks的代理设置： 12socks5    ip    port#socks5    127.0.0.1    108">
+<meta property="og:type" content="article">
+<meta property="og:title" content="proxy">
+<meta property="og:url" content="http://yoursite.com/2020/02/19/proxy/index.html">
 <meta property="og:site_name" content="Zhoujing">
+<meta property="og:description" content="使用ProxyChains终端代理在源里有这个软件，直接安装 1sudo apt-get install proxychains 编辑&#x2F;etc&#x2F;proxychains.conf 1vi &#x2F;etc&#x2F;proxychains.conf 在最后的ProxyList里加入Shawdowsocks的代理设置： 12socks5    ip    port#socks5    127.0.0.1    108">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-19T10:22:32.000Z">
+<meta property="article:modified_time" content="2020-02-19T10:28:35.104Z">
 <meta property="article:author" content="周靖 笔记">
 <meta name="twitter:card" content="summary">
   
@@ -132,305 +136,160 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-proxy" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      proxy
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+
+        
+        
 <a href="/2020/02/19/proxy/" class="archive-article-date">
   	<time datetime="2020-02-19T10:22:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-19</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/19/proxy/">proxy</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="使用ProxyChains终端代理"><a href="#使用ProxyChains终端代理" class="headerlink" title="使用ProxyChains终端代理"></a>使用ProxyChains终端代理</h3><p>在源里有这个软件，直接安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install proxychains</span><br></pre></td></tr></table></figure>
+<p>编辑/etc/proxychains.conf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/proxychains.conf</span><br></pre></td></tr></table></figure>
+<p>在最后的ProxyList里加入Shawdowsocks的代理设置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">socks5    ip    port</span><br><span class="line"><span class="comment">#socks5    127.0.0.1    108</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>复制libproxychains.so.3路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /usr/ -name libproxychains.so.3 -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>编辑/usr/bin/proxychains </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/bin/proxychains</span><br></pre></td></tr></table></figure>
+<p>修改如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"ProxyChains-3.1 (http://proxychains.sf.net)"</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> = 0 ] ; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"  usage:"</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"      proxychains &lt;prog&gt; [args]"</span></span><br><span class="line">    <span class="built_in">exit</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment">#export LD_PRELOAD=libproxychains.so.3</span></span><br><span class="line"><span class="comment">#此处修改为实际路径</span></span><br><span class="line"><span class="built_in">export</span> LD_PRELOAD=/usr/lib/i386-linux-gnu/libproxychains.so.3                                                                  </span><br><span class="line"><span class="built_in">exec</span> <span class="string">"<span class="variable">$@</span></span></span><br></pre></td></tr></table></figure>
+<p>使用，例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains dropbox start -i</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/19/proxy/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/02/08/VPSandGit/" class="archive-article-date">
-  	<time datetime="2020-02-08T14:32:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/08/VPSandGit/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hexo同时部署到GitHub和VPS</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/08/VPSandGit/">Hexo同时部署到GitHub和VPS</a>
-    </h1>
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2020/02/19/proxy/", 
+    sourceId: "proxy",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/02/04/sharelatex/" class="archive-article-date">
-  	<time datetime="2020-02-04T09:11:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/04/sharelatex/">ShareLaTeX安装、配置与部署</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/02/01/dante-server/" class="archive-article-date">
-  	<time datetime="2020-02-01T06:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/01/dante-server/">Ubuntu安装配置socket5 代理服务dante-server</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/07/Multiple-Fluid/" class="archive-article-date">
-  	<time datetime="2020-01-07T07:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/07/Multiple-Fluid/">Multiple-Fluid</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/05/MyPicture/" class="archive-article-date">
-  	<time datetime="2020-01-05T15:11:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/05/MyPicture/">GitHub + jsDelivr + PicGo + Imagine制作免费图床</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/05/tempoGAN-Notes/" class="archive-article-date">
-  	<time datetime="2020-01-05T05:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/05/tempoGAN-Notes/">tempoGAN Notes</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/05/Git/" class="archive-article-date">
-  	<time datetime="2020-01-04T16:31:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/05/Git/">Hexo显示数学公式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/04/hexoAndgithub/" class="archive-article-date">
-  	<time datetime="2020-01-04T05:42:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/hexoAndgithub/">hexo搭建个人博客记录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/04/aboutLatex/" class="archive-article-date">
-  	<time datetime="2020-01-03T16:42:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/aboutLatex/">Latex Notes</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -464,8 +323,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

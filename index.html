@@ -134,6 +134,77 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-proxy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/19/proxy/">proxy</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/02/19/proxy/" class="archive-article-date">
+  	<time datetime="2020-02-19T10:22:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="使用ProxyChains终端代理"><a href="#使用ProxyChains终端代理" class="headerlink" title="使用ProxyChains终端代理"></a>使用ProxyChains终端代理</h3><p>在源里有这个软件，直接安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install proxychains</span><br></pre></td></tr></table></figure>
+<p>编辑/etc/proxychains.conf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/proxychains.conf</span><br></pre></td></tr></table></figure>
+<p>在最后的ProxyList里加入Shawdowsocks的代理设置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">socks5    ip    port</span><br><span class="line"><span class="comment">#socks5    127.0.0.1    108</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/02/19/proxy/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/19/proxy/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-VPSandGit" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -789,77 +860,10 @@
 
 
   
-    <article id="post-UbuntuNotes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/03/UbuntuNotes/">日常问题</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/03/UbuntuNotes/" class="archive-article-date">
-  	<time datetime="2020-01-03T14:02:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>个人常用命令记录</p>
-<h3 id="终端代理"><a href="#终端代理" class="headerlink" title="终端代理"></a>终端代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">"http://ip:port"</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">"https://ip:port"</span></span><br><span class="line"><span class="built_in">export</span> ALL_PROXY=socks5://ip:port</span><br></pre></td></tr></table></figure>
-<h3 id="文件proxy"><a href="#文件proxy" class="headerlink" title="文件proxy"></a>文件proxy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Acquire::http::proxy=<span class="string">"http://ip:port/"</span></span><br></pre></td></tr></table></figure>
-<h3 id="docker代理"><a href="#docker代理" class="headerlink" title="docker代理"></a>docker代理</h3><p>1.创建docker服务插件目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/systemd/system/docker.service.d</span><br></pre></td></tr></table></figure>
-<p>2.创建一个名为http-proxy.conf的文件</p>
-        
-          <a class="article-more-a" href="/2020/01/03/UbuntuNotes/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/03/UbuntuNotes/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
