@@ -6,15 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/4 | Zhoujing</title>
+  <title>编译Hadoop3.1.3 eclipse插件 | Zhoujing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zhoujing">
-<meta property="og:url" content="http://yoursite.com/archives/2020/04/index.html">
+  <meta name="description" content="Hadoop3.1.3源代码编译成功后，解压释放到&#x2F;opt目录下1234解压释放：tar xvfz hadoop-3.1.3.tar.gz -C &#x2F;opt然后确定文件夹名为hadoopmv hadoop-3.1.3 hadoop 安装eclipseeclipse下载链接 123456789101112#解压Eclipse软件tar xvfz eclipse-java-2020-03-R-linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译Hadoop3.1.3 eclipse插件">
+<meta property="og:url" content="http://yoursite.com/2020/04/23/Hadoop3-1-3-eclipse/index.html">
 <meta property="og:site_name" content="Zhoujing">
+<meta property="og:description" content="Hadoop3.1.3源代码编译成功后，解压释放到&#x2F;opt目录下1234解压释放：tar xvfz hadoop-3.1.3.tar.gz -C &#x2F;opt然后确定文件夹名为hadoopmv hadoop-3.1.3 hadoop 安装eclipseeclipse下载链接 123456789101112#解压Eclipse软件tar xvfz eclipse-java-2020-03-R-linux">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001028.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001112.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001219.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001347.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001411.png">
+<meta property="og:image" content="http://yoursite.com/Users/evan/Library/Application%20Support/typora-user-images/image-20200424001744731.png">
+<meta property="og:image" content="http://yoursite.com/Users/evan/Library/Application%20Support/typora-user-images/image-20200424001800054.png">
+<meta property="og:image" content="http://yoursite.com/Users/evan/Library/Application%20Support/typora-user-images/image-20200424001957277.png">
+<meta property="article:published_time" content="2020-04-23T15:42:43.000Z">
+<meta property="article:modified_time" content="2020-04-23T16:20:26.813Z">
 <meta property="article:author" content="周靖 笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001028.png">
   
     <link rel="alternative" href="/atom.xml" title="Zhoujing" type="application/atom+xml">
   
@@ -132,78 +145,200 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Hadoop3-1-3-eclipse" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      编译Hadoop3.1.3 eclipse插件
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+
+        
+        
 <a href="/2020/04/23/Hadoop3-1-3-eclipse/" class="archive-article-date">
   	<time datetime="2020-04-23T15:42:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/23/Hadoop3-1-3-eclipse/">编译Hadoop3.1.3 eclipse插件</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下"><a href="#Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下" class="headerlink" title="Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下"></a>Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">解压释放：</span><br><span class="line">tar xvfz hadoop-3.1.3.tar.gz -C /opt</span><br><span class="line">然后确定文件夹名为hadoop</span><br><span class="line">mv hadoop-3.1.3 hadoop</span><br></pre></td></tr></table></figure>
+<h4 id="安装eclipse"><a href="#安装eclipse" class="headerlink" title="安装eclipse"></a>安装eclipse</h4><p>eclipse<a href="https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz" target="_blank" rel="noopener">下载链接</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压Eclipse软件</span></span><br><span class="line">tar xvfz eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz -C /opt</span><br><span class="line"><span class="comment">#确保opt目录下解压的文件夹名为eclipse，不是的话mv修改</span></span><br><span class="line"><span class="comment">#添加环境变量</span></span><br><span class="line">cat&gt;&gt; /etc/profile&lt;&lt;EOF</span><br><span class="line"><span class="built_in">export</span> ECLIPSE_HOME=/opt/eclipse</span><br><span class="line"><span class="built_in">export</span> PATH=\<span class="variable">$ECLIPSE_HOME</span>:\<span class="variable">$PATH</span></span><br><span class="line">EOF</span><br><span class="line"><span class="comment">#重启</span></span><br><span class="line">reboot</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<h4 id="下载hadoop3x-eclipse-plugin源代码"><a href="#下载hadoop3x-eclipse-plugin源代码" class="headerlink" title="下载hadoop3x-eclipse-plugin源代码"></a>下载hadoop3x-eclipse-plugin源代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Woooosz/eclipse-hadoop3x</span><br><span class="line"><span class="built_in">cd</span> eclipse-hadoop3x</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h6 id="修改依赖包版本文件libraries-properties"><a href="#修改依赖包版本文件libraries-properties" class="headerlink" title="修改依赖包版本文件libraries.properties"></a>修改依赖包版本文件libraries.properties</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> eclipse-hadoop3x/ivy<span class="comment">#文件路径</span></span><br></pre></td></tr></table></figure>
+<p>修改办法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#列出相应的版本号</span><br><span class="line">cd &#x2F;opt&#x2F;hadoop&#x2F;share&#x2F;hadoop&#x2F;common&#x2F;lib</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p>对着列出来的版本一个个修改libraries.properties里面的版本号（对的上的就改，对不上的就忽略，如果编译失败看一下输出的信息是那个jar版本对不上了，然后在bulid.xml里面看xxx.jar在哪里，说明xxx.jar前面的jar都找到了，这样去校对libraries.properties的时候可以直接从xxx.jar后面开始校对）。</p>
+<p>测试可编译通过libraries.properties：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#   Licensed under the Apache License, Version 2.0 (the "License");</span></span><br><span class="line"><span class="comment">#   you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment">#   You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#       http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment">#   distributed under the License is distributed on an "AS IS" BASIS,</span></span><br><span class="line"><span class="comment">#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment">#   See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment">#   limitations under the License.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#This properties file lists the versions of the various artifacts used by hadoop and components.</span></span><br><span class="line"><span class="comment">#It drives ivy and the generation of a maven POM</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This is the version of hadoop we are generating</span></span><br><span class="line">hadoop.version=2.7.7</span><br><span class="line">hadoop-gpl-compression.version=0.1.0</span><br><span class="line"></span><br><span class="line"><span class="comment">#These are the versions of our dependencies (in alphabetical order)</span></span><br><span class="line">apacheant.version=1.9.11</span><br><span class="line">ant-task.version=2.0.10</span><br><span class="line"></span><br><span class="line">asm.version=3.2</span><br><span class="line">aspectj.version=1.6.5</span><br><span class="line">aspectj.version=1.6.11</span><br><span class="line"></span><br><span class="line">checkstyle.version=4.2</span><br><span class="line"></span><br><span class="line">commons-cli.version=1.2</span><br><span class="line">commons-codec.version=1.11</span><br><span class="line">commons-collections.version=3.2.2</span><br><span class="line">commons-configuration.version=2.1.1</span><br><span class="line">commons-daemon.version=1.0.13</span><br><span class="line">commons-httpclient.version=3.1</span><br><span class="line">commons-lang.version=2.6</span><br><span class="line">commons-logging.version=1.1.3</span><br><span class="line">commons-logging-api.version=1.1.3</span><br><span class="line">commons-math.version=3.1.1</span><br><span class="line">commons-el.version=1.0</span><br><span class="line">commons-fileupload.version=1.2</span><br><span class="line">commons-io.version=2.4</span><br><span class="line">commons-net.version=3.1</span><br><span class="line">core.version=3.1.1</span><br><span class="line">coreplugin.version=1.3.2</span><br><span class="line"></span><br><span class="line">hsqldb.version=1.8.0.10</span><br><span class="line"></span><br><span class="line">ivy.version=2.1.0</span><br><span class="line"></span><br><span class="line">jasper.version=5.5.12</span><br><span class="line">jackson.version=1.9.13</span><br><span class="line"><span class="comment">#not able to figureout the version of jsp &amp; jsp-api version to get it resolved throught ivy</span></span><br><span class="line"><span class="comment"># but still declared here as we are going to have a local copy from the lib folder</span></span><br><span class="line">jsp.version=2.1</span><br><span class="line">jsp-api.version=5.5.12</span><br><span class="line">jsp-api-2.1.version=6.1.14</span><br><span class="line">jsp-2.1.version=6.1.14</span><br><span class="line">jets3t.version=0.6.1</span><br><span class="line">jetty.version=6.1.26</span><br><span class="line">jetty-util.version=6.1.26</span><br><span class="line">jersey-core.version=1.8</span><br><span class="line">jersey-json.version=1.8</span><br><span class="line">jersey-server.version=1.8</span><br><span class="line">junit.version=4.5</span><br><span class="line">jdeb.version=0.8</span><br><span class="line">jdiff.version=1.0.9</span><br><span class="line">json.version=1.0</span><br><span class="line">protobuf.version=2.5.0</span><br><span class="line"></span><br><span class="line">kfs.version=0.1</span><br><span class="line">netty.version=3.10.5.Final</span><br><span class="line">log4j.version=1.2.17</span><br><span class="line">lucene-core.version=2.3.1</span><br><span class="line">htrace.version=4.1.0-incubating</span><br><span class="line">mockito-all.version=1.8.5</span><br><span class="line">jsch.version=0.1.42</span><br><span class="line"></span><br><span class="line">oro.version=2.0.8</span><br><span class="line"></span><br><span class="line">rats-lib.version=0.5.1</span><br><span class="line"></span><br><span class="line">servlet.version=4.0.6</span><br><span class="line">servlet-api.version=2.5</span><br><span class="line">slf4j-api.version=1.7.25</span><br><span class="line">slf4j-log4j12.version=1.7.25</span><br><span class="line">guava.version=27.0</span><br><span class="line"></span><br><span class="line">wagon-http.version=1.0-beta-2</span><br><span class="line">xmlenc.version=0.52</span><br><span class="line">xerces.version=1.4.4</span><br></pre></td></tr></table></figure>
+<h6 id="修改build-xml文件"><a href="#修改build-xml文件" class="headerlink" title="修改build.xml文件"></a>修改build.xml文件</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#路径</span></span><br><span class="line"><span class="built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第1处修改：跳过查找不到的jar包</li>
+</ul>
+<p>修改66行，将原来的target中的depends=“init, ivy-retrieve-common” 去掉其中的 ivy-retrieve-common</p>
+<p>修改前：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001028.png" alt=""></p>
+<p>修改后：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001112.png" alt=""></p>
+<ul>
+<li><p>第2处修改：让classpath包含Hadoop的jar</p>
+<p>添加</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001219.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- new add start--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;hadoop.root&#125;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*.jar"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">fileset</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- new add end--&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>第3处修改：包含ant runtime</li>
+</ul>
+<p>修改前：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001347.png" alt=""></p>
+<p>修改后：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001411.png" alt=""></p>
+<ul>
+<li>第4处修改：解决Add New Location没有反应的问题</li>
+</ul>
+<p>在120行左右添加</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">copy</span> <span class="attr">file</span>=<span class="string">"$&#123;hadoop.home&#125;/share/hadoop/common/lib/woodstox-core-5.0.3.jar"</span> <span class="attr">todir</span>=<span class="string">"$&#123;build.dir&#125;/lib"</span> <span class="attr">verbose</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">copy</span> <span class="attr">file</span>=<span class="string">"$&#123;hadoop.home&#125;/share/hadoop/common/lib/stax2-api-3.1.4.jar"</span> <span class="attr">todir</span>=<span class="string">"$&#123;build.dir&#125;/lib"</span> <span class="attr">verbose</span>=<span class="string">"true"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>第5处修改：确保编译能找到hadoop的jar包</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#建议不修改xml文件，直接创建链接：</span></span><br><span class="line"><span class="built_in">cd</span> /opt/hadoop/libexec</span><br><span class="line">ln -s /opt/hadoop/share share</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第6处修改：guava的jar包文件命和hadoop3.1.3不一致</li>
+</ul>
+<p>修改前：</p>
+<p><img src="/Users/evan/Library/Application Support/typora-user-images/image-20200424001744731.png" alt="image-20200424001744731"></p>
+<p>修改后：</p>
+<p><img src="/Users/evan/Library/Application Support/typora-user-images/image-20200424001800054.png" alt="image-20200424001800054"></p>
+<h4 id="编译eclipse插件"><a href="#编译eclipse插件" class="headerlink" title="编译eclipse插件"></a>编译eclipse插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin</span><br><span class="line"></span><br><span class="line">ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \</span><br><span class="line">-Declipse.home=/opt/eclipse \</span><br><span class="line">-Dhadoop.home=/opt/hadoop -debug</span><br></pre></td></tr></table></figure>
+<p>编译好的jar包:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> eclipse-hadoop3x/build/contrib/eclipse-plugin</span><br></pre></td></tr></table></figure>
+<p><img src="/Users/evan/Library/Application Support/typora-user-images/image-20200424001957277.png" alt="image-20200424001957277"></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/23/Hadoop3-1-3-eclipse/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/04/23/hadoop3-1-3/" class="archive-article-date">
-  	<time datetime="2020-04-23T14:40:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/23/hadoop3-1-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hadoop3.1.3编译</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/23/hadoop3-1-3/">hadoop3.1.3编译</a>
-    </h1>
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2020/04/23/Hadoop3-1-3-eclipse/", 
+    sourceId: "Hadoop3-1-3-eclipse",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -236,8 +371,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

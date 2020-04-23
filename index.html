@@ -134,6 +134,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Hadoop3-1-3-eclipse" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/Hadoop3-1-3-eclipse/">编译Hadoop3.1.3 eclipse插件</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/04/23/Hadoop3-1-3-eclipse/" class="archive-article-date">
+  	<time datetime="2020-04-23T15:42:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下"><a href="#Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下" class="headerlink" title="Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下"></a>Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">解压释放：</span><br><span class="line">tar xvfz hadoop-3.1.3.tar.gz -C /opt</span><br><span class="line">然后确定文件夹名为hadoop</span><br><span class="line">mv hadoop-3.1.3 hadoop</span><br></pre></td></tr></table></figure>
+<h4 id="安装eclipse"><a href="#安装eclipse" class="headerlink" title="安装eclipse"></a>安装eclipse</h4><p>eclipse<a href="https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz" target="_blank" rel="noopener">下载链接</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压Eclipse软件</span></span><br><span class="line">tar xvfz eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz -C /opt</span><br><span class="line"><span class="comment">#确保opt目录下解压的文件夹名为eclipse，不是的话mv修改</span></span><br><span class="line"><span class="comment">#添加环境变量</span></span><br><span class="line">cat&gt;&gt; /etc/profile&lt;&lt;EOF</span><br><span class="line"><span class="built_in">export</span> ECLIPSE_HOME=/opt/eclipse</span><br><span class="line"><span class="built_in">export</span> PATH=\<span class="variable">$ECLIPSE_HOME</span>:\<span class="variable">$PATH</span></span><br><span class="line">EOF</span><br><span class="line"><span class="comment">#重启</span></span><br><span class="line">reboot</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<h4 id="下载hadoop3x-eclipse-plugin源代码"><a href="#下载hadoop3x-eclipse-plugin源代码" class="headerlink" title="下载hadoop3x-eclipse-plugin源代码"></a>下载hadoop3x-eclipse-plugin源代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Woooosz/eclipse-hadoop3x</span><br><span class="line"><span class="built_in">cd</span> eclipse-hadoop3x</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/04/23/Hadoop3-1-3-eclipse/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/23/Hadoop3-1-3-eclipse/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hadoop3-1-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -760,84 +829,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/01/05/Git/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexoAndgithub" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/04/hexoAndgithub/">hexo搭建个人博客记录</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/04/hexoAndgithub/" class="archive-article-date">
-  	<time datetime="2020-01-04T05:42:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://blog.haoji.me/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">原文连接</a></p>
-<h1 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h1><ul>
-<li>github账号</li>
-<li>安装了node.js、npm</li>
-<li>安装了git（或者其它git客户端）</li>
-</ul>
-<p>本文所使用的环境：</p>
-<ul>
-<li>Windows 10 1909 or mac os</li>
-<li><a href="mailto:node.js@5.5.0">node.js@5.5.0</a></li>
-<li><a href="mailto:git@1.9.2">git@1.9.2</a></li>
-<li><a href="mailto:hexo@3.2.2">hexo@3.2.2</a></li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/01/04/hexoAndgithub/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/04/hexoAndgithub/">展开全文 >></a>
         </p>
       
 
