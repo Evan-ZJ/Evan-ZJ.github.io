@@ -134,6 +134,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/05/Git/">Hexo显示数学公式</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/01/05/Git/" class="archive-article-date">
+  	<time datetime="2020-01-04T16:31:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Hexo 默认使用 hexo-renderer-marked 引擎渲染网页，该引擎会把一些特殊的 markdown 符号转换为相应的 html 标签，比如在 markdown 语法中，下划线<code>_</code>代表斜体，会被渲染引擎处理为``标签。</p>
+<p>因为类 Latex 格式书写的数学公式下划线<code>_</code>表示下标，有特殊的含义，如果被强制转换为``标签，那么 MathJax 引擎在渲染数学公式的时候就会出错。</p>
+<p>类似的语义冲突的符号还包括<code>*</code>, <code>{</code>, <code>}</code>, <code>\\</code>等。</p>
+<h5 id="更换-Hexo-的-markdown-渲染引擎"><a href="#更换-Hexo-的-markdown-渲染引擎" class="headerlink" title="更换 Hexo 的 markdown 渲染引擎"></a>更换 Hexo 的 markdown 渲染引擎</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save  </span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/01/05/Git/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/05/Git/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hexoAndgithub" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
