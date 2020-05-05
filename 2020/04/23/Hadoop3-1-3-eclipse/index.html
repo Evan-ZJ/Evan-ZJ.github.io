@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%872.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%873.png">
 <meta property="article:published_time" content="2020-04-23T15:42:43.000Z">
-<meta property="article:modified_time" content="2020-05-05T15:12:07.291Z">
+<meta property="article:modified_time" content="2020-05-05T15:17:09.536Z">
 <meta property="article:author" content="周靖 笔记">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001028.png">
@@ -206,7 +206,7 @@
 <li>第4处修改：解决Add New Location没有反应的问题</li>
 </ul>
 <p>在120行左右添加</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#在120行左右添加（版本命名需要和properties对应上）</span><br><span class="line">    <span class="tag">&lt;<span class="name">copy</span> <span class="attr">file</span>=<span class="string">"$&#123;hadoop.home&#125;/libexec/share/hadoop/common/lib/woodstox-core-$&#123;woodstox.version&#125;.jar"</span> <span class="attr">todir</span>=<span class="string">"$&#123;build.dir&#125;/lib"</span> <span class="attr">verbose</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">copy</span> <span class="attr">file</span>=<span class="string">"$&#123;hadoop.home&#125;/libexec/share/hadoop/common/lib/stax2-api-$&#123;stax2.version&#125;.jar"</span> <span class="attr">todir</span>=<span class="string">"$&#123;build.dir&#125;/lib"</span> <span class="attr">verbose</span>=<span class="string">"true"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">copy</span> <span class="attr">file</span>=<span class="string">"$&#123;hadoop.home&#125;/libexec/share/hadoop/common/lib/woodstox-core-$&#123;woodstox.version&#125;.jar"</span> <span class="attr">todir</span>=<span class="string">"$&#123;build.dir&#125;/lib"</span> <span class="attr">verbose</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">copy</span> <span class="attr">file</span>=<span class="string">"$&#123;hadoop.home&#125;/libexec/share/hadoop/common/lib/stax2-api-$&#123;stax2.version&#125;.jar"</span> <span class="attr">todir</span>=<span class="string">"$&#123;build.dir&#125;/lib"</span> <span class="attr">verbose</span>=<span class="string">"true"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>第5处修改：确保编译能找到hadoop的jar包</li>
 </ul>
