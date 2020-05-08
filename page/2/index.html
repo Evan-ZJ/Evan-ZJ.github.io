@@ -130,6 +130,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-dante-server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/01/dante-server/">Ubuntu安装配置socket5 代理服务dante-server</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/02/01/dante-server/" class="archive-article-date">
+  	<time datetime="2020-02-01T06:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>服务器:Ubuntu 16.04.6</em></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install dante-server</span><br></pre></td></tr></table></figure>
+<h3 id="创建代理用户"><a href="#创建代理用户" class="headerlink" title="创建代理用户"></a><strong>创建代理用户</strong></h3><h4 id="创建组"><a href="#创建组" class="headerlink" title="创建组"></a>创建组</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd proxy</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意:系统可能已经存在proxy组，就不用再创建了</p>
+</blockquote>
+<h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd ss5 -g proxy</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/02/01/dante-server/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/01/dante-server/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Multiple-Fluid" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -575,82 +647,9 @@
 
 
   
-    <article id="post-UbuntuNotes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/03/UbuntuNotes/">日常问题</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/03/UbuntuNotes/" class="archive-article-date">
-  	<time datetime="2020-01-03T14:02:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>个人常用命令记录</p>
-<h3 id="bbr"><a href="#bbr" class="headerlink" title="bbr"></a>bbr</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate <span class="string">"https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh"</span> &amp;&amp; chmod +x tcp.sh &amp;&amp; ./tcp.sh</span><br></pre></td></tr></table></figure>
-<h3 id="Ubuntu-ssh-root"><a href="#Ubuntu-ssh-root" class="headerlink" title="Ubuntu ssh root"></a>Ubuntu ssh root</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br><span class="line">sudo vi /etc/ssh/sshd_config</span><br><span class="line"><span class="comment">#PermitRootLogin prohibit-password</span></span><br><span class="line">PermitRootLogin yes</span><br><span class="line"></span><br><span class="line">sudo passwd root</span><br><span class="line"></span><br><span class="line">sudo service ssh restart</span><br></pre></td></tr></table></figure>
-<h3 id="终端代理"><a href="#终端代理" class="headerlink" title="终端代理"></a>终端代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">"http://ip:port"</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">"https://ip:port"</span></span><br><span class="line"><span class="built_in">export</span> ALL_PROXY=socks5://ip:port</span><br></pre></td></tr></table></figure>
-<h3 id="文件proxy"><a href="#文件proxy" class="headerlink" title="文件proxy"></a>文件proxy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Acquire::http::proxy=<span class="string">"http://ip:port/"</span></span><br></pre></td></tr></table></figure>
-<h3 id="docker代理"><a href="#docker代理" class="headerlink" title="docker代理"></a>docker代理</h3><p>1.创建docker服务插件目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/systemd/system/docker.service.d</span><br></pre></td></tr></table></figure>
-<p>2.创建一个名为http-proxy.conf的文件</p>
-        
-          <a class="article-more-a" href="/2020/01/03/UbuntuNotes/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/03/UbuntuNotes/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
