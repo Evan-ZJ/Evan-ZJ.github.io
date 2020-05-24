@@ -13,8 +13,8 @@
   
   <entry>
     <title>无污染DNS学习记录</title>
-    <link href="evan-zj.github.io/2020/05/12/wu-wu-ran-dns-xue-xi-ji-lu/"/>
-    <id>evan-zj.github.io/2020/05/12/wu-wu-ran-dns-xue-xi-ji-lu/</id>
+    <link href="evan-zj.github.io/2020/05/12/mydns/"/>
+    <id>evan-zj.github.io/2020/05/12/mydns/</id>
     <published>2020-05-12T14:35:56.000Z</published>
     <updated>2020-05-24T15:00:40.814Z</updated>
     
@@ -101,8 +101,8 @@
   
   <entry>
     <title>内网穿透frp使用</title>
-    <link href="evan-zj.github.io/2020/05/05/nei-wang-chuan-tou-frp-shi-yong/"/>
-    <id>evan-zj.github.io/2020/05/05/nei-wang-chuan-tou-frp-shi-yong/</id>
+    <link href="evan-zj.github.io/2020/05/05/frp/"/>
+    <id>evan-zj.github.io/2020/05/05/frp/</id>
     <published>2020-05-05T15:28:37.000Z</published>
     <updated>2020-05-24T14:52:06.487Z</updated>
     
@@ -135,8 +135,8 @@ vi frps.ini
   
   <entry>
     <title>编译Hadoop3.1.3 eclipse插件</title>
-    <link href="evan-zj.github.io/2020/04/23/hadoop3-1-3-eclipse/"/>
-    <id>evan-zj.github.io/2020/04/23/hadoop3-1-3-eclipse/</id>
+    <link href="evan-zj.github.io/2020/04/23/hadoop313-eclipse/"/>
+    <id>evan-zj.github.io/2020/04/23/hadoop313-eclipse/</id>
     <published>2020-04-23T15:42:43.000Z</published>
     <updated>2020-05-05T15:17:09.536Z</updated>
     
@@ -173,8 +173,8 @@ cd eclipse-hadoop3x
   
   <entry>
     <title>hadoop3.1.3编译</title>
-    <link href="evan-zj.github.io/2020/04/23/hadoop3-1-3/"/>
-    <id>evan-zj.github.io/2020/04/23/hadoop3-1-3/</id>
+    <link href="evan-zj.github.io/2020/04/23/hadoop313/"/>
+    <id>evan-zj.github.io/2020/04/23/hadoop313/</id>
     <published>2020-04-23T14:40:57.000Z</published>
     <updated>2020-04-23T15:28:13.700Z</updated>
     
@@ -213,11 +213,11 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   </entry>
   
   <entry>
-    <title>proxy</title>
-    <link href="evan-zj.github.io/2020/02/19/proxy/"/>
-    <id>evan-zj.github.io/2020/02/19/proxy/</id>
-    <published>2020-02-19T10:22:32.000Z</published>
-    <updated>2020-02-19T10:28:35.104Z</updated>
+    <title>使用ProxyChains终端代理</title>
+    <link href="evan-zj.github.io/2020/03/24/proxychain/"/>
+    <id>evan-zj.github.io/2020/03/24/proxychain/</id>
+    <published>2020-03-24T15:08:16.000Z</published>
+    <updated>2020-05-24T15:08:59.512Z</updated>
     
     <summary type="html">
     
@@ -240,8 +240,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>Hexo同时部署到GitHub和VPS</title>
-    <link href="evan-zj.github.io/2020/02/08/vpsandgit/"/>
-    <id>evan-zj.github.io/2020/02/08/vpsandgit/</id>
+    <link href="evan-zj.github.io/2020/02/08/vpsgit/"/>
+    <id>evan-zj.github.io/2020/02/08/vpsgit/</id>
     <published>2020-02-08T14:32:49.000Z</published>
     <updated>2020-02-08T15:25:41.286Z</updated>
     
@@ -259,8 +259,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>ShareLaTeX安装、配置与部署</title>
-    <link href="evan-zj.github.io/2020/02/04/sharelatex/"/>
-    <id>evan-zj.github.io/2020/02/04/sharelatex/</id>
+    <link href="evan-zj.github.io/2020/02/04/sharelatexdocker/"/>
+    <id>evan-zj.github.io/2020/02/04/sharelatexdocker/</id>
     <published>2020-02-04T09:11:37.000Z</published>
     <updated>2020-02-07T14:14:00.411Z</updated>
     
@@ -283,8 +283,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>Ubuntu安装配置socket5 代理服务dante-server</title>
-    <link href="evan-zj.github.io/2020/02/01/dante-server/"/>
-    <id>evan-zj.github.io/2020/02/01/dante-server/</id>
+    <link href="evan-zj.github.io/2020/02/01/dante/"/>
+    <id>evan-zj.github.io/2020/02/01/dante/</id>
     <published>2020-02-01T06:27:54.000Z</published>
     <updated>2020-02-01T06:42:17.712Z</updated>
     
@@ -309,8 +309,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>Multiple-Fluid</title>
-    <link href="evan-zj.github.io/2020/01/07/multiple-fluid/"/>
-    <id>evan-zj.github.io/2020/01/07/multiple-fluid/</id>
+    <link href="evan-zj.github.io/2020/01/07/multiplefluid/"/>
+    <id>evan-zj.github.io/2020/01/07/multiplefluid/</id>
     <published>2020-01-07T07:10:29.000Z</published>
     <updated>2020-01-08T11:58:19.000Z</updated>
     
@@ -333,8 +333,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>GitHub + jsDelivr + PicGo + Imagine制作免费图床</title>
-    <link href="evan-zj.github.io/2020/01/05/mypicture/"/>
-    <id>evan-zj.github.io/2020/01/05/mypicture/</id>
+    <link href="evan-zj.github.io/2020/01/05/pic/"/>
+    <id>evan-zj.github.io/2020/01/05/pic/</id>
     <published>2020-01-05T15:11:44.000Z</published>
     <updated>2020-01-06T06:23:27.000Z</updated>
     
@@ -359,8 +359,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>tempoGAN Notes</title>
-    <link href="evan-zj.github.io/2020/01/05/tempogan-notes/"/>
-    <id>evan-zj.github.io/2020/01/05/tempogan-notes/</id>
+    <link href="evan-zj.github.io/2020/01/05/tempgan/"/>
+    <id>evan-zj.github.io/2020/01/05/tempgan/</id>
     <published>2020-01-05T05:55:24.000Z</published>
     <updated>2020-01-06T10:59:55.000Z</updated>
     
@@ -441,8 +441,8 @@ npm install hexo-renderer-kramed --save
   
   <entry>
     <title>hexo搭建个人博客记录</title>
-    <link href="evan-zj.github.io/2020/01/04/hexoandgithub/"/>
-    <id>evan-zj.github.io/2020/01/04/hexoandgithub/</id>
+    <link href="evan-zj.github.io/2020/01/04/hexogit/"/>
+    <id>evan-zj.github.io/2020/01/04/hexogit/</id>
     <published>2020-01-04T05:42:52.000Z</published>
     <updated>2020-01-07T06:51:15.000Z</updated>
     

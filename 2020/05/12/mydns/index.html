@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="内网穿透frp使用, Zhoujing">
+    <meta name="keywords" content="无污染DNS学习记录, Zhoujing">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>内网穿透frp使用 | Zhoujing</title>
+    <title>无污染DNS学习记录 | Zhoujing</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -158,12 +158,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">内网穿透frp使用</h1>
+                    <h1 class="description center-align post-title">无污染DNS学习记录</h1>
                 </div>
             </div>
         </div>
@@ -300,7 +300,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-05-05
+                    2020-05-12
                 </div>
                 
 
@@ -309,14 +309,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.3k
+                    793
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    5 Min
+                    3 Min
                 </div>
                 
 
@@ -331,127 +331,50 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>搭建一个完整的frp服务链，我们需要</p>
-<ol>
-<li>VPS一台（也可以是具有公网IP的实体机）</li>
-<li>访问目标设备（就是你最终要访问的设备）</li>
-<li>系统使用Ubuntu 16.04 x64，frp客户端和服务端本身同时均支持Linux和Windows</li>
+                <h1 id="DNS-无污染DNS学习记录"><a href="#DNS-无污染DNS学习记录" class="headerlink" title="[DNS]无污染DNS学习记录"></a>[DNS]无污染DNS学习记录</h1><blockquote>
+<p>本来一直没关DNS这事，感觉影响不大，后来留意了一下发现有问题，学习一下<a href="https://moe.best/tutorial/chinadns.html" target="_blank" rel="noopener">大佬的分享</a>当作笔记</p>
+</blockquote>
+<h3 id="为什么使用-ChinaDNS-而不是直接使用-OpenDNS"><a href="#为什么使用-ChinaDNS-而不是直接使用-OpenDNS" class="headerlink" title="为什么使用 ChinaDNS 而不是直接使用 OpenDNS"></a>为什么使用 ChinaDNS 而不是直接使用 OpenDNS</h3><ol>
+<li><strong>我们必须使用非<code>53</code>端口去查询国外 DNS 才能得到没有被 GFW 篡改的正确解析结果</strong>，ChinaDNS 可以自定义使用的 DNS 的端口，而 Windows 系统的 DNS 设置定死了使用<code>53</code>端口</li>
+<li>如果通过 OpenDNS 去解析国内网站，那么很可能会得到一个海外 IP（很多大公司都会配备有海外服务器供海外华人使用，例如京东啦淘宝啦B站啦），<strong>这样会导致访问国内网站访问速度很慢</strong><br>而 ChinaDNS 可以根据 chnrouter 来判断，如果从国内 DNS 里解析到国内 IP 的话就使用，对于国外网站会过滤掉从国内 DNS 解析得到的被污染的结果，十分完美的解决了这个问题</li>
 </ol>
-<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><pre class=" language-lang-bash"><code class="language-lang-bash">#SSH连接到VPS之后运行如下命令查看处理器架构，根据架构下载不同版本的frp
-arch
-#下载
-wget https://github.com/fatedier/frp/releases/download/v0.33.0/frp_0.33.0_linux_amd64.tar.gz
-#解压
-tar -zxvf frp_0.33.0_linux_amd64.tar.gz
-#重命名
-mv frp_0.33.0_linux_amd64 frp
-cd frp
-#修改配置文件frps.ini
-vi frps.ini
-</code></pre>
 <a id="more"></a>
-<p>文件应有如下格式</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">[common]
-bind_port = 7000
-dashboard_port = 7500
-token = 12345678
-dashboard_user = admin
-dashboard_pwd = admin
-vhost_http_port = 10080
-vhost_https_port = 10443
+<h3 id="国内-VPS-上部署-ChinaDNS"><a href="#国内-VPS-上部署-ChinaDNS" class="headerlink" title="国内 VPS 上部署 ChinaDNS"></a>国内 VPS 上部署 ChinaDNS</h3><pre class=" language-lang-bash"><code class="language-lang-bash"># 如果 Linux 上没有安装 make 和 gcc 的话要先安装
+# Ubuntu / Debian
+apt-get install -y make gcc
+# CentOS
+yum install -y make gcc
+
+# 下载 ChinaDNS 源码并解压编译
+wget --no-check-certificate  https://github.com/shadowsocks/ChinaDNS/releases/download/1.3.2/chinadns-1.3.2.tar.gz
+tar -zxvf chinadns-1.3.2.tar.gz
+cd chinadns-1.3.2
+./configure && make
+
+# 更新 chnrouter（必要，因为源码中自带的 chnrouter 已经很旧了）
+curl 'http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest' | grep ipv4 | grep CN | awk -F\| '{ printf("%s/%d\n", $4, 32-log($5)/log(2)) }' > chnroute.txt
+
+# 更新黑名单IP列表（推荐）
+rm -f iplist.txt && wget --no-check-certificate  https://raw.githubusercontent.com/Tsuk1ko/ChinaDNS/master/iplist.txt
+
+# 启动 ChinaDNS（编译好的程序在 src 目录中）
+nohup src/chinadns -m -c chnroute.txt -s 114.114.114.114,208.67.222.222:443 &
 </code></pre>
-<blockquote>
-<p>如果没有必要，端口均可使用默认值，token、user和password项请自行设置。</p>
-</blockquote>
-<ul>
-<li>“bind_port”表示用于客户端和服务端连接的端口，这个端口号我们之后在配置客户端的时候要用到。</li>
-<li>“dashboard_port”是服务端仪表板的端口，若使用7500端口，在配置完成服务启动后可以通过浏览器访问 x.x.x.x:7500 （其中x.x.x.x为VPS的IP）查看frp服务运行信息。</li>
-<li>“token”是用于客户端和服务端连接的口令，请自行设置并记录，稍后会用到。</li>
-<li>“dashboard_user”和“dashboard_pwd”表示打开仪表板页面登录的用户名和密码，自行设置即可。</li>
-<li>“vhost_http_port”和“vhost_https_port”用于反向代理HTTP主机时使用，本文不涉及HTTP协议，因而照抄或者删除这两条均可。</li>
-</ul>
-<p>编辑完成后保存</p>
-<pre><code>ECS
-:wq
-</code></pre><p>运行服务端测试</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">./frps -c frps.ini
-</code></pre>
-<p>如果看到屏幕输出这样一段内容，即表示运行正常，如果出现错误提示，请检查上面的步骤。</p>
-<pre><code>2019/01/12 15:22:39 [I] [service.go:130] frps tcp listen on 0.0.0.0:7000
-2019/01/12 15:22:39 [I] [service.go:172] http service listen on 0.0.0.0:10080
-2019/01/12 15:22:39 [I] [service.go:193] https service listen on 0.0.0.0:10443
-2019/01/12 15:22:39 [I] [service.go:216] Dashboard listen on 0.0.0.0:7500
-2019/01/12 15:22:39 [I] [root.go:210] Start frps success
-</code></pre><p>此时访问 x.x.x.x:7500 并使用自己设置的用户名密码登录，即可看到仪表板界面</p>
-<h2 id="服务端后台运行"><a href="#服务端后台运行" class="headerlink" title="服务端后台运行"></a>服务端后台运行</h2><pre class=" language-lang-bash"><code class="language-lang-bash">nohup ./frps -c frps.ini &
-</code></pre>
-<h2 id="客户端设置"><a href="#客户端设置" class="headerlink" title="客户端设置"></a>客户端设置</h2><blockquote>
-<p>frp的客户端就是我们想要真正进行访问的那台设备，大多数情况下应该会是一台Windows主机，因而本文使用Windows主机做例子；Linux配置方法类似，不再赘述。</p>
-</blockquote>
-<p>根据客户端设备的情况选择相应的frp程序进行<a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">下载</a>，</p>
-<p>将其解压在了C盘根目录下，并且将文件夹重命名为“frp”，可以删除其中的frps和frps.ini文件。<br>用文本编辑器打开frpc.ini，与服务端类似，内容如下。</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">[common]
-server_addr = x.x.x.x
-server_port = 7000
-token = won517574356
-[rdp]
-type = tcp
-local_ip = 127.0.0.1           
-local_port = 3389
-remote_port = 7001  
-[smb]
-type = tcp
-local_ip = 127.0.0.1
-local_port = 445
-remote_port = 7002
-</code></pre>
-<p>其中common字段下的三项即为服务端的设置。</p>
-<ul>
-<li>“server_addr”为服务端IP地址，填入即可。</li>
-<li>“server_port”为服务器端口，填入你设置的端口号即可，如果未改变就是7000</li>
-<li>“token”是你在服务器上设置的连接口令，原样填入即可。</li>
-</ul>
-<h2 id="自定义规则"><a href="#自定义规则" class="headerlink" title="自定义规则"></a>自定义规则</h2><p>上面frpc.ini的rdp、smb字段都是自己定义的规则，自定义端口对应时格式如下。</p>
-<ul>
-<li>“[xxx]”表示一个规则名称，自己定义，便于查询即可。</li>
-<li>“type”表示转发的协议类型，有TCP和UDP等选项可以选择，如有需要请自行查询frp手册。</li>
-<li>“local_port”是本地应用的端口号，按照实际应用工作在本机的端口号填写即可。</li>
-<li>“remote_port”是该条规则在服务端开放的端口号，自己填写并记录即可。</li>
-</ul>
-<blockquote>
-<p>RDP，即Remote Desktop 远程桌面，Windows的RDP默认端口是3389，协议为TCP，建议使用frp远程连接前，在局域网中测试好，能够成功连接后再使用frp穿透连接。</p>
-<p>SMB，即Windows文件共享所使用的协议，默认端口号445，协议TCP，本条规则可实现远程文件访问。</p>
-</blockquote>
-<p>配置完成frpc.ini后，就可以运行frpc了</p>
-<blockquote>
-<p>frpc程序不能直接双击运行！</p>
-</blockquote>
-<p>使用命令提示符或Powershell进入该目录下</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">cd C:\frp
-</code></pre>
-<p>并执行</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">./frpc -c frpc.ini
-</code></pre>
-<p>运行frpc程序，窗口中输出如下内容表示运行正常。</p>
-<pre><code>2019/01/12 16:14:56 [I] [service.go:205] login to server success, get run id [2b65b4e58a5917ac], server udp port [0]
-2019/01/12 16:14:56 [I] [proxy_manager.go:136] [2b65b4e58a5917ac] proxy added: [rdp smb]
-2019/01/12 16:14:56 [I] [control.go:143] [smb] start proxy success
-2019/01/12 16:14:56 [I] [control.go:143] [rdp] start proxy success
-</code></pre><p>不要关闭命令行窗口，此时可以在局域网外使用相应程序访问 x.x.x.x:xxxx （IP为VPS的IP，端口为自定义的remote_port）即可访问到相应服务。</p>
-<h2 id="客户端后台运行及开机自启"><a href="#客户端后台运行及开机自启" class="headerlink" title="客户端后台运行及开机自启"></a>客户端后台运行及开机自启</h2><p>在任何一个目录下新建一个文本文件并将其重命名为“frpc.bat”，编辑，粘贴如下内容并保存。</p>
-<pre class=" language-lang-powershell"><code class="language-lang-powershell">@echo off
-if "%1" == "h" goto begin
-mshta vbscript:createobject("wscript.shell").run("""%~nx0"" h",0)(window.close)&&exit
-:begin
-REM
-cd C:\frp
-frpc -c frpc.ini
-exit
-</code></pre>
-<blockquote>
-<p>将cd后的路径更改为你的frpc实际存放的目录</p>
-</blockquote>
-<p><a href="https://sspai.com/post/52523" target="_blank" rel="noopener">参考</a></p>
+<p>最后别忘记开放防火墙的<code>53</code>UDP端口</p>
+<h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><ol>
+<li><p>如果不使用<code>-s</code>参数，那么 ChinaDNS 会默认使用<code>114.114.114.114,208.67.222.222:443,8.8.8.8</code>作为 DNS，这样会导致一个很严重的问题！</p>
+<p>前面我们说过，<strong>如果你不通过非<code>53</code>端口去查询国外 DNS，就会得到一个被污染的查询结果</strong>，因此如果你使用<code>53</code>端口的国外 DNS 作为 ChinaDNS 的 DNS，最终就会得到被污染的查询结果，从而无法解决污染问题，而 ChinaDNS 正是默认使用了<code>8.8.8.8</code></p>
+</li>
+<li><p>使用H大老毛子固件上的 ChinaDNS 的时候也请一定要把<code>8.8.8.8</code>去掉，如果不开酸酸/酸酸乳，那么这个<code>8.8.8.8</code>就会污染你的 ChinaDNS 结果</p>
+</li>
+<li><p>你可以不用 114DNS 当国内 DNS，但是请注意使用<code>-s</code>参数指定 DNS 的时候，一定要把国内 DNS 写在前面，OpenDNS 写在最后面，否则会出现解析国内网站返回海外 IP 的现象（亲测</p>
+</li>
+</ol>
+<p>另外，不能在墙外的 VPS 上搭建 ChinaDNS：</p>
+<ol>
+<li>从墙外 VPS 访问国内 DNS 查询国内网站会得到海外 IP 结果</li>
+<li>你从大陆发往墙外 VPS 的 DNS 数据包仍会经过 GFW，这意味着你还是不能使用<code>53</code>端口</li>
+</ol>
 
             </div>
             <hr/>
@@ -477,7 +400,7 @@ exit
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="evan-zj.github.io/2020/05/05/nei-wang-chuan-tou-frp-shi-yong/">evan-zj.github.io/2020/05/05/nei-wang-chuan-tou-frp-shi-yong/</a>
+                    <a href="evan-zj.github.io/2020/05/12/mydns/">evan-zj.github.io/2020/05/12/mydns/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -554,36 +477,34 @@ exit
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2020/05/08/onedrive/">
+                <a href="/2020/05/12/mydns/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Onedrive">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="无污染DNS学习记录">
                         
-                        <span class="card-title">Onedrive</span>
+                        <span class="card-title">无污染DNS学习记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            简介OneIndex是一个可以将OneDrive网盘的目录索引出来的程序，可以供多人查看/下载，也就是变成了公共的网盘。而且不占用服务器空间，也不消耗服务器流量，很强大。
+                            [DNS]无污染DNS学习记录
+本来一直没关DNS这事，感觉影响不大，后来留意了一下发现有问题，学习一下大佬的分享当作笔记
 
-
-
-响应式，支持小屏设备。
-图片在线预览。
-视频在线播放。
-代码在
+为什么使用 ChinaDNS 而不是直接使用 OpenDNS
+我们必须使用非53端口去查询国外 DNS 才能得到没
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -592,6 +513,7 @@ exit
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -602,29 +524,27 @@ exit
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/23/hadoop3-1-3-eclipse/">
+                <a href="/2020/05/11/mykms/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="编译Hadoop3.1.3 eclipse插件">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="MyKms">
                         
-                        <span class="card-title">编译Hadoop3.1.3 eclipse插件</span>
+                        <span class="card-title">MyKms</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下解压释放：
-tar xvfz hadoop-3.1.3.tar.gz -C /opt
-然后确定文件夹名为hadoop
-mv hadoop-3.1.3 hadoop
+                            
+之前一直用亦是美的激活器，现在发现这个感觉挺靠谱，引用Zero
 
-安装ecl
+什么是KMS?Key Management Service（简称:KMS），这个功能是在Windows Vista之后的产品中的一种新型产品激活机制，目的是为了Micros
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-11
                             </span>
                         <span class="publish-author">
                             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo同时部署到GitHub和VPS, Zhoujing">
+    <meta name="keywords" content="使用ProxyChains终端代理, Zhoujing">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo同时部署到GitHub和VPS | Zhoujing</title>
+    <title>使用ProxyChains终端代理 | Zhoujing</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -158,12 +158,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo同时部署到GitHub和VPS</h1>
+                    <h1 class="description center-align post-title">使用ProxyChains终端代理</h1>
                 </div>
             </div>
         </div>
@@ -300,7 +300,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-02-08
+                    2020-03-24
                 </div>
                 
 
@@ -309,14 +309,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    669
+                    134
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    3 Min
+                    1 Min
                 </div>
                 
 
@@ -331,144 +331,39 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-hexo部署到VPS"><a href="#1-hexo部署到VPS" class="headerlink" title="1. hexo部署到VPS"></a>1. hexo部署到VPS</h2><h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><pre class=" language-lang-bash"><code class="language-lang-bash">apt-get install git
+                <h3 id="使用ProxyChains终端代理"><a href="#使用ProxyChains终端代理" class="headerlink" title="使用ProxyChains终端代理"></a>使用ProxyChains终端代理</h3><p>在源里有这个软件，直接安装</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt-get install proxychains
 </code></pre>
-<h3 id="配置-SSH-免密访问"><a href="#配置-SSH-免密访问" class="headerlink" title="配置 SSH 免密访问"></a>配置 SSH 免密访问</h3><a id="more"></a>
-<ul>
-<li><p>本地安装 Git</p>
-</li>
-<li><p>配置本地免密ssh登陆到远程VPS</p>
-<blockquote>
-<p>先检查是否有rea文件</p>
-</blockquote>
-<ul>
-<li><p>进入 <code>~/.ssh/</code> 目录</p>
-</li>
-<li><p>创建rsa </p>
-</li>
-<li><pre class=" language-lang-bash"><code class="language-lang-bash">ssh-keygen -t rsa
+<p>编辑/etc/proxychains.conf</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">vi /etc/proxychains.conf
 </code></pre>
-</li>
-<li><p>一路回车，会在 <code>~/.ssh/</code> 目录下生成 <code>id_rsa</code> 和 <code>id_rsa.pub</code> 两个文件</p>
-</li>
-<li><p>把生成的 <code>id_rsa.pub</code> 文件内容 copy到 VPS 的 root用户的 <code>~/.ssh/authorized_keys</code>文件中</p>
-</li>
-</ul>
-</li>
-<li><p>客户端免密登录到 VPS </p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">ssh root@ip
+<p>在最后的ProxyList里加入Shawdowsocks的代理设置：</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">socks5    ip    port
+#socks5    127.0.0.1    108
 </code></pre>
-<ul>
-<li><p>如果出现不能登录的情况，可能是文件权限有问题，VPS 上做如下修改：</p>
-</li>
-<li><pre class=" language-lang-bash"><code class="language-lang-bash">chmod 700 ~/.ssh
-chmod 600 ~/.ssh/authorized_keys
+<a id="more"></a>
+<p>复制libproxychains.so.3路径</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">find /usr/ -name libproxychains.so.3 -print
 </code></pre>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="在-VPS-上创建仓库"><a href="#在-VPS-上创建仓库" class="headerlink" title="在 VPS 上创建仓库"></a>在 VPS 上创建仓库</h3><pre class=" language-lang-bash"><code class="language-lang-bash">cd ~
-mkdir hexo.git
-cd hexo.git
-git init --bare
+<p>编辑/usr/bin/proxychains </p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">vi /usr/bin/proxychains
 </code></pre>
-<h3 id="Git-Hook-自动-Clone-收到提交的仓库到网站根目录"><a href="#Git-Hook-自动-Clone-收到提交的仓库到网站根目录" class="headerlink" title="Git Hook 自动 Clone 收到提交的仓库到网站根目录"></a>Git Hook 自动 Clone 收到提交的仓库到网站根目录</h3><p>VPS的 hexo网站目录为 <code>/root/wwwroot/hexo/</code></p>
-<p>建立一个仓库内容转移的缓存目录：</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">mkdir -p /root/tmp/hexo_tmp
+<p>修改如下：</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">#!/bin/sh
+echo "ProxyChains-3.1 (http://proxychains.sf.net)"
+if [ $# = 0 ] ; then
+    echo "  usage:"
+    echo "      proxychains <prog> [args]"
+    exit
+fi
+#export LD_PRELOAD=libproxychains.so.3
+#此处修改为实际路径
+export LD_PRELOAD=/usr/lib/i386-linux-gnu/libproxychains.so.3                                                                  
+exec "$@
 </code></pre>
-<p>然后处理 hexo.git 提交的事件，自动更新内容到 hexo网站目录。</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">vi /root/hexo.git/hooks/post-receive
+<p>使用，例</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">proxychains dropbox start -i
 </code></pre>
-<p>编辑 post-receive 文件：</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">#!/bin/bash -l
-GIT_REPO=/root/hexo.git
-TMP_GIT_CLONE=/root/tmp/hexo_tmp
-PUBLIC_HEXO=/root/wwwroot/hexo
-rm -rf ${TMP_GIT_CLONE}
-git clone $GIT_REPO $TMP_GIT_CLONE
-rm -rf ${PUBLIC_HEXO}/*
-cp -rf ${TMP_GIT_CLONE}/* ${PUBLIC_HEXO}
-</code></pre>
-<blockquote>
-<p>脚本可以实现完全更新，即先删除原网站内所有内容，再拷贝新仓库内容到网站目录</p>
-</blockquote>
-<p>给脚本加上执行权限：</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">chmod +x /root/hexo.git/hooks/post-receive
-</code></pre>
-<h3 id="多部署-vps-github"><a href="#多部署-vps-github" class="headerlink" title="多部署(vps+github)"></a>多部署(vps+github)</h3><p>配置 <code>_config.xml</code></p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">deploy:
-- type: git
-  repository:  git@github.com:Evan-ZJ/Evan-ZJ.github.io.git
-  branch: master
-- type: git
-  repository:  root@39.106.97.116:hexo.git
-  branch: master
-</code></pre>
-<h2 id="2-nginx安装与设置"><a href="#2-nginx安装与设置" class="headerlink" title="2. nginx安装与设置"></a>2. nginx安装与设置</h2><ul>
-<li>安装nginx</li>
-</ul>
-<pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt install nginx
-</code></pre>
-<ul>
-<li>向 nginx 写入配置，将<code>/root/wwwroot/hexo</code>作为主目录</li>
-</ul>
-<pre class=" language-lang-bash"><code class="language-lang-bash">cd /etc/nginx/sites-available 
-vi default
-</code></pre>
-<ul>
-<li>内容删除，写上：</li>
-</ul>
-<pre class=" language-lang-bash"><code class="language-lang-bash">server {
-        listen 80;
-        listen [::]:80;
-
-        root /root/wwwroot/hexo;
-        index index.html index.htm index.nginx-debian.html;
-
-        server_name 域名;#如果没有的话就别填
-
-        location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ {
-                root /var/www/hexo;
-                access_log   off;
-                expires      1d;
-        }
-        location ~* ^.+\.(css|js|txt|xml|swf|wav)$ {
-                root /var/www/hexo;
-                access_log   off;
-                expires      10m;
-        }
-        location / {
-                root /var/www/hexo;
-                if (-f $request_filename) {
-                        rewrite ^/(.*)$  /$1 break;
-                }
-        }
-}
-</code></pre>
-<p>保存退出，然后使用</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">service nginx restart
-</code></pre>
-<h2 id="3-错误解决"><a href="#3-错误解决" class="headerlink" title="3. 错误解决"></a>3. 错误解决</h2><h4 id="多rsa问题"><a href="#多rsa问题" class="headerlink" title="多rsa问题"></a>多rsa问题</h4><ul>
-<li>有时候本地的 <code>~/.ssh</code> 目录中有多个自己生成的 <code>id_rsa.pub</code>文件;</li>
-<li><p>这些 <code>id_rsa.pub</code> 文件是基于相同的用户名和邮箱生成的</p>
-<p>ssh 可以登陆，但在 hexo 部署时报错，错误是远程权限拒绝;</p>
-</li>
-</ul>
-<p>执行 <code>hexo d</code>命令时，默认使用的不是添加到 VPS中的<code>~/.ssh/authorized_keys</code>的Key的对应的 <code>id_rsa.pub</code></p>
-<p>在本地<code>~/.ssh</code>目录中，（添加一个名为<code>config</code>的文件，这样写：</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash">Host 106.186.33.133
-    HostName        ip
-    User            用户名
-    IdentityFile    .ssh/id_rsa
-</code></pre>
-<p>清空<code>known_hosts</code>，然后重新连接部署</p>
-<h4 id="Nginx-出现-403-Forbidden"><a href="#Nginx-出现-403-Forbidden" class="headerlink" title="Nginx 出现 403 Forbidden"></a>Nginx 出现 403 Forbidden</h4><h5 id="目录权限"><a href="#目录权限" class="headerlink" title="目录权限"></a>目录权限</h5><pre class=" language-lang-bash"><code class="language-lang-bash">chmod -R 755 /root/wwwroot/hexo
-</code></pre>
-<h5 id="打开nginx-conf"><a href="#打开nginx-conf" class="headerlink" title="打开nginx.conf"></a>打开nginx.conf</h5><pre class=" language-lang-bash"><code class="language-lang-bash">vi /etc/nginx/nginx.conf
-</code></pre>
-<p>把<code>user 用户名</code>改为 <code>user root</code></p>
-<p><a href="https://yanzai.me/hexo-git-deploy.html" target="_blank" rel="noopener">参考</a></p>
 
             </div>
             <hr/>
@@ -494,7 +389,7 @@ vi default
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="evan-zj.github.io/2020/02/08/vpsandgit/">evan-zj.github.io/2020/02/08/vpsandgit/</a>
+                    <a href="evan-zj.github.io/2020/03/24/proxychain/">evan-zj.github.io/2020/03/24/proxychain/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -575,30 +470,26 @@ vi default
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/02/19/proxy/">
+                <a href="/2020/04/23/hadoop313/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="proxy">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="hadoop3.1.3编译">
                         
-                        <span class="card-title">proxy</span>
+                        <span class="card-title">hadoop3.1.3编译</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            使用ProxyChains终端代理在源里有这个软件，直接安装
-sudo apt-get install proxychains
-
-编辑/etc/proxychains.conf
-vi /etc/proxychains.conf
-
-在最后的P
+                            编译环境Vultr 美国新泽西皮斯 4CPU 4GB vps
+Centos 7.7jdk-8u241-linux-x64.tar.gzmaven3.6.3protocbuf 2.5.0findbugs-3.0.1
+编译前准备安装C和C++编
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-23
                         </span>
                         <span class="publish-author">
                             
@@ -618,34 +509,39 @@ vi /etc/proxychains.conf
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/04/sharelatex/">
+                <a href="/2020/02/08/vpsgit/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="ShareLaTeX安装、配置与部署">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Hexo同时部署到GitHub和VPS">
                         
-                        <span class="card-title">ShareLaTeX安装、配置与部署</span>
+                        <span class="card-title">Hexo同时部署到GitHub和VPS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            服务器操作系统
-Ubuntu 16.04.6 LTS
-安装docker
-sudo apt install docker.io
+                            1. hexo部署到VPS安装Gitapt-get install git
 
-查看是否安装成功
-docker -v
+配置 SSH 免密访问
+
+本地安装 Git
+
+配置本地免密ssh登陆到远程VPS
+
+先检查是否有rea文件
 
 
-确认curl等工具已安装**
-sudo apt-get install
+进入 ~/.ssh/ 目录
+
+创建rsa 
+
+ss
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-08
                             </span>
                         <span class="publish-author">
                             

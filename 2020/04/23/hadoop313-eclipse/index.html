@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Ubuntu安装配置socket5 代理服务dante-server, Zhoujing">
+    <meta name="keywords" content="编译Hadoop3.1.3 eclipse插件, Zhoujing">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Ubuntu安装配置socket5 代理服务dante-server | Zhoujing</title>
+    <title>编译Hadoop3.1.3 eclipse插件 | Zhoujing</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -158,12 +158,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Ubuntu安装配置socket5 代理服务dante-server</h1>
+                    <h1 class="description center-align post-title">编译Hadoop3.1.3 eclipse插件</h1>
                 </div>
             </div>
         </div>
@@ -300,7 +300,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-02-01
+                    2020-04-23
                 </div>
                 
 
@@ -309,7 +309,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    388
+                    106
                 </div>
                 
 
@@ -331,73 +331,200 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><em>服务器:Ubuntu 16.04.6</em></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt-get install dante-server
+                <h4 id="Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下"><a href="#Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下" class="headerlink" title="Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下"></a>Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下</h4><pre class=" language-lang-bash"><code class="language-lang-bash">解压释放：
+tar xvfz hadoop-3.1.3.tar.gz -C /opt
+然后确定文件夹名为hadoop
+mv hadoop-3.1.3 hadoop
 </code></pre>
-<h3 id="创建代理用户"><a href="#创建代理用户" class="headerlink" title="创建代理用户"></a><strong>创建代理用户</strong></h3><h4 id="创建组"><a href="#创建组" class="headerlink" title="创建组"></a>创建组</h4><pre class=" language-lang-bash"><code class="language-lang-bash">groupadd proxy
+<h4 id="安装eclipse"><a href="#安装eclipse" class="headerlink" title="安装eclipse"></a>安装eclipse</h4><p>eclipse<a href="https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz" target="_blank" rel="noopener">下载链接</a></p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">#解压Eclipse软件
+tar xvfz eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz -C /opt
+#确保opt目录下解压的文件夹名为eclipse，不是的话mv修改
+#添加环境变量
+cat>> /etc/profile<<EOF
+export ECLIPSE_HOME=/opt/eclipse
+export PATH=\$ECLIPSE_HOME:\$PATH
+EOF
+#重启
+reboot
+#或
+source /etc/profile
 </code></pre>
-<blockquote>
-<p>注意:系统可能已经存在proxy组，就不用再创建了</p>
-</blockquote>
-<h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><pre class=" language-lang-bash"><code class="language-lang-bash">useradd ss5 -g proxy
+<h4 id="下载hadoop3x-eclipse-plugin源代码"><a href="#下载hadoop3x-eclipse-plugin源代码" class="headerlink" title="下载hadoop3x-eclipse-plugin源代码"></a>下载hadoop3x-eclipse-plugin源代码</h4><pre class=" language-lang-bash"><code class="language-lang-bash">git clone https://github.com/Woooosz/eclipse-hadoop3x
+cd eclipse-hadoop3x
 </code></pre>
 <a id="more"></a>
-<h4 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h4><pre class=" language-lang-bash"><code class="language-lang-bash">passwd ss5
+<h6 id="修改依赖包版本文件libraries-properties"><a href="#修改依赖包版本文件libraries-properties" class="headerlink" title="修改依赖包版本文件libraries.properties"></a>修改依赖包版本文件libraries.properties</h6><pre class=" language-lang-bash"><code class="language-lang-bash">cd eclipse-hadoop3x/ivy#文件路径
 </code></pre>
-<h4 id="禁止ss5登录-为了安全"><a href="#禁止ss5登录-为了安全" class="headerlink" title="禁止ss5登录(为了安全)"></a>禁止ss5登录(为了安全)</h4><pre class=" language-lang-bash"><code class="language-lang-bash">vi /etc/passwd
+<p>修改办法：</p>
+<pre class=" language-lang-bahs"><code class="language-lang-bahs">#列出相应的版本号
+cd /opt/hadoop/share/hadoop/common/lib
+ls
 </code></pre>
-<blockquote>
-<p>在ss5用户那行后增加:/bin/false</p>
-</blockquote>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="安装完毕后，有个配置文件-etc-danted-conf，配置文件内容就是配置说明"><a href="#安装完毕后，有个配置文件-etc-danted-conf，配置文件内容就是配置说明" class="headerlink" title="安装完毕后，有个配置文件:/etc/danted.conf，配置文件内容就是配置说明"></a>安装完毕后，有个配置文件:/etc/danted.conf，配置文件内容就是配置说明</h4><pre class=" language-lang-bash"><code class="language-lang-bash">cp /etc/danted.conf /etc/danted.conf.bak
+<p>对着列出来的版本一个个修改libraries.properties里面的版本号（对的上的就改，对不上的就忽略，如果编译失败看一下输出的信息是那个jar版本对不上了，然后在bulid.xml里面看xxx.jar在哪里，说明xxx.jar前面的jar都找到了，这样去校对libraries.properties的时候可以直接从xxx.jar后面开始校对）。</p>
+<p>额外注意：</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">#修改
+commons-httpclient.version=3.0.1
+#添加
+stax2.version=3.1.4
+woodstox.version=5.0.3
 </code></pre>
-<h4 id="可参考-官方文档，然后编辑配置文件"><a href="#可参考-官方文档，然后编辑配置文件" class="headerlink" title="可参考:官方文档，然后编辑配置文件:"></a>可参考:<a href="https://www.inet.no/dante/doc/latest/config/index.html" target="_blank" rel="noopener">官方文档</a>，然后编辑配置文件:</h4><pre class=" language-lang-bash"><code class="language-lang-bash">sudo vi /etc/danted.conf
+<p>测试可编译通过libraries.properties：</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+#This properties file lists the versions of the various artifacts used by hadoop and components.
+#It drives ivy and the generation of a maven POM
+
+# This is the version of hadoop we are generating
+hadoop.version=2.7.7
+hadoop-gpl-compression.version=0.1.0
+
+#These are the versions of our dependencies (in alphabetical order)
+apacheant.version=1.9.11
+ant-task.version=2.0.10
+
+asm.version=3.2
+aspectj.version=1.6.5
+aspectj.version=1.6.11
+
+checkstyle.version=4.2
+
+commons-cli.version=1.2
+commons-codec.version=1.11
+commons-collections.version=3.2.2
+commons-configuration.version=2.1.1
+commons-daemon.version=1.0.13
+commons-httpclient.version=3.0.1
+commons-lang.version=2.6
+commons-logging.version=1.1.3
+commons-logging-api.version=1.1.3
+commons-math.version=3.1.1
+commons-el.version=1.0
+commons-fileupload.version=1.2
+commons-io.version=2.4
+commons-net.version=3.1
+core.version=3.1.1
+coreplugin.version=1.3.2
+
+hsqldb.version=1.8.0.10
+
+ivy.version=2.1.0
+
+jasper.version=5.5.12
+jackson.version=1.9.13
+#not able to figureout the version of jsp & jsp-api version to get it resolved throught ivy
+# but still declared here as we are going to have a local copy from the lib folder
+jsp.version=2.1
+jsp-api.version=5.5.12
+jsp-api-2.1.version=6.1.14
+jsp-2.1.version=6.1.14
+jets3t.version=0.6.1
+jetty.version=6.1.26
+jetty-util.version=6.1.26
+jersey-core.version=1.8
+jersey-json.version=1.8
+jersey-server.version=1.8
+junit.version=4.5
+jdeb.version=0.8
+jdiff.version=1.0.9
+json.version=1.0
+protobuf.version=2.5.0
+
+kfs.version=0.1
+netty.version=3.10.5.Final
+log4j.version=1.2.17
+lucene-core.version=2.3.1
+htrace.version=4.1.0-incubating
+mockito-all.version=1.8.5
+jsch.version=0.1.42
+
+oro.version=2.0.8
+
+rats-lib.version=0.5.1
+
+servlet.version=4.0.6
+servlet-api.version=2.5
+slf4j-api.version=1.7.25
+slf4j-log4j12.version=1.7.25
+stax2.version=3.1.4
+guava.version=27.0
+
+wagon-http.version=1.0-beta-2
+woodstox.version=5.0.3
+xmlenc.version=0.52
+xerces.version=1.4.4
 </code></pre>
-<h4 id="连接代理，需要有用户名密码的配置如下"><a href="#连接代理，需要有用户名密码的配置如下" class="headerlink" title="连接代理，需要有用户名密码的配置如下"></a>连接代理，需要有用户名密码的配置如下</h4><pre class=" language-lang-bash"><code class="language-lang-bash">logoutput: /var/log/sockd.log
-internal: ens33 port = 65522 
-external: ens33
-method: username 
-clientmethod: none 
-user.privileged: root
-user.notprivileged: ss5 
-user.libwrap: nobody 
-compatibility: sameport 
-compatibility: reuseaddr 
-extension: bind
-client pass {
-        from: 0.0.0.0/0 to: 0.0.0.0/0
-}
-pass {
-        from: 0.0.0.0/0 to: 0.0.0.0/0
-    protocol: tcp
-}
+<h6 id="修改build-xml文件"><a href="#修改build-xml文件" class="headerlink" title="修改build.xml文件"></a>修改build.xml文件</h6><pre class=" language-lang-bash"><code class="language-lang-bash">#路径
+cd eclipse-hadoop3x/src/contrib/eclipse-plugin
 </code></pre>
-<h4 id="连接代理，不需要用户名密码的配置如下"><a href="#连接代理，不需要用户名密码的配置如下" class="headerlink" title="连接代理，不需要用户名密码的配置如下"></a>连接代理，不需要用户名密码的配置如下</h4><pre class=" language-lang-bash"><code class="language-lang-bash">logoutput: /var/log/sockd.log 
-internal: ens33 port = 65522 
-external: ens33
-method: none
-clientmethod: none 
-user.privileged: root 
-user.notprivileged: ss5 
-user.libwrap: nobody 
-compatibility: sameport 
-compatibility: reuseaddr 
-extension: bind
-client pass {
-        from: 0.0.0.0/0 to: 0.0.0.0/0
-}
-pass {
-        from: 0.0.0.0/0 to: 0.0.0.0/0
-        protocol: tcp
-}
+<ul>
+<li>第1处修改：跳过查找不到的jar包</li>
+</ul>
+<p>修改66行，将原来的target中的depends=“init, ivy-retrieve-common” 去掉其中的 ivy-retrieve-common</p>
+<p>修改前：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001028.png" alt=""></p>
+<p>修改后：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001112.png" alt=""></p>
+<ul>
+<li><p>第2处修改：让classpath包含Hadoop的jar</p>
+<p>添加</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001219.png" alt=""></p>
+<pre class=" language-lang-html"><code class="language-lang-html"><!-- new add start-->
+<fileset dir="${hadoop.root}">
+<include name="**/*.jar" />
+</fileset>
+<!-- new add end-->
 </code></pre>
-<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><pre class=" language-lang-bash"><code class="language-lang-bash">sudo /etc/init.d/danted start
+<ul>
+<li>第3处修改：包含ant runtime</li>
+</ul>
+<p>修改前：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001347.png" alt=""></p>
+<p>修改后：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001411.png" alt=""></p>
+<ul>
+<li>第4处修改：解决Add New Location没有反应的问题</li>
+</ul>
+<p>在120行左右添加</p>
+<pre class=" language-lang-html"><code class="language-lang-html">    <copy file="${hadoop.home}/libexec/share/hadoop/common/lib/woodstox-core-${woodstox.version}.jar" todir="${build.dir}/lib" verbose="true"/>
+    <copy file="${hadoop.home}/libexec/share/hadoop/common/lib/stax2-api-${stax2.version}.jar" todir="${build.dir}/lib" verbose="true"/>
 </code></pre>
-<h3 id="查看服务是否监听"><a href="#查看服务是否监听" class="headerlink" title="查看服务是否监听"></a>查看服务是否监听</h3><pre class=" language-lang-bash"><code class="language-lang-bash">sudo netstat -anp | grep 65522
+<ul>
+<li>第5处修改：确保编译能找到hadoop的jar包</li>
+</ul>
+<pre class=" language-lang-bash"><code class="language-lang-bash">#建议不修改xml文件，直接创建链接：
+cd /opt/hadoop/libexec
+ln -s /opt/hadoop/share share
 </code></pre>
-<h4 id="用Proxifier-连接可以连接成功"><a href="#用Proxifier-连接可以连接成功" class="headerlink" title="用Proxifier 连接可以连接成功"></a>用Proxifier 连接可以连接成功</h4><h3 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h3><pre class=" language-lang-bash"><code class="language-lang-bash">/etc/init.d/danted restart
+<ul>
+<li>第6处修改：guava的jar包文件命和hadoop3.1.3不一致</li>
+</ul>
+<p>修改前：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/图片1.png" alt=""></p>
+<p>修改后：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/图片2.png" alt=""></p>
+<h4 id="编译eclipse插件"><a href="#编译eclipse插件" class="headerlink" title="编译eclipse插件"></a>编译eclipse插件</h4><pre class=" language-lang-bash"><code class="language-lang-bash">cd eclipse-hadoop3x/src/contrib/eclipse-plugin
+
+ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
+-Declipse.home=/opt/eclipse \
+-Dhadoop.home=/opt/hadoop -debug
 </code></pre>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h3><p>查看端口占用情况，可以用命令: sudo lsof -i:端口号 查看iptables规则:sudo iptables -nvL 查看某端口是否开放，可以用telnet ip 端口号查看，比如: telnet 127.0.0.1 80</p>
+<p>编译好的jar包:</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">cd eclipse-hadoop3x/build/contrib/eclipse-plugin
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/图片3.png" alt=""></p>
 
             </div>
             <hr/>
@@ -423,7 +550,7 @@ pass {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="evan-zj.github.io/2020/02/01/dante-server/">evan-zj.github.io/2020/02/01/dante-server/</a>
+                    <a href="evan-zj.github.io/2020/04/23/hadoop313-eclipse/">evan-zj.github.io/2020/04/23/hadoop313-eclipse/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -504,34 +631,30 @@ pass {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/02/04/sharelatex/">
+                <a href="/2020/05/05/frp/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="ShareLaTeX安装、配置与部署">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="内网穿透frp使用">
                         
-                        <span class="card-title">ShareLaTeX安装、配置与部署</span>
+                        <span class="card-title">内网穿透frp使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            服务器操作系统
-Ubuntu 16.04.6 LTS
-安装docker
-sudo apt install docker.io
+                            准备搭建一个完整的frp服务链，我们需要
 
-查看是否安装成功
-docker -v
+VPS一台（也可以是具有公网IP的实体机）
+访问目标设备（就是你最终要访问的设备）
+系统使用Ubuntu 16.04 x64，frp客户端和服务端本身同时均支持Linux和Windows
 
-
-确认curl等工具已安装**
-sudo apt-get install
+服务端
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-04
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-05
                         </span>
                         <span class="publish-author">
                             
@@ -551,26 +674,26 @@ sudo apt-get install
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/07/multiple-fluid/">
+                <a href="/2020/04/23/hadoop313/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Multiple-Fluid">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="hadoop3.1.3编译">
                         
-                        <span class="card-title">Multiple-Fluid</span>
+                        <span class="card-title">hadoop3.1.3编译</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Multiple-Fluid SPH Simulation Using a Mixture Model0. 摘要
-提出了一种适用于多流体流动的通用、鲁棒的SPH模拟方法。
-不同相或组分的空间分布采用体积分数表示，多流体流动的动力学采用改进的
+                            编译环境Vultr 美国新泽西皮斯 4CPU 4GB vps
+Centos 7.7jdk-8u241-linux-x64.tar.gzmaven3.6.3protocbuf 2.5.0findbugs-3.0.1
+编译前准备安装C和C++编
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-23
                             </span>
                         <span class="publish-author">
                             

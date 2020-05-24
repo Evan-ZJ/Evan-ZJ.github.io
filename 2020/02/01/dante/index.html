@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="GitHub + jsDelivr + PicGo + Imagine制作免费图床, Zhoujing">
+    <meta name="keywords" content="Ubuntu安装配置socket5 代理服务dante-server, Zhoujing">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>GitHub + jsDelivr + PicGo + Imagine制作免费图床 | Zhoujing</title>
+    <title>Ubuntu安装配置socket5 代理服务dante-server | Zhoujing</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -158,12 +158,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">GitHub + jsDelivr + PicGo + Imagine制作免费图床</h1>
+                    <h1 class="description center-align post-title">Ubuntu安装配置socket5 代理服务dante-server</h1>
                 </div>
             </div>
         </div>
@@ -300,7 +300,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-01-05
+                    2020-02-01
                 </div>
                 
 
@@ -309,7 +309,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    333
+                    388
                 </div>
                 
 
@@ -331,41 +331,73 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a href="https://www.jianshu.com/p/c82774239ddb" target="_blank" rel="noopener">原文连接</a></p>
-<h3 id="使用流程"><a href="#使用流程" class="headerlink" title="使用流程"></a>使用流程</h3><p>新建 GitHub 仓库</p>
-<p>生成一个 Token</p>
-<p>配置 PicGo 并使用 jsdelivr 作为 CDN 加速</p>
-<p>使用 Imagine 进行图片压缩</p>
-<p>上传图片到 PicGo 并使用图床</p>
-<h3 id="新建-GitHub-仓库"><a href="#新建-GitHub-仓库" class="headerlink" title="新建 GitHub 仓库"></a>新建 GitHub 仓库</h3><ul>
-<li>将权限设置成 <code>public</code></li>
-<li>根据需求选择是否为仓库初始化一个 <code>README.md</code> 描述文件</li>
-</ul>
+                <p><em>服务器:Ubuntu 16.04.6</em></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt-get install dante-server
+</code></pre>
+<h3 id="创建代理用户"><a href="#创建代理用户" class="headerlink" title="创建代理用户"></a><strong>创建代理用户</strong></h3><h4 id="创建组"><a href="#创建组" class="headerlink" title="创建组"></a>创建组</h4><pre class=" language-lang-bash"><code class="language-lang-bash">groupadd proxy
+</code></pre>
+<blockquote>
+<p>注意:系统可能已经存在proxy组，就不用再创建了</p>
+</blockquote>
+<h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><pre class=" language-lang-bash"><code class="language-lang-bash">useradd ss5 -g proxy
+</code></pre>
 <a id="more"></a>
-<h4 id="生成一个-Token"><a href="#生成一个-Token" class="headerlink" title="生成一个 Token"></a>生成一个 Token</h4><p>1.点击用户头像 -&gt; 选择 <code>Settings</code></p>
-<p>2.点击 <code>Developer settings</code></p>
-<p>3.点击 <code>Personal access tokens</code></p>
-<p>4.点击 <code>Generate new token</code></p>
-<ul>
-<li><p>填写 <code>Token</code> 描述，勾选 <code>repo</code>，然后点击 <code>Generate token</code> 生成一个 <code>Token</code></p>
-</li>
-<li><p>获取 Token 密钥</p>
-</li>
-</ul>
-<h3 id="配置-PicGo-并使用-jsdelivr-作为-CDN-加速"><a href="#配置-PicGo-并使用-jsdelivr-作为-CDN-加速" class="headerlink" title="配置 PicGo 并使用 jsdelivr 作为 CDN 加速"></a>配置 PicGo 并使用 jsdelivr 作为 CDN 加速</h3><p>下载<a href="https://github.com/Molunerfinn/picgo/releases" target="_blank" rel="noopener">PicGo</a></p>
-<ul>
-<li><p>设定仓库名：按照 <code>用户名/图床仓库名</code> 的格式填写</p>
-</li>
-<li><p>设定分支名：<code>master</code></p>
-</li>
-<li><p>设定 Token：粘贴之前生成的 <code>Token</code></p>
-</li>
-<li><p>指定存储路径：填写想要储存的路径，如 <code>img/</code>，这样就会在仓库下创建一个名为 <code>img</code> 的文件夹，图片将会储存在此文件夹中</p>
-</li>
-<li><p>设定自定义域名：它的的作用是，在图片上传后，PicGo 会按照<code>自定义域名+上传的图片名</code>的方式生成访问链接，放到粘贴板上，因为我们要使用 <code>jsDelivr</code> 加速访问，所以可以设置为<code>https://cdn.jsdelivr.net/gh/用户名/图床仓库名</code></p>
-</li>
-</ul>
-<h3 id="使用-Imagine-进行图片压缩"><a href="#使用-Imagine-进行图片压缩" class="headerlink" title="使用 Imagine 进行图片压缩"></a>使用 Imagine 进行图片压缩</h3><p> <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fmeowtec%2FImagine%2Freleases" target="_blank" rel="noopener">Imagine</a>下载</p>
+<h4 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h4><pre class=" language-lang-bash"><code class="language-lang-bash">passwd ss5
+</code></pre>
+<h4 id="禁止ss5登录-为了安全"><a href="#禁止ss5登录-为了安全" class="headerlink" title="禁止ss5登录(为了安全)"></a>禁止ss5登录(为了安全)</h4><pre class=" language-lang-bash"><code class="language-lang-bash">vi /etc/passwd
+</code></pre>
+<blockquote>
+<p>在ss5用户那行后增加:/bin/false</p>
+</blockquote>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="安装完毕后，有个配置文件-etc-danted-conf，配置文件内容就是配置说明"><a href="#安装完毕后，有个配置文件-etc-danted-conf，配置文件内容就是配置说明" class="headerlink" title="安装完毕后，有个配置文件:/etc/danted.conf，配置文件内容就是配置说明"></a>安装完毕后，有个配置文件:/etc/danted.conf，配置文件内容就是配置说明</h4><pre class=" language-lang-bash"><code class="language-lang-bash">cp /etc/danted.conf /etc/danted.conf.bak
+</code></pre>
+<h4 id="可参考-官方文档，然后编辑配置文件"><a href="#可参考-官方文档，然后编辑配置文件" class="headerlink" title="可参考:官方文档，然后编辑配置文件:"></a>可参考:<a href="https://www.inet.no/dante/doc/latest/config/index.html" target="_blank" rel="noopener">官方文档</a>，然后编辑配置文件:</h4><pre class=" language-lang-bash"><code class="language-lang-bash">sudo vi /etc/danted.conf
+</code></pre>
+<h4 id="连接代理，需要有用户名密码的配置如下"><a href="#连接代理，需要有用户名密码的配置如下" class="headerlink" title="连接代理，需要有用户名密码的配置如下"></a>连接代理，需要有用户名密码的配置如下</h4><pre class=" language-lang-bash"><code class="language-lang-bash">logoutput: /var/log/sockd.log
+internal: ens33 port = 65522 
+external: ens33
+method: username 
+clientmethod: none 
+user.privileged: root
+user.notprivileged: ss5 
+user.libwrap: nobody 
+compatibility: sameport 
+compatibility: reuseaddr 
+extension: bind
+client pass {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+}
+pass {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+    protocol: tcp
+}
+</code></pre>
+<h4 id="连接代理，不需要用户名密码的配置如下"><a href="#连接代理，不需要用户名密码的配置如下" class="headerlink" title="连接代理，不需要用户名密码的配置如下"></a>连接代理，不需要用户名密码的配置如下</h4><pre class=" language-lang-bash"><code class="language-lang-bash">logoutput: /var/log/sockd.log 
+internal: ens33 port = 65522 
+external: ens33
+method: none
+clientmethod: none 
+user.privileged: root 
+user.notprivileged: ss5 
+user.libwrap: nobody 
+compatibility: sameport 
+compatibility: reuseaddr 
+extension: bind
+client pass {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+}
+pass {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+        protocol: tcp
+}
+</code></pre>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><pre class=" language-lang-bash"><code class="language-lang-bash">sudo /etc/init.d/danted start
+</code></pre>
+<h3 id="查看服务是否监听"><a href="#查看服务是否监听" class="headerlink" title="查看服务是否监听"></a>查看服务是否监听</h3><pre class=" language-lang-bash"><code class="language-lang-bash">sudo netstat -anp | grep 65522
+</code></pre>
+<h4 id="用Proxifier-连接可以连接成功"><a href="#用Proxifier-连接可以连接成功" class="headerlink" title="用Proxifier 连接可以连接成功"></a>用Proxifier 连接可以连接成功</h4><h3 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h3><pre class=" language-lang-bash"><code class="language-lang-bash">/etc/init.d/danted restart
+</code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h3><p>查看端口占用情况，可以用命令: sudo lsof -i:端口号 查看iptables规则:sudo iptables -nvL 查看某端口是否开放，可以用telnet ip 端口号查看，比如: telnet 127.0.0.1 80</p>
 
             </div>
             <hr/>
@@ -391,7 +423,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="evan-zj.github.io/2020/01/05/mypicture/">evan-zj.github.io/2020/01/05/mypicture/</a>
+                    <a href="evan-zj.github.io/2020/02/01/dante/">evan-zj.github.io/2020/02/01/dante/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -472,26 +504,34 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/01/07/multiple-fluid/">
+                <a href="/2020/02/04/sharelatexdocker/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Multiple-Fluid">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="ShareLaTeX安装、配置与部署">
                         
-                        <span class="card-title">Multiple-Fluid</span>
+                        <span class="card-title">ShareLaTeX安装、配置与部署</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Multiple-Fluid SPH Simulation Using a Mixture Model0. 摘要
-提出了一种适用于多流体流动的通用、鲁棒的SPH模拟方法。
-不同相或组分的空间分布采用体积分数表示，多流体流动的动力学采用改进的
+                            服务器操作系统
+Ubuntu 16.04.6 LTS
+安装docker
+sudo apt install docker.io
+
+查看是否安装成功
+docker -v
+
+
+确认curl等工具已安装**
+sudo apt-get install
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-07
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-04
                         </span>
                         <span class="publish-author">
                             
@@ -511,25 +551,26 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/05/tempogan-notes/">
+                <a href="/2020/01/07/multiplefluid/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="tempoGAN Notes">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Multiple-Fluid">
                         
-                        <span class="card-title">tempoGAN Notes</span>
+                        <span class="card-title">Multiple-Fluid</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow
-图1.本文卷积神经网络学习基于包含单个时间步长的密度和速度数据的低分辨率字段，生
+                            Multiple-Fluid SPH Simulation Using a Mixture Model0. 摘要
+提出了一种适用于多流体流动的通用、鲁棒的SPH模拟方法。
+不同相或组分的空间分布采用体积分数表示，多流体流动的动力学采用改进的
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-07
                             </span>
                         <span class="publish-author">
                             
