@@ -6,21 +6,21 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="evan-zj.github.io/"/>
-  <updated>2020-05-24T14:24:13.101Z</updated>
+  <updated>2020-05-24T14:27:48.368Z</updated>
   <id>evan-zj.github.io/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>DNS</title>
+    <title>dns</title>
     <link href="evan-zj.github.io/2020/05/12/dns/"/>
     <id>evan-zj.github.io/2020/05/12/dns/</id>
     <published>2020-05-12T06:58:42.284Z</published>
-    <updated>2020-05-24T14:24:13.101Z</updated>
+    <updated>2020-05-24T14:27:48.368Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;DNS-无污染DNS学习记录&quot;&gt;&lt;a href=&quot;#DNS-无污染DNS学习记录&quot; class=&quot;headerlink&quot; title=&quot;[DNS]无污染DNS学习记录&quot;&gt;&lt;/a&gt;[DNS]无污染DNS学习记录&lt;/h3&gt;&lt;blockquote&gt;
+      &lt;h1 id=&quot;DNS-无污染DNS学习记录&quot;&gt;&lt;a href=&quot;#DNS-无污染DNS学习记录&quot; class=&quot;headerlink&quot; title=&quot;[DNS]无污染DNS学习记录&quot;&gt;&lt;/a&gt;[DNS]无污染DNS学习记录&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;本来一直没关DNS这事，感觉影响不大，后来留意了一下发现有问题，学习一下&lt;a href=&quot;https://moe.best/tutorial/chinadns.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;大佬的分享&lt;/a&gt;当作笔记&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;为什么使用-ChinaDNS-而不是直接使用-OpenDNS&quot;&gt;&lt;a href=&quot;#为什么使用-ChinaDNS-而不是直接使用-OpenDNS&quot; class=&quot;headerlink&quot; title=&quot;为什么使用 ChinaDNS 而不是直接使用 OpenDNS&quot;&gt;&lt;/a&gt;为什么使用 ChinaDNS 而不是直接使用 OpenDNS&lt;/h3&gt;&lt;ol&gt;
