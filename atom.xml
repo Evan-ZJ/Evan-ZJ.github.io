@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Zhoujing</title>
   
-  <subtitle>ZhouJing Note</subtitle>
+  <subtitle>ZhouJing’s Note</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
