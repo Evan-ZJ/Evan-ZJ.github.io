@@ -394,8 +394,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>Hexo显示数学公式</title>
-    <link href="evan-zj.github.io/2020/01/05/git/"/>
-    <id>evan-zj.github.io/2020/01/05/git/</id>
+    <link href="evan-zj.github.io/2020/01/05/hexomath/"/>
+    <id>evan-zj.github.io/2020/01/05/hexomath/</id>
     <published>2020-01-04T16:31:07.000Z</published>
     <updated>2020-01-06T03:36:47.000Z</updated>
     
@@ -415,11 +415,11 @@ npm install hexo-renderer-kramed --save
   </entry>
   
   <entry>
-    <title>Latex</title>
+    <title>latex图片布局参考</title>
     <link href="evan-zj.github.io/2020/01/04/latex/"/>
     <id>evan-zj.github.io/2020/01/04/latex/</id>
     <published>2020-01-04T14:41:41.000Z</published>
-    <updated>2020-05-24T14:42:11.436Z</updated>
+    <updated>2020-05-24T15:01:56.140Z</updated>
     
     <summary type="html">
     
