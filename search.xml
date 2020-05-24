@@ -43,9 +43,9 @@
     
     
     <entry>
-      <title>OneIndex：OneDrive目录列表，可直接下载/查看</title>
-      <link href="/2020/05/08/oneindex/"/>
-      <url>/2020/05/08/oneindex/</url>
+      <title>OOnedrive</title>
+      <link href="/2020/05/08/onedrive/"/>
+      <url>/2020/05/08/onedrive/</url>
       
         <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>OneIndex</code>是一个可以将<code>OneDrive</code>网盘的目录索引出来的程序，可以供多人查看/下载，也就是变成了公共的网盘。而且不占用服务器空间，也不消耗服务器流量，很强大。</p><a id="more"></a><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-05-08 200849.png" alt=""></p><ul><li>响应式，支持小屏设备。</li><li>图片在线预览。</li><li>视频在线播放。</li><li>代码在线查看（<code>js</code>、<code>css</code>、<code>html</code>、<code>sh</code>、<code>php</code>、<code>java</code>、<code>md</code>等）。</li><li><code>README.md</code>支持，解析各目录下(<code>onedirive</code>目录下) <code>README.md</code>文件，在页面尾部展示。</li><li>音频在线播放。</li><li><code>HEAD.md</code>支持，在页面头部展示。</li><li><p><code>.password</code>文件夹加密。</p></li><li><p><code>Onedrive</code>账号 (个人、企业版或教育版/工作或学校帐户)。</p></li><li><code>oneindex</code>程序：<a href="https://github.com/iiiiiii1/Oneindex/archive/master.zip" target="_blank" rel="noopener">Github下载</a>、<a href="https://www.moerats.com/usr/down/oneindex-3.0.zip" target="_blank" rel="noopener">本地下载</a>。</li></ul><h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><ul><li><p>安装Docker</p></li><li><p><a href="https://github.com/TimeBye/oneindex" target="_blank" rel="noopener">拉取镜像创建</a></p><pre class=" language-lang-bash"><code class="language-lang-bash">docker run -d --name oneindex \    -p 80:80 --restart=always \    -v ~/oneindex/config:/var/www/html/config \    -v ~/oneindex/cache:/var/www/html/cache \    -e REFRESH_TOKEN='0 * * * *' \    -e REFRESH_CACHE='*/10 * * * *' \    setzero/oneindex</code></pre><ul><li><ul><li><p>停止删除容器：</p><pre><code>docker stop oneindexdocker rm -v oneindex</code></pre></li></ul></li><li><p>使用<code>docker-compose</code>运行：</p><pre><code>docker-compose up -d</code></pre><ul><li><p>停止删除容器：</p><pre class=" language-lang-bash"><code class="language-lang-bash">docker-compose down</code></pre></li></ul></li></ul></li></ul><h2 id="变量："><a href="#变量：" class="headerlink" title="变量："></a>变量：</h2><ul><li><code>TZ</code>：时区，默认<code>Asia/Shanghai</code></li><li><code>PORT</code>：服务监听端口，默认为80</li><li><code>DISABLE_CRON</code>：是否禁用crontab自动刷新缓存，设置任意值则不启用</li><li><code>REFRESH_TOKEN</code>：使用crontab进行token更新，默认<code>0 * * * *</code>，即每小时更新一次</li><li><code>REFRESH_CACHE</code>：使用crontab进行缓存更新，默认<code>*/10 * * * *</code>，即每10分钟更新一次</li><li><code>SSH_PASSWORD</code>：sshd用户密码，用户名为<code>root</code>，若不设置则不启用sshd</li></ul><p>本项目为 <a href="https://github.com/donwa/oneindex/commits/master" target="_blank" rel="noopener">donwa/oneindex</a> docker 镜像</p><h2 id="安装完成后，打开域名，按照提示进行安装配置。"><a href="#安装完成后，打开域名，按照提示进行安装配置。" class="headerlink" title="安装完成后，打开域名，按照提示进行安装配置。"></a>安装完成后，打开域名，按照提示进行安装配置。</h2><p><a href="https://www.moerats.com/archives/692/" target="_blank" rel="noopener">引用</a></p><ul><li>直接点下一步</li></ul><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/oneindex(4" alt="">.png)</p><ul><li>win会自动读取当前设备微软账户，要更换最好用手机打开链接。第一个是应用机密，然后第二个是id，在新跳出的界面中找到。</li></ul><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/oneindex(5" alt="">.png)</p><ul><li>按照初始密码访问后台设置</li></ul><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/oneindex(6" alt="">.png)后台地址：<code>https://xx.com/?/admin</code>，默认密码：<code>oneindex</code></p>]]></content>
       
@@ -199,6 +199,19 @@
     
     
     <entry>
+      <title>Latex</title>
+      <link href="/2020/01/04/latex/"/>
+      <url>/2020/01/04/latex/</url>
+      
+        <content type="html"><![CDATA[<h2 id="latex图片布局参考"><a href="#latex图片布局参考" class="headerlink" title="latex图片布局参考"></a>latex图片布局参考</h2><pre class=" language-lang-latex"><code class="language-lang-latex">\usepackage{graphicx} %插入图片的宏包\usepackage{float} %设置图片浮动位置的宏包\usepackage{subfigure} %插入多图时用子图显示的宏包\begin{figure}[H] %这里使用的是强制位置  \centering %图片全局居中  \vspace{-0.35cm} %设置与上面正文的距离  \subfigtopskip=2pt %设置子图与上面正文或别的内容的距离</code></pre>  <a id="more"></a><pre class=" language-lang-latex"><code class="language-lang-latex"> \subfigbottomskip=2pt %设置第二行子图与第一行子图的距离，即下面的头与上面的脚的距离  \subfigcapskip=-5pt %设置子图与子标题之间的距离  \subfigure[original]{    \label{level.sub.1}    \includegraphics[width=0.32\linewidth]{./figure/original.png}}  \quad %默认情况下两个子图之间空的较少，使用这个命令加大宽度  \subfigure[level=9]{    \label{level.sub.2}    \includegraphics[width=0.32\linewidth]{./figure/level9.png}}   %这里是空了一行，能够实现强制将四张图分成两行两列显示，而不是放不下图了再换行，使用\\也行。  \subfigure[level=8]{    \label{level.sub.3}    \includegraphics[width=0.32\linewidth]{./figure/level8.png}}  \quad  \subfigure[level=7]{    \label{level.sub.4}    \includegraphics[width=0.32\linewidth]{./figure/level7.png}}  \caption{不同level的渲染效果}  \label{level}</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo搭建个人博客记录</title>
       <link href="/2020/01/04/hexoandgithub/"/>
       <url>/2020/01/04/hexoandgithub/</url>
@@ -212,22 +225,9 @@
     
     
     <entry>
-      <title>Latex Notes</title>
-      <link href="/2020/01/04/aboutlatex/"/>
-      <url>/2020/01/04/aboutlatex/</url>
-      
-        <content type="html"><![CDATA[<h2 id="latex图片布局参考"><a href="#latex图片布局参考" class="headerlink" title="latex图片布局参考"></a>latex图片布局参考</h2><pre class=" language-lang-latex"><code class="language-lang-latex">\usepackage{graphicx} %插入图片的宏包\usepackage{float} %设置图片浮动位置的宏包\usepackage{subfigure} %插入多图时用子图显示的宏包\begin{figure}[H] %这里使用的是强制位置  \centering %图片全局居中  \vspace{-0.35cm} %设置与上面正文的距离  \subfigtopskip=2pt %设置子图与上面正文或别的内容的距离</code></pre>  <a id="more"></a><pre class=" language-lang-latex"><code class="language-lang-latex"> \subfigbottomskip=2pt %设置第二行子图与第一行子图的距离，即下面的头与上面的脚的距离  \subfigcapskip=-5pt %设置子图与子标题之间的距离  \subfigure[original]{    \label{level.sub.1}    \includegraphics[width=0.32\linewidth]{./figure/original.png}}  \quad %默认情况下两个子图之间空的较少，使用这个命令加大宽度  \subfigure[level=9]{    \label{level.sub.2}    \includegraphics[width=0.32\linewidth]{./figure/level9.png}}   %这里是空了一行，能够实现强制将四张图分成两行两列显示，而不是放不下图了再换行，使用\\也行。  \subfigure[level=8]{    \label{level.sub.3}    \includegraphics[width=0.32\linewidth]{./figure/level8.png}}  \quad  \subfigure[level=7]{    \label{level.sub.4}    \includegraphics[width=0.32\linewidth]{./figure/level7.png}}  \caption{不同level的渲染效果}  \label{level}</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>日常问题</title>
-      <link href="/2020/01/03/ubuntunotes/"/>
-      <url>/2020/01/03/ubuntunotes/</url>
+      <title>Note</title>
+      <link href="/2020/01/03/note/"/>
+      <url>/2020/01/03/note/</url>
       
         <content type="html"><![CDATA[<p>个人常用命令记录</p><h3 id="bbr"><a href="#bbr" class="headerlink" title="bbr"></a>bbr</h3><pre class=" language-lang-bash"><code class="language-lang-bash">wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh</code></pre><h3 id="Ubuntu-ssh-root"><a href="#Ubuntu-ssh-root" class="headerlink" title="Ubuntu ssh root"></a>Ubuntu ssh root</h3><pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt-get install openssh-serversudo vi /etc/ssh/sshd_config#PermitRootLogin prohibit-passwordPermitRootLogin yessudo passwd rootsudo service ssh restart</code></pre><h3 id="终端代理"><a href="#终端代理" class="headerlink" title="终端代理"></a>终端代理</h3><pre class=" language-lang-bash"><code class="language-lang-bash">export http_proxy="http://ip:port"export https_proxy="https://ip:port"export ALL_PROXY=socks5://ip:port</code></pre><h3 id="文件proxy"><a href="#文件proxy" class="headerlink" title="文件proxy"></a>文件proxy</h3><pre class=" language-lang-bash"><code class="language-lang-bash">Acquire::http::proxy="http://ip:port/"</code></pre><h3 id="docker代理"><a href="#docker代理" class="headerlink" title="docker代理"></a>docker代理</h3><p>1.创建docker服务插件目录</p><pre class=" language-lang-bash"><code class="language-lang-bash">sudo mkdir -p /etc/systemd/system/docker.service.d</code></pre><p>2.创建一个名为http-proxy.conf的文件</p><a id="more"></a><pre class=" language-lang-bash"><code class="language-lang-bash">sudo touch /etc/systemd/system/docker.service.d/http-proxy.conf</code></pre><p>3.编辑http-proxy.conf的文件</p><pre class=" language-lang-bash"><code class="language-lang-bash">sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf</code></pre><p>4.写入内容(将代理ip和代理端口修改)</p><pre class=" language-lang-bash"><code class="language-lang-bash">[Service]Environment="HTTP_PROXY=socks5://ip:port/"</code></pre><p>5.重新加载服务程序的配置文件</p><pre class=" language-lang-bash"><code class="language-lang-bash">sudo systemctl daemon-reload</code></pre><p>6.重启docker</p><pre class=" language-lang-bash"><code class="language-lang-bash">sudo systemctl restart docker</code></pre><p>7.验证</p><pre class=" language-lang-bash"><code class="language-lang-bash">systemctl show --property=Environment docker</code></pre><h3 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h3><pre class=" language-lang-bash"><code class="language-lang-bash">`nohup ./test.sh &`</code></pre><h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><pre class=" language-lang-bash"><code class="language-lang-bash">``sudo docker start “容器ID”``sudo docker exec -it “容器ID” bash` sudo docker run --name my-pytorch -itd -p 8080:8080 -p 6622:22`</code></pre><h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><pre class=" language-lang-bash"><code class="language-lang-bash">git clone ...文件复制到clone的目录下打开Git bashgit initgit add "文件（夹）名"git commit -m "..."git pullgit push</code></pre><h3 id="docker端口转发"><a href="#docker端口转发" class="headerlink" title="docker端口转发"></a>docker端口转发</h3><pre class=" language-lang-bash"><code class="language-lang-bash">docker run -it -d -p 5000:22 -p 6000:80 ubuntu /bin/bash</code></pre><h3 id="docker容器导入导出"><a href="#docker容器导入导出" class="headerlink" title="docker容器导入导出"></a>docker容器导入导出</h3><p>导出—-export</p><pre class=" language-lang-bash"><code class="language-lang-bash">docker export web01 > /home/centos7-web01.tar</code></pre><blockquote><p><strong>-o</strong>来指定导出的tar文件名，也可以直接通过重定向来实现</p></blockquote><p>导入—-import</p><pre class=" language-lang-bash"><code class="language-lang-bash">docker import  centos7-web01.tar text/web02:7.4</code></pre><blockquote><p>-c 选项可以在导入的同时执行对容器进行修改的Dockerfile指令（网络等修改）</p></blockquote><h3 id="docker镜像保存加载"><a href="#docker镜像保存加载" class="headerlink" title="docker镜像保存加载"></a><strong>docker镜像保存加载</strong></h3><p>导出镜像</p><pre class=" language-lang-bash"><code class="language-lang-bash">docker save d3949e34634c > /home/centos7.4.tar</code></pre><p>导入镜像</p><pre class=" language-lang-bash"><code class="language-lang-bash">docker load < /home/centos7.4.tar</code></pre><p>批量打包</p><pre class=" language-lang-bash"><code class="language-lang-bash">docker save $(docker images | grep -v REPOSITORY | awk 'BEGIN{OFS=":";ORS=" "}{print $1,$2}') -o haha.tar</code></pre><p>加载镜像</p><pre class=" language-lang-bash"><code class="language-lang-bash">docker load -i haha.tar</code></pre><p>保存配置完成的容器提交成镜像</p><pre class=" language-lang-bash"><code class="language-lang-bash">docker commit -m "web01" cca5f5d4c240 slave/centos:7.4.1709</code></pre>]]></content>
       

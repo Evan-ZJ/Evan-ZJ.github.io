@@ -83,11 +83,11 @@
   </entry>
   
   <entry>
-    <title>OneIndex：OneDrive目录列表，可直接下载/查看</title>
-    <link href="evan-zj.github.io/2020/05/08/oneindex/"/>
-    <id>evan-zj.github.io/2020/05/08/oneindex/</id>
+    <title>OOnedrive</title>
+    <link href="evan-zj.github.io/2020/05/08/onedrive/"/>
+    <id>evan-zj.github.io/2020/05/08/onedrive/</id>
     <published>2020-05-08T14:33:40.000Z</published>
-    <updated>2020-05-08T14:36:24.281Z</updated>
+    <updated>2020-05-24T14:43:05.763Z</updated>
     
     <summary type="html">
     
@@ -415,6 +415,31 @@ npm install hexo-renderer-kramed --save
   </entry>
   
   <entry>
+    <title>Latex</title>
+    <link href="evan-zj.github.io/2020/01/04/latex/"/>
+    <id>evan-zj.github.io/2020/01/04/latex/</id>
+    <published>2020-01-04T14:41:41.000Z</published>
+    <updated>2020-05-24T14:42:11.436Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;latex图片布局参考&quot;&gt;&lt;a href=&quot;#latex图片布局参考&quot; class=&quot;headerlink&quot; title=&quot;latex图片布局参考&quot;&gt;&lt;/a&gt;latex图片布局参考&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;lang-latex&quot;&gt;\usepackage{graphicx} %插入图片的宏包
+\usepackage{float} %设置图片浮动位置的宏包
+\usepackage{subfigure} %插入多图时用子图显示的宏包
+
+\begin{figure}[H] %这里使用的是强制位置
+  \centering %图片全局居中
+  \vspace{-0.35cm} %设置与上面正文的距离
+  \subfigtopskip=2pt %设置子图与上面正文或别的内容的距离
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>hexo搭建个人博客记录</title>
     <link href="evan-zj.github.io/2020/01/04/hexoandgithub/"/>
     <id>evan-zj.github.io/2020/01/04/hexoandgithub/</id>
@@ -444,36 +469,11 @@ npm install hexo-renderer-kramed --save
   </entry>
   
   <entry>
-    <title>Latex Notes</title>
-    <link href="evan-zj.github.io/2020/01/04/aboutlatex/"/>
-    <id>evan-zj.github.io/2020/01/04/aboutlatex/</id>
-    <published>2020-01-03T16:42:28.000Z</published>
-    <updated>2020-01-03T16:48:01.462Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;latex图片布局参考&quot;&gt;&lt;a href=&quot;#latex图片布局参考&quot; class=&quot;headerlink&quot; title=&quot;latex图片布局参考&quot;&gt;&lt;/a&gt;latex图片布局参考&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;lang-latex&quot;&gt;\usepackage{graphicx} %插入图片的宏包
-\usepackage{float} %设置图片浮动位置的宏包
-\usepackage{subfigure} %插入多图时用子图显示的宏包
-
-\begin{figure}[H] %这里使用的是强制位置
-  \centering %图片全局居中
-  \vspace{-0.35cm} %设置与上面正文的距离
-  \subfigtopskip=2pt %设置子图与上面正文或别的内容的距离
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>日常问题</title>
-    <link href="evan-zj.github.io/2020/01/03/ubuntunotes/"/>
-    <id>evan-zj.github.io/2020/01/03/ubuntunotes/</id>
-    <published>2020-01-03T14:02:32.000Z</published>
-    <updated>2020-02-27T12:44:40.504Z</updated>
+    <title>Note</title>
+    <link href="evan-zj.github.io/2020/01/03/note/"/>
+    <id>evan-zj.github.io/2020/01/03/note/</id>
+    <published>2020-01-03T14:40:41.000Z</published>
+    <updated>2020-05-24T14:41:25.488Z</updated>
     
     <summary type="html">
     
