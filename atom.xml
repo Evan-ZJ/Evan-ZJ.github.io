@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Zhoujing</title>
+  
+  <subtitle>ZhouJing Note</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-05-12T07:08:55.248Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ChinaDNS无污染DNS学习记录</title>
+    <link href="http://yoursite.com/2020/05/12/dns/"/>
+    <id>http://yoursite.com/2020/05/12/dns/</id>
+    <published>2020-05-12T06:58:42.000Z</published>
+    <updated>2020-05-12T07:08:55.248Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本来一直没关DNS这事，感觉影响不大，后来留意了一下发现有问题，学习一下&lt;a href=&quot;https://moe.best/tutorial/chinadns.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;大佬的分享&lt;/a&gt;当作笔记&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;为什么使用-ChinaDNS-而不是直接使用-OpenDNS&quot;&gt;&lt;a href=&quot;#为什么使用-ChinaDNS-而不是直接使用-OpenDNS&quot; class=&quot;headerlink&quot; title=&quot;为什么使用 ChinaDNS 而不是直接使用 OpenDNS&quot;&gt;&lt;/a&gt;为什么使用 ChinaDNS 而不是直接使用 OpenDNS&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;我们必须使用非&lt;code&gt;53&lt;/code&gt;端口去查询国外 DNS 才能得到没有被 GFW 篡改的正确解析结果&lt;/strong&gt;，ChinaDNS 可以自定义使用的 DNS 的端口，而 Windows 系统的 DNS 设置定死了使用&lt;code&gt;53&lt;/code&gt;端口&lt;/li&gt;
+&lt;li&gt;如果通过 OpenDNS 去解析国内网站，那么很可能会得到一个海外 IP（很多大公司都会配备有海外服务器供海外华人使用，例如京东啦淘宝啦B站啦），&lt;strong&gt;这样会导致访问国内网站访问速度很慢&lt;/strong&gt;&lt;br&gt;而 ChinaDNS 可以根据 chnrouter 来判断，如果从国内 DNS 里解析到国内 IP 的话就使用，对于国外网站会过滤掉从国内 DNS 解析得到的被污染的结果，十分完美的解决了这个问题&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>搭建KMS激活服务器</title>
+    <link href="http://yoursite.com/2020/05/11/kms/"/>
+    <id>http://yoursite.com/2020/05/11/kms/</id>
+    <published>2020-05-11T15:11:20.000Z</published>
+    <updated>2020-05-12T07:10:11.290Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;之前一直用亦是美的激活器，现在发现这个感觉挺靠谱，&lt;a href=&quot;https://mikuac.com/archives/504/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;引用Zero&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;什么是KMS&quot;&gt;&lt;a href=&quot;#什么是KMS&quot; class=&quot;headerlink&quot; title=&quot;什么是KMS?&quot;&gt;&lt;/a&gt;什么是KMS?&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Key Management Service（简称:KMS），这个功能是在Windows Vista之后的产品中的一种新型产品激活机制，目的是为了Microsoft更好的遏制非法软件授权行为(盗版)。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;KMS激活有两种方法，分别为vlmcsd和py-kms，本文使用vlmcsd进行搭建&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;为什么要自建KMS激活服务？&quot;&gt;&lt;a href=&quot;#为什么要自建KMS激活服务？&quot; class=&quot;headerlink&quot; title=&quot;为什么要自建KMS激活服务？&quot;&gt;&lt;/a&gt;为什么要自建KMS激活服务？&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;虽然现在网络上已经涌现了大批的激活工具，但是存在许多不安定因素，例如后门或者病毒等，会造成较大的安全隐患，而自己搭建Kms激活服务则可以避免这类问题~&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意：只能激活VL版本的Windows&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;VL，就是VOL，Volume Licensing for Organizations的缩写，中文翻译为团体批量许可证&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>fail2ban</title>
+    <link href="http://yoursite.com/2020/05/10/fail2ban/"/>
+    <id>http://yoursite.com/2020/05/10/fail2ban/</id>
+    <published>2020-05-10T15:20:25.000Z</published>
+    <updated>2020-05-10T16:10:26.434Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;fail2ban-防止SSH暴力破解-一键脚本&quot;&gt;&lt;a href=&quot;#fail2ban-防止SSH暴力破解-一键脚本&quot; class=&quot;headerlink&quot; title=&quot;[fail2ban] 防止SSH暴力破解 一键脚本&quot;&gt;&lt;/a&gt;[fail2ban] 防止SSH暴力破解 一键脚本&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;经常买vps需要用到，当作笔记，&lt;a href=&quot;https://moe.best/yoimono/fail2ban.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;引用一下&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;功能&quot;&gt;&lt;a href=&quot;#功能&quot; class=&quot;headerlink&quot; title=&quot;功能&quot;&gt;&lt;/a&gt;功能&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;自助修改SSH端口&lt;/li&gt;
+&lt;li&gt;自定义SSH尝试连接次数&lt;/li&gt;
+&lt;li&gt;自定义最高封禁IP的时间（以小时为单位）&lt;/li&gt;
+&lt;li&gt;一键完成SSH防止暴力破解&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>OneIndex：OneDrive目录列表，可直接下载/查看</title>
+    <link href="http://yoursite.com/2020/05/08/oneindex/"/>
+    <id>http://yoursite.com/2020/05/08/oneindex/</id>
+    <published>2020-05-08T14:33:40.000Z</published>
+    <updated>2020-05-08T14:36:24.281Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;&lt;code&gt;OneIndex&lt;/code&gt;是一个可以将&lt;code&gt;OneDrive&lt;/code&gt;网盘的目录索引出来的程序，可以供多人查看/下载，也就是变成了公共的网盘。而且不占用服务器空间，也不消耗服务器流量，很强大。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用frp进行内网穿透</title>
+    <link href="http://yoursite.com/2020/05/05/frpnote/"/>
+    <id>http://yoursite.com/2020/05/05/frpnote/</id>
+    <published>2020-05-05T15:28:37.000Z</published>
+    <updated>2020-05-05T15:46:28.734Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;p&gt;搭建一个完整的frp服务链，我们需要&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;VPS一台（也可以是具有公网IP的实体机）&lt;/li&gt;
+&lt;li&gt;访问目标设备（就是你最终要访问的设备）&lt;/li&gt;
+&lt;li&gt;系统使用Ubuntu 16.04 x64，frp客户端和服务端本身同时均支持Linux和Windows&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;服务端&quot;&gt;&lt;a href=&quot;#服务端&quot; class=&quot;headerlink&quot; title=&quot;服务端&quot;&gt;&lt;/a&gt;服务端&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;#SSH连接到VPS之后运行如下命令查看处理器架构，根据架构下载不同版本的frp
+arch
+#下载
+wget https://github.com/fatedier/frp/releases/download/v0.33.0/frp_0.33.0_linux_amd64.tar.gz
+#解压
+tar -zxvf frp_0.33.0_linux_amd64.tar.gz
+#重命名
+mv frp_0.33.0_linux_amd64 frp
+cd frp
+#修改配置文件frps.ini
+vi frps.ini
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>编译Hadoop3.1.3 eclipse插件</title>
+    <link href="http://yoursite.com/2020/04/23/hadoop3-1-3-eclipse/"/>
+    <id>http://yoursite.com/2020/04/23/hadoop3-1-3-eclipse/</id>
+    <published>2020-04-23T15:42:43.000Z</published>
+    <updated>2020-05-05T15:17:09.536Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下&quot;&gt;&lt;a href=&quot;#Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下&quot; class=&quot;headerlink&quot; title=&quot;Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下&quot;&gt;&lt;/a&gt;Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;解压释放：
+tar xvfz hadoop-3.1.3.tar.gz -C /opt
+然后确定文件夹名为hadoop
+mv hadoop-3.1.3 hadoop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;安装eclipse&quot;&gt;&lt;a href=&quot;#安装eclipse&quot; class=&quot;headerlink&quot; title=&quot;安装eclipse&quot;&gt;&lt;/a&gt;安装eclipse&lt;/h4&gt;&lt;p&gt;eclipse&lt;a href=&quot;https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载链接&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;#解压Eclipse软件
+tar xvfz eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz -C /opt
+#确保opt目录下解压的文件夹名为eclipse，不是的话mv修改
+#添加环境变量
+cat&amp;gt;&amp;gt; /etc/profile&amp;lt;&amp;lt;EOF
+export ECLIPSE_HOME=/opt/eclipse
+export PATH=\$ECLIPSE_HOME:\$PATH
+EOF
+#重启
+reboot
+#或
+source /etc/profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;下载hadoop3x-eclipse-plugin源代码&quot;&gt;&lt;a href=&quot;#下载hadoop3x-eclipse-plugin源代码&quot; class=&quot;headerlink&quot; title=&quot;下载hadoop3x-eclipse-plugin源代码&quot;&gt;&lt;/a&gt;下载hadoop3x-eclipse-plugin源代码&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;git clone https://github.com/Woooosz/eclipse-hadoop3x
+cd eclipse-hadoop3x
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hadoop3.1.3编译</title>
+    <link href="http://yoursite.com/2020/04/23/hadoop3-1-3/"/>
+    <id>http://yoursite.com/2020/04/23/hadoop3-1-3/</id>
+    <published>2020-04-23T14:40:57.000Z</published>
+    <updated>2020-04-23T15:28:13.700Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;编译环境&quot;&gt;&lt;a href=&quot;#编译环境&quot; class=&quot;headerlink&quot; title=&quot;编译环境&quot;&gt;&lt;/a&gt;编译环境&lt;/h3&gt;&lt;p&gt;Vultr 美国新泽西皮斯 4CPU 4GB vps&lt;/p&gt;
+&lt;p&gt;Centos 7.7&lt;br&gt;jdk-8u241-linux-x64.tar.gz&lt;br&gt;maven3.6.3&lt;br&gt;protocbuf 2.5.0&lt;br&gt;findbugs-3.0.1&lt;/p&gt;
+&lt;h3 id=&quot;编译前准备&quot;&gt;&lt;a href=&quot;#编译前准备&quot; class=&quot;headerlink&quot; title=&quot;编译前准备&quot;&gt;&lt;/a&gt;编译前准备&lt;/h3&gt;&lt;p&gt;安装C和C++编译器&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;yum -y install gcc gcc-c++
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装Cmake 3.13.5&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;wget https://cmake.org/files/v3.13/cmake-3.13.5.tar.gz
+tar -zxvf cmake-3.13.5.tar.gz  
+cd cmake-3.13.5
+./bootstrap --prefix=/usr/local
+gmake
+make install
+/usr/local/bin/cmake --version #查看编译后的cmake版本
+
+cd ..#记得切换目录，别把自己安装得新版卸载了
+yum remove cmake -y #移除原来的cmake版本
+
+ln -s /usr/local/bin/cmake /usr/bin/ #新建软连接
+cmake --version #终端查看版本
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装其他软件包&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;yum -y install autoconf automake libtool curl
+yum -y install lzo-devel zlib-devel openssl openssl-devel ncurses-devel
+yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>proxy</title>
+    <link href="http://yoursite.com/2020/02/19/proxy/"/>
+    <id>http://yoursite.com/2020/02/19/proxy/</id>
+    <published>2020-02-19T10:22:32.000Z</published>
+    <updated>2020-02-19T10:28:35.104Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;使用ProxyChains终端代理&quot;&gt;&lt;a href=&quot;#使用ProxyChains终端代理&quot; class=&quot;headerlink&quot; title=&quot;使用ProxyChains终端代理&quot;&gt;&lt;/a&gt;使用ProxyChains终端代理&lt;/h3&gt;&lt;p&gt;在源里有这个软件，直接安装&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;sudo apt-get install proxychains
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编辑/etc/proxychains.conf&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;vi /etc/proxychains.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在最后的ProxyList里加入Shawdowsocks的代理设置：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;socks5    ip    port
+#socks5    127.0.0.1    108
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo同时部署到GitHub和VPS</title>
+    <link href="http://yoursite.com/2020/02/08/vpsandgit/"/>
+    <id>http://yoursite.com/2020/02/08/vpsandgit/</id>
+    <published>2020-02-08T14:32:49.000Z</published>
+    <updated>2020-02-08T15:25:41.286Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-hexo部署到VPS&quot;&gt;&lt;a href=&quot;#1-hexo部署到VPS&quot; class=&quot;headerlink&quot; title=&quot;1. hexo部署到VPS&quot;&gt;&lt;/a&gt;1. hexo部署到VPS&lt;/h2&gt;&lt;h3 id=&quot;安装Git&quot;&gt;&lt;a href=&quot;#安装Git&quot; class=&quot;headerlink&quot; title=&quot;安装Git&quot;&gt;&lt;/a&gt;安装Git&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;apt-get install git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;配置-SSH-免密访问&quot;&gt;&lt;a href=&quot;#配置-SSH-免密访问&quot; class=&quot;headerlink&quot; title=&quot;配置 SSH 免密访问&quot;&gt;&lt;/a&gt;配置 SSH 免密访问&lt;/h3&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ShareLaTeX安装、配置与部署</title>
+    <link href="http://yoursite.com/2020/02/04/sharelatex/"/>
+    <id>http://yoursite.com/2020/02/04/sharelatex/</id>
+    <published>2020-02-04T09:11:37.000Z</published>
+    <updated>2020-02-07T14:14:00.411Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;服务器操作系统&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Ubuntu 16.04.6 LTS&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;安装docker&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;sudo apt install docker.io
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看是否安装成功&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;docker -v
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu安装配置socket5 代理服务dante-server</title>
+    <link href="http://yoursite.com/2020/02/01/dante-server/"/>
+    <id>http://yoursite.com/2020/02/01/dante-server/</id>
+    <published>2020-02-01T06:27:54.000Z</published>
+    <updated>2020-02-01T06:42:17.712Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;服务器:Ubuntu 16.04.6&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;sudo apt-get install dante-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;创建代理用户&quot;&gt;&lt;a href=&quot;#创建代理用户&quot; class=&quot;headerlink&quot; title=&quot;创建代理用户&quot;&gt;&lt;/a&gt;&lt;strong&gt;创建代理用户&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;创建组&quot;&gt;&lt;a href=&quot;#创建组&quot; class=&quot;headerlink&quot; title=&quot;创建组&quot;&gt;&lt;/a&gt;创建组&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;groupadd proxy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意:系统可能已经存在proxy组，就不用再创建了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;创建用户&quot;&gt;&lt;a href=&quot;#创建用户&quot; class=&quot;headerlink&quot; title=&quot;创建用户&quot;&gt;&lt;/a&gt;创建用户&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;useradd ss5 -g proxy
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Multiple-Fluid</title>
+    <link href="http://yoursite.com/2020/01/07/multiple-fluid/"/>
+    <id>http://yoursite.com/2020/01/07/multiple-fluid/</id>
+    <published>2020-01-07T07:10:29.000Z</published>
+    <updated>2020-01-08T11:58:19.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Multiple-Fluid-SPH-Simulation-Using-a-Mixture-Model&quot;&gt;&lt;a href=&quot;#Multiple-Fluid-SPH-Simulation-Using-a-Mixture-Model&quot; class=&quot;headerlink&quot; title=&quot;Multiple-Fluid SPH Simulation Using a Mixture Model&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://orca.cf.ac.uk/94204/1/TOG_2014_Multiplefluid.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Multiple-Fluid SPH Simulation Using a Mixture Model&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&quot;0-摘要&quot;&gt;&lt;a href=&quot;#0-摘要&quot; class=&quot;headerlink&quot; title=&quot;0. 摘要&quot;&gt;&lt;/a&gt;0. 摘要&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;提出了一种适用于多流体流动的通用、鲁棒的SPH模拟方法。&lt;/li&gt;
+&lt;li&gt;不同相或组分的空间分布采用体积分数表示，多流体流动的动力学采用改进的混合模型&lt;/li&gt;
+&lt;li&gt;解决了多流体流动中遇到的复杂输运和转化过程。&lt;/li&gt;
+&lt;li&gt;可以捕获广泛的真实世界多流体现象，包括混溶/混溶混溶流体、扩散效应和化学反应等。&lt;/li&gt;
+&lt;li&gt;容易地集成到现有的最先进的SPH模拟器中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;基于物理的动画，流体模拟，多相和多组分流动，可混溶和不可混溶流体，平滑粒子流体动力学，体积分数模型，混合物模型&lt;/em&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>GitHub + jsDelivr + PicGo + Imagine制作免费图床</title>
+    <link href="http://yoursite.com/2020/01/05/mypicture/"/>
+    <id>http://yoursite.com/2020/01/05/mypicture/</id>
+    <published>2020-01-05T15:11:44.000Z</published>
+    <updated>2020-01-06T06:23:27.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/c82774239ddb&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文连接&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;使用流程&quot;&gt;&lt;a href=&quot;#使用流程&quot; class=&quot;headerlink&quot; title=&quot;使用流程&quot;&gt;&lt;/a&gt;使用流程&lt;/h3&gt;&lt;p&gt;新建 GitHub 仓库&lt;/p&gt;
+&lt;p&gt;生成一个 Token&lt;/p&gt;
+&lt;p&gt;配置 PicGo 并使用 jsdelivr 作为 CDN 加速&lt;/p&gt;
+&lt;p&gt;使用 Imagine 进行图片压缩&lt;/p&gt;
+&lt;p&gt;上传图片到 PicGo 并使用图床&lt;/p&gt;
+&lt;h3 id=&quot;新建-GitHub-仓库&quot;&gt;&lt;a href=&quot;#新建-GitHub-仓库&quot; class=&quot;headerlink&quot; title=&quot;新建 GitHub 仓库&quot;&gt;&lt;/a&gt;新建 GitHub 仓库&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;将权限设置成 &lt;code&gt;public&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;根据需求选择是否为仓库初始化一个 &lt;code&gt;README.md&lt;/code&gt; 描述文件&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>tempoGAN Notes</title>
+    <link href="http://yoursite.com/2020/01/05/tempogan-notes/"/>
+    <id>http://yoursite.com/2020/01/05/tempogan-notes/</id>
+    <published>2020-01-05T05:55:24.000Z</published>
+    <updated>2020-01-06T10:59:55.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow&quot;&gt;&lt;a href=&quot;#tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow&quot; class=&quot;headerlink&quot; title=&quot;tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://arxiv.org/pdf/1801.09710.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-06 110009.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;图1.本文卷积神经网络学习基于包含单个时间步长的密度和速度数据的低分辨率字段，生成高度详细的时间相关特征。 引入了一种新颖的鉴别器，可确保合成的细节随时间平滑变化。&lt;/p&gt;
+&lt;h4 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;一个时间相干的生成模型，以解决流体流的超分辨率问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;用神经网络综合二维物理场&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;基于旨在生成三维体数据的条件生成对抗网络&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;常用的空间鉴别器 and 新颖的时间鉴别器  生成一致且详细的结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;其他物理量（低分辨率速度或者涡度）→生成器→高分辨率&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;改进训练过程和生成的输出 + 艺术控制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;物理感知的数据增强步骤→避免过分生成具有高度详细，逼真的和时间相关特征的平移量&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;仅使用单个时间步长的低分辨率流体数据&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;深度学习，生成模型，基于物理的动画，流体模拟&lt;/em&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo显示数学公式</title>
+    <link href="http://yoursite.com/2020/01/05/git/"/>
+    <id>http://yoursite.com/2020/01/05/git/</id>
+    <published>2020-01-04T16:31:07.000Z</published>
+    <updated>2020-01-06T03:36:47.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hexo 默认使用 hexo-renderer-marked 引擎渲染网页，该引擎会把一些特殊的 markdown 符号转换为相应的 html 标签，比如在 markdown 语法中，下划线&lt;code&gt;_&lt;/code&gt;代表斜体，会被渲染引擎处理为``标签。&lt;/p&gt;
+&lt;p&gt;因为类 Latex 格式书写的数学公式下划线&lt;code&gt;_&lt;/code&gt;表示下标，有特殊的含义，如果被强制转换为``标签，那么 MathJax 引擎在渲染数学公式的时候就会出错。&lt;/p&gt;
+&lt;p&gt;类似的语义冲突的符号还包括&lt;code&gt;*&lt;/code&gt;, &lt;code&gt;{&lt;/code&gt;, &lt;code&gt;}&lt;/code&gt;, &lt;code&gt;\\&lt;/code&gt;等。&lt;/p&gt;
+&lt;h5 id=&quot;更换-Hexo-的-markdown-渲染引擎&quot;&gt;&lt;a href=&quot;#更换-Hexo-的-markdown-渲染引擎&quot; class=&quot;headerlink&quot; title=&quot;更换 Hexo 的 markdown 渲染引擎&quot;&gt;&lt;/a&gt;更换 Hexo 的 markdown 渲染引擎&lt;/h5&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;npm uninstall hexo-renderer-marked --save  
+npm install hexo-renderer-kramed --save
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo搭建个人博客记录</title>
+    <link href="http://yoursite.com/2020/01/04/hexoandgithub/"/>
+    <id>http://yoursite.com/2020/01/04/hexoandgithub/</id>
+    <published>2020-01-04T05:42:52.000Z</published>
+    <updated>2020-01-07T06:51:15.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;http://blog.haoji.me/build-blog-website-by-hexo-github.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文连接&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;1-准备工作&quot;&gt;&lt;a href=&quot;#1-准备工作&quot; class=&quot;headerlink&quot; title=&quot;1. 准备工作&quot;&gt;&lt;/a&gt;1. 准备工作&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;github账号&lt;/li&gt;
+&lt;li&gt;安装了node.js、npm&lt;/li&gt;
+&lt;li&gt;安装了git（或者其它git客户端）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本文所使用的环境：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 10 1909 or mac os&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;mailto:node.js@5.5.0&quot;&gt;node.js@5.5.0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;mailto:git@1.9.2&quot;&gt;git@1.9.2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;mailto:hexo@3.2.2&quot;&gt;hexo@3.2.2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Latex Notes</title>
+    <link href="http://yoursite.com/2020/01/04/aboutlatex/"/>
+    <id>http://yoursite.com/2020/01/04/aboutlatex/</id>
+    <published>2020-01-03T16:42:28.000Z</published>
+    <updated>2020-01-03T16:48:01.462Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;latex图片布局参考&quot;&gt;&lt;a href=&quot;#latex图片布局参考&quot; class=&quot;headerlink&quot; title=&quot;latex图片布局参考&quot;&gt;&lt;/a&gt;latex图片布局参考&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;lang-latex&quot;&gt;\usepackage{graphicx} %插入图片的宏包
+\usepackage{float} %设置图片浮动位置的宏包
+\usepackage{subfigure} %插入多图时用子图显示的宏包
+
+\begin{figure}[H] %这里使用的是强制位置
+  \centering %图片全局居中
+  \vspace{-0.35cm} %设置与上面正文的距离
+  \subfigtopskip=2pt %设置子图与上面正文或别的内容的距离
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>日常问题</title>
+    <link href="http://yoursite.com/2020/01/03/ubuntunotes/"/>
+    <id>http://yoursite.com/2020/01/03/ubuntunotes/</id>
+    <published>2020-01-03T14:02:32.000Z</published>
+    <updated>2020-02-27T12:44:40.504Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;个人常用命令记录&lt;/p&gt;
+&lt;h3 id=&quot;bbr&quot;&gt;&lt;a href=&quot;#bbr&quot; class=&quot;headerlink&quot; title=&quot;bbr&quot;&gt;&lt;/a&gt;bbr&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;wget -N --no-check-certificate &amp;quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&amp;quot; &amp;amp;&amp;amp; chmod +x tcp.sh &amp;amp;&amp;amp; ./tcp.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;Ubuntu-ssh-root&quot;&gt;&lt;a href=&quot;#Ubuntu-ssh-root&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu ssh root&quot;&gt;&lt;/a&gt;Ubuntu ssh root&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;sudo apt-get install openssh-server
+sudo vi /etc/ssh/sshd_config
+#PermitRootLogin prohibit-password
+PermitRootLogin yes
+
+sudo passwd root
+
+sudo service ssh restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;终端代理&quot;&gt;&lt;a href=&quot;#终端代理&quot; class=&quot;headerlink&quot; title=&quot;终端代理&quot;&gt;&lt;/a&gt;终端代理&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;export http_proxy=&amp;quot;http://ip:port&amp;quot;
+export https_proxy=&amp;quot;https://ip:port&amp;quot;
+export ALL_PROXY=socks5://ip:port
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;文件proxy&quot;&gt;&lt;a href=&quot;#文件proxy&quot; class=&quot;headerlink&quot; title=&quot;文件proxy&quot;&gt;&lt;/a&gt;文件proxy&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;Acquire::http::proxy=&amp;quot;http://ip:port/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;docker代理&quot;&gt;&lt;a href=&quot;#docker代理&quot; class=&quot;headerlink&quot; title=&quot;docker代理&quot;&gt;&lt;/a&gt;docker代理&lt;/h3&gt;&lt;p&gt;1.创建docker服务插件目录&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;sudo mkdir -p /etc/systemd/system/docker.service.d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2.创建一个名为http-proxy.conf的文件&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
