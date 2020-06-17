@@ -5,16 +5,16 @@
   <subtitle>ZhouJing’s Note</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="evan-zj.github.io/"/>
+  <link href="www.zhoujing.nl/"/>
   <updated>2020-05-24T15:00:40.814Z</updated>
-  <id>evan-zj.github.io/</id>
+  <id>www.zhoujing.nl/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
     <title>无污染DNS学习记录</title>
-    <link href="evan-zj.github.io/2020/05/12/mydns/"/>
-    <id>evan-zj.github.io/2020/05/12/mydns/</id>
+    <link href="www.zhoujing.nl/2020/05/12/mydns/"/>
+    <id>www.zhoujing.nl/2020/05/12/mydns/</id>
     <published>2020-05-12T14:35:56.000Z</published>
     <updated>2020-05-24T15:00:40.814Z</updated>
     
@@ -36,8 +36,8 @@
   
   <entry>
     <title>自建KMS激活服务</title>
-    <link href="evan-zj.github.io/2020/05/11/mykms/"/>
-    <id>evan-zj.github.io/2020/05/11/mykms/</id>
+    <link href="www.zhoujing.nl/2020/05/11/mykms/"/>
+    <id>www.zhoujing.nl/2020/05/11/mykms/</id>
     <published>2020-05-11T15:11:20.000Z</published>
     <updated>2020-05-24T15:13:28.432Z</updated>
     
@@ -59,8 +59,8 @@
   
   <entry>
     <title>防止SSH暴力破解 一键脚本</title>
-    <link href="evan-zj.github.io/2020/05/10/fail2ban/"/>
-    <id>evan-zj.github.io/2020/05/10/fail2ban/</id>
+    <link href="www.zhoujing.nl/2020/05/10/fail2ban/"/>
+    <id>www.zhoujing.nl/2020/05/10/fail2ban/</id>
     <published>2020-05-10T15:20:25.000Z</published>
     <updated>2020-05-24T15:22:39.977Z</updated>
     
@@ -84,8 +84,8 @@
   
   <entry>
     <title>OneIndex的Docker安装部署</title>
-    <link href="evan-zj.github.io/2020/05/08/onedrive/"/>
-    <id>evan-zj.github.io/2020/05/08/onedrive/</id>
+    <link href="www.zhoujing.nl/2020/05/08/onedrive/"/>
+    <id>www.zhoujing.nl/2020/05/08/onedrive/</id>
     <published>2020-05-08T14:33:40.000Z</published>
     <updated>2020-05-24T15:19:31.396Z</updated>
     
@@ -101,8 +101,8 @@
   
   <entry>
     <title>内网穿透frp使用</title>
-    <link href="evan-zj.github.io/2020/05/05/frp/"/>
-    <id>evan-zj.github.io/2020/05/05/frp/</id>
+    <link href="www.zhoujing.nl/2020/05/05/frp/"/>
+    <id>www.zhoujing.nl/2020/05/05/frp/</id>
     <published>2020-05-05T15:28:37.000Z</published>
     <updated>2020-05-24T14:52:06.487Z</updated>
     
@@ -114,18 +114,17 @@
 &lt;li&gt;访问目标设备（就是你最终要访问的设备）&lt;/li&gt;
 &lt;li&gt;系统使用Ubuntu 16.04 x64，frp客户端和服务端本身同时均支持Linux和Windows&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;服务端&quot;&gt;&lt;a href=&quot;#服务端&quot; class=&quot;headerlink&quot; title=&quot;服务端&quot;&gt;&lt;/a&gt;服务端&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;#SSH连接到VPS之后运行如下命令查看处理器架构，根据架构下载不同版本的frp
+&lt;h2 id=&quot;服务端&quot;&gt;&lt;a href=&quot;#服务端&quot; class=&quot;headerlink&quot; title=&quot;服务端&quot;&gt;&lt;/a&gt;服务端&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;#SSH连接到VPS之后运行如下命令查看处理器架构，根据架构下载不同版本的frp&lt;/span&gt;
 arch
-#下载
+&lt;span class=&quot;hljs-comment&quot;&gt;#下载&lt;/span&gt;
 wget https://github.com/fatedier/frp/releases/download/v0.33.0/frp_0.33.0_linux_amd64.tar.gz
-#解压
+&lt;span class=&quot;hljs-comment&quot;&gt;#解压&lt;/span&gt;
 tar -zxvf frp_0.33.0_linux_amd64.tar.gz
-#重命名
+&lt;span class=&quot;hljs-comment&quot;&gt;#重命名&lt;/span&gt;
 mv frp_0.33.0_linux_amd64 frp
-cd frp
-#修改配置文件frps.ini
-vi frps.ini
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;hljs-built_in&quot;&gt;cd&lt;/span&gt; frp
+&lt;span class=&quot;hljs-comment&quot;&gt;#修改配置文件frps.ini&lt;/span&gt;
+vi frps.ini&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -135,35 +134,32 @@ vi frps.ini
   
   <entry>
     <title>编译Hadoop3.1.3 eclipse插件</title>
-    <link href="evan-zj.github.io/2020/04/23/hadoop313-eclipse/"/>
-    <id>evan-zj.github.io/2020/04/23/hadoop313-eclipse/</id>
+    <link href="www.zhoujing.nl/2020/04/23/hadoop313-eclipse/"/>
+    <id>www.zhoujing.nl/2020/04/23/hadoop313-eclipse/</id>
     <published>2020-04-23T15:42:43.000Z</published>
     <updated>2020-05-05T15:17:09.536Z</updated>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下&quot;&gt;&lt;a href=&quot;#Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下&quot; class=&quot;headerlink&quot; title=&quot;Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下&quot;&gt;&lt;/a&gt;Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;解压释放：
+      &lt;h4 id=&quot;Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下&quot;&gt;&lt;a href=&quot;#Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下&quot; class=&quot;headerlink&quot; title=&quot;Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下&quot;&gt;&lt;/a&gt;Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;解压释放：
 tar xvfz hadoop-3.1.3.tar.gz -C /opt
 然后确定文件夹名为hadoop
-mv hadoop-3.1.3 hadoop
-&lt;/code&gt;&lt;/pre&gt;
+mv hadoop-3.1.3 hadoop&lt;/code&gt;&lt;/pre&gt;
 &lt;h4 id=&quot;安装eclipse&quot;&gt;&lt;a href=&quot;#安装eclipse&quot; class=&quot;headerlink&quot; title=&quot;安装eclipse&quot;&gt;&lt;/a&gt;安装eclipse&lt;/h4&gt;&lt;p&gt;eclipse&lt;a href=&quot;https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载链接&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;#解压Eclipse软件
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;#解压Eclipse软件&lt;/span&gt;
 tar xvfz eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz -C /opt
-#确保opt目录下解压的文件夹名为eclipse，不是的话mv修改
-#添加环境变量
+&lt;span class=&quot;hljs-comment&quot;&gt;#确保opt目录下解压的文件夹名为eclipse，不是的话mv修改&lt;/span&gt;
+&lt;span class=&quot;hljs-comment&quot;&gt;#添加环境变量&lt;/span&gt;
 cat&amp;gt;&amp;gt; /etc/profile&amp;lt;&amp;lt;EOF
-export ECLIPSE_HOME=/opt/eclipse
-export PATH=\$ECLIPSE_HOME:\$PATH
+&lt;span class=&quot;hljs-built_in&quot;&gt;export&lt;/span&gt; ECLIPSE_HOME=/opt/eclipse
+&lt;span class=&quot;hljs-built_in&quot;&gt;export&lt;/span&gt; PATH=\&lt;span class=&quot;hljs-variable&quot;&gt;$ECLIPSE_HOME&lt;/span&gt;:\&lt;span class=&quot;hljs-variable&quot;&gt;$PATH&lt;/span&gt;
 EOF
-#重启
+&lt;span class=&quot;hljs-comment&quot;&gt;#重启&lt;/span&gt;
 reboot
-#或
-source /etc/profile
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id=&quot;下载hadoop3x-eclipse-plugin源代码&quot;&gt;&lt;a href=&quot;#下载hadoop3x-eclipse-plugin源代码&quot; class=&quot;headerlink&quot; title=&quot;下载hadoop3x-eclipse-plugin源代码&quot;&gt;&lt;/a&gt;下载hadoop3x-eclipse-plugin源代码&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;git clone https://github.com/Woooosz/eclipse-hadoop3x
-cd eclipse-hadoop3x
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;hljs-comment&quot;&gt;#或&lt;/span&gt;
+&lt;span class=&quot;hljs-built_in&quot;&gt;source&lt;/span&gt; /etc/profile&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;下载hadoop3x-eclipse-plugin源代码&quot;&gt;&lt;a href=&quot;#下载hadoop3x-eclipse-plugin源代码&quot; class=&quot;headerlink&quot; title=&quot;下载hadoop3x-eclipse-plugin源代码&quot;&gt;&lt;/a&gt;下载hadoop3x-eclipse-plugin源代码&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;git &lt;span class=&quot;hljs-built_in&quot;&gt;clone&lt;/span&gt; https://github.com/Woooosz/eclipse-hadoop3x
+&lt;span class=&quot;hljs-built_in&quot;&gt;cd&lt;/span&gt; eclipse-hadoop3x&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -173,8 +169,8 @@ cd eclipse-hadoop3x
   
   <entry>
     <title>hadoop3.1.3编译</title>
-    <link href="evan-zj.github.io/2020/04/23/hadoop313/"/>
-    <id>evan-zj.github.io/2020/04/23/hadoop313/</id>
+    <link href="www.zhoujing.nl/2020/04/23/hadoop313/"/>
+    <id>www.zhoujing.nl/2020/04/23/hadoop313/</id>
     <published>2020-04-23T14:40:57.000Z</published>
     <updated>2020-04-23T15:28:13.700Z</updated>
     
@@ -183,28 +179,25 @@ cd eclipse-hadoop3x
       &lt;h3 id=&quot;编译环境&quot;&gt;&lt;a href=&quot;#编译环境&quot; class=&quot;headerlink&quot; title=&quot;编译环境&quot;&gt;&lt;/a&gt;编译环境&lt;/h3&gt;&lt;p&gt;Vultr 美国新泽西皮斯 4CPU 4GB vps&lt;/p&gt;
 &lt;p&gt;Centos 7.7&lt;br&gt;jdk-8u241-linux-x64.tar.gz&lt;br&gt;maven3.6.3&lt;br&gt;protocbuf 2.5.0&lt;br&gt;findbugs-3.0.1&lt;/p&gt;
 &lt;h3 id=&quot;编译前准备&quot;&gt;&lt;a href=&quot;#编译前准备&quot; class=&quot;headerlink&quot; title=&quot;编译前准备&quot;&gt;&lt;/a&gt;编译前准备&lt;/h3&gt;&lt;p&gt;安装C和C++编译器&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;yum -y install gcc gcc-c++
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;yum -y install gcc gcc-c++&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;安装Cmake 3.13.5&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;wget https://cmake.org/files/v3.13/cmake-3.13.5.tar.gz
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;wget https://cmake.org/files/v3.13/cmake-3.13.5.tar.gz
 tar -zxvf cmake-3.13.5.tar.gz  
-cd cmake-3.13.5
-./bootstrap --prefix=/usr/local
+&lt;span class=&quot;hljs-built_in&quot;&gt;cd&lt;/span&gt; cmake-3.13.5
+./bootstrap --prefix=/usr/&lt;span class=&quot;hljs-built_in&quot;&gt;local&lt;/span&gt;
 gmake
 make install
-/usr/local/bin/cmake --version #查看编译后的cmake版本
+/usr/&lt;span class=&quot;hljs-built_in&quot;&gt;local&lt;/span&gt;/bin/cmake --version &lt;span class=&quot;hljs-comment&quot;&gt;#查看编译后的cmake版本&lt;/span&gt;
 
-cd ..#记得切换目录，别把自己安装得新版卸载了
-yum remove cmake -y #移除原来的cmake版本
+&lt;span class=&quot;hljs-built_in&quot;&gt;cd&lt;/span&gt; ..&lt;span class=&quot;hljs-comment&quot;&gt;#记得切换目录，别把自己安装得新版卸载了&lt;/span&gt;
+yum remove cmake -y &lt;span class=&quot;hljs-comment&quot;&gt;#移除原来的cmake版本&lt;/span&gt;
 
-ln -s /usr/local/bin/cmake /usr/bin/ #新建软连接
-cmake --version #终端查看版本
-&lt;/code&gt;&lt;/pre&gt;
+ln -s /usr/&lt;span class=&quot;hljs-built_in&quot;&gt;local&lt;/span&gt;/bin/cmake /usr/bin/ &lt;span class=&quot;hljs-comment&quot;&gt;#新建软连接&lt;/span&gt;
+cmake --version &lt;span class=&quot;hljs-comment&quot;&gt;#终端查看版本&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;安装其他软件包&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;yum -y install autoconf automake libtool curl
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;yum -y install autoconf automake libtool curl
 yum -y install lzo-devel zlib-devel openssl openssl-devel ncurses-devel
-yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
-&lt;/code&gt;&lt;/pre&gt;
+yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -214,23 +207,20 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>使用ProxyChains终端代理</title>
-    <link href="evan-zj.github.io/2020/03/24/proxychain/"/>
-    <id>evan-zj.github.io/2020/03/24/proxychain/</id>
+    <link href="www.zhoujing.nl/2020/03/24/proxychain/"/>
+    <id>www.zhoujing.nl/2020/03/24/proxychain/</id>
     <published>2020-03-24T15:08:16.000Z</published>
     <updated>2020-05-24T15:08:59.512Z</updated>
     
     <summary type="html">
     
       &lt;h3 id=&quot;使用ProxyChains终端代理&quot;&gt;&lt;a href=&quot;#使用ProxyChains终端代理&quot; class=&quot;headerlink&quot; title=&quot;使用ProxyChains终端代理&quot;&gt;&lt;/a&gt;使用ProxyChains终端代理&lt;/h3&gt;&lt;p&gt;在源里有这个软件，直接安装&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;sudo apt-get install proxychains
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;sudo apt-get install proxychains&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;编辑/etc/proxychains.conf&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;vi /etc/proxychains.conf
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;vi /etc/proxychains.conf&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;在最后的ProxyList里加入Shawdowsocks的代理设置：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;socks5    ip    port
-#socks5    127.0.0.1    108
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;socks5    ip    port
+&lt;span class=&quot;hljs-comment&quot;&gt;#socks5    127.0.0.1    108&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -240,15 +230,14 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>Hexo同时部署到GitHub和VPS</title>
-    <link href="evan-zj.github.io/2020/02/08/vpsgit/"/>
-    <id>evan-zj.github.io/2020/02/08/vpsgit/</id>
+    <link href="www.zhoujing.nl/2020/02/08/vpsgit/"/>
+    <id>www.zhoujing.nl/2020/02/08/vpsgit/</id>
     <published>2020-02-08T14:32:49.000Z</published>
     <updated>2020-02-08T15:25:41.286Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;1-hexo部署到VPS&quot;&gt;&lt;a href=&quot;#1-hexo部署到VPS&quot; class=&quot;headerlink&quot; title=&quot;1. hexo部署到VPS&quot;&gt;&lt;/a&gt;1. hexo部署到VPS&lt;/h2&gt;&lt;h3 id=&quot;安装Git&quot;&gt;&lt;a href=&quot;#安装Git&quot; class=&quot;headerlink&quot; title=&quot;安装Git&quot;&gt;&lt;/a&gt;安装Git&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;apt-get install git
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;h2 id=&quot;1-hexo部署到VPS&quot;&gt;&lt;a href=&quot;#1-hexo部署到VPS&quot; class=&quot;headerlink&quot; title=&quot;1. hexo部署到VPS&quot;&gt;&lt;/a&gt;1. hexo部署到VPS&lt;/h2&gt;&lt;h3 id=&quot;安装Git&quot;&gt;&lt;a href=&quot;#安装Git&quot; class=&quot;headerlink&quot; title=&quot;安装Git&quot;&gt;&lt;/a&gt;安装Git&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;apt-get install git&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;配置-SSH-免密访问&quot;&gt;&lt;a href=&quot;#配置-SSH-免密访问&quot; class=&quot;headerlink&quot; title=&quot;配置 SSH 免密访问&quot;&gt;&lt;/a&gt;配置 SSH 免密访问&lt;/h3&gt;
     
     </summary>
@@ -259,8 +248,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>ShareLaTeX安装、配置与部署</title>
-    <link href="evan-zj.github.io/2020/02/04/sharelatexdocker/"/>
-    <id>evan-zj.github.io/2020/02/04/sharelatexdocker/</id>
+    <link href="www.zhoujing.nl/2020/02/04/sharelatexdocker/"/>
+    <id>www.zhoujing.nl/2020/02/04/sharelatexdocker/</id>
     <published>2020-02-04T09:11:37.000Z</published>
     <updated>2020-02-07T14:14:00.411Z</updated>
     
@@ -269,11 +258,9 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
       &lt;p&gt;&lt;strong&gt;服务器操作系统&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Ubuntu 16.04.6 LTS&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;安装docker&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;sudo apt install docker.io
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;sudo apt install docker.io&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看是否安装成功&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;docker -v
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;docker -v&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -283,23 +270,20 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>Ubuntu安装配置socket5 代理服务dante-server</title>
-    <link href="evan-zj.github.io/2020/02/01/dante/"/>
-    <id>evan-zj.github.io/2020/02/01/dante/</id>
+    <link href="www.zhoujing.nl/2020/02/01/dante/"/>
+    <id>www.zhoujing.nl/2020/02/01/dante/</id>
     <published>2020-02-01T06:27:54.000Z</published>
     <updated>2020-02-01T06:42:17.712Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;&lt;em&gt;服务器:Ubuntu 16.04.6&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;sudo apt-get install dante-server
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;创建代理用户&quot;&gt;&lt;a href=&quot;#创建代理用户&quot; class=&quot;headerlink&quot; title=&quot;创建代理用户&quot;&gt;&lt;/a&gt;&lt;strong&gt;创建代理用户&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;创建组&quot;&gt;&lt;a href=&quot;#创建组&quot; class=&quot;headerlink&quot; title=&quot;创建组&quot;&gt;&lt;/a&gt;创建组&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;groupadd proxy
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;sudo apt-get install dante-server&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;创建代理用户&quot;&gt;&lt;a href=&quot;#创建代理用户&quot; class=&quot;headerlink&quot; title=&quot;创建代理用户&quot;&gt;&lt;/a&gt;&lt;strong&gt;创建代理用户&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;创建组&quot;&gt;&lt;a href=&quot;#创建组&quot; class=&quot;headerlink&quot; title=&quot;创建组&quot;&gt;&lt;/a&gt;创建组&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;groupadd proxy&lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
 &lt;p&gt;注意:系统可能已经存在proxy组，就不用再创建了&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&quot;创建用户&quot;&gt;&lt;a href=&quot;#创建用户&quot; class=&quot;headerlink&quot; title=&quot;创建用户&quot;&gt;&lt;/a&gt;创建用户&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;useradd ss5 -g proxy
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;创建用户&quot;&gt;&lt;a href=&quot;#创建用户&quot; class=&quot;headerlink&quot; title=&quot;创建用户&quot;&gt;&lt;/a&gt;创建用户&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;useradd ss5 -g proxy&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -309,8 +293,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>Multiple-Fluid</title>
-    <link href="evan-zj.github.io/2020/01/07/multiplefluid/"/>
-    <id>evan-zj.github.io/2020/01/07/multiplefluid/</id>
+    <link href="www.zhoujing.nl/2020/01/07/multiplefluid/"/>
+    <id>www.zhoujing.nl/2020/01/07/multiplefluid/</id>
     <published>2020-01-07T07:10:29.000Z</published>
     <updated>2020-05-24T15:17:59.655Z</updated>
     
@@ -333,8 +317,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>GitHub + jsDelivr + PicGo + Imagine制作免费图床</title>
-    <link href="evan-zj.github.io/2020/01/05/pic/"/>
-    <id>evan-zj.github.io/2020/01/05/pic/</id>
+    <link href="www.zhoujing.nl/2020/01/05/pic/"/>
+    <id>www.zhoujing.nl/2020/01/05/pic/</id>
     <published>2020-01-05T15:11:44.000Z</published>
     <updated>2020-01-06T06:23:27.000Z</updated>
     
@@ -359,14 +343,14 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>tempoGAN Notes</title>
-    <link href="evan-zj.github.io/2020/01/05/tempgan/"/>
-    <id>evan-zj.github.io/2020/01/05/tempgan/</id>
+    <link href="www.zhoujing.nl/2020/01/05/tempgan/"/>
+    <id>www.zhoujing.nl/2020/01/05/tempgan/</id>
     <published>2020-01-05T05:55:24.000Z</published>
     <updated>2020-01-06T10:59:55.000Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow&quot;&gt;&lt;a href=&quot;#tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow&quot; class=&quot;headerlink&quot; title=&quot;tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://arxiv.org/pdf/1801.09710.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-06 110009.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow&quot;&gt;&lt;a href=&quot;#tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow&quot; class=&quot;headerlink&quot; title=&quot;tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://arxiv.org/pdf/1801.09710.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-06 110009.png&quot; srcset=&quot;/img/loading.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;图1.本文卷积神经网络学习基于包含单个时间步长的密度和速度数据的低分辨率字段，生成高度详细的时间相关特征。 引入了一种新颖的鉴别器，可确保合成的细节随时间平滑变化。&lt;/p&gt;
 &lt;h4 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;一个时间相干的生成模型，以解决流体流的超分辨率问题&lt;/p&gt;
@@ -394,8 +378,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
   
   <entry>
     <title>Hexo显示数学公式</title>
-    <link href="evan-zj.github.io/2020/01/05/hexomath/"/>
-    <id>evan-zj.github.io/2020/01/05/hexomath/</id>
+    <link href="www.zhoujing.nl/2020/01/05/hexomath/"/>
+    <id>www.zhoujing.nl/2020/01/05/hexomath/</id>
     <published>2020-01-04T16:31:07.000Z</published>
     <updated>2020-01-06T03:36:47.000Z</updated>
     
@@ -404,9 +388,8 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst
       &lt;p&gt;Hexo 默认使用 hexo-renderer-marked 引擎渲染网页，该引擎会把一些特殊的 markdown 符号转换为相应的 html 标签，比如在 markdown 语法中，下划线&lt;code&gt;_&lt;/code&gt;代表斜体，会被渲染引擎处理为``标签。&lt;/p&gt;
 &lt;p&gt;因为类 Latex 格式书写的数学公式下划线&lt;code&gt;_&lt;/code&gt;表示下标，有特殊的含义，如果被强制转换为``标签，那么 MathJax 引擎在渲染数学公式的时候就会出错。&lt;/p&gt;
 &lt;p&gt;类似的语义冲突的符号还包括&lt;code&gt;*&lt;/code&gt;, &lt;code&gt;{&lt;/code&gt;, &lt;code&gt;}&lt;/code&gt;, &lt;code&gt;\\&lt;/code&gt;等。&lt;/p&gt;
-&lt;h5 id=&quot;更换-Hexo-的-markdown-渲染引擎&quot;&gt;&lt;a href=&quot;#更换-Hexo-的-markdown-渲染引擎&quot; class=&quot;headerlink&quot; title=&quot;更换 Hexo 的 markdown 渲染引擎&quot;&gt;&lt;/a&gt;更换 Hexo 的 markdown 渲染引擎&lt;/h5&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;npm uninstall hexo-renderer-marked --save  
-npm install hexo-renderer-kramed --save
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&quot;更换-Hexo-的-markdown-渲染引擎&quot;&gt;&lt;a href=&quot;#更换-Hexo-的-markdown-渲染引擎&quot; class=&quot;headerlink&quot; title=&quot;更换 Hexo 的 markdown 渲染引擎&quot;&gt;&lt;/a&gt;更换 Hexo 的 markdown 渲染引擎&lt;/h5&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;npm uninstall hexo-renderer-marked --save  
+npm install hexo-renderer-kramed --save&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -416,22 +399,21 @@ npm install hexo-renderer-kramed --save
   
   <entry>
     <title>latex图片布局参考</title>
-    <link href="evan-zj.github.io/2020/01/04/latex/"/>
-    <id>evan-zj.github.io/2020/01/04/latex/</id>
+    <link href="www.zhoujing.nl/2020/01/04/latex/"/>
+    <id>www.zhoujing.nl/2020/01/04/latex/</id>
     <published>2020-01-04T14:41:41.000Z</published>
     <updated>2020-05-24T15:01:56.140Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;latex图片布局参考&quot;&gt;&lt;a href=&quot;#latex图片布局参考&quot; class=&quot;headerlink&quot; title=&quot;latex图片布局参考&quot;&gt;&lt;/a&gt;latex图片布局参考&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;lang-latex&quot;&gt;\usepackage{graphicx} %插入图片的宏包
-\usepackage{float} %设置图片浮动位置的宏包
-\usepackage{subfigure} %插入多图时用子图显示的宏包
+      &lt;h2 id=&quot;latex图片布局参考&quot;&gt;&lt;a href=&quot;#latex图片布局参考&quot; class=&quot;headerlink&quot; title=&quot;latex图片布局参考&quot;&gt;&lt;/a&gt;latex图片布局参考&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;hljs latex&quot;&gt;\usepackage&amp;#123;graphicx&amp;#125; %插入图片的宏包
+\usepackage&amp;#123;float&amp;#125; %设置图片浮动位置的宏包
+\usepackage&amp;#123;subfigure&amp;#125; %插入多图时用子图显示的宏包
 
-\begin{figure}[H] %这里使用的是强制位置
+\begin&amp;#123;figure&amp;#125;[H] %这里使用的是强制位置
   \centering %图片全局居中
-  \vspace{-0.35cm} %设置与上面正文的距离
-  \subfigtopskip=2pt %设置子图与上面正文或别的内容的距离
-&lt;/code&gt;&lt;/pre&gt;
+  \vspace&amp;#123;-0.35cm&amp;#125; %设置与上面正文的距离
+  \subfigtopskip&amp;#x3D;2pt %设置子图与上面正文或别的内容的距离&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -441,8 +423,8 @@ npm install hexo-renderer-kramed --save
   
   <entry>
     <title>hexo搭建个人博客记录</title>
-    <link href="evan-zj.github.io/2020/01/04/hexogit/"/>
-    <id>evan-zj.github.io/2020/01/04/hexogit/</id>
+    <link href="www.zhoujing.nl/2020/01/04/hexogit/"/>
+    <id>www.zhoujing.nl/2020/01/04/hexogit/</id>
     <published>2020-01-04T05:42:52.000Z</published>
     <updated>2020-01-07T06:51:15.000Z</updated>
     
@@ -470,34 +452,29 @@ npm install hexo-renderer-kramed --save
   
   <entry>
     <title>Note</title>
-    <link href="evan-zj.github.io/2020/01/03/note/"/>
-    <id>evan-zj.github.io/2020/01/03/note/</id>
+    <link href="www.zhoujing.nl/2020/01/03/note/"/>
+    <id>www.zhoujing.nl/2020/01/03/note/</id>
     <published>2020-01-03T14:40:41.000Z</published>
     <updated>2020-05-24T14:41:25.488Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;个人常用命令记录&lt;/p&gt;
-&lt;h3 id=&quot;bbr&quot;&gt;&lt;a href=&quot;#bbr&quot; class=&quot;headerlink&quot; title=&quot;bbr&quot;&gt;&lt;/a&gt;bbr&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;wget -N --no-check-certificate &amp;quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&amp;quot; &amp;amp;&amp;amp; chmod +x tcp.sh &amp;amp;&amp;amp; ./tcp.sh
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;Ubuntu-ssh-root&quot;&gt;&lt;a href=&quot;#Ubuntu-ssh-root&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu ssh root&quot;&gt;&lt;/a&gt;Ubuntu ssh root&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;sudo apt-get install openssh-server
+&lt;h3 id=&quot;bbr&quot;&gt;&lt;a href=&quot;#bbr&quot; class=&quot;headerlink&quot; title=&quot;bbr&quot;&gt;&lt;/a&gt;bbr&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;wget -N --no-check-certificate &lt;span class=&quot;hljs-string&quot;&gt;&quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&quot;&lt;/span&gt; &amp;amp;&amp;amp; chmod +x tcp.sh &amp;amp;&amp;amp; ./tcp.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;Ubuntu-ssh-root&quot;&gt;&lt;a href=&quot;#Ubuntu-ssh-root&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu ssh root&quot;&gt;&lt;/a&gt;Ubuntu ssh root&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;sudo apt-get install openssh-server
 sudo vi /etc/ssh/sshd_config
-#PermitRootLogin prohibit-password
+&lt;span class=&quot;hljs-comment&quot;&gt;#PermitRootLogin prohibit-password&lt;/span&gt;
 PermitRootLogin yes
 
 sudo passwd root
 
-sudo service ssh restart
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;终端代理&quot;&gt;&lt;a href=&quot;#终端代理&quot; class=&quot;headerlink&quot; title=&quot;终端代理&quot;&gt;&lt;/a&gt;终端代理&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;export http_proxy=&amp;quot;http://ip:port&amp;quot;
-export https_proxy=&amp;quot;https://ip:port&amp;quot;
-export ALL_PROXY=socks5://ip:port
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;文件proxy&quot;&gt;&lt;a href=&quot;#文件proxy&quot; class=&quot;headerlink&quot; title=&quot;文件proxy&quot;&gt;&lt;/a&gt;文件proxy&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;Acquire::http::proxy=&amp;quot;http://ip:port/&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
+sudo service ssh restart&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;终端代理&quot;&gt;&lt;a href=&quot;#终端代理&quot; class=&quot;headerlink&quot; title=&quot;终端代理&quot;&gt;&lt;/a&gt;终端代理&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;&lt;span class=&quot;hljs-built_in&quot;&gt;export&lt;/span&gt; http_proxy=&lt;span class=&quot;hljs-string&quot;&gt;&quot;http://ip:port&quot;&lt;/span&gt;
+&lt;span class=&quot;hljs-built_in&quot;&gt;export&lt;/span&gt; https_proxy=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://ip:port&quot;&lt;/span&gt;
+&lt;span class=&quot;hljs-built_in&quot;&gt;export&lt;/span&gt; ALL_PROXY=socks5://ip:port&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;文件proxy&quot;&gt;&lt;a href=&quot;#文件proxy&quot; class=&quot;headerlink&quot; title=&quot;文件proxy&quot;&gt;&lt;/a&gt;文件proxy&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;Acquire::http::proxy=&lt;span class=&quot;hljs-string&quot;&gt;&quot;http://ip:port/&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;docker代理&quot;&gt;&lt;a href=&quot;#docker代理&quot; class=&quot;headerlink&quot; title=&quot;docker代理&quot;&gt;&lt;/a&gt;docker代理&lt;/h3&gt;&lt;p&gt;1.创建docker服务插件目录&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;sudo mkdir -p /etc/systemd/system/docker.service.d
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;sudo mkdir -p /etc/systemd/system/docker.service.d&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;2.创建一个名为http-proxy.conf的文件&lt;/p&gt;
     
     </summary>
