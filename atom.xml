@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="evan-zj.github.io/"/>
-  <updated>2020-06-17T18:19:34.965Z</updated>
+  <updated>2020-06-18T04:16:22.723Z</updated>
   <id>evan-zj.github.io/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
@@ -16,7 +16,7 @@
     <link href="evan-zj.github.io/2020/05/16/fail2ban/"/>
     <id>evan-zj.github.io/2020/05/16/fail2ban/</id>
     <published>2020-05-16T15:22:43.000Z</published>
-    <updated>2020-06-17T18:19:34.965Z</updated>
+    <updated>2020-06-18T04:16:22.723Z</updated>
     
     <summary type="html">
     
@@ -34,6 +34,10 @@
     
     
     
+      <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="SSH" scheme="evan-zj.github.io/tags/SSH/"/>
+    
   </entry>
   
   <entry>
@@ -41,7 +45,7 @@
     <link href="evan-zj.github.io/2020/05/12/mydns/"/>
     <id>evan-zj.github.io/2020/05/12/mydns/</id>
     <published>2020-05-12T14:35:56.000Z</published>
-    <updated>2020-06-17T18:19:46.356Z</updated>
+    <updated>2020-06-18T04:15:46.912Z</updated>
     
     <summary type="html">
     
@@ -56,6 +60,12 @@
     </summary>
     
     
+    
+      <category term="vps" scheme="evan-zj.github.io/tags/vps/"/>
+    
+      <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="DNS" scheme="evan-zj.github.io/tags/DNS/"/>
     
   </entry>
   
@@ -91,7 +101,7 @@
     <link href="evan-zj.github.io/2020/05/08/onedrive/"/>
     <id>evan-zj.github.io/2020/05/08/onedrive/</id>
     <published>2020-05-08T14:33:40.000Z</published>
-    <updated>2020-06-17T18:19:11.353Z</updated>
+    <updated>2020-06-18T04:17:07.931Z</updated>
     
     <summary type="html">
     
@@ -101,6 +111,12 @@
     
     
     
+      <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="VPS" scheme="evan-zj.github.io/tags/VPS/"/>
+    
+      <category term="OneDrive" scheme="evan-zj.github.io/tags/OneDrive/"/>
+    
   </entry>
   
   <entry>
@@ -108,7 +124,7 @@
     <link href="evan-zj.github.io/2020/05/05/frp/"/>
     <id>evan-zj.github.io/2020/05/05/frp/</id>
     <published>2020-05-05T15:28:37.000Z</published>
-    <updated>2020-06-17T18:19:26.137Z</updated>
+    <updated>2020-06-18T04:17:40.305Z</updated>
     
     <summary type="html">
     
@@ -134,6 +150,53 @@ vi frps.ini&lt;/code&gt;&lt;/pre&gt;
     
     
     
+      <category term="vps" scheme="evan-zj.github.io/tags/vps/"/>
+    
+      <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="frp" scheme="evan-zj.github.io/tags/frp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编译Hadoop3.1.3 eclipse插件</title>
+    <link href="evan-zj.github.io/2020/04/23/hadoop313-eclipse/"/>
+    <id>evan-zj.github.io/2020/04/23/hadoop313-eclipse/</id>
+    <published>2020-04-23T15:42:43.000Z</published>
+    <updated>2020-06-18T04:18:24.629Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下&quot;&gt;&lt;a href=&quot;#Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下&quot; class=&quot;headerlink&quot; title=&quot;Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下&quot;&gt;&lt;/a&gt;Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;解压释放：
+tar xvfz hadoop-3.1.3.tar.gz -C /opt
+然后确定文件夹名为hadoop
+mv hadoop-3.1.3 hadoop&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;安装eclipse&quot;&gt;&lt;a href=&quot;#安装eclipse&quot; class=&quot;headerlink&quot; title=&quot;安装eclipse&quot;&gt;&lt;/a&gt;安装eclipse&lt;/h4&gt;&lt;p&gt;eclipse&lt;a href=&quot;https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载链接&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;#解压Eclipse软件&lt;/span&gt;
+tar xvfz eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz -C /opt
+&lt;span class=&quot;hljs-comment&quot;&gt;#确保opt目录下解压的文件夹名为eclipse，不是的话mv修改&lt;/span&gt;
+&lt;span class=&quot;hljs-comment&quot;&gt;#添加环境变量&lt;/span&gt;
+cat&amp;gt;&amp;gt; /etc/profile&amp;lt;&amp;lt;EOF
+&lt;span class=&quot;hljs-built_in&quot;&gt;export&lt;/span&gt; ECLIPSE_HOME=/opt/eclipse
+&lt;span class=&quot;hljs-built_in&quot;&gt;export&lt;/span&gt; PATH=\&lt;span class=&quot;hljs-variable&quot;&gt;$ECLIPSE_HOME&lt;/span&gt;:\&lt;span class=&quot;hljs-variable&quot;&gt;$PATH&lt;/span&gt;
+EOF
+&lt;span class=&quot;hljs-comment&quot;&gt;#重启&lt;/span&gt;
+reboot
+&lt;span class=&quot;hljs-comment&quot;&gt;#或&lt;/span&gt;
+&lt;span class=&quot;hljs-built_in&quot;&gt;source&lt;/span&gt; /etc/profile&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;下载hadoop3x-eclipse-plugin源代码&quot;&gt;&lt;a href=&quot;#下载hadoop3x-eclipse-plugin源代码&quot; class=&quot;headerlink&quot; title=&quot;下载hadoop3x-eclipse-plugin源代码&quot;&gt;&lt;/a&gt;下载hadoop3x-eclipse-plugin源代码&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;git &lt;span class=&quot;hljs-built_in&quot;&gt;clone&lt;/span&gt; https://github.com/Woooosz/eclipse-hadoop3x
+&lt;span class=&quot;hljs-built_in&quot;&gt;cd&lt;/span&gt; eclipse-hadoop3x&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="Hadoop" scheme="evan-zj.github.io/tags/Hadoop/"/>
+    
+      <category term="eclipse" scheme="evan-zj.github.io/tags/eclipse/"/>
+    
   </entry>
   
   <entry>
@@ -141,7 +204,7 @@ vi frps.ini&lt;/code&gt;&lt;/pre&gt;
     <link href="evan-zj.github.io/2020/04/23/hadoop313/"/>
     <id>evan-zj.github.io/2020/04/23/hadoop313/</id>
     <published>2020-04-23T14:40:57.000Z</published>
-    <updated>2020-04-23T15:28:13.700Z</updated>
+    <updated>2020-06-18T04:19:33.630Z</updated>
     
     <summary type="html">
     
@@ -172,6 +235,10 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     
     
     
+      <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="Hadoop" scheme="evan-zj.github.io/tags/Hadoop/"/>
+    
   </entry>
   
   <entry>
@@ -179,7 +246,7 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     <link href="evan-zj.github.io/2020/03/24/proxychain/"/>
     <id>evan-zj.github.io/2020/03/24/proxychain/</id>
     <published>2020-03-24T15:08:16.000Z</published>
-    <updated>2020-05-24T15:08:59.512Z</updated>
+    <updated>2020-06-18T04:23:54.380Z</updated>
     
     <summary type="html">
     
@@ -195,6 +262,10 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     
     
     
+      <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="proxy" scheme="evan-zj.github.io/tags/proxy/"/>
+    
   </entry>
   
   <entry>
@@ -202,7 +273,7 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     <link href="evan-zj.github.io/2020/02/08/vpsgit/"/>
     <id>evan-zj.github.io/2020/02/08/vpsgit/</id>
     <published>2020-02-08T14:32:49.000Z</published>
-    <updated>2020-02-08T15:25:41.286Z</updated>
+    <updated>2020-06-18T04:19:03.455Z</updated>
     
     <summary type="html">
     
@@ -213,6 +284,12 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     
     
     
+      <category term="vps" scheme="evan-zj.github.io/tags/vps/"/>
+    
+      <category term="Github" scheme="evan-zj.github.io/tags/Github/"/>
+    
+      <category term="hexo" scheme="evan-zj.github.io/tags/hexo/"/>
+    
   </entry>
   
   <entry>
@@ -220,7 +297,7 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     <link href="evan-zj.github.io/2020/02/04/sharelatexdocker/"/>
     <id>evan-zj.github.io/2020/02/04/sharelatexdocker/</id>
     <published>2020-02-04T09:11:37.000Z</published>
-    <updated>2020-02-07T14:14:00.411Z</updated>
+    <updated>2020-06-18T04:20:06.015Z</updated>
     
     <summary type="html">
     
@@ -235,6 +312,12 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     
     
     
+      <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="docker" scheme="evan-zj.github.io/tags/docker/"/>
+    
+      <category term="sharelatex" scheme="evan-zj.github.io/tags/sharelatex/"/>
+    
   </entry>
   
   <entry>
@@ -242,7 +325,7 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     <link href="evan-zj.github.io/2020/02/01/dante/"/>
     <id>evan-zj.github.io/2020/02/01/dante/</id>
     <published>2020-02-01T06:27:54.000Z</published>
-    <updated>2020-02-01T06:42:17.712Z</updated>
+    <updated>2020-06-18T04:23:22.267Z</updated>
     
     <summary type="html">
     
@@ -258,6 +341,12 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     
     
     
+      <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="socket5" scheme="evan-zj.github.io/tags/socket5/"/>
+    
+      <category term="server" scheme="evan-zj.github.io/tags/server/"/>
+    
   </entry>
   
   <entry>
@@ -265,7 +354,7 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     <link href="evan-zj.github.io/2020/01/07/multiplefluid/"/>
     <id>evan-zj.github.io/2020/01/07/multiplefluid/</id>
     <published>2020-01-07T07:10:29.000Z</published>
-    <updated>2020-05-24T15:17:59.655Z</updated>
+    <updated>2020-06-18T04:30:11.000Z</updated>
     
     <summary type="html">
     
@@ -282,6 +371,12 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     
     
     
+      <category term="Pages" scheme="evan-zj.github.io/tags/Pages/"/>
+    
+      <category term="fluid" scheme="evan-zj.github.io/tags/fluid/"/>
+    
+      <category term="Study" scheme="evan-zj.github.io/tags/Study/"/>
+    
   </entry>
   
   <entry>
@@ -289,7 +384,7 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     <link href="evan-zj.github.io/2020/01/05/pic/"/>
     <id>evan-zj.github.io/2020/01/05/pic/</id>
     <published>2020-01-05T15:11:44.000Z</published>
-    <updated>2020-01-06T06:23:27.000Z</updated>
+    <updated>2020-06-18T04:21:31.114Z</updated>
     
     <summary type="html">
     
@@ -308,6 +403,12 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     
     
     
+      <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="docker" scheme="evan-zj.github.io/tags/docker/"/>
+    
+      <category term="bbr" scheme="evan-zj.github.io/tags/bbr/"/>
+    
   </entry>
   
   <entry>
@@ -315,7 +416,7 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     <link href="evan-zj.github.io/2020/01/05/tempgan/"/>
     <id>evan-zj.github.io/2020/01/05/tempgan/</id>
     <published>2020-01-05T05:55:24.000Z</published>
-    <updated>2020-01-06T10:59:55.000Z</updated>
+    <updated>2020-06-18T04:30:20.727Z</updated>
     
     <summary type="html">
     
@@ -342,6 +443,12 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     </summary>
     
     
+    
+      <category term="Pages" scheme="evan-zj.github.io/tags/Pages/"/>
+    
+      <category term="Study" scheme="evan-zj.github.io/tags/Study/"/>
+    
+      <category term="Fluid" scheme="evan-zj.github.io/tags/Fluid/"/>
     
   </entry>
   
@@ -371,7 +478,7 @@ npm install hexo-renderer-kramed --save&lt;/code&gt;&lt;/pre&gt;
     <link href="evan-zj.github.io/2020/01/04/latex/"/>
     <id>evan-zj.github.io/2020/01/04/latex/</id>
     <published>2020-01-04T14:41:41.000Z</published>
-    <updated>2020-05-24T15:01:56.140Z</updated>
+    <updated>2020-06-18T04:24:28.802Z</updated>
     
     <summary type="html">
     
@@ -388,6 +495,8 @@ npm install hexo-renderer-kramed --save&lt;/code&gt;&lt;/pre&gt;
     
     
     
+      <category term="latex" scheme="evan-zj.github.io/tags/latex/"/>
+    
   </entry>
   
   <entry>
@@ -395,7 +504,7 @@ npm install hexo-renderer-kramed --save&lt;/code&gt;&lt;/pre&gt;
     <link href="evan-zj.github.io/2020/01/04/hexogit/"/>
     <id>evan-zj.github.io/2020/01/04/hexogit/</id>
     <published>2020-01-04T05:42:52.000Z</published>
-    <updated>2020-01-07T06:51:15.000Z</updated>
+    <updated>2020-06-18T04:22:46.815Z</updated>
     
     <summary type="html">
     
@@ -417,6 +526,10 @@ npm install hexo-renderer-kramed --save&lt;/code&gt;&lt;/pre&gt;
     
     
     
+      <category term="Hexo" scheme="evan-zj.github.io/tags/Hexo/"/>
+    
+      <category term="Github" scheme="evan-zj.github.io/tags/Github/"/>
+    
   </entry>
   
   <entry>
@@ -424,7 +537,7 @@ npm install hexo-renderer-kramed --save&lt;/code&gt;&lt;/pre&gt;
     <link href="evan-zj.github.io/2020/01/03/note/"/>
     <id>evan-zj.github.io/2020/01/03/note/</id>
     <published>2020-01-03T14:40:41.000Z</published>
-    <updated>2020-05-24T14:41:25.488Z</updated>
+    <updated>2020-06-18T04:15:03.491Z</updated>
     
     <summary type="html">
     
@@ -449,6 +562,12 @@ sudo service ssh restart&lt;/code&gt;&lt;/pre&gt;
     </summary>
     
     
+    
+      <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="docker" scheme="evan-zj.github.io/tags/docker/"/>
+    
+      <category term="bbr" scheme="evan-zj.github.io/tags/bbr/"/>
     
   </entry>
   

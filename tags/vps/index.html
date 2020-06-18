@@ -17,7 +17,7 @@
   <meta name="description" content="菜鸟的杂七杂八">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>标签 - vps - ZhouJing</title>
+  <title>标签 - VPS - ZhouJing</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -156,9 +156,9 @@
       
       <p class="h5">2020</p>
     
-    <a href="/2020/05/11/mykms/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">自建KMS激活服务</span>
-      <span style="float: right;">05-11</span>
+    <a href="/2020/05/08/onedrive/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">OneIndex的Docker安装部署</span>
+      <span style="float: right;">05-08</span>
     </a>
   
 </div>
@@ -303,7 +303,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - vps&nbsp;",
+        "标签 - VPS&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -371,6 +371,52 @@
           //在body添加这个标签
           $("body").append($i);
           //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
+ CSS 属性集的自定义动画。
           //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
           //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
           $i.animate({
