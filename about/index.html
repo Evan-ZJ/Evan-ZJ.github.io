@@ -17,7 +17,7 @@
   <meta name="description" content="菜鸟的杂七杂八">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>about - ZhouJing</title>
+  <title>关于 - ZhouJing</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -128,7 +128,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618120600.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -152,12 +152,48 @@
         <div class="py-5" id="board"
           >
           
+            <div class="about-avatar">
+              <img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/IMG_1682.JPG" srcset="/img/loading.gif"
+                   class="img-fluid" alt="avatar">
+            </div>
+          
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="page-content">
+<div class="text-center">
+  <div class="about-info">
+    <div class="about-name">myname</div>
+    <div class="about-intro">介绍</div>
+    <div class="about-icons">
+      
+        
+        
+        
+        <a href="/evan_zhou_me@icloud.com" class="
+           hint--bottom hint--rounded"
+           aria-label=E-mail
+        >
+          <i class="iconfont icon-mail" aria-hidden="true"></i>
+          
+        </a>
+      
+        
+        
+        
+        <a href="https://space.bilibili.com/43853187" class="
+           hint--bottom hint--rounded"
+           aria-label=BiliBili
+        >
+          <i class="iconfont icon-bilibili-fill" aria-hidden="true"></i>
+          
+        </a>
+      
+    </div>
+  </div>
+</div>
+<div class="mt-5 markdown-body">
   <h3 id="关于我？"><a href="#关于我？" class="headerlink" title="关于我？"></a>关于我？</h3><p>一个不太会编程的计算机硕士</p>
 <h3 id="爱好"><a href="#爱好" class="headerlink" title="爱好"></a>爱好</h3><p>各种电子产品买买买</p>
 <h3 id="会啥？"><a href="#会啥？" class="headerlink" title="会啥？"></a>会啥？</h3><p>不会编程但是工程能力很强啊！</p>
@@ -209,13 +245,36 @@
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
-    
+    <span id="timeDate">载入天数...</span>
+    <span id="times">载入时分秒...</span>
+    <script>
+    var now = new Date();
+    function createtime(){
+        var grt= new Date("10/19/2019 23:30:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if(String(mnum).length ==1 ){
+                  mnum = "0" + mnum;
+        }
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if(String(snum).length ==1 ){
+                  snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp"+dnum+"&nbsp天";
+        document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+    }
+    setInterval("createtime()",250);
+    </script>
+        
   <div class="statistics">
     
     
@@ -241,9 +300,9 @@
   </div>
 
 
-    
+        
 
-    
+        
   </div>
 </footer>
 
@@ -280,7 +339,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "about&nbsp;",
+        "关于&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

@@ -119,7 +119,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/lg(1).jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618115153.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -156,7 +156,13 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/03/24/proxychain/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110910.jpg" srcset="/img/loading.gif" alt="使用ProxyChains终端代理">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
       <a class="index-header" href="/2020/03/24/proxychain/">使用ProxyChains终端代理</a>
 
       <a href="/2020/03/24/proxychain/" class="index-excerpt">
@@ -188,7 +194,13 @@ socks5    ip    port
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/02/08/vpsgit/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110910.jpg" srcset="/img/loading.gif" alt="Hexo同时部署到GitHub和VPS">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
       <a class="index-header" href="/2020/02/08/vpsgit/">Hexo同时部署到GitHub和VPS</a>
 
       <a href="/2020/02/08/vpsgit/" class="index-excerpt">
@@ -215,7 +227,13 @@ socks5    ip    port
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/02/04/sharelatexdocker/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110910.jpg" srcset="/img/loading.gif" alt="ShareLaTeX安装、配置与部署">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
       <a class="index-header" href="/2020/02/04/sharelatexdocker/">ShareLaTeX安装、配置与部署</a>
 
       <a href="/2020/02/04/sharelatexdocker/" class="index-excerpt">
@@ -246,7 +264,13 @@ docker -v</div>
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/02/01/dante/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110910.jpg" srcset="/img/loading.gif" alt="Ubuntu安装配置socket5 代理服务dante-server">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
       <a class="index-header" href="/2020/02/01/dante/">Ubuntu安装配置socket5 代理服务dante-server</a>
 
       <a href="/2020/02/01/dante/" class="index-excerpt">
@@ -278,7 +302,13 @@ docker -v</div>
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/01/07/multiplefluid/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110910.jpg" srcset="/img/loading.gif" alt="Multiple-Fluid">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
       <a class="index-header" href="/2020/01/07/multiplefluid/">Multiple-Fluid</a>
 
       <a href="/2020/01/07/multiplefluid/" class="index-excerpt">
@@ -309,7 +339,13 @@ docker -v</div>
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/01/05/pic/" target="_self">
+          <img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110910.jpg" srcset="/img/loading.gif" alt="GitHub + jsDelivr + PicGo + Imagine制作免费图床">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
       <a class="index-header" href="/2020/01/05/pic/">GitHub + jsDelivr + PicGo + Imagine制作免费图床</a>
 
       <a href="/2020/01/05/pic/" class="index-excerpt">
@@ -401,13 +437,36 @@ docker -v</div>
 
   <footer class="mt-5">
   <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
-    
+    <span id="timeDate">载入天数...</span>
+    <span id="times">载入时分秒...</span>
+    <script>
+    var now = new Date();
+    function createtime(){
+        var grt= new Date("10/19/2019 23:30:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if(String(mnum).length ==1 ){
+                  mnum = "0" + mnum;
+        }
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if(String(snum).length ==1 ){
+                  snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp"+dnum+"&nbsp天";
+        document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+    }
+    setInterval("createtime()",250);
+    </script>
+        
   <div class="statistics">
     
     
@@ -433,9 +492,9 @@ docker -v</div>
   </div>
 
 
-    
+        
 
-    
+        
   </div>
 </footer>
 
