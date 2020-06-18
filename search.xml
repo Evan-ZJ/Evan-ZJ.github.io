@@ -35,11 +35,11 @@
       
         <tags>
             
-            <tag> vps </tag>
-            
             <tag> Linux </tag>
             
             <tag> DNS </tag>
+            
+            <tag> vps </tag>
             
         </tags>
       
@@ -102,9 +102,9 @@
       
         <tags>
             
-            <tag> vps </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> vps </tag>
             
             <tag> frp </tag>
             
@@ -190,9 +190,9 @@
       
         <tags>
             
-            <tag> vps </tag>
-            
             <tag> Github </tag>
+            
+            <tag> vps </tag>
             
             <tag> hexo </tag>
             

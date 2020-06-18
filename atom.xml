@@ -61,11 +61,11 @@
     
     
     
-      <category term="vps" scheme="evan-zj.github.io/tags/vps/"/>
-    
       <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
     
       <category term="DNS" scheme="evan-zj.github.io/tags/DNS/"/>
+    
+      <category term="vps" scheme="evan-zj.github.io/tags/vps/"/>
     
   </entry>
   
@@ -150,9 +150,9 @@ vi frps.ini&lt;/code&gt;&lt;/pre&gt;
     
     
     
-      <category term="vps" scheme="evan-zj.github.io/tags/vps/"/>
-    
       <category term="Linux" scheme="evan-zj.github.io/tags/Linux/"/>
+    
+      <category term="vps" scheme="evan-zj.github.io/tags/vps/"/>
     
       <category term="frp" scheme="evan-zj.github.io/tags/frp/"/>
     
@@ -284,9 +284,9 @@ yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst&
     
     
     
-      <category term="vps" scheme="evan-zj.github.io/tags/vps/"/>
-    
       <category term="Github" scheme="evan-zj.github.io/tags/Github/"/>
+    
+      <category term="vps" scheme="evan-zj.github.io/tags/vps/"/>
     
       <category term="hexo" scheme="evan-zj.github.io/tags/hexo/"/>
     
