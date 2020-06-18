@@ -209,7 +209,7 @@
 </ol>
 <a id="more"></a>
 
-<h3 id="国内-VPS-上部署-ChinaDNS"><a href="#国内-VPS-上部署-ChinaDNS" class="headerlink" title="国内 VPS 上部署 ChinaDNS"></a>国内 VPS 上部署 ChinaDNS</h3><pre><code class="hljs bash"><span class="hljs-comment"># 如果 Linux 上没有安装 make 和 gcc 的话要先安装</span>
+<h3 id="国内-VPS-上部署-ChinaDNS"><a href="#国内-VPS-上部署-ChinaDNS" class="headerlink" title="国内 VPS 上部署 ChinaDNS"></a>国内 VPS 上部署 ChinaDNS</h3><div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 如果 Linux 上没有安装 make 和 gcc 的话要先安装</span>
 <span class="hljs-comment"># Ubuntu / Debian</span>
 apt-get install -y make gcc
 <span class="hljs-comment"># CentOS</span>
@@ -228,7 +228,7 @@ curl <span class="hljs-string">'http://ftp.apnic.net/apnic/stats/apnic/delegated
 rm -f iplist.txt &amp;&amp; wget --no-check-certificate  https://raw.githubusercontent.com/Tsuk1ko/ChinaDNS/master/iplist.txt
 
 <span class="hljs-comment"># 启动 ChinaDNS（编译好的程序在 src 目录中）</span>
-nohup src/chinadns -m -c chnroute.txt -s 114.114.114.114,208.67.222.222:443 &amp;</code></pre>
+nohup src/chinadns -m -c chnroute.txt -s 114.114.114.114,208.67.222.222:443 &amp;</code></pre></div>
 
 <p>最后别忘记开放防火墙的<code>53</code>UDP端口</p>
 <h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><ol>
@@ -427,6 +427,9 @@ nohup src/chinadns -m -c chnroute.txt -s 114.114.114.114,208.67.222.222:443 &amp
   
 
 
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 

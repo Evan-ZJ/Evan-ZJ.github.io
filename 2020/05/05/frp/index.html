@@ -206,7 +206,7 @@
 <li>访问目标设备（就是你最终要访问的设备）</li>
 <li>系统使用Ubuntu 16.04 x64，frp客户端和服务端本身同时均支持Linux和Windows</li>
 </ol>
-<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><pre><code class="hljs bash"><span class="hljs-comment">#SSH连接到VPS之后运行如下命令查看处理器架构，根据架构下载不同版本的frp</span>
+<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#SSH连接到VPS之后运行如下命令查看处理器架构，根据架构下载不同版本的frp</span>
 arch
 <span class="hljs-comment">#下载</span>
 wget https://github.com/fatedier/frp/releases/download/v0.33.0/frp_0.33.0_linux_amd64.tar.gz
@@ -216,19 +216,19 @@ tar -zxvf frp_0.33.0_linux_amd64.tar.gz
 mv frp_0.33.0_linux_amd64 frp
 <span class="hljs-built_in">cd</span> frp
 <span class="hljs-comment">#修改配置文件frps.ini</span>
-vi frps.ini</code></pre>
+vi frps.ini</code></pre></div>
 
 <a id="more"></a>
 
 <p>文件应有如下格式</p>
-<pre><code class="hljs bash">[common]
+<div class="hljs"><pre><code class="hljs bash">[common]
 bind_port = 7000
 dashboard_port = 7500
 token = 12345678
 dashboard_user = admin
 dashboard_pwd = admin
 vhost_http_port = 10080
-vhost_https_port = 10443</code></pre>
+vhost_https_port = 10443</code></pre></div>
 
 <blockquote>
 <p>如果没有必要，端口均可使用默认值，token、user和password项请自行设置。</p>
@@ -241,28 +241,28 @@ vhost_https_port = 10443</code></pre>
 <li>“vhost_http_port”和“vhost_https_port”用于反向代理HTTP主机时使用，本文不涉及HTTP协议，因而照抄或者删除这两条均可。</li>
 </ul>
 <p>编辑完成后保存</p>
-<pre><code class="hljs css"><span class="hljs-selector-tag">ECS</span>
-<span class="hljs-selector-pseudo">:wq</span></code></pre>
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">ECS</span>
+<span class="hljs-selector-pseudo">:wq</span></code></pre></div>
 
 <p>运行服务端测试</p>
-<pre><code class="hljs bash">./frps -c frps.ini</code></pre>
+<div class="hljs"><pre><code class="hljs bash">./frps -c frps.ini</code></pre></div>
 
 <p>如果看到屏幕输出这样一段内容，即表示运行正常，如果出现错误提示，请检查上面的步骤。</p>
-<pre><code class="hljs angelscript"><span class="hljs-number">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [service.go:<span class="hljs-number">130</span>] frps tcp listen on <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>:<span class="hljs-number">7000</span>
+<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-number">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [service.go:<span class="hljs-number">130</span>] frps tcp listen on <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>:<span class="hljs-number">7000</span>
 <span class="hljs-number">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [service.go:<span class="hljs-number">172</span>] http service listen on <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>:<span class="hljs-number">10080</span>
 <span class="hljs-number">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [service.go:<span class="hljs-number">193</span>] https service listen on <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>:<span class="hljs-number">10443</span>
 <span class="hljs-number">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [service.go:<span class="hljs-number">216</span>] Dashboard listen on <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>:<span class="hljs-number">7500</span>
-<span class="hljs-number">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [root.go:<span class="hljs-number">210</span>] Start frps success</code></pre>
+<span class="hljs-number">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [root.go:<span class="hljs-number">210</span>] Start frps success</code></pre></div>
 
 <p>此时访问 x.x.x.x:7500 并使用自己设置的用户名密码登录，即可看到仪表板界面</p>
-<h2 id="服务端后台运行"><a href="#服务端后台运行" class="headerlink" title="服务端后台运行"></a>服务端后台运行</h2><pre><code class="hljs bash">nohup ./frps -c frps.ini &amp;</code></pre>
+<h2 id="服务端后台运行"><a href="#服务端后台运行" class="headerlink" title="服务端后台运行"></a>服务端后台运行</h2><div class="hljs"><pre><code class="hljs bash">nohup ./frps -c frps.ini &amp;</code></pre></div>
 
 <h2 id="客户端设置"><a href="#客户端设置" class="headerlink" title="客户端设置"></a>客户端设置</h2><blockquote>
 <p>frp的客户端就是我们想要真正进行访问的那台设备，大多数情况下应该会是一台Windows主机，因而本文使用Windows主机做例子；Linux配置方法类似，不再赘述。</p>
 </blockquote>
 <p>根据客户端设备的情况选择相应的frp程序进行<a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">下载</a>，</p>
 <p>将其解压在了C盘根目录下，并且将文件夹重命名为“frp”，可以删除其中的frps和frps.ini文件。<br>用文本编辑器打开frpc.ini，与服务端类似，内容如下。</p>
-<pre><code class="hljs bash">[common]
+<div class="hljs"><pre><code class="hljs bash">[common]
 server_addr = x.x.x.x
 server_port = 7000
 token = won517574356
@@ -275,7 +275,7 @@ remote_port = 7001
 <span class="hljs-built_in">type</span> = tcp
 local_ip = 127.0.0.1
 local_port = 445
-remote_port = 7002</code></pre>
+remote_port = 7002</code></pre></div>
 
 <p>其中common字段下的三项即为服务端的设置。</p>
 <ul>
@@ -299,27 +299,27 @@ remote_port = 7002</code></pre>
 <p>frpc程序不能直接双击运行！</p>
 </blockquote>
 <p>使用命令提示符或Powershell进入该目录下</p>
-<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> C:\frp</code></pre>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> C:\frp</code></pre></div>
 
 <p>并执行</p>
-<pre><code class="hljs bash">./frpc -c frpc.ini</code></pre>
+<div class="hljs"><pre><code class="hljs bash">./frpc -c frpc.ini</code></pre></div>
 
 <p>运行frpc程序，窗口中输出如下内容表示运行正常。</p>
-<pre><code class="hljs routeros">2019/01/12 16:14:56 [I] [service.go:205] login <span class="hljs-keyword">to</span><span class="hljs-built_in"> server </span>success, <span class="hljs-builtin-name">get</span> <span class="hljs-builtin-name">run</span> id [2b65b4e58a5917ac],<span class="hljs-built_in"> server </span>udp<span class="hljs-built_in"> port </span>[0]
+<div class="hljs"><pre><code class="hljs routeros">2019/01/12 16:14:56 [I] [service.go:205] login <span class="hljs-keyword">to</span><span class="hljs-built_in"> server </span>success, <span class="hljs-builtin-name">get</span> <span class="hljs-builtin-name">run</span> id [2b65b4e58a5917ac],<span class="hljs-built_in"> server </span>udp<span class="hljs-built_in"> port </span>[0]
 2019/01/12 16:14:56 [I] [proxy_manager.go:136] [2b65b4e58a5917ac]<span class="hljs-built_in"> proxy </span>added: [rdp smb]
 2019/01/12 16:14:56 [I] [control.go:143] [smb] start<span class="hljs-built_in"> proxy </span>success
-2019/01/12 16:14:56 [I] [control.go:143] [rdp] start<span class="hljs-built_in"> proxy </span>success</code></pre>
+2019/01/12 16:14:56 [I] [control.go:143] [rdp] start<span class="hljs-built_in"> proxy </span>success</code></pre></div>
 
 <p>不要关闭命令行窗口，此时可以在局域网外使用相应程序访问 x.x.x.x:xxxx （IP为VPS的IP，端口为自定义的remote_port）即可访问到相应服务。</p>
 <h2 id="客户端后台运行及开机自启"><a href="#客户端后台运行及开机自启" class="headerlink" title="客户端后台运行及开机自启"></a>客户端后台运行及开机自启</h2><p>在任何一个目录下新建一个文本文件并将其重命名为“frpc.bat”，编辑，粘贴如下内容并保存。</p>
-<pre><code class="hljs powershell">@echo off
+<div class="hljs"><pre><code class="hljs powershell">@echo off
 <span class="hljs-keyword">if</span> <span class="hljs-string">"%1"</span> == <span class="hljs-string">"h"</span> goto <span class="hljs-keyword">begin</span>
 mshta vbscript:createobject(<span class="hljs-string">"wscript.shell"</span>).run(<span class="hljs-string">""</span><span class="hljs-string">"%~nx0"</span><span class="hljs-string">" h"</span>,<span class="hljs-number">0</span>)(window.close)&amp;&amp;<span class="hljs-keyword">exit</span>
 :<span class="hljs-keyword">begin</span>
 REM
 cd C:\frp
 frpc <span class="hljs-literal">-c</span> frpc.ini
-<span class="hljs-keyword">exit</span></code></pre>
+<span class="hljs-keyword">exit</span></code></pre></div>
 
 <blockquote>
 <p>将cd后的路径更改为你的frpc实际存放的目录</p>
@@ -507,6 +507,9 @@ frpc <span class="hljs-literal">-c</span> frpc.ini
   
 
 
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 

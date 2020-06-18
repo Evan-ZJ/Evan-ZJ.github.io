@@ -230,28 +230,28 @@
 <li><p>安装Docker</p>
 </li>
 <li><p><a href="https://github.com/TimeBye/oneindex" target="_blank" rel="noopener">拉取镜像创建</a></p>
-<pre><code class="hljs bash">docker run -d --name oneindex \
+<div class="hljs"><pre><code class="hljs bash">docker run -d --name oneindex \
     -p 80:80 --restart=always \
     -v ~/oneindex/config:/var/www/html/config \
     -v ~/oneindex/cache:/var/www/html/cache \
     -e REFRESH_TOKEN=<span class="hljs-string">'0 * * * *'</span> \
     -e REFRESH_CACHE=<span class="hljs-string">'*/10 * * * *'</span> \
-    setzero/oneindex</code></pre>
+    setzero/oneindex</code></pre></div>
 
 <ul>
 <li><ul>
 <li><p>停止删除容器：</p>
-<pre><code class="hljs properties"><span class="hljs-attr">docker</span> <span class="hljs-string">stop oneindex</span>
-<span class="hljs-attr">docker</span> <span class="hljs-string">rm -v oneindex</span></code></pre>
+<div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">docker</span> <span class="hljs-string">stop oneindex</span>
+<span class="hljs-attr">docker</span> <span class="hljs-string">rm -v oneindex</span></code></pre></div>
 </li>
 </ul>
 </li>
 <li><p>使用<code>docker-compose</code>运行：</p>
-<pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span></code></pre>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span></code></pre></div>
 
 <ul>
 <li><p>停止删除容器：</p>
-<pre><code class="hljs bash">docker-compose down</code></pre>
+<div class="hljs"><pre><code class="hljs bash">docker-compose down</code></pre></div>
 
 </li>
 </ul>
@@ -463,6 +463,9 @@
   
 
 
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 

@@ -210,28 +210,28 @@
 <a id="more"></a>
 
 <p><strong>环境：Ubuntu 16.04</strong><br><a href="https://github.com/Wind4/vlmcsd" target="_blank" rel="noopener">Vlmcsd</a><br><strong>首先使用下面命令确认机器的CPU架构</strong></p>
-<pre><code class="hljs bash">cat /proc/cpuinfo</code></pre>
+<div class="hljs"><pre><code class="hljs bash">cat /proc/cpuinfo</code></pre></div>
 
 <p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/2020-05-11" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/2020-05-11</a> 231046.png)</p>
 <p><strong>从Github下载项目文件</strong></p>
-<pre><code class="hljs bash">wget https://github.com/Wind4/vlmcsd/releases/download/svn1111/binaries.tar.gz</code></pre>
+<div class="hljs"><pre><code class="hljs bash">wget https://github.com/Wind4/vlmcsd/releases/download/svn1111/binaries.tar.gz</code></pre></div>
 
 <p><strong>解压安装包</strong></p>
-<pre><code class="hljs bash">tar -xvf binaries.tar.gz</code></pre>
+<div class="hljs"><pre><code class="hljs bash">tar -xvf binaries.tar.gz</code></pre></div>
 
 <p><strong>如果你机器的架构为Intel，cd到如下目录，否则的话需要在binaries目录内找到对应你机器CPU架构的目录</strong></p>
-<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> binaries/Linux/intel/static</code></pre>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> binaries/Linux/intel/static</code></pre></div>
 
 <p><strong>启动服务</strong></p>
-<pre><code class="hljs bash">./vlmcsd-x64-musl-static</code></pre>
+<div class="hljs"><pre><code class="hljs bash">./vlmcsd-x64-musl-static</code></pre></div>
 
 <p><strong>如果你的机器不是64位系统，则需要内找到对应系统位数的可执行文件来运行</strong><br><strong>因为vlmcsd运行后会占用1688端口，请在防火墙放行1688端口，或者关闭防火墙，所以我们可以输入以下命令查看是否成功启动：</strong></p>
-<pre><code class="hljs bash">netstat -lnp</code></pre>
+<div class="hljs"><pre><code class="hljs bash">netstat -lnp</code></pre></div>
 
 <h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p><strong>以管理员身份运行CMD</strong></p>
-<pre><code class="hljs bash">slmgr /skms 你服务器的IP或者域名
+<div class="hljs"><pre><code class="hljs bash">slmgr /skms 你服务器的IP或者域名
 slmgr /ato
-slmgr /xpr</code></pre>
+slmgr /xpr</code></pre></div>
 
 <p><strong>到这你的KMS服务应该可以正常使用了，激活周期为180天，到期后如果你的KMS服务器还在运行，Windows将自动进行激活</strong></p>
 
@@ -414,6 +414,9 @@ slmgr /xpr</code></pre>
   
 
 
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 

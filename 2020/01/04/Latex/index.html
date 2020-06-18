@@ -200,18 +200,18 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="latex图片布局参考"><a href="#latex图片布局参考" class="headerlink" title="latex图片布局参考"></a>latex图片布局参考</h2><pre><code class="hljs latex">\usepackage&#123;graphicx&#125; %插入图片的宏包
+              <h2 id="latex图片布局参考"><a href="#latex图片布局参考" class="headerlink" title="latex图片布局参考"></a>latex图片布局参考</h2><div class="hljs"><pre><code class="hljs latex">\usepackage&#123;graphicx&#125; %插入图片的宏包
 \usepackage&#123;float&#125; %设置图片浮动位置的宏包
 \usepackage&#123;subfigure&#125; %插入多图时用子图显示的宏包
 
 \begin&#123;figure&#125;[H] %这里使用的是强制位置
   \centering %图片全局居中
   \vspace&#123;-0.35cm&#125; %设置与上面正文的距离
-  \subfigtopskip&#x3D;2pt %设置子图与上面正文或别的内容的距离</code></pre>
+  \subfigtopskip&#x3D;2pt %设置子图与上面正文或别的内容的距离</code></pre></div>
 
   <a id="more"></a>
 
-<pre><code class="hljs latex">\subfigbottomskip&#x3D;2pt %设置第二行子图与第一行子图的距离，即下面的头与上面的脚的距离
+<div class="hljs"><pre><code class="hljs latex">\subfigbottomskip&#x3D;2pt %设置第二行子图与第一行子图的距离，即下面的头与上面的脚的距离
  \subfigcapskip&#x3D;-5pt %设置子图与子标题之间的距离
  \subfigure[original]&#123;
    \label&#123;level.sub.1&#125;
@@ -229,7 +229,7 @@
    \label&#123;level.sub.4&#125;
    \includegraphics[width&#x3D;0.32\linewidth]&#123;.&#x2F;figure&#x2F;level7.png&#125;&#125;
  \caption&#123;不同level的渲染效果&#125;
- \label&#123;level&#125;</code></pre>
+ \label&#123;level&#125;</code></pre></div>
 
 
             </article>
@@ -409,6 +409,9 @@
   
 
 
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 

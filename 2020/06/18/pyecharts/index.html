@@ -205,19 +205,19 @@
 <p><a href="http://pyecharts.org/#/" target="_blank" rel="noopener">官方文档</a></p>
 </blockquote>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>推荐源码安装</p>
-<pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/pyecharts/pyecharts.git
+<div class="hljs"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/pyecharts/pyecharts.git
 <span class="hljs-built_in">cd</span> pyecharts
 pip install -r requirements.txt
-python setup.py install</code></pre>
+python setup.py install</code></pre></div>
 
 <p>或者运气好pip安装</p>
-<pre><code class="hljs bash"><span class="hljs-comment">#可能会出现安装以后无法导入库的问题</span>
-pip(3) install pyecharts</code></pre>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#可能会出现安装以后无法导入库的问题</span>
+pip(3) install pyecharts</code></pre></div>
 
 <h2 id="HeatMap：热力图"><a href="#HeatMap：热力图" class="headerlink" title="HeatMap：热力图"></a>HeatMap：热力图</h2><blockquote>
 <p>本次是为了根据坐标点数据强度绘制颜色深浅表示</p>
 </blockquote>
-<h3 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h3><pre><code class="hljs python"><span class="hljs-comment">#配置</span>
+<h3 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#配置</span>
 <span class="hljs-keyword">import</span> pyecharts.options <span class="hljs-keyword">as</span> opts
 <span class="hljs-comment">#热图</span>
 <span class="hljs-keyword">from</span> pyecharts.charts <span class="hljs-keyword">import</span> HeatMap
@@ -225,13 +225,13 @@ pip(3) install pyecharts</code></pre>
 <span class="hljs-keyword">from</span> pyecharts.render <span class="hljs-keyword">import</span> make_snapshot
 <span class="hljs-keyword">from</span> snapshot_selenium <span class="hljs-keyword">import</span> snapshot
 <span class="hljs-comment">#numpy计算</span>
-<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</code></pre>
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</code></pre></div>
 
-<h3 id="设置x-y轴"><a href="#设置x-y轴" class="headerlink" title="设置x, y轴"></a>设置x, y轴</h3><pre><code class="hljs python">x = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">67</span>, <span class="hljs-number">68</span>)
-y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51</span>, <span class="hljs-number">52</span>)</code></pre>
+<h3 id="设置x-y轴"><a href="#设置x-y轴" class="headerlink" title="设置x, y轴"></a>设置x, y轴</h3><div class="hljs"><pre><code class="hljs python">x = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">67</span>, <span class="hljs-number">68</span>)
+y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51</span>, <span class="hljs-number">52</span>)</code></pre></div>
 
 <h3 id="HeatMap代码"><a href="#HeatMap代码" class="headerlink" title="HeatMap代码"></a>HeatMap代码</h3><p><a href="https://github.com/Evan-ZJ/MyScripts/blob/master/heatmap_1890.txt" target="_blank" rel="noopener">测试数据test.txt下载</a></p>
-<pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1830</span>, <span class="hljs-number">5581</span>, <span class="hljs-number">10</span>):
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1830</span>, <span class="hljs-number">5581</span>, <span class="hljs-number">10</span>):
         data = np.loadtxt(<span class="hljs-string">"test.txt"</span>)
         data = data.tolist()<span class="hljs-comment">#转为list</span>
 
@@ -263,9 +263,9 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
                 ),
             )
             .render(<span class="hljs-string">"heatmap_on_cartesian.html"</span>)<span class="hljs-comment">#渲染为Html，渲染图片时可注释</span>
-        )</code></pre>
+        )</code></pre></div>
 
-<h3 id="渲染为图片"><a href="#渲染为图片" class="headerlink" title="渲染为图片"></a>渲染为图片</h3><pre><code class="hljs python">make_snapshot(snapshot, heatmap.render(<span class="hljs-string">"VR.html"</span>), <span class="hljs-string">"./"</span> + str(i) + <span class="hljs-string">".png"</span>)</code></pre>
+<h3 id="渲染为图片"><a href="#渲染为图片" class="headerlink" title="渲染为图片"></a>渲染为图片</h3><div class="hljs"><pre><code class="hljs python">make_snapshot(snapshot, heatmap.render(<span class="hljs-string">"VR.html"</span>), <span class="hljs-string">"./"</span> + str(i) + <span class="hljs-string">".png"</span>)</code></pre></div>
 
 <p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/VR-1690.png" srcset="/img/loading.gif" alt=""></p>
 
@@ -442,6 +442,9 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
   
 
 
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 
