@@ -210,17 +210,14 @@
 <li>一键完成SSH防止暴力破解</li>
 </ul>
 <a id="more"></a>
-
 <h2 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h2><ul>
 <li>Centos 6/7 (x86/x64)</li>
 <li>Ubuntu 14.04/16.10 (x86/x64)</li>
 <li>Debian 7/8 (x86/x64)</li>
 </ul>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><div class="hljs"><pre><code class="hljs bash">wget https://github.com/Evan-ZJ/MyScripts/blob/master/fail2ban.sh &amp;&amp; bash fail2ban.sh 2&gt;&amp;1 | tee fail2ban.log</code></pre></div>
-
 <p>第一步：选择是否修改SSH端口。<br>第二步：输入最多尝试输入SSH连接密码的次数<br>第三步：输入每个恶意IP的封禁时间（单位：小时）</p>
 <h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><div class="hljs"><pre><code class="hljs bash">wget https://github.com/Evan-ZJ/MyScripts/blob/master/uninstall.sh &amp;&amp; bash uninstall.sh</code></pre></div>
-
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
 <li>如果你需要更改SSH端口，请记得在防火墙或者安全组中开放新的SSH端口</li>
 <li>安装完成后请会重启SSH服务，请重新连接SSH会话</li>
@@ -511,6 +508,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

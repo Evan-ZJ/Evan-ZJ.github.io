@@ -205,24 +205,19 @@
 <p>类似的语义冲突的符号还包括<code>*</code>, <code>{</code>, <code>}</code>, <code>\\</code>等。</p>
 <h5 id="更换-Hexo-的-markdown-渲染引擎"><a href="#更换-Hexo-的-markdown-渲染引擎" class="headerlink" title="更换 Hexo 的 markdown 渲染引擎"></a>更换 Hexo 的 markdown 渲染引擎</h5><div class="hljs"><pre><code class="hljs bash">npm uninstall hexo-renderer-marked --save  
 npm install hexo-renderer-kramed --save</code></pre></div>
-
 <a id="more"></a>
-
 <p>找到node_modules\kramed\lib\rules\inline.js，把第11行的 escape 变量的值做相应的修改：</p>
 <div class="hljs"><pre><code class="hljs bash">//escape: /^\\([\\`*&#123;&#125;\[\]()<span class="hljs-comment">#$+\-.!_&gt;])/,</span>
 escape: /^\\([`*\[\]()<span class="hljs-comment">#$+\-.!_&gt;])/,</span></code></pre></div>
-
 <p>同时把第20行的em变量也要做相应的修改</p>
 <div class="hljs"><pre><code class="hljs bash">//em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
 em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</code></pre></div>
-
 <h5 id="主题中开启-MathJax-开关"><a href="#主题中开启-MathJax-开关" class="headerlink" title="主题中开启 MathJax 开关"></a>主题中开启 MathJax 开关</h5><h4 id="在文章的Front-matter里打开mathjax开关"><a href="#在文章的Front-matter里打开mathjax开关" class="headerlink" title="在文章的Front-matter里打开mathjax开关"></a>在文章的Front-matter里打开mathjax开关</h4><div class="hljs"><pre><code class="hljs bash">---
 title: index.html
 date: 2018-07-05 12:01:30
 tags: 
 mathjax: <span class="hljs-literal">true</span>
 --</code></pre></div>
-
 
             </article>
             <hr>
@@ -499,6 +494,45 @@ mathjax: <span class="hljs-literal">true</span>
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

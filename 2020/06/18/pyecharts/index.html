@@ -209,11 +209,9 @@
 <span class="hljs-built_in">cd</span> pyecharts
 pip install -r requirements.txt
 python setup.py install</code></pre></div>
-
 <p>或者运气好pip安装</p>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#可能会出现安装以后无法导入库的问题</span>
 pip(3) install pyecharts</code></pre></div>
-
 <h2 id="HeatMap：热力图"><a href="#HeatMap：热力图" class="headerlink" title="HeatMap：热力图"></a>HeatMap：热力图</h2><blockquote>
 <p>本次是为了根据坐标点数据强度绘制颜色深浅表示</p>
 </blockquote>
@@ -226,10 +224,8 @@ pip(3) install pyecharts</code></pre></div>
 <span class="hljs-keyword">from</span> snapshot_selenium <span class="hljs-keyword">import</span> snapshot
 <span class="hljs-comment">#numpy计算</span>
 <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</code></pre></div>
-
 <h3 id="设置x-y轴"><a href="#设置x-y轴" class="headerlink" title="设置x, y轴"></a>设置x, y轴</h3><div class="hljs"><pre><code class="hljs python">x = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">67</span>, <span class="hljs-number">68</span>)
 y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51</span>, <span class="hljs-number">52</span>)</code></pre></div>
-
 <h3 id="HeatMap代码"><a href="#HeatMap代码" class="headerlink" title="HeatMap代码"></a>HeatMap代码</h3><p><a href="https://github.com/Evan-ZJ/MyScripts/blob/master/heatmap_1890.txt" target="_blank" rel="noopener">测试数据test.txt下载</a></p>
 <div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1830</span>, <span class="hljs-number">5581</span>, <span class="hljs-number">10</span>):
         data = np.loadtxt(<span class="hljs-string">"test.txt"</span>)
@@ -264,9 +260,7 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
             )
             .render(<span class="hljs-string">"heatmap_on_cartesian.html"</span>)<span class="hljs-comment">#渲染为Html，渲染图片时可注释</span>
         )</code></pre></div>
-
 <h3 id="渲染为图片"><a href="#渲染为图片" class="headerlink" title="渲染为图片"></a>渲染为图片</h3><div class="hljs"><pre><code class="hljs python">make_snapshot(snapshot, heatmap.render(<span class="hljs-string">"VR.html"</span>), <span class="hljs-string">"./"</span> + str(i) + <span class="hljs-string">".png"</span>)</code></pre></div>
-
 <p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/VR-1690.png" srcset="/img/loading.gif" alt=""></p>
 
             </article>
@@ -547,6 +541,45 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

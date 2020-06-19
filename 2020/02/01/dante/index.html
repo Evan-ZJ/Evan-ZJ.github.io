@@ -202,27 +202,19 @@
             <article class="markdown-body">
               <p><em>服务器:Ubuntu 16.04.6</em></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><div class="hljs"><pre><code class="hljs bash">sudo apt-get install dante-server</code></pre></div>
-
 <h3 id="创建代理用户"><a href="#创建代理用户" class="headerlink" title="创建代理用户"></a><strong>创建代理用户</strong></h3><h4 id="创建组"><a href="#创建组" class="headerlink" title="创建组"></a>创建组</h4><div class="hljs"><pre><code class="hljs bash">groupadd proxy</code></pre></div>
-
 <blockquote>
 <p>注意:系统可能已经存在proxy组，就不用再创建了</p>
 </blockquote>
 <h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><div class="hljs"><pre><code class="hljs bash">useradd ss5 -g proxy</code></pre></div>
-
 <a id="more"></a>
-
 <h4 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h4><div class="hljs"><pre><code class="hljs bash">passwd ss5</code></pre></div>
-
 <h4 id="禁止ss5登录-为了安全"><a href="#禁止ss5登录-为了安全" class="headerlink" title="禁止ss5登录(为了安全)"></a>禁止ss5登录(为了安全)</h4><div class="hljs"><pre><code class="hljs bash">vi /etc/passwd</code></pre></div>
-
 <blockquote>
 <p>在ss5用户那行后增加:/bin/false</p>
 </blockquote>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="安装完毕后，有个配置文件-etc-danted-conf，配置文件内容就是配置说明"><a href="#安装完毕后，有个配置文件-etc-danted-conf，配置文件内容就是配置说明" class="headerlink" title="安装完毕后，有个配置文件:/etc/danted.conf，配置文件内容就是配置说明"></a>安装完毕后，有个配置文件:/etc/danted.conf，配置文件内容就是配置说明</h4><div class="hljs"><pre><code class="hljs bash">cp /etc/danted.conf /etc/danted.conf.bak</code></pre></div>
-
 <h4 id="可参考-官方文档，然后编辑配置文件"><a href="#可参考-官方文档，然后编辑配置文件" class="headerlink" title="可参考:官方文档，然后编辑配置文件:"></a>可参考:<a href="https://www.inet.no/dante/doc/latest/config/index.html" target="_blank" rel="noopener">官方文档</a>，然后编辑配置文件:</h4><div class="hljs"><pre><code class="hljs bash">sudo vi /etc/danted.conf</code></pre></div>
-
 <h4 id="连接代理，需要有用户名密码的配置如下"><a href="#连接代理，需要有用户名密码的配置如下" class="headerlink" title="连接代理，需要有用户名密码的配置如下"></a>连接代理，需要有用户名密码的配置如下</h4><div class="hljs"><pre><code class="hljs bash">logoutput: /var/<span class="hljs-built_in">log</span>/sockd.log
 internal: ens33 port = 65522 
 external: ens33
@@ -241,7 +233,6 @@ pass &#123;
 		from: 0.0.0.0/0 to: 0.0.0.0/0
     protocol: tcp
 &#125;</code></pre></div>
-
 <h4 id="连接代理，不需要用户名密码的配置如下"><a href="#连接代理，不需要用户名密码的配置如下" class="headerlink" title="连接代理，不需要用户名密码的配置如下"></a>连接代理，不需要用户名密码的配置如下</h4><div class="hljs"><pre><code class="hljs bash">logoutput: /var/<span class="hljs-built_in">log</span>/sockd.log 
 internal: ens33 port = 65522 
 external: ens33
@@ -260,13 +251,9 @@ pass &#123;
 		from: 0.0.0.0/0 to: 0.0.0.0/0
 		protocol: tcp
 &#125;</code></pre></div>
-
 <h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><div class="hljs"><pre><code class="hljs bash">sudo /etc/init.d/danted start</code></pre></div>
-
 <h3 id="查看服务是否监听"><a href="#查看服务是否监听" class="headerlink" title="查看服务是否监听"></a>查看服务是否监听</h3><div class="hljs"><pre><code class="hljs bash">sudo netstat -anp | grep 65522</code></pre></div>
-
 <h4 id="用Proxifier-连接可以连接成功"><a href="#用Proxifier-连接可以连接成功" class="headerlink" title="用Proxifier 连接可以连接成功"></a>用Proxifier 连接可以连接成功</h4><h3 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h3><div class="hljs"><pre><code class="hljs bash">/etc/init.d/danted restart</code></pre></div>
-
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h3><p>查看端口占用情况，可以用命令: sudo lsof -i:端口号 查看iptables规则:sudo iptables -nvL 查看某端口是否开放，可以用telnet ip 端口号查看，比如: telnet 127.0.0.1 80</p>
 
             </article>
@@ -555,6 +542,45 @@ pass &#123;
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

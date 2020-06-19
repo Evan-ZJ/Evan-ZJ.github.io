@@ -151,7 +151,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8.3k 字
+      8.2k 字
     </span>
   
 
@@ -161,7 +161,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      95
+      93
        分钟
     </span>
   
@@ -200,7 +200,7 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow"><a href="#tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow" class="headerlink" title="tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow"></a><a href="https://arxiv.org/pdf/1801.09710.pdf" target="_blank" rel="noopener">tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow</a></h2><p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 110009.png)</p>
+              <h2 id="tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow"><a href="#tempoGAN-A-Temporally-Coherent-Volumetric-GAN-for-Super-resolution-Fluid-Flow" class="headerlink" title="tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow"></a><a href="https://arxiv.org/pdf/1801.09710.pdf" target="_blank" rel="noopener">tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow</a></h2><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-06 110009.png" srcset="/img/loading.gif" alt=""></p>
 <p>图1.本文卷积神经网络学习基于包含单个时间步长的密度和速度数据的低分辨率字段，生成高度详细的时间相关特征。 引入了一种新颖的鉴别器，可确保合成的细节随时间平滑变化。</p>
 <h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h4><ul>
 <li><p>一个时间相干的生成模型，以解决流体流的超分辨率问题</p>
@@ -220,7 +220,6 @@
 <li><p>仅使用单个时间步长的低分辨率流体数据</p>
 <p><em>深度学习，生成模型，基于物理的动画，流体模拟</em></p>
 <a id="more"></a>
-
 </li>
 </ul>
 <h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><ul>
@@ -342,10 +341,13 @@
 </li>
 <li><p>该鉴别器采用简单的二进制分类器的形式，以监督的方式对其进行训练以拒绝生成的数据，即应返回$D(G(x)) = 0$，并接受$D(y) = 1$的真实数据 。</p>
 </li>
-<li><p>对于训练，鉴权器的损失因此由“生成”和“真实”两个类别的sigmoid形交叉熵给出：<br>$$<br>\begin{aligned} \mathcal{L}<em>{D}(D, G) &amp;=\mathbb{E}</em>{y \sim p_{\text {data }}(y)}[-\log D(y)]+\mathbb{E}<em>{x \sim p</em>{\text {data }}(x)}[-\log (1-D(G(x)))] \ &amp;=\mathbb{E}<em>{m}\left[-\log D\left(y</em>{m}\right)\right]+\mathbb{E}<em>{n}\left[-\log \left(1-D\left(G\left(x</em>{n}\right)\right)\right)\right] \end{aligned}<br>\tag 1<br>$$</p>
-</li>
+<li><p>对于训练，鉴权器的损失因此由“生成”和“真实”两个类别的sigmoid形交叉熵给出：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \mathcal{L}_{D}(D, G) &=\mathbb{E}_{y \sim p_{\text {data }}(y)}[-\log D(y)]+\mathbb{E}_{x \sim p_{\text {data }}(x)}[-\log (1-D(G(x)))] \\ &=\mathbb{E}_{m}\left[-\log D\left(y_{m}\right)\right]+\mathbb{E}_{n}\left[-\log \left(1-D\left(G\left(x_{n}\right)\right)\right)\right] \end{aligned}
+\tag 1</script></li>
 </ul>
 <p>其中：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -353,7 +355,8 @@
 <th>意义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>$n$</td>
 <td>绘制的输入x的数量</td>
 </tr>
@@ -365,8 +368,10 @@
 <td>$y \sim p_{d a t a}(y)$</td>
 <td>从相应的概率数据分布$p_{data}$提取的样本$y$</td>
 </tr>
-</tbody></table>
-<p> 在离散设置中，连续分布产生等式$(1)$第二行中样本$y_n$和$x_m$的平均值。 为简化起见，将省略sigmoid形交叉熵的$y \sim p_{d a t a}(y)$和$x \sim p_{d a t a}(x)$下标，以及$D(y_m)$和$D(x_n)$的$n$和$m$下标。</p>
+</tbody>
+</table>
+</div>
+<p> 在离散设置中，连续分布产生等式$(1)$第二行中样本$y<em>n$和$x_m$的平均值。 为简化起见，将省略sigmoid形交叉熵的$y \sim p</em>{d a t a}(y)$和$x \sim p_{d a t a}(x)$下标，以及$D(y_m)$和$D(x_n)$的$n$和$m$下标。</p>
 <ul>
 <li><p>02   </p>
 </li>
@@ -374,29 +379,30 @@
 </li>
 <li><p>在实践中，这意味着要对生成器进行训练，以将鉴频器结果输出到一个。</p>
 </li>
-<li><p>GANs通常使用公式$(2)$代替直接使用负标识符损失：<br>$$<br>\mathcal{L}<em>{G}(D, G)=\mathbb{E}</em>{x \sim p_{\text {data}}(x)}[-\log (D(G(x)))]=\mathbb{E}_{n}[-\log (D(G(x)))]<br>\tag 2<br>$$<br>作为生成器的损失函数，是为了减小梯度下降问题[Goodfellow 2016]。当$D$被实现为一个NN时，它可以保证作为$G$的损失函数有足够的可微性。鉴别器和生成器都经过轮流训练，并且将最佳地达到平衡状态。</p>
+<li><p>GANs通常使用公式$(2)$代替直接使用负标识符损失：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{G}(D, G)=\mathbb{E}_{x \sim p_{\text {data}}(x)}[-\log (D(G(x)))]=\mathbb{E}_{n}[-\log (D(G(x)))]
+\tag 2</script><p>作为生成器的损失函数，是为了减小梯度下降问题[Goodfellow 2016]。当$D$被实现为一个NN时，它可以保证作为$G$的损失函数有足够的可微性。鉴别器和生成器都经过轮流训练，并且将最佳地达到平衡状态。</p>
 </li>
 <li><p>03  </p>
 </li>
-<li><p>目标不是生成任意的高分辨率输出，而是生成与低分辨率输入相对应的输出，因此采用条件GAN</p>
-</li>
-<li><p>输入$x$代表低分辨率数据集，并且向鉴别符提供$x$以便建立并确保输入和输出之间的正确关系。ie. 现在拥有$D(x,y)$和$D(x,G(x))$（[Mirza and Osindero 2014]）</p>
-</li>
-<li><p>[Zhao et al. 2015]表明，可以在生成器上增加一个附加的$L_1$损失项（权重较小），以确保其输出保持接近地面实况$y$。</p>
-</li>
-<li><p>这样就产生了$\lambda_{L_{1}} \mathbb{B}<em>{n}|G(x)-y|</em>{1},$ where $\lambda_{L_{1}}$，其中$L_{1}$控制该术语的强度，</p>
-</li>
-<li><p>为了保持一致，使用$\mathbb{E}$表示期望值，在这种离散情况下，它等于平均值。</p>
-</li>
+<li>目标不是生成任意的高分辨率输出，而是生成与低分辨率输入相对应的输出，因此采用条件GAN</li>
+<li>输入$x$代表低分辨率数据集，并且向鉴别符提供$x$以便建立并确保输入和输出之间的正确关系。ie. 现在拥有$D(x,y)$和$D(x,G(x))$（[Mirza and Osindero 2014]）</li>
+<li>[Zhao et al. 2015]表明，可以在生成器上增加一个附加的$L_1$损失项（权重较小），以确保其输出保持接近地面实况$y$。</li>
+<li>这样就产生了$\lambda<em>{L</em>{1}} \mathbb{B}<em>{n}|G(x)-y|</em>{1},$ where $\lambda<em>{L</em>{1}}$，其中$L_{1}$控制该术语的强度，</li>
+<li>为了保持一致，使用$\mathbb{E}$表示期望值，在这种离散情况下，它等于平均值。</li>
 </ul>
 <h5 id="3-2-特征空间的损失"><a href="#3-2-特征空间的损失" class="headerlink" title="3.2 特征空间的损失"></a>3.2 特征空间的损失</h5><ul>
 <li><p>限制基础CNN的功能→更现实的输出+有助于解决模式崩溃问题[Dosovitskiy and Brox 2016]</p>
 </li>
 <li><p>为生成器引入了神经网络的部分或整个特征空间的$L_2$损失。I.e. 生成器网络的中间结果受w.r.t约束。（一组中间参考数据）</p>
 </li>
-<li><p>建议使用区分器的功能作为约束，因此合并新得损失项：<br>$$<br>\mathcal{L}<em>{f}=\mathbb{E}</em>{n, j} \lambda_{f}^{j}\left|F^{j}(G(x))-F^{j}(y)\right|_{2}^{2}<br>\tag 3<br>$$</p>
-</li>
+<li><p>建议使用区分器的功能作为约束，因此合并新得损失项：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{f}=\mathbb{E}_{n, j} \lambda_{f}^{j}\left\|F^{j}(G(x))-F^{j}(y)\right\|_{2}^{2}
+\tag 3</script></li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -404,7 +410,8 @@
 <th>意义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>$j$</td>
 <td>鉴别器网络中的一层</td>
 </tr>
@@ -416,7 +423,9 @@
 <td>$\lambda_{f}^{j}$</td>
 <td>加权项，可在每层基础上调整</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ul>
 <li><p>可以在这里使用鉴别器，因为没有合适的、经过预训练的网络可用于三维流问题。</p>
 </li>
@@ -433,7 +442,7 @@
 <li><p>不针对单个真实结果，而让生成器自由生成最适合其接收到的输入集合的任何结果。</p>
 </li>
 <li><p>这个损耗项使生成器趋向于逼真的细节。图 2</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-05 222417.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-05 222417.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 </ul>
 <p><em>图 2. 从左到右：a）一个样本，低分辨率输入；b）具有原始的L2损失的CNN输出（无GAN训练）；c）我们的tempoGAN输出；以及d）高分辨率参考。</em></p>
@@ -444,7 +453,7 @@
 </li>
 <li><p>生成器和鉴别器都在每个帧上独立工作，因此输入$x$的细微变化会导致输出$G(x)$在高空频细节的方面有不同</p>
 </li>
-<li><p>当真实数据$y$来自诸如帧运动或流运动之类的传输过程时，通常表现出非常高的时间相干性，并且存在速度场$v_y$为其$y^{t}=\mathcal{A}\left(y^{t-1}, v_{y}^{t-1}\right)$。用$\mathcal{A}$表示对流算符。</p>
+<li><p>当真实数据$y$来自诸如帧运动或流运动之类的传输过程时，通常表现出非常高的时间相干性，并且存在速度场$v<em>y$为其$y^{t}=\mathcal{A}\left(y^{t-1}, v</em>{y}^{t-1}\right)$。用$\mathcal{A}$表示对流算符。</p>
 </li>
 <li><p>假设$t$和$t-1$时间步长为1   </p>
 </li>
@@ -456,9 +465,14 @@
 </li>
 <li><p>02</p>
 </li>
-<li><p>配备$v_x$时，改善时间相干性的一种可能性是添加以下形式的$L_2$损失项：<br>$$<br>\mathcal{L}<em>{2, t}=\left|G\left(x^{t}\right)-\mathcal{A}\left(G\left(x^{t-1}\right), v</em>{x}^{t-1}\right)\right|_{2}^{2}<br>\tag 4<br>$$</p>
-</li>
-<li><p>发现将向前对流差异与向后对流扩展进一步改善了结果，以下$L_2$损耗明显优于等式$(4)$：<br>$$<br>\mathcal{L}<em>{2, t}=\left|G\left(x^{t}\right)-\mathcal{A}\left(G\left(x^{t-1}\right), v</em>{x}^{t-1}\right)\right|<em>{2}^{2}+\left|G\left(x^{t}\right)-\mathcal{A}\left(G\left(x^{t+1}\right),-v</em>{x}^{t+1}\right)\right|<em>{2}^{2}<br>\tag 5<br>$$<br>其中，我们通过平移$-v^{t+1}</em>{x}$将下一帧对准$t + 1$</p>
+<li><p>配备$v_x$时，改善时间相干性的一种可能性是添加以下形式的$L_2$损失项：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{2, t}=\left\|G\left(x^{t}\right)-\mathcal{A}\left(G\left(x^{t-1}\right), v_{x}^{t-1}\right)\right\|_{2}^{2}
+\tag 4</script></li>
+<li><p>发现将向前对流差异与向后对流扩展进一步改善了结果，以下$L_2$损耗明显优于等式$(4)$：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{2, t}=\left\|G\left(x^{t}\right)-\mathcal{A}\left(G\left(x^{t-1}\right), v_{x}^{t-1}\right)\right\|_{2}^{2}+\left\|G\left(x^{t}\right)-\mathcal{A}\left(G\left(x^{t+1}\right),-v_{x}^{t+1}\right)\right\|_{2}^{2}
+\tag 5</script><p>其中，我们通过平移$-v^{t+1}_{x}$将下一帧对准$t + 1$</p>
 </li>
 <li><p>基于$L_2$的损耗改善了时间相干性但影响相对较小</p>
 </li>
@@ -473,40 +487,46 @@
 <li><p>以$D_s(x，G(x))$表示的原始空间鉴别器可确保生成器学习生成逼真的细节</p>
 </li>
 <li><p>新的时间鉴别器$D_t$主要专注于驱动$G(x )$寻求与真实$y$的时间演化相匹配的解决方案</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 114044.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-06 114044.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 </ul>
-<p><em>图3. 时间连贯性不同方法的比较。 最上面的两行显示了推断的密度，而下面的两行包含了在帧$t$和$t + 1$之间存在有限差而计算出的帧内容的时间导数。正值和负值分别用红色和蓝色进行颜色编码。 从左到右：没有施加时间损失，没有施加$L_{2}$损失，即没有对流作用的$L_{D’<em>t}$，有对流作用的$L</em>{D_t}$（本文的全tempoGAN方法），以及真实$y$。 从左到右，在不同的版本中，派生变得更少锯齿和更少的噪音，以及更加结构化和狭窄。 这意味着时间相干性得到改善。</em></p>
+<p><em>图3. 时间连贯性不同方法的比较。 最上面的两行显示了推断的密度，而下面的两行包含了在帧$t$和$t + 1$之间存在有限差而计算出的帧内容的时间导数。正值和负值分别用红色和蓝色进行颜色编码。 从左到右：没有施加时间损失，没有施加$L<em>{2}$损失，即没有对流作用的$L</em>{D’<em>t}$，有对流作用的$L</em>{D_t}$（本文的全tempoGAN方法），以及真实$y$。 从左到右，在不同的版本中，派生变得更少锯齿和更少的噪音，以及更加结构化和狭窄。 这意味着时间相干性得到改善。</em></p>
 <ul>
 <li><p>04</p>
 </li>
 <li><p>$D_t$采用三个帧作为输入，将用波浪号表示这样的三个框架集</p>
 </li>
-<li><p>判别器的真实数据：集合$\widetilde{Y}<em>{\mathcal{A}}$包含三个连续且平移的帧$\widetilde{Y}</em>{\mathcal{A}}=\left{\mathcal{A}\left(y^{t-1}, v_{x}^{t-1}\right), y^{t}, \mathcal{A}\left(y^{t+1},-v_{x}^{t+1}\right)\right}$</p>
+<li><p>判别器的真实数据：集合$\widetilde{Y}<em>{\mathcal{A}}$包含三个连续且平移的帧$\widetilde{Y}</em>{\mathcal{A}}=\left{\mathcal{A}\left(y^{t-1}, v<em>{x}^{t-1}\right), y^{t}, \mathcal{A}\left(y^{t+1},-v</em>{x}^{t+1}\right)\right}$</p>
 </li>
 <li><p>生成的数据集包含来自生成器$\widetilde{G}<em>{\mathcal{A}}(\widetilde{X})=\left{\mathcal{A}\left(G\left(x^{t-1}\right), v</em>{x}^{t-1}\right), G\left(x^{t}\right), \mathcal{A}\left(G\left(x^{t+1}\right),-v_{x}^{t+1}\right)\right}$的相应平移样本。</p>
 </li>
-<li><p>时间鉴别器$D_t$被训练为针对两组数据的二进制分类器：<br>$$<br>\mathcal{L}<em>{D</em>{t}}\left(D_{t}, G\right)=\mathbb{E}<em>{m}\left[-\log D</em>{t}\left(\widetilde{Y}<em>{\mathcal{A}}\right)\right]+\mathbb{E}</em>{n}\left[-\log \left(1-D_{t}\left(\widetilde{G}_{\mathcal{A}}(\widetilde{X})\right)\right)\right]<br>\tag 6<br>$$<br>集合$\widetilde{X}$还包含三个连续的帧$\widetilde{X}=\left{x^{t-1}, \left.x^{t}, x^{t+1}\right}\right.$；与空间鉴别符不同，$D_t$不是条件鉴别符。它没有“看到”条件输入$x$，$D_t$纯粹基于给定的序列进行判断。</p>
+<li><p>时间鉴别器$D_t$被训练为针对两组数据的二进制分类器：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{D_{t}}\left(D_{t}, G\right)=\mathbb{E}_{m}\left[-\log D_{t}\left(\widetilde{Y}_{\mathcal{A}}\right)\right]+\mathbb{E}_{n}\left[-\log \left(1-D_{t}\left(\widetilde{G}_{\mathcal{A}}(\widetilde{X})\right)\right)\right]
+\tag 6</script><p>集合$\widetilde{X}$还包含三个连续的帧$\widetilde{X}=\left{x^{t-1}, \left.x^{t}, x^{t+1}\right}\right.$；与空间鉴别符不同，$D_t$不是条件鉴别符。它没有“看到”条件输入$x$，$D_t$纯粹基于给定的序列进行判断。</p>
 </li>
 <li><p>05   </p>
 </li>
 <li><p>图3：</p>
 <ul>
 <li>第一列仅用空间鉴别符生成，即提供改进的基准。</li>
-<li>第二列显示使用公式$(5)$中基于$L_2$的时间损失$L_{2,t}$的结果，第四列显示使用公式$(6)$中的$D_t$的结果。</li>
+<li>第二列显示使用公式$(5)$中基于$L<em>2$的时间损失$L</em>{2,t}$的结果，第四列显示使用公式$(6)$中的$D_t$的结果。</li>
 <li>最后一列是真实数据$y$</li>
 </ul>
 </li>
 <li><p>06  </p>
 </li>
-<li><p>在图3的第三列中，显示了时间区分符的一个更简单的变体。 在这里，使用区分符时，不会使输入集与平流运算对齐，即：<br>$$<br>\mathcal{L}<em>{D</em>{t}^{\prime}}\left(D_{t}^{\prime}, G\right)=\mathbb{E}<em>{m}\left[-\log D</em>{t}(\tilde{Y})\right]+\mathbb{E}<em>{n}\left[-\log \left(1-D</em>{t}(\tilde{G}(\tilde{X}))\right)\right]<br>\tag 7<br>$$<br>其中，$\widetilde{Y}=\left{y^{t-1}, y^{t}, y^{t+1}\right} \text { and } \widetilde{G}(\widetilde{X})=\left{G\left(x^{t-1}\right), G\left(x^{t}\right), G\left(x^{t+1}\right)\right}$</p>
+<li><p>在图3的第三列中，显示了时间区分符的一个更简单的变体。 在这里，使用区分符时，不会使输入集与平流运算对齐，即：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_{D_{t}^{\prime}}\left(D_{t}^{\prime}, G\right)=\mathbb{E}_{m}\left[-\log D_{t}(\tilde{Y})\right]+\mathbb{E}_{n}\left[-\log \left(1-D_{t}(\tilde{G}(\tilde{X}))\right)\right]
+\tag 7</script><p>其中，$\widetilde{Y}=\left{y^{t-1}, y^{t}, y^{t+1}\right} \text { and } \widetilde{G}(\widetilde{X})=\left{G\left(x^{t-1}\right), G\left(x^{t}\right), G\left(x^{t+1}\right)\right}$</p>
 </li>
-<li><p>图3 中与$L_{2,t}$相比，此版本可提高结果，但未达到$L_{D_{t}}$的质量水平。</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 133055.png)</p>
+<li><p>图3 中与$L<em>{2,t}$相比，此版本可提高结果，但未达到$L</em>{D_{t}}$的质量水平。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-06 133055.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 </ul>
 <ul>
-<li><p>发现$L_{D_{t}}$在训练过程中通常表现出更快的收敛性→这表明使用$L_{D’_t}$时，基础神经网络很难自行对齐和比较数据。由图 4 可以说明：</p>
+<li><p>发现$L<em>{D</em>{t}}$在训练过程中通常表现出更快的收敛性→这表明使用$L_{D’_t}$时，基础神经网络很难自行对齐和比较数据。由图 4 可以说明：</p>
 <ul>
 <li>图4 并排显示了常规数据集$\widetilde{Y}$和推荐版本$\widetilde{Y}_{\mathcal{A}}$的示例内容</li>
 <li>三个按时间顺序排列的帧分别显示为图像的红色，绿色和蓝色通道</li>
@@ -516,7 +536,7 @@
 </li>
 <li><p>这种对准可以成功地改善反向传播的梯度，从而使生成器学会产生更多的相干输出。  </p>
 </li>
-<li><p>当没有可用的流场时，与较简单的$L_{2,t}$版本相比，$L_{D’}$仍然是更好的选择。</p>
+<li><p>当没有可用的流场时，与较简单的$L<em>{2,t}$版本相比，$L</em>{D’}$仍然是更好的选择。</p>
 </li>
 <li><p>07  </p>
 </li>
@@ -526,7 +546,7 @@
 </li>
 <li><p>时间鉴别器的损耗梯度若成功通过平流步骤，以提供给生成器反馈，可以改善其结果。</p>
 </li>
-<li><p>一般情况下，对流是一个非线性函数，上面我们用来缩写$\mathcal{A}\left(y^{t}, v_{y}^{t}\right)$为离散近似。给定已知的流场$v_y$和时间步长，可以将该方程线性化以生成矩阵$M y=\mathcal{A}\left(y^{t}, v_{y}^{t}\right)=y^{t+1}$。</p>
+<li><p>一般情况下，对流是一个非线性函数，上面我们用来缩写$\mathcal{A}\left(y^{t}, v<em>{y}^{t}\right)$为离散近似。给定已知的流场$v_y$和时间步长，可以将该方程线性化以生成矩阵$M y=\mathcal{A}\left(y^{t}, v</em>{y}^{t}\right)=y^{t+1}$。</p>
 </li>
 <li><p>08  </p>
 </li>
@@ -547,28 +567,26 @@
 <li>无条件时间判别器</li>
 </ul>
 </li>
-<li><p>生成器必须有效地最小化鉴别器损耗，附加特征空间约束和$L_1$正则项。 因此，损失函数可以概括为：<br>$$<br>\begin{aligned}<br>\mathcal{L}<em>{D</em>{t}}\left(D_{t}, G\right)=&amp;-\mathbb{E}<em>{m}\left[\log D</em>{t}\left(\tilde{Y}<em>{\mathcal{A}}\right)\right]-\mathbb{E}</em>{n}\left[\log \left(1-D_{t}\left(\widetilde{G}<em>{\mathcal{A}}(\widetilde{X})\right)\right)\right] \<br>\mathcal{L}</em>{D_{s}}\left(D_{s}, G\right)=&amp;-\mathbb{E}<em>{m}\left[\log D</em>{s}(x, y)\right]-\mathbb{E}<em>{n}\left[\log \left(1-D</em>{s}(x, G(x))\right)\right] \<br>\mathcal{L}<em>{G}\left(D</em>{s}, D_{t}, G\right)=&amp;-\mathbb{E}<em>{n}\left[\log D</em>{s}(x, G(x))\right]-\mathbb{E}<em>{n}\left[\log D</em>{t}\left(\widetilde{G}<em>{\mathcal{A}}(\tilde{X})\right)\right] \<br>&amp;+\mathbb{E}</em>{n, j} \lambda_{f}^{j}\left|F^{f}(G(x))-F^{j}(y)\right|<em>{2}^{2}+\lambda</em>{L_{1}} \mathbb{E}<em>{n}|G(x)-y|</em>{1}<br>\end{aligned}<br>\tag 8<br>$$</p>
-</li>
+<li><p>生成器必须有效地最小化鉴别器损耗，附加特征空间约束和$L_1$正则项。 因此，损失函数可以概括为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathcal{L}_{D_{t}}\left(D_{t}, G\right)=&-\mathbb{E}_{m}\left[\log D_{t}\left(\tilde{Y}_{\mathcal{A}}\right)\right]-\mathbb{E}_{n}\left[\log \left(1-D_{t}\left(\widetilde{G}_{\mathcal{A}}(\widetilde{X})\right)\right)\right] \\
+\mathcal{L}_{D_{s}}\left(D_{s}, G\right)=&-\mathbb{E}_{m}\left[\log D_{s}(x, y)\right]-\mathbb{E}_{n}\left[\log \left(1-D_{s}(x, G(x))\right)\right] \\
+\mathcal{L}_{G}\left(D_{s}, D_{t}, G\right)=&-\mathbb{E}_{n}\left[\log D_{s}(x, G(x))\right]-\mathbb{E}_{n}\left[\log D_{t}\left(\widetilde{G}_{\mathcal{A}}(\tilde{X})\right)\right] \\
+&+\mathbb{E}_{n, j} \lambda_{f}^{j}\left\|F^{f}(G(x))-F^{j}(y)\right\|_{2}^{2}+\lambda_{L_{1}} \mathbb{E}_{n}\|G(x)-y\|_{1}
+\end{aligned}
+\tag 8</script></li>
 <li><p>生成器有效地与两个强大的对手竞争： 例如，仅使用$D_t$进行了不使用$D_s$的测试，并且生成的发生器输出在时间上是平滑的，但显然不如同时使用两个鉴别器。</p>
 </li>
-<li><p>02  </p>
-</li>
-<li><p>生成器的损失项中，$L_1$项通过保持平均输出接近目标来稳定训练的作用相对较小；由于复杂的优化问题，它对于成功的训练运行还是很有帮助的</p>
-</li>
-<li><p>特征空间损失直接影响生成的特征。</p>
-</li>
-<li><p>在对抗环境中，鉴别者最有可能学习仅由生成器产生的否定特征。</p>
-</li>
-<li><p>在训练时，生成器将接收梯度以使其根据$F(y)$产生更多的目标特征，而来自$F(G(x))$的梯度将惩罚可识别的负特征的生成。</p>
-</li>
-<li><p>03  </p>
-</li>
-<li><p>尽管$\lambda_f$的正值加强了这种行为，但不清楚为什么在某些情况下负值会导致更好的结果：这驱使生成器趋向于必须遵循区分器检测到的正负特征的独特特征</p>
-</li>
-<li><p>生成器不能简单地创建不同的特征或不创建特征，因为鉴别器将容易地检测到这一点</p>
-</li>
-<li><p>生成器需要开发类似于输出$y$中存在的特征，但不对应于$F(y)$中的平均特征，如图2所示的细微输出</p>
-</li>
+<li>02  </li>
+<li>生成器的损失项中，$L_1$项通过保持平均输出接近目标来稳定训练的作用相对较小；由于复杂的优化问题，它对于成功的训练运行还是很有帮助的</li>
+<li>特征空间损失直接影响生成的特征。</li>
+<li>在对抗环境中，鉴别者最有可能学习仅由生成器产生的否定特征。</li>
+<li>在训练时，生成器将接收梯度以使其根据$F(y)$产生更多的目标特征，而来自$F(G(x))$的梯度将惩罚可识别的负特征的生成。</li>
+<li>03  </li>
+<li>尽管$\lambda_f$的正值加强了这种行为，但不清楚为什么在某些情况下负值会导致更好的结果：这驱使生成器趋向于必须遵循区分器检测到的正负特征的独特特征</li>
+<li>生成器不能简单地创建不同的特征或不创建特征，因为鉴别器将容易地检测到这一点</li>
+<li>生成器需要开发类似于输出$y$中存在的特征，但不对应于$F(y)$中的平均特征，如图2所示的细微输出</li>
 </ul>
 <h4 id="体系结构和训练数据"><a href="#体系结构和训练数据" class="headerlink" title="体系结构和训练数据"></a>体系结构和训练数据</h4><ul>
 <li><p>01   </p>
@@ -590,7 +608,7 @@
 <li><p>本文鉴别器中，内核大小也可以通过步幅进行整除。这些设置有助于消除常见的棋盘伪像，并改善最终结果。</p>
 </li>
 <li><p>神经网络的架构概述如图5所示</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 162653.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-06 162653.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 </ul>
 <p><em>图5 结合训练了三个神经网络（蓝色框）。 它们之间的数据流由红色和黑色箭头突出显示。</em></p>
@@ -599,30 +617,20 @@
 </li>
 <li><p>使用随机烟雾模拟设置来生成所需数量的训练样本作为预计算步骤。生成约20个仿真，每个仿真有120帧输出。</p>
 </li>
-<li><p>随机初始化一定数量的烟雾流入区域，另一组速度流入以及随机的浮力。</p>
-</li>
-<li><p>作为输入$x$，我们使用模拟数据集的降采样版本，通常降低4倍，而将全分辨率数据用作真实$y$。 </p>
-</li>
-<li><p>丢弃平均烟气密度小于0.02的输入→防止最初是空的样本</p>
-</li>
-<li><p>02  </p>
-</li>
-<li><p>一个二维上升烟雾模拟生成的示例，该模拟与用于生成训练数据的模拟设置不同。 如图2</p>
-</li>
-<li><p>03</p>
-</li>
-<li><p>使用常用的ADAM优化器$^2$，其初始学习速率为$2 \cdot 10^{-4}$。在第二次训练迭代中衰减至1/20。 训练迭代的次数通常约为10k。</p>
-</li>
-<li><p>将20％的数据用于测试，其余80％的数据用于培训</p>
-</li>
-<li><p>网络不需要任何其他的正则化</p>
-</li>
-<li><p>使用tensorflow和mantaflow软件框架进行深度学习和流体仿真。</p>
-</li>
+<li>随机初始化一定数量的烟雾流入区域，另一组速度流入以及随机的浮力。</li>
+<li>作为输入$x$，我们使用模拟数据集的降采样版本，通常降低4倍，而将全分辨率数据用作真实$y$。 </li>
+<li>丢弃平均烟气密度小于0.02的输入→防止最初是空的样本</li>
+<li>02  </li>
+<li>一个二维上升烟雾模拟生成的示例，该模拟与用于生成训练数据的模拟设置不同。 如图2</li>
+<li>03</li>
+<li>使用常用的ADAM优化器$^2$，其初始学习速率为$2 \cdot 10^{-4}$。在第二次训练迭代中衰减至1/20。 训练迭代的次数通常约为10k。</li>
+<li>将20％的数据用于测试，其余80％的数据用于培训</li>
+<li>网络不需要任何其他的正则化</li>
+<li>使用tensorflow和mantaflow软件框架进行深度学习和流体仿真。</li>
 </ul>
 <h5 id="4-2-输入Fields"><a href="#4-2-输入Fields" class="headerlink" title="4.2 输入Fields"></a>4.2 输入Fields</h5><ul>
 <li><p>进行大量训练的过程中，我们注意到为网络提供有关基础物理的更多信息会大大提高推断结果的收敛性和质量。</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 181813.webp)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-06 181813.webp" srcset="/img/loading.gif" alt=""></p>
 <p><em>图6.经过40k次迭代后，使用不同的输入字段</em>$a) \rho , b) \rho + \mathbf{v} , c) \rho + \mathbf{v} + \mathbf(w)$  <em>（均具有相似的网络大小）的不同训练结果的说明。 仅</em>$\rho$ <em>的版本d）的权数是其两倍。 图像中的接缝显示了训练补丁的大小。 补充的物理场导致b）和c）的明显改进，即使附加的重量也无法弥补。</em></p>
 </li>
 <li><p>图6 展示了对具有相同大小，结构和参数的三个网络训练发展，唯一的区别是输入字段。</p>
@@ -656,7 +664,7 @@
 <li><p>专注于采用$\tilde{\mathbf{x}}(\mathbf{p})=\mathbf{x}(A \mathbf{p})$形式的空间变换，其中$\mathbf{p}$是空间位置，$A$表示4 * 4矩阵。 为了应用增强，区分了数据集的三种类型的组件：</p>
 <ul>
 <li>被动的：如上所述，这些组件可以直接转换。 被动分量的一个示例是平移的烟场 $\rho$ ，在许多示例中都已显示。</li>
-<li>定向的：这些组件的内容需要与扩充一起进行转换。 速度就是一个很好的例子，速度需要针对旋转和翻转进行调整，即$\tilde{\mathbf{v}}(\mathbf{p})=A_{3 \times 3} \mathbf{v}(A \mathbf{p})$，其中$A_{3 \times 3}$是$A$的左上3 * 3矩阵。</li>
+<li>定向的：这些组件的内容需要与扩充一起进行转换。 速度就是一个很好的例子，速度需要针对旋转和翻转进行调整，即$\tilde{\mathbf{v}}(\mathbf{p})=A<em>{3 \times 3} \mathbf{v}(A \mathbf{p})$，其中$A</em>{3 \times 3}$是$A$的左上3 * 3矩阵。</li>
 <li>派生：最后，派生组件在应用增强后将无效，因此需要在增强后从其他组件重新计算。 一个很好的例子是物理量（例如涡度），其中包含混合的导数，无法通过简单的矩阵乘法转换。</li>
 </ul>
 </li>
@@ -685,7 +693,7 @@
 <li><p>通过应用其他转换后选择合适的翻译来强制执行此操作。这样可以确保所有数据集仅包含有效内容，并且网络不会从边界附近的潜在非物理性或非代表性数据中学习。</p>
 </li>
 <li><p>发现上面应用于速度场的空间变换在时间变化方面给出了足够的方差。</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 1855 45.webp)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-01-06 1855 45.webp" srcset="/img/loading.gif" alt=""></p>
 <p><em>图7.一个训练有相同输入数据集的GAN网络。 尽管版本a）没有使用数据增强，但由于带有条纹的伪影而导致模糊的结果，而版本b）和数据增强却产生了清晰而详细的输出。</em></p>
 </li>
 <li><p>06    </p>

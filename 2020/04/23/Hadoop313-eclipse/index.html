@@ -204,7 +204,6 @@
 tar xvfz hadoop-3.1.3.tar.gz -C /opt
 然后确定文件夹名为hadoop
 mv hadoop-3.1.3 hadoop</code></pre></div>
-
 <h4 id="安装eclipse"><a href="#安装eclipse" class="headerlink" title="安装eclipse"></a>安装eclipse</h4><p>eclipse<a href="https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz" target="_blank" rel="noopener">下载链接</a></p>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#解压Eclipse软件</span>
 tar xvfz eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz -C /opt
@@ -218,19 +217,14 @@ EOF
 reboot
 <span class="hljs-comment">#或</span>
 <span class="hljs-built_in">source</span> /etc/profile</code></pre></div>
-
 <h4 id="下载hadoop3x-eclipse-plugin源代码"><a href="#下载hadoop3x-eclipse-plugin源代码" class="headerlink" title="下载hadoop3x-eclipse-plugin源代码"></a>下载hadoop3x-eclipse-plugin源代码</h4><div class="hljs"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/Woooosz/eclipse-hadoop3x
 <span class="hljs-built_in">cd</span> eclipse-hadoop3x</code></pre></div>
-
 <a id="more"></a>
-
 <h6 id="修改依赖包版本文件libraries-properties"><a href="#修改依赖包版本文件libraries-properties" class="headerlink" title="修改依赖包版本文件libraries.properties"></a>修改依赖包版本文件libraries.properties</h6><div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/ivy<span class="hljs-comment">#文件路径</span></code></pre></div>
-
 <p>修改办法：</p>
 <div class="hljs"><pre><code class="hljs bahs">#列出相应的版本号
 cd &#x2F;opt&#x2F;hadoop&#x2F;share&#x2F;hadoop&#x2F;common&#x2F;lib
 ls</code></pre></div>
-
 <p>对着列出来的版本一个个修改libraries.properties里面的版本号（对的上的就改，对不上的就忽略，如果编译失败看一下输出的信息是那个jar版本对不上了，然后在bulid.xml里面看xxx.jar在哪里，说明xxx.jar前面的jar都找到了，这样去校对libraries.properties的时候可以直接从xxx.jar后面开始校对）。</p>
 <p>额外注意：</p>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#修改</span>
@@ -238,7 +232,6 @@ commons-httpclient.version=3.0.1
 <span class="hljs-comment">#添加</span>
 stax2.version=3.1.4
 woodstox.version=5.0.3</code></pre></div>
-
 <p>测试可编译通过libraries.properties：</p>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#   Licensed under the Apache License, Version 2.0 (the "License");</span>
 <span class="hljs-comment">#   you may not use this file except in compliance with the License.</span>
@@ -333,10 +326,8 @@ wagon-http.version=1.0-beta-2
 woodstox.version=5.0.3
 xmlenc.version=0.52
 xerces.version=1.4.4</code></pre></div>
-
 <h6 id="修改build-xml文件"><a href="#修改build-xml文件" class="headerlink" title="修改build.xml文件"></a>修改build.xml文件</h6><div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#路径</span>
 <span class="hljs-built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin</code></pre></div>
-
 <ul>
 <li>第1处修改：跳过查找不到的jar包</li>
 </ul>
@@ -356,7 +347,6 @@ xerces.version=1.4.4</code></pre></div>
 <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"**/*.jar"</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- new add end--&gt;</span></code></pre></div>
-
 <ul>
 <li>第3处修改：包含ant runtime</li>
 </ul>
@@ -370,31 +360,27 @@ xerces.version=1.4.4</code></pre></div>
 <p>在120行左右添加</p>
 <div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">file</span>=<span class="hljs-string">"$&#123;hadoop.home&#125;/libexec/share/hadoop/common/lib/woodstox-core-$&#123;woodstox.version&#125;.jar"</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">"$&#123;build.dir&#125;/lib"</span> <span class="hljs-attr">verbose</span>=<span class="hljs-string">"true"</span>/&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">file</span>=<span class="hljs-string">"$&#123;hadoop.home&#125;/libexec/share/hadoop/common/lib/stax2-api-$&#123;stax2.version&#125;.jar"</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">"$&#123;build.dir&#125;/lib"</span> <span class="hljs-attr">verbose</span>=<span class="hljs-string">"true"</span>/&gt;</span></code></pre></div>
-
 <ul>
 <li>第5处修改：确保编译能找到hadoop的jar包</li>
 </ul>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#建议不修改xml文件，直接创建链接：</span>
 <span class="hljs-built_in">cd</span> /opt/hadoop/libexec
 ln -s /opt/hadoop/share share</code></pre></div>
-
 <ul>
 <li>第6处修改：guava的jar包文件命和hadoop3.1.3不一致</li>
 </ul>
 <p>修改前：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%871.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/图片1.png" srcset="/img/loading.gif" alt=""></p>
 <p>修改后：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%872.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/图片2.png" srcset="/img/loading.gif" alt=""></p>
 <h4 id="编译eclipse插件"><a href="#编译eclipse插件" class="headerlink" title="编译eclipse插件"></a>编译eclipse插件</h4><div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin
 
 ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
 -Declipse.home=/opt/eclipse \
 -Dhadoop.home=/opt/hadoop -debug</code></pre></div>
-
 <p>编译好的jar包:</p>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/build/contrib/eclipse-plugin</code></pre></div>
-
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%873.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/图片3.png" srcset="/img/loading.gif" alt=""></p>
 
             </article>
             <hr>
@@ -682,6 +668,45 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

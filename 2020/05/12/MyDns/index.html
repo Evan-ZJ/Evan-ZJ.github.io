@@ -208,7 +208,6 @@
 <li>如果通过 OpenDNS 去解析国内网站，那么很可能会得到一个海外 IP（很多大公司都会配备有海外服务器供海外华人使用，例如京东啦淘宝啦B站啦），<strong>这样会导致访问国内网站访问速度很慢</strong><br>而 ChinaDNS 可以根据 chnrouter 来判断，如果从国内 DNS 里解析到国内 IP 的话就使用，对于国外网站会过滤掉从国内 DNS 解析得到的被污染的结果，十分完美的解决了这个问题</li>
 </ol>
 <a id="more"></a>
-
 <h3 id="国内-VPS-上部署-ChinaDNS"><a href="#国内-VPS-上部署-ChinaDNS" class="headerlink" title="国内 VPS 上部署 ChinaDNS"></a>国内 VPS 上部署 ChinaDNS</h3><div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 如果 Linux 上没有安装 make 和 gcc 的话要先安装</span>
 <span class="hljs-comment"># Ubuntu / Debian</span>
 apt-get install -y make gcc
@@ -229,7 +228,6 @@ rm -f iplist.txt &amp;&amp; wget --no-check-certificate  https://raw.githubuserc
 
 <span class="hljs-comment"># 启动 ChinaDNS（编译好的程序在 src 目录中）</span>
 nohup src/chinadns -m -c chnroute.txt -s 114.114.114.114,208.67.222.222:443 &amp;</code></pre></div>
-
 <p>最后别忘记开放防火墙的<code>53</code>UDP端口</p>
 <h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><ol>
 <li><p>如果不使用<code>-s</code>参数，那么 ChinaDNS 会默认使用<code>114.114.114.114,208.67.222.222:443,8.8.8.8</code>作为 DNS，这样会导致一个很严重的问题！</p>
@@ -532,6 +530,45 @@ nohup src/chinadns -m -c chnroute.txt -s 114.114.114.114,208.67.222.222:443 &amp
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

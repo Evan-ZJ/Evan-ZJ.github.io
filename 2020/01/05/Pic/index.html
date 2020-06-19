@@ -211,7 +211,6 @@
 <li>根据需求选择是否为仓库初始化一个 <code>README.md</code> 描述文件</li>
 </ul>
 <a id="more"></a>
-
 <h4 id="生成一个-Token"><a href="#生成一个-Token" class="headerlink" title="生成一个 Token"></a>生成一个 Token</h4><p>1.点击用户头像 -&gt; 选择 <code>Settings</code></p>
 <p>2.点击 <code>Developer settings</code></p>
 <p>3.点击 <code>Personal access tokens</code></p>
@@ -523,6 +522,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 
