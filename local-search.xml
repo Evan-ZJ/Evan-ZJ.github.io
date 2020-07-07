@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>写个小白的保姆级windows 10 激活教程</title>
+    <link href="/2020/07/07/win10kms/"/>
+    <url>/2020/07/07/win10kms/</url>
+    
+    <content type="html"><![CDATA[<h1 id="写个小白的保姆级windows-10-激活教程"><a href="#写个小白的保姆级windows-10-激活教程" class="headerlink" title="写个小白的保姆级windows 10 激活教程"></a>写个小白的保姆级windows 10 激活教程</h1><h2 id="0说明"><a href="#0说明" class="headerlink" title="0说明"></a>0说明</h2><p>你们好多人的win因为各种原因，或是电脑老旧、或是被奸商随意重装导致自己windows没激活，我也没办法一个个给你们全都激活了……所以写了这个说明。</p><p><strong>如果再不会我也无能为力了。</strong></p><p>一般电脑都会在桌面出现这个说明：</p><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200707140830.jpg" srcset="/img/loading.gif" alt=""></p><p>或者在此电脑里面出现：</p><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200707141008.jpg" srcset="/img/loading.gif" alt=""></p><p>然后，下面就是怎么通过我的网站来激活你电脑windows的步骤：</p><h3 id="1-找到你电脑的搜索，点击这个放大镜，搜索！"><a href="#1-找到你电脑的搜索，点击这个放大镜，搜索！" class="headerlink" title="1.找到你电脑的搜索，点击这个放大镜，搜索！"></a>1.找到你电脑的搜索，点击这个放大镜，搜索！</h3><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200707141154.jpg" srcset="/img/loading.gif" alt=""></p><h3 id="2-然后输入-cmd-（输入cmd，关键词，跟搜百度一样）"><a href="#2-然后输入-cmd-（输入cmd，关键词，跟搜百度一样）" class="headerlink" title="2.然后输入 cmd （输入cmd，关键词，跟搜百度一样）"></a>2.然后输入 <em>cmd</em> （输入<em>cmd</em>，关键词，跟搜百度一样）</h3><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200707141255.jpg" srcset="/img/loading.gif" alt=""></p><h3 id="3-出现搜索结果（写着-命令提示符），然后右键，右键！右键！右键！鼠标点击-以管理员身份运行！以管理员身份运行！"><a href="#3-出现搜索结果（写着-命令提示符），然后右键，右键！右键！右键！鼠标点击-以管理员身份运行！以管理员身份运行！" class="headerlink" title="3.出现搜索结果（写着  命令提示符），然后右键，右键！右键！右键！鼠标点击 以管理员身份运行！以管理员身份运行！"></a>3.出现搜索结果（写着  <em>命令提示符</em>），然后<em>右键</em>，右键！右键！右键！鼠标点击 <em>以管理员身份运行</em>！<em>以管理员身份运行</em>！</h3><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200707141430.jpg" srcset="/img/loading.gif" alt=""></p><h3 id="4-这边就两个按钮，选择-是"><a href="#4-这边就两个按钮，选择-是" class="headerlink" title="4.这边就两个按钮，选择 是"></a>4.这边就两个按钮，选择 <em>是</em></h3><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200707141622.jpg" srcset="/img/loading.gif" alt=""></p><h3 id="5-然后出现黑框框界面，分别输入"><a href="#5-然后出现黑框框界面，分别输入" class="headerlink" title="5.然后出现黑框框界面，分别输入"></a>5.然后出现黑框框界面，分别输入</h3><div class="hljs"><pre><code class="hljs bash">slmgr /skms zhoujing.cool</code></pre></div><h4 id="按一下回车！"><a href="#按一下回车！" class="headerlink" title="按一下回车！"></a>按一下回车！</h4><p>然后再输入</p><div class="hljs"><pre><code class="hljs bash">slmgr /ato</code></pre></div><h3 id="按一下回车"><a href="#按一下回车" class="headerlink" title="按一下回车"></a>按一下回车</h3><p>然后再输入</p><div class="hljs"><pre><code class="hljs bash">slmgr /xpr</code></pre></div><h3 id="按一下回车！-1"><a href="#按一下回车！-1" class="headerlink" title="按一下回车！"></a>按一下回车！</h3><p><strong>总共输入三次，按三次回车</strong>。中间会<strong>跳出来小窗口，不用管</strong>。</p><p>最后出现这个就行了，<strong>字不需要一样</strong>，只要有<strong>成功激活</strong>的关键字就行。</p><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200707142245.jpg" srcset="/img/loading.gif" alt=""></p><blockquote><p>整个网站是搭建在我的学生云上面的，用的是微软的批量激活，180天到期，然后会自动续期。目前来说我的服务器购买了一年，所以这一年来说你的系统会一直处于激活状态。</p></blockquote>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Win 10</tag>
+      
+      <tag>KMS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用Pyecharts绘制热力图</title>
     <link href="/2020/06/18/pyecharts/"/>
     <url>/2020/06/18/pyecharts/</url>
