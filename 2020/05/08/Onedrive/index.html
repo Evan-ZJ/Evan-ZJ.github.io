@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      468 字
+      481 字
     </span>
   
 
@@ -212,27 +212,49 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>OneIndex</code>是一个可以将<code>OneDrive</code>网盘的目录索引出来的程序，可以供多人查看/下载，也就是变成了公共的网盘。而且不占用服务器空间，也不消耗服务器流量，很强大。</p>
+              <h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
+<p><code>OneIndex</code>是一个可以将<code>OneDrive</code>网盘的目录索引出来的程序，可以供多人查看/下载，也就是变成了公共的网盘。而且不占用服务器空间，也不消耗服务器流量，很强大。</p>
 <a id="more"></a>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注 2020-05-08 200849.png" srcset="/img/loading.gif" alt=""></p>
+<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-05-08 200849.png)</p>
 <ul>
-<li>响应式，支持小屏设备。</li>
-<li>图片在线预览。</li>
-<li>视频在线播放。</li>
-<li>代码在线查看（<code>js</code>、<code>css</code>、<code>html</code>、<code>sh</code>、<code>php</code>、<code>java</code>、<code>md</code>等）。</li>
-<li><code>README.md</code>支持，解析各目录下(<code>onedirive</code>目录下) <code>README.md</code>文件，在页面尾部展示。</li>
-<li>音频在线播放。</li>
-<li><code>HEAD.md</code>支持，在页面头部展示。</li>
-<li><p><code>.password</code>文件夹加密。</p>
+<li>
+<p>响应式，支持小屏设备。</p>
 </li>
-<li><p><code>Onedrive</code>账号 (个人、企业版或教育版/工作或学校帐户)。</p>
+<li>
+<p>图片在线预览。</p>
 </li>
-<li><code>oneindex</code>程序：<a href="https://github.com/iiiiiii1/Oneindex/archive/master.zip" target="_blank" rel="noopener">Github下载</a>、<a href="https://www.moerats.com/usr/down/oneindex-3.0.zip" target="_blank" rel="noopener">本地下载</a>。</li>
+<li>
+<p>视频在线播放。</p>
+</li>
+<li>
+<p>代码在线查看（<code>js</code>、<code>css</code>、<code>html</code>、<code>sh</code>、<code>php</code>、<code>java</code>、<code>md</code>等）。</p>
+</li>
+<li>
+<p><code>README.md</code>支持，解析各目录下(<code>onedirive</code>目录下) <code>README.md</code>文件，在页面尾部展示。</p>
+</li>
+<li>
+<p>音频在线播放。</p>
+</li>
+<li>
+<p><code>HEAD.md</code>支持，在页面头部展示。</p>
+</li>
+<li>
+<p><code>.password</code>文件夹加密。</p>
+</li>
+<li>
+<p><code>Onedrive</code>账号 (个人、企业版或教育版/工作或学校帐户)。</p>
+</li>
+<li>
+<p><code>oneindex</code>程序：<a href="https://github.com/iiiiiii1/Oneindex/archive/master.zip" target="_blank" rel="noopener">Github下载</a>、<a href="https://www.moerats.com/usr/down/oneindex-3.0.zip" target="_blank" rel="noopener">本地下载</a>。</p>
+</li>
 </ul>
-<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><ul>
-<li><p>安装Docker</p>
+<h2 id="docker安装"><a class="markdownIt-Anchor" href="#docker安装"></a> Docker安装</h2>
+<ul>
+<li>
+<p>安装Docker</p>
 </li>
-<li><p><a href="https://github.com/TimeBye/oneindex" target="_blank" rel="noopener">拉取镜像创建</a></p>
+<li>
+<p><a href="https://github.com/TimeBye/oneindex" target="_blank" rel="noopener">拉取镜像创建</a></p>
 <div class="hljs"><pre><code class="hljs bash">docker run -d --name oneindex \
     -p 80:80 --restart=always \
     -v ~/oneindex/config:/var/www/html/config \
@@ -241,17 +263,21 @@
     -e REFRESH_CACHE=<span class="hljs-string">'*/10 * * * *'</span> \
     setzero/oneindex</code></pre></div>
 <ul>
-<li><ul>
-<li><p>停止删除容器：</p>
+<li>
+<ul>
+<li>
+<p>停止删除容器：</p>
 <div class="hljs"><pre><code class="hljs properties"><span class="hljs-attr">docker</span> <span class="hljs-string">stop oneindex</span>
 <span class="hljs-attr">docker</span> <span class="hljs-string">rm -v oneindex</span></code></pre></div>
 </li>
 </ul>
 </li>
-<li><p>使用<code>docker-compose</code>运行：</p>
+<li>
+<p>使用<code>docker-compose</code>运行：</p>
 <div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span></code></pre></div>
 <ul>
-<li><p>停止删除容器：</p>
+<li>
+<p>停止删除容器：</p>
 <div class="hljs"><pre><code class="hljs bash">docker-compose down</code></pre></div>
 </li>
 </ul>
@@ -259,7 +285,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="变量："><a href="#变量：" class="headerlink" title="变量："></a>变量：</h2><ul>
+<h2 id="变量"><a class="markdownIt-Anchor" href="#变量"></a> 变量：</h2>
+<ul>
 <li><code>TZ</code>：时区，默认<code>Asia/Shanghai</code></li>
 <li><code>PORT</code>：服务监听端口，默认为80</li>
 <li><code>DISABLE_CRON</code>：是否禁用crontab自动刷新缓存，设置任意值则不启用</li>
@@ -268,19 +295,20 @@
 <li><code>SSH_PASSWORD</code>：sshd用户密码，用户名为<code>root</code>，若不设置则不启用sshd</li>
 </ul>
 <p>本项目为 <a href="https://github.com/donwa/oneindex/commits/master" target="_blank" rel="noopener">donwa/oneindex</a> docker 镜像</p>
-<h2 id="安装完成后，打开域名，按照提示进行安装配置。"><a href="#安装完成后，打开域名，按照提示进行安装配置。" class="headerlink" title="安装完成后，打开域名，按照提示进行安装配置。"></a>安装完成后，打开域名，按照提示进行安装配置。</h2><p><a href="https://www.moerats.com/archives/692/" target="_blank" rel="noopener">引用</a></p>
+<h2 id="安装完成后打开域名按照提示进行安装配置"><a class="markdownIt-Anchor" href="#安装完成后打开域名按照提示进行安装配置"></a> 安装完成后，打开域名，按照提示进行安装配置。</h2>
+<p><a href="https://www.moerats.com/archives/692/" target="_blank" rel="noopener">引用</a></p>
 <ul>
 <li>直接点下一步</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/oneindex(4" srcset="/img/loading.gif" alt="">.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/oneindex(4).png" srcset="/img/loading.gif" alt="" /></p>
 <ul>
 <li>win会自动读取当前设备微软账户，要更换最好用手机打开链接。第一个是应用机密，然后第二个是id，在新跳出的界面中找到。</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/oneindex(5" srcset="/img/loading.gif" alt="">.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/oneindex(5).png" srcset="/img/loading.gif" alt="" /></p>
 <ul>
 <li>按照初始密码访问后台设置</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/oneindex(6" srcset="/img/loading.gif" alt="">.png)后台地址：<code>https://xx.com/?/admin</code>，默认密码：<code>oneindex</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/oneindex(6).png" srcset="/img/loading.gif" alt="" />后台地址：<code>https://xx.com/?/admin</code>，默认密码：<code>oneindex</code></p>
 
             </article>
             <hr>
@@ -568,6 +596,13 @@
 
 
 
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+  
 
 
 

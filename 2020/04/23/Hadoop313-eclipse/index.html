@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      19
        分钟
     </span>
   
@@ -212,11 +212,13 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h4 id="Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下"><a href="#Hadoop3-1-3源代码编译成功后，解压释放到-opt目录下" class="headerlink" title="Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下"></a>Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下</h4><div class="hljs"><pre><code class="hljs bash">解压释放：
+              <h4 id="hadoop313源代码编译成功后解压释放到opt目录下"><a class="markdownIt-Anchor" href="#hadoop313源代码编译成功后解压释放到opt目录下"></a> Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下</h4>
+<div class="hljs"><pre><code class="hljs bash">解压释放：
 tar xvfz hadoop-3.1.3.tar.gz -C /opt
 然后确定文件夹名为hadoop
 mv hadoop-3.1.3 hadoop</code></pre></div>
-<h4 id="安装eclipse"><a href="#安装eclipse" class="headerlink" title="安装eclipse"></a>安装eclipse</h4><p>eclipse<a href="https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz" target="_blank" rel="noopener">下载链接</a></p>
+<h4 id="安装eclipse"><a class="markdownIt-Anchor" href="#安装eclipse"></a> 安装eclipse</h4>
+<p>eclipse<a href="https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz" target="_blank" rel="noopener">下载链接</a></p>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#解压Eclipse软件</span>
 tar xvfz eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz -C /opt
 <span class="hljs-comment">#确保opt目录下解压的文件夹名为eclipse，不是的话mv修改</span>
@@ -229,10 +231,12 @@ EOF
 reboot
 <span class="hljs-comment">#或</span>
 <span class="hljs-built_in">source</span> /etc/profile</code></pre></div>
-<h4 id="下载hadoop3x-eclipse-plugin源代码"><a href="#下载hadoop3x-eclipse-plugin源代码" class="headerlink" title="下载hadoop3x-eclipse-plugin源代码"></a>下载hadoop3x-eclipse-plugin源代码</h4><div class="hljs"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/Woooosz/eclipse-hadoop3x
+<h4 id="下载hadoop3x-eclipse-plugin源代码"><a class="markdownIt-Anchor" href="#下载hadoop3x-eclipse-plugin源代码"></a> 下载hadoop3x-eclipse-plugin源代码</h4>
+<div class="hljs"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/Woooosz/eclipse-hadoop3x
 <span class="hljs-built_in">cd</span> eclipse-hadoop3x</code></pre></div>
 <a id="more"></a>
-<h6 id="修改依赖包版本文件libraries-properties"><a href="#修改依赖包版本文件libraries-properties" class="headerlink" title="修改依赖包版本文件libraries.properties"></a>修改依赖包版本文件libraries.properties</h6><div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/ivy<span class="hljs-comment">#文件路径</span></code></pre></div>
+<h6 id="修改依赖包版本文件librariesproperties"><a class="markdownIt-Anchor" href="#修改依赖包版本文件librariesproperties"></a> 修改依赖包版本文件libraries.properties</h6>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/ivy<span class="hljs-comment">#文件路径</span></code></pre></div>
 <p>修改办法：</p>
 <div class="hljs"><pre><code class="hljs bahs">#列出相应的版本号
 cd &#x2F;opt&#x2F;hadoop&#x2F;share&#x2F;hadoop&#x2F;common&#x2F;lib
@@ -338,22 +342,24 @@ wagon-http.version=1.0-beta-2
 woodstox.version=5.0.3
 xmlenc.version=0.52
 xerces.version=1.4.4</code></pre></div>
-<h6 id="修改build-xml文件"><a href="#修改build-xml文件" class="headerlink" title="修改build.xml文件"></a>修改build.xml文件</h6><div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#路径</span>
+<h6 id="修改buildxml文件"><a class="markdownIt-Anchor" href="#修改buildxml文件"></a> 修改build.xml文件</h6>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#路径</span>
 <span class="hljs-built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin</code></pre></div>
 <ul>
 <li>第1处修改：跳过查找不到的jar包</li>
 </ul>
 <p>修改66行，将原来的target中的depends=“init, ivy-retrieve-common” 去掉其中的 ivy-retrieve-common</p>
 <p>修改前：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001028.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001028.png" srcset="/img/loading.gif" alt="" /></p>
 <p>修改后：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001112.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001112.png" srcset="/img/loading.gif" alt="" /></p>
 <ul>
-<li><p>第2处修改：让classpath包含Hadoop的jar</p>
+<li>
+<p>第2处修改：让classpath包含Hadoop的jar</p>
 <p>添加</p>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001219.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001219.png" srcset="/img/loading.gif" alt="" /></p>
 <div class="hljs"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- new add start--&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"$&#123;hadoop.root&#125;"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"**/*.jar"</span> /&gt;</span>
@@ -363,9 +369,9 @@ xerces.version=1.4.4</code></pre></div>
 <li>第3处修改：包含ant runtime</li>
 </ul>
 <p>修改前：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001347.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001347.png" srcset="/img/loading.gif" alt="" /></p>
 <p>修改后：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001411.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001411.png" srcset="/img/loading.gif" alt="" /></p>
 <ul>
 <li>第4处修改：解决Add New Location没有反应的问题</li>
 </ul>
@@ -382,17 +388,18 @@ ln -s /opt/hadoop/share share</code></pre></div>
 <li>第6处修改：guava的jar包文件命和hadoop3.1.3不一致</li>
 </ul>
 <p>修改前：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/图片1.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%871.png" srcset="/img/loading.gif" alt="" /></p>
 <p>修改后：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/图片2.png" srcset="/img/loading.gif" alt=""></p>
-<h4 id="编译eclipse插件"><a href="#编译eclipse插件" class="headerlink" title="编译eclipse插件"></a>编译eclipse插件</h4><div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%872.png" srcset="/img/loading.gif" alt="" /></p>
+<h4 id="编译eclipse插件"><a class="markdownIt-Anchor" href="#编译eclipse插件"></a> 编译eclipse插件</h4>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin
 
 ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
 -Declipse.home=/opt/eclipse \
 -Dhadoop.home=/opt/hadoop -debug</code></pre></div>
 <p>编译好的jar包:</p>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/build/contrib/eclipse-plugin</code></pre></div>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/图片3.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%873.png" srcset="/img/loading.gif" alt="" /></p>
 
             </article>
             <hr>
@@ -680,6 +687,13 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
 
 
 
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+  
 
 
 

@@ -212,25 +212,33 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="fail2ban-防止SSH暴力破解-一键脚本"><a href="#fail2ban-防止SSH暴力破解-一键脚本" class="headerlink" title="[fail2ban] 防止SSH暴力破解 一键脚本"></a>[fail2ban] 防止SSH暴力破解 一键脚本</h1><blockquote>
+              <h1 id="fail2ban-防止ssh暴力破解-一键脚本"><a class="markdownIt-Anchor" href="#fail2ban-防止ssh暴力破解-一键脚本"></a> [fail2ban] 防止SSH暴力破解 一键脚本</h1>
+<blockquote>
 <p>经常买vps需要用到，当作笔记，<a href="https://moe.best/yoimono/fail2ban.html" target="_blank" rel="noopener">引用一下</a></p>
 </blockquote>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
+<h2 id="功能"><a class="markdownIt-Anchor" href="#功能"></a> 功能</h2>
+<ul>
 <li>自助修改SSH端口</li>
 <li>自定义SSH尝试连接次数</li>
 <li>自定义最高封禁IP的时间（以小时为单位）</li>
 <li>一键完成SSH防止暴力破解</li>
 </ul>
 <a id="more"></a>
-<h2 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h2><ul>
+<h2 id="支持"><a class="markdownIt-Anchor" href="#支持"></a> 支持</h2>
+<ul>
 <li>Centos 6/7 (x86/x64)</li>
 <li>Ubuntu 14.04/16.10 (x86/x64)</li>
 <li>Debian 7/8 (x86/x64)</li>
 </ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><div class="hljs"><pre><code class="hljs bash">wget https://github.com/Evan-ZJ/MyScripts/blob/master/fail2ban.sh &amp;&amp; bash fail2ban.sh 2&gt;&amp;1 | tee fail2ban.log</code></pre></div>
-<p>第一步：选择是否修改SSH端口。<br>第二步：输入最多尝试输入SSH连接密码的次数<br>第三步：输入每个恶意IP的封禁时间（单位：小时）</p>
-<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><div class="hljs"><pre><code class="hljs bash">wget https://github.com/Evan-ZJ/MyScripts/blob/master/uninstall.sh &amp;&amp; bash uninstall.sh</code></pre></div>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<h2 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h2>
+<div class="hljs"><pre><code class="hljs bash">wget https://github.com/Evan-ZJ/MyScripts/blob/master/fail2ban.sh &amp;&amp; bash fail2ban.sh 2&gt;&amp;1 | tee fail2ban.log</code></pre></div>
+<p>第一步：选择是否修改SSH端口。<br />
+第二步：输入最多尝试输入SSH连接密码的次数<br />
+第三步：输入每个恶意IP的封禁时间（单位：小时）</p>
+<h2 id="卸载"><a class="markdownIt-Anchor" href="#卸载"></a> 卸载</h2>
+<div class="hljs"><pre><code class="hljs bash">wget https://github.com/Evan-ZJ/MyScripts/blob/master/uninstall.sh &amp;&amp; bash uninstall.sh</code></pre></div>
+<h2 id="注意事项"><a class="markdownIt-Anchor" href="#注意事项"></a> 注意事项</h2>
+<ol>
 <li>如果你需要更改SSH端口，请记得在防火墙或者安全组中开放新的SSH端口</li>
 <li>安装完成后请会重启SSH服务，请重新连接SSH会话</li>
 <li>若出现SSH无法连接的情况，请检查是否修改过SSH端口，请填写写改后的正确端口进行连接</li>
@@ -520,6 +528,13 @@
 
 
 
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+  
 
 
 

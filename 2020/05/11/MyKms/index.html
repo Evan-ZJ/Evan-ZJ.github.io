@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      477 字
+      494 字
     </span>
   
 
@@ -215,14 +215,19 @@
               <blockquote>
 <p>之前一直用亦是美的激活器，现在发现这个感觉挺靠谱，<a href="https://mikuac.com/archives/504/" target="_blank" rel="noopener">引用Zero</a></p>
 </blockquote>
-<h2 id="什么是KMS"><a href="#什么是KMS" class="headerlink" title="什么是KMS?"></a>什么是KMS?</h2><p><strong>Key Management Service（简称:KMS），这个功能是在Windows Vista之后的产品中的一种新型产品激活机制，目的是为了Microsoft更好的遏制非法软件授权行为(盗版)。</strong></p>
+<h2 id="什么是kms"><a class="markdownIt-Anchor" href="#什么是kms"></a> 什么是KMS?</h2>
+<p><strong>Key Management Service（简称:KMS），这个功能是在Windows Vista之后的产品中的一种新型产品激活机制，目的是为了Microsoft更好的遏制非法软件授权行为(盗版)。</strong></p>
 <p><strong>KMS激活有两种方法，分别为vlmcsd和py-kms，本文使用vlmcsd进行搭建</strong></p>
-<h2 id="为什么要自建KMS激活服务？"><a href="#为什么要自建KMS激活服务？" class="headerlink" title="为什么要自建KMS激活服务？"></a>为什么要自建KMS激活服务？</h2><p><strong>虽然现在网络上已经涌现了大批的激活工具，但是存在许多不安定因素，例如后门或者病毒等，会造成较大的安全隐患，而自己搭建Kms激活服务则可以避免这类问题~</strong></p>
-<p><strong>注意：只能激活VL版本的Windows</strong><br><strong>VL，就是VOL，Volume Licensing for Organizations的缩写，中文翻译为团体批量许可证</strong></p>
+<h2 id="为什么要自建kms激活服务"><a class="markdownIt-Anchor" href="#为什么要自建kms激活服务"></a> 为什么要自建KMS激活服务？</h2>
+<p><strong>虽然现在网络上已经涌现了大批的激活工具，但是存在许多不安定因素，例如后门或者病毒等，会造成较大的安全隐患，而自己搭建Kms激活服务则可以避免这类问题~</strong></p>
+<p><strong>注意：只能激活VL版本的Windows</strong><br />
+<strong>VL，就是VOL，Volume Licensing for Organizations的缩写，中文翻译为团体批量许可证</strong></p>
 <a id="more"></a>
-<p><strong>环境：Ubuntu 16.04</strong><br><a href="https://github.com/Wind4/vlmcsd" target="_blank" rel="noopener">Vlmcsd</a><br><strong>首先使用下面命令确认机器的CPU架构</strong></p>
+<p><strong>环境：Ubuntu 16.04</strong><br />
+<a href="https://github.com/Wind4/vlmcsd" target="_blank" rel="noopener">Vlmcsd</a><br />
+<strong>首先使用下面命令确认机器的CPU架构</strong></p>
 <div class="hljs"><pre><code class="hljs bash">cat /proc/cpuinfo</code></pre></div>
-<p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/2020-05-11 231046.png" srcset="/img/loading.gif" alt=""></p>
+<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/2020-05-11" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/2020-05-11</a> 231046.png)</p>
 <p><strong>从Github下载项目文件</strong></p>
 <div class="hljs"><pre><code class="hljs bash">wget https://github.com/Wind4/vlmcsd/releases/download/svn1111/binaries.tar.gz</code></pre></div>
 <p><strong>解压安装包</strong></p>
@@ -231,9 +236,11 @@
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> binaries/Linux/intel/static</code></pre></div>
 <p><strong>启动服务</strong></p>
 <div class="hljs"><pre><code class="hljs bash">./vlmcsd-x64-musl-static</code></pre></div>
-<p><strong>如果你的机器不是64位系统，则需要内找到对应系统位数的可执行文件来运行</strong><br><strong>因为vlmcsd运行后会占用1688端口，请在防火墙放行1688端口，或者关闭防火墙，所以我们可以输入以下命令查看是否成功启动：</strong></p>
+<p><strong>如果你的机器不是64位系统，则需要内找到对应系统位数的可执行文件来运行</strong><br />
+<strong>因为vlmcsd运行后会占用1688端口，请在防火墙放行1688端口，或者关闭防火墙，所以我们可以输入以下命令查看是否成功启动：</strong></p>
 <div class="hljs"><pre><code class="hljs bash">netstat -lnp</code></pre></div>
-<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p><strong>以管理员身份运行CMD</strong></p>
+<h2 id="激活"><a class="markdownIt-Anchor" href="#激活"></a> 激活</h2>
+<p><strong>以管理员身份运行CMD</strong></p>
 <div class="hljs"><pre><code class="hljs bash">slmgr /skms 你服务器的IP或者域名
 slmgr /ato
 slmgr /xpr</code></pre></div>
@@ -523,6 +530,13 @@ slmgr /xpr</code></pre></div>
 
 
 
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+  
 
 
 

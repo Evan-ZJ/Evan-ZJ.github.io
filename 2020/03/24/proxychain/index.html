@@ -212,7 +212,8 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h3 id="使用ProxyChains终端代理"><a href="#使用ProxyChains终端代理" class="headerlink" title="使用ProxyChains终端代理"></a>使用ProxyChains终端代理</h3><p>在源里有这个软件，直接安装</p>
+              <h3 id="使用proxychains终端代理"><a class="markdownIt-Anchor" href="#使用proxychains终端代理"></a> 使用ProxyChains终端代理</h3>
+<p>在源里有这个软件，直接安装</p>
 <div class="hljs"><pre><code class="hljs bash">sudo apt-get install proxychains</code></pre></div>
 <p>编辑/etc/proxychains.conf</p>
 <div class="hljs"><pre><code class="hljs bash">vi /etc/proxychains.conf</code></pre></div>
@@ -222,7 +223,7 @@
 <a id="more"></a>
 <p>复制libproxychains.so.3路径</p>
 <div class="hljs"><pre><code class="hljs bash">find /usr/ -name libproxychains.so.3 -<span class="hljs-built_in">print</span></code></pre></div>
-<p>编辑/usr/bin/proxychains </p>
+<p>编辑/usr/bin/proxychains</p>
 <div class="hljs"><pre><code class="hljs bash">vi /usr/bin/proxychains</code></pre></div>
 <p>修改如下：</p>
 <div class="hljs"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span>
@@ -523,6 +524,13 @@
 
 
 
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+  
 
 
 

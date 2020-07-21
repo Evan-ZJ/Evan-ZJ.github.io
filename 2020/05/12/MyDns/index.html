@@ -212,15 +212,19 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="DNS-无污染DNS学习记录"><a href="#DNS-无污染DNS学习记录" class="headerlink" title="[DNS]无污染DNS学习记录"></a>[DNS]无污染DNS学习记录</h1><blockquote>
+              <h1 id="dns无污染dns学习记录"><a class="markdownIt-Anchor" href="#dns无污染dns学习记录"></a> [DNS]无污染DNS学习记录</h1>
+<blockquote>
 <p>本来一直没关DNS这事，感觉影响不大，后来留意了一下发现有问题，学习一下<a href="https://moe.best/tutorial/chinadns.html" target="_blank" rel="noopener">大佬的分享</a>当作笔记</p>
 </blockquote>
-<h3 id="为什么使用-ChinaDNS-而不是直接使用-OpenDNS"><a href="#为什么使用-ChinaDNS-而不是直接使用-OpenDNS" class="headerlink" title="为什么使用 ChinaDNS 而不是直接使用 OpenDNS"></a>为什么使用 ChinaDNS 而不是直接使用 OpenDNS</h3><ol>
+<h3 id="为什么使用-chinadns-而不是直接使用-opendns"><a class="markdownIt-Anchor" href="#为什么使用-chinadns-而不是直接使用-opendns"></a> 为什么使用 ChinaDNS 而不是直接使用 OpenDNS</h3>
+<ol>
 <li><strong>我们必须使用非<code>53</code>端口去查询国外 DNS 才能得到没有被 GFW 篡改的正确解析结果</strong>，ChinaDNS 可以自定义使用的 DNS 的端口，而 Windows 系统的 DNS 设置定死了使用<code>53</code>端口</li>
-<li>如果通过 OpenDNS 去解析国内网站，那么很可能会得到一个海外 IP（很多大公司都会配备有海外服务器供海外华人使用，例如京东啦淘宝啦B站啦），<strong>这样会导致访问国内网站访问速度很慢</strong><br>而 ChinaDNS 可以根据 chnrouter 来判断，如果从国内 DNS 里解析到国内 IP 的话就使用，对于国外网站会过滤掉从国内 DNS 解析得到的被污染的结果，十分完美的解决了这个问题</li>
+<li>如果通过 OpenDNS 去解析国内网站，那么很可能会得到一个海外 IP（很多大公司都会配备有海外服务器供海外华人使用，例如京东啦淘宝啦B站啦），<strong>这样会导致访问国内网站访问速度很慢</strong><br />
+而 ChinaDNS 可以根据 chnrouter 来判断，如果从国内 DNS 里解析到国内 IP 的话就使用，对于国外网站会过滤掉从国内 DNS 解析得到的被污染的结果，十分完美的解决了这个问题</li>
 </ol>
 <a id="more"></a>
-<h3 id="国内-VPS-上部署-ChinaDNS"><a href="#国内-VPS-上部署-ChinaDNS" class="headerlink" title="国内 VPS 上部署 ChinaDNS"></a>国内 VPS 上部署 ChinaDNS</h3><div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 如果 Linux 上没有安装 make 和 gcc 的话要先安装</span>
+<h3 id="国内-vps-上部署-chinadns"><a class="markdownIt-Anchor" href="#国内-vps-上部署-chinadns"></a> 国内 VPS 上部署 ChinaDNS</h3>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 如果 Linux 上没有安装 make 和 gcc 的话要先安装</span>
 <span class="hljs-comment"># Ubuntu / Debian</span>
 apt-get install -y make gcc
 <span class="hljs-comment"># CentOS</span>
@@ -241,13 +245,17 @@ rm -f iplist.txt &amp;&amp; wget --no-check-certificate  https://raw.githubuserc
 <span class="hljs-comment"># 启动 ChinaDNS（编译好的程序在 src 目录中）</span>
 nohup src/chinadns -m -c chnroute.txt -s 114.114.114.114,208.67.222.222:443 &amp;</code></pre></div>
 <p>最后别忘记开放防火墙的<code>53</code>UDP端口</p>
-<h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><ol>
-<li><p>如果不使用<code>-s</code>参数，那么 ChinaDNS 会默认使用<code>114.114.114.114,208.67.222.222:443,8.8.8.8</code>作为 DNS，这样会导致一个很严重的问题！</p>
+<h2 id="重点"><a class="markdownIt-Anchor" href="#重点"></a> 重点</h2>
+<ol>
+<li>
+<p>如果不使用<code>-s</code>参数，那么 ChinaDNS 会默认使用<code>114.114.114.114,208.67.222.222:443,8.8.8.8</code>作为 DNS，这样会导致一个很严重的问题！</p>
 <p>前面我们说过，<strong>如果你不通过非<code>53</code>端口去查询国外 DNS，就会得到一个被污染的查询结果</strong>，因此如果你使用<code>53</code>端口的国外 DNS 作为 ChinaDNS 的 DNS，最终就会得到被污染的查询结果，从而无法解决污染问题，而 ChinaDNS 正是默认使用了<code>8.8.8.8</code></p>
 </li>
-<li><p>使用H大老毛子固件上的 ChinaDNS 的时候也请一定要把<code>8.8.8.8</code>去掉，如果不开酸酸/酸酸乳，那么这个<code>8.8.8.8</code>就会污染你的 ChinaDNS 结果</p>
+<li>
+<p>使用H大老毛子固件上的 ChinaDNS 的时候也请一定要把<code>8.8.8.8</code>去掉，如果不开酸酸/酸酸乳，那么这个<code>8.8.8.8</code>就会污染你的 ChinaDNS 结果</p>
 </li>
-<li><p>你可以不用 114DNS 当国内 DNS，但是请注意使用<code>-s</code>参数指定 DNS 的时候，一定要把国内 DNS 写在前面，OpenDNS 写在最后面，否则会出现解析国内网站返回海外 IP 的现象（亲测</p>
+<li>
+<p>你可以不用 114DNS 当国内 DNS，但是请注意使用<code>-s</code>参数指定 DNS 的时候，一定要把国内 DNS 写在前面，OpenDNS 写在最后面，否则会出现解析国内网站返回海外 IP 的现象（亲测</p>
 </li>
 </ol>
 <p>另外，不能在墙外的 VPS 上搭建 ChinaDNS：</p>
@@ -542,6 +550,13 @@ nohup src/chinadns -m -c chnroute.txt -s 114.114.114.114,208.67.222.222:443 &amp
 
 
 
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+  
 
 
 

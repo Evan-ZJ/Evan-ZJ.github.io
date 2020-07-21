@@ -212,13 +212,15 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>搭建一个完整的frp服务链，我们需要</p>
+              <h2 id="准备"><a class="markdownIt-Anchor" href="#准备"></a> 准备</h2>
+<p>搭建一个完整的frp服务链，我们需要</p>
 <ol>
 <li>VPS一台（也可以是具有公网IP的实体机）</li>
 <li>访问目标设备（就是你最终要访问的设备）</li>
 <li>系统使用Ubuntu 16.04 x64，frp客户端和服务端本身同时均支持Linux和Windows</li>
 </ol>
-<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#SSH连接到VPS之后运行如下命令查看处理器架构，根据架构下载不同版本的frp</span>
+<h2 id="服务端"><a class="markdownIt-Anchor" href="#服务端"></a> 服务端</h2>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#SSH连接到VPS之后运行如下命令查看处理器架构，根据架构下载不同版本的frp</span>
 arch
 <span class="hljs-comment">#下载</span>
 wget https://github.com/fatedier/frp/releases/download/v0.33.0/frp_0.33.0_linux_amd64.tar.gz
@@ -261,12 +263,15 @@ vhost_https_port = 10443</code></pre></div>
 <span class="hljs-number">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [service.go:<span class="hljs-number">216</span>] Dashboard listen on <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>:<span class="hljs-number">7500</span>
 <span class="hljs-number">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [root.go:<span class="hljs-number">210</span>] Start frps success</code></pre></div>
 <p>此时访问 x.x.x.x:7500 并使用自己设置的用户名密码登录，即可看到仪表板界面</p>
-<h2 id="服务端后台运行"><a href="#服务端后台运行" class="headerlink" title="服务端后台运行"></a>服务端后台运行</h2><div class="hljs"><pre><code class="hljs bash">nohup ./frps -c frps.ini &amp;</code></pre></div>
-<h2 id="客户端设置"><a href="#客户端设置" class="headerlink" title="客户端设置"></a>客户端设置</h2><blockquote>
+<h2 id="服务端后台运行"><a class="markdownIt-Anchor" href="#服务端后台运行"></a> 服务端后台运行</h2>
+<div class="hljs"><pre><code class="hljs bash">nohup ./frps -c frps.ini &amp;</code></pre></div>
+<h2 id="客户端设置"><a class="markdownIt-Anchor" href="#客户端设置"></a> 客户端设置</h2>
+<blockquote>
 <p>frp的客户端就是我们想要真正进行访问的那台设备，大多数情况下应该会是一台Windows主机，因而本文使用Windows主机做例子；Linux配置方法类似，不再赘述。</p>
 </blockquote>
 <p>根据客户端设备的情况选择相应的frp程序进行<a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">下载</a>，</p>
-<p>将其解压在了C盘根目录下，并且将文件夹重命名为“frp”，可以删除其中的frps和frps.ini文件。<br>用文本编辑器打开frpc.ini，与服务端类似，内容如下。</p>
+<p>将其解压在了C盘根目录下，并且将文件夹重命名为“frp”，可以删除其中的frps和frps.ini文件。<br />
+用文本编辑器打开frpc.ini，与服务端类似，内容如下。</p>
 <div class="hljs"><pre><code class="hljs bash">[common]
 server_addr = x.x.x.x
 server_port = 7000
@@ -287,7 +292,8 @@ remote_port = 7002</code></pre></div>
 <li>“server_port”为服务器端口，填入你设置的端口号即可，如果未改变就是7000</li>
 <li>“token”是你在服务器上设置的连接口令，原样填入即可。</li>
 </ul>
-<h2 id="自定义规则"><a href="#自定义规则" class="headerlink" title="自定义规则"></a>自定义规则</h2><p>上面frpc.ini的rdp、smb字段都是自己定义的规则，自定义端口对应时格式如下。</p>
+<h2 id="自定义规则"><a class="markdownIt-Anchor" href="#自定义规则"></a> 自定义规则</h2>
+<p>上面frpc.ini的rdp、smb字段都是自己定义的规则，自定义端口对应时格式如下。</p>
 <ul>
 <li>“[xxx]”表示一个规则名称，自己定义，便于查询即可。</li>
 <li>“type”表示转发的协议类型，有TCP和UDP等选项可以选择，如有需要请自行查询frp手册。</li>
@@ -312,7 +318,8 @@ remote_port = 7002</code></pre></div>
 2019/01/12 16:14:56 [I] [control.go:143] [smb] start<span class="hljs-built_in"> proxy </span>success
 2019/01/12 16:14:56 [I] [control.go:143] [rdp] start<span class="hljs-built_in"> proxy </span>success</code></pre></div>
 <p>不要关闭命令行窗口，此时可以在局域网外使用相应程序访问 x.x.x.x:xxxx （IP为VPS的IP，端口为自定义的remote_port）即可访问到相应服务。</p>
-<h2 id="客户端后台运行及开机自启"><a href="#客户端后台运行及开机自启" class="headerlink" title="客户端后台运行及开机自启"></a>客户端后台运行及开机自启</h2><p>在任何一个目录下新建一个文本文件并将其重命名为“frpc.bat”，编辑，粘贴如下内容并保存。</p>
+<h2 id="客户端后台运行及开机自启"><a class="markdownIt-Anchor" href="#客户端后台运行及开机自启"></a> 客户端后台运行及开机自启</h2>
+<p>在任何一个目录下新建一个文本文件并将其重命名为“frpc.bat”，编辑，粘贴如下内容并保存。</p>
 <div class="hljs"><pre><code class="hljs powershell">@echo off
 <span class="hljs-keyword">if</span> <span class="hljs-string">"%1"</span> == <span class="hljs-string">"h"</span> goto <span class="hljs-keyword">begin</span>
 mshta vbscript:createobject(<span class="hljs-string">"wscript.shell"</span>).run(<span class="hljs-string">""</span><span class="hljs-string">"%~nx0"</span><span class="hljs-string">" h"</span>,<span class="hljs-number">0</span>)(window.close)&amp;&amp;<span class="hljs-keyword">exit</span>
@@ -612,6 +619,13 @@ frpc <span class="hljs-literal">-c</span> frpc.ini
 
 
 
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+  
 
 
 
