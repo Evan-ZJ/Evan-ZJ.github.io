@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>校园网无线接入点修改教程（H3B型号）</title>
+    <link href="/2020/11/11/H3B/"/>
+    <url>/2020/11/11/H3B/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>说明：一个关于手动打开宿舍无线接入点的有线网口的教程</p><ol><li>可以提高网络稳定性（有线当然比无线稳定）</li><li>可自由接入自己的路由器、交换机、台式机或者笔记本（只要网线够长）</li></ol></blockquote><h2 id="0-先放效果"><a class="markdownIt-Anchor" href="#0-先放效果"></a> 0. 先放效果</h2><p>晚七点高峰时期延时4ms，丢包 0</p><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023123226.png" srcset="/img/loading.gif" alt="" /></p><h2 id="1-硬件准备"><a class="markdownIt-Anchor" href="#1-硬件准备"></a> 1. 硬件准备</h2><ul><li>一条<strong>USB转RJ45 Console调试线</strong>（建议大家合伙一起买，使用一次就行了）</li></ul><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023123523.jpg" srcset="/img/loading.gif" style="zoom:50%;" /><ul><li>一台Mac笔记本（Mac book终端可以直接调试，方便快捷，windows还需要安装CRT软件，具体未尝试）</li><li>连Mac你还需要准备一个HUB扩展坞接USB</li></ul><h2 id="2-连接"><a class="markdownIt-Anchor" href="#2-连接"></a> 2. 连接</h2><ul><li><p>网线口插到无线连接点侧面的调式口</p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023124356.jpg" srcset="/img/loading.gif" style="zoom:50%;" /></li><li><p>USB连接电脑…</p><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023125514.jpg" srcset="/img/loading.gif" alt="" /></p></li></ul><h2 id="3-终端打开网口操作"><a class="markdownIt-Anchor" href="#3-终端打开网口操作"></a> 3. 终端打开网口操作</h2><ul><li><ol><li>输入</li></ol><div class="hljs"><pre><code class="hljs shell">ls /dev | grep serial</code></pre></div></li></ul><p>​列出所有设备</p><ul><li><ol start="2"><li>输入</li></ol><div class="hljs"><pre><code class="hljs shell">screen /dev/cu.usbserial-AG0K61TM 9600 -L</code></pre></div><ul><li>注意<code>cu.usbserial-AG0K61TM1</code>是本次案例中购买绿联调试线的设备名称，不同线会有不同，所以要根据前一步<code>ls /dev | grep serial</code>列出的结果进行输入，可能会有其他设备，可以自行断开查找一下自己所连接的设备名字。</li></ul></li><li><ol start="3"><li><p>重启无线接入点</p><p>无线接入点是通过网线POE供电，所以只需要把无线连接点向上推，拿下后拔掉背后网线几秒钟后再插回原位即可</p><p><strong>注：此时保持无线连接点与电脑连接</strong></p></li></ol></li><li><ol start="4"><li>通电以后笔记本终端会有启动信息展示，等待启动即可，约1-2分钟</li></ol><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023130131.png" srcset="/img/loading.gif" style="zoom:50%;" /></li><li><ol start="5"><li>输入</li></ol><div class="hljs"><pre><code class="hljs shell">dis int brief</code></pre></div><ul><li><p>这里列出了所有网口，可以看到网口2、3、4、5均被红框标的ADM（管理员）给禁用了</p></li><li><p>有时候会显示Down，过一会在输入命令刷新查看就恢复了。</p></li><li><p>或者可以不用管，这条命令是查看命令</p></li></ul><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023130550.png" srcset="/img/loading.gif" alt="" /></p></li><li><ol start="6"><li>输入</li></ol><div class="hljs"><pre><code class="hljs shell">sys</code></pre></div><ul><li><p>进入编辑模式（此时终端前会由<XXXXX>转变未[XXXXX]）,如图</p><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023131334.png" srcset="/img/loading.gif" alt="" /></p></li></ul></li><li><ol start="7"><li>进入网口2编辑</li></ol><div class="hljs"><pre><code class="hljs shell">int GE1/0/2</code></pre></div></li><li><ol start="8"><li>关闭禁用，打开网口</li></ol><div class="hljs"><pre><code class="hljs shell">undo shutdown</code></pre></div></li><li><ol start="9"><li>其余 3 4 5网口同样操作</li></ol><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023131742.png" srcset="/img/loading.gif" alt="" /></p></li><li><ol start="10"><li><p>检查</p><p>将无线连接点的2号网口（或者其他）连接一台电脑</p><p>再次输入</p></li></ol><div class="hljs"><pre><code class="hljs shell">dis int brief</code></pre></div><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023132446.png" srcset="/img/loading.gif" style="zoom:50%;" /><p>​可以看到2号网口已经连接，并且速度是千兆</p><p><strong>注：还没结束</strong></p></li></ul><h2 id="3-配置vlan"><a class="markdownIt-Anchor" href="#3-配置vlan"></a> 3. 配置vlan</h2><p>这时候分配的IP并不是能够上网的IP，所以要配置一下vlan</p><ul><li><ol><li>简要列出vlan</li></ol><div class="hljs"><pre><code class="hljs shell">dis vlan brief</code></pre></div><ul><li>这个步骤主要是查看vlan的ID，一般默认为3个。分别是：1、2001、2002</li></ul></li><li><ol start="2"><li>查看vlan信息，确认其有WLAN</li></ol><div class="hljs"><pre><code class="hljs shell">dis vlan 2002</code></pre></div><ul><li>多次测试，是ID为2002的vlan带有WLAN</li><li>有时候<code>dis vlan 2002</code>不会显示WLAN（如图第一次dis vlan 2002），这时候可以用自己手机正常连接USTB-Student登录上网后，再次<code>dis vlan 2002</code>就会有显示（如图第二次 dis vlan 2002）。</li><li>如果2002始终不显示WLAN有可能在别的ID的vlan上，可以注意排查。</li></ul><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023133432.png" srcset="/img/loading.gif" alt="z" /></p></li><li><ol start="3"><li>编辑vlan 2002（2002根据你上一步确认的带有WLAN的ID），终端输入</li></ol><div class="hljs"><pre><code class="hljs shell">vlan 2002</code></pre></div></li><li><ol start="4"><li>指定网口2，输入</li></ol><div class="hljs"><pre><code class="hljs shell">port GE1/0/2</code></pre></div><ul><li><p>其他网口依次输入<code>port GE1/0/3</code>、<code>port GE1/0/4</code>、<code>port GE1/0/5</code></p><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023134238.png" srcset="/img/loading.gif" alt="" /></p></li></ul></li><li><ol start="5"><li>重启你计算机的网卡，重新连接即可。</li></ol></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Wifi</tag>
+      
+      <tag>vlan</tag>
+      
+      <tag>diy</tag>
+      
+      <tag>Beijing</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>流体控制总结笔记</title>
     <link href="/2020/07/22/SPHControlSum/"/>
     <url>/2020/07/22/SPHControlSum/</url>
