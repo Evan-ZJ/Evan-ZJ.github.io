@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>小米路由器青春版刷华硕固件</title>
+    <link href="/2020/11/11/miwifi/"/>
+    <url>/2020/11/11/miwifi/</url>
+    
+    <content type="html"><![CDATA[<h2 id="准备"><a class="markdownIt-Anchor" href="#准备"></a> 准备</h2><p>小米路由器青春版 *1、网线 *1、电脑 *1</p><p>文件链接：<a href="https://file.zhoujing.nl/?/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%9B%BA%E4%BB%B6/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%9D%92%E6%98%A5%E7%89%88%E5%88%B7%E6%9C%BA/" target="_blank" rel="noopener">小米路由器青春版刷机.zip</a></p><p><em>最主要的还是小米路由器青春版的老版开发版固件</em></p><h2 id="刷入开发版rom"><a class="markdownIt-Anchor" href="#刷入开发版rom"></a> <strong>刷入开发版ROM</strong></h2><p>解压提供的压缩包<br />登录你的小米路由器（192.168.31.1）<br />然后选择升级系统、手动升级选择“miwifi_r1cl_all_59371_2.1.26.bin”</p><h2 id="修改ssh密码"><a class="markdownIt-Anchor" href="#修改ssh密码"></a> <strong>修改SSH密码</strong></h2><ol><li>登录路由管理界面<br />地址栏输入192.168.31.1，输入账号密码后，地址栏会多了一串参数，类似于<br /><code>http://192.168.31.1/cgi-bin/luci/;stok=075a9192918557c27cdbcae2175281d9/web/home#router</code></li><li>更改管理员密码和系统的root密码<br />将以上的地址URL中<code>/web/home#router</code>改成<code>/api/xqsystem/set_name_password?oldPwd=当前路由的密码&amp;newPwd=新的路由密码</code>，<br />然后查看网页的返回结果，如果返回的JSON字符串是<code>{&quot;code&quot;:0}</code>，那就任务完成，如果返回是说参数错误的，那十有八九是系统是新版，小米官方修补了这个漏洞。 <strong>需要刷上文提供的旧版系统</strong></li><li>启用路由的telnet登录方式<br />同第二步中的修改网址URL，把<code>/web/home#router</code>改为<code>/api/xqnetwork/set_wifi_ap?ssid=xiaomi&amp;encryption=NONE&amp;enctype=NONE&amp;channel=1%3B%2Fusr%2Fsbin%2Ftelnetd</code>，然后查看返回的JSON数据<code>{&quot;msg&quot;:&quot;未能连接到指定WiFi(Probe timeout)&quot;,&quot;code&quot;:1616}</code>，返回码有可能不同，但是这里已经可以通过telnet的方式来登录路由器了</li><li>用putty的telnet方式登录<br />下载一个<a href="http://pan.baidu.com/s/1hsquhxy" target="_blank" rel="noopener">Putty</a> ，密码：gqxa。然后打开选填以下参数，连接类型：telnet;主机名称：192.168.31.1.打开后看到login，输入root，密码则为以上第二步中修改的新密码。然后依次执行下面的三条指令：<br />4.1 <code>sed -i &quot;:x;N;s/if \[.*\; then\n.*return 0\n.*fi/#tb/;b x&quot; /etc/init.d/dropbear</code><br />4.2 <code>/etc/init.d/dropbear start</code><br />4.3 <code>nvram set ssh_en=1; nvram commit</code></li></ol><h2 id="备份路由固件"><a class="markdownIt-Anchor" href="#备份路由固件"></a> <strong>备份路由固件</strong></h2><p>终端登录路由器：<code>ssh -l root 192.168.31.1</code>，密码：admin</p><p>输入命令：<code>cat /proc/mtd</code></p><p>再次输入：<code>dd if=/dev/mtd0 of=//tmp/all.bin</code></p><p>使用WINSCP，选择SCP链接模式：</p><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201111163530.png" srcset="/img/loading.gif" alt="" /></p><p>进入tmp目录，将all.bin下载到本地。备份过程相当重要，不要跳过此过程。</p><h2 id="刷入breed"><a class="markdownIt-Anchor" href="#刷入breed"></a> 刷入breed</h2><p>将压缩包内的breed.bin丢到tmp目录。</p><p>终端执行：<code>mtd -r write /tmp/breed.bin Bootloader</code></p><p>等待写入完成，拔掉电源线，使用取卡针按住“复原键”，插入电源后等待5-10秒。</p><p>浏览器输入 192.168.1.1 出现如下界面：</p><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201111163615.png" srcset="/img/loading.gif" alt="" /></p><p>选择“固件更新”，勾选固件，选择压缩包内“MI-NANO_3.4.3.9-099.trx”，上传刷入华硕固件并重启。</p><p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201111163633.png" srcset="/img/loading.gif" alt="" /></p><p>等待路由器变蓝色，则路由器已经成功运行。</p><p>浏览器登录：192.168.123.1，账号密码默认均为：admin</p><p>至此华硕固件已经刷入完毕，自行配置吧。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wifi</tag>
+      
+      <tag>miwifi</tag>
+      
+      <tag>breed</tag>
+      
+      <tag>华硕固件</tag>
+      
+      <tag>小米路由器</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>校园网无线接入点修改教程（H3B型号）</title>
     <link href="/2020/11/11/H3B/"/>
     <url>/2020/11/11/H3B/</url>
