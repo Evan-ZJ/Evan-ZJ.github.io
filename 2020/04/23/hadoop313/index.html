@@ -29,7 +29,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/ocean.min.css" />
     
   
 
@@ -256,9 +256,9 @@ protocbuf 2.5.0<br />
 findbugs-3.0.1</p>
 <h3 id="编译前准备"><a class="markdownIt-Anchor" href="#编译前准备"></a> 编译前准备</h3>
 <p>安装C和C++编译器</p>
-<pre><code class="hljs bash">yum -y install gcc gcc-c++</code></pre>
+<div class="hljs"><pre><code class="hljs bash">yum -y install gcc gcc-c++</code></pre></div>
 <p>安装Cmake 3.13.5</p>
-<pre><code class="hljs bash">wget https://cmake.org/files/v3.13/cmake-3.13.5.tar.gz
+<div class="hljs"><pre><code class="hljs bash">wget https://cmake.org/files/v3.13/cmake-3.13.5.tar.gz
 tar -zxvf cmake-3.13.5.tar.gz  
 <span class="hljs-built_in">cd</span> cmake-3.13.5
 ./bootstrap --prefix=/usr/<span class="hljs-built_in">local</span>
@@ -270,18 +270,18 @@ make install
 yum remove cmake -y <span class="hljs-comment">#移除原来的cmake版本</span>
 
 ln -s /usr/<span class="hljs-built_in">local</span>/bin/cmake /usr/bin/ <span class="hljs-comment">#新建软连接</span>
-cmake --version <span class="hljs-comment">#终端查看版本</span></code></pre>
+cmake --version <span class="hljs-comment">#终端查看版本</span></code></pre></div>
 <p>安装其他软件包</p>
-<pre><code class="hljs bash">yum -y install autoconf automake libtool curl
+<div class="hljs"><pre><code class="hljs bash">yum -y install autoconf automake libtool curl
 yum -y install lzo-devel zlib-devel openssl openssl-devel ncurses-devel
-yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst</code></pre>
+yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst</code></pre></div>
 <a id="more"></a>
 <p>安装Java 8环境</p>
 <blockquote>
 <p>下载Java 8SE</p>
 <p>jdk-8u241-linux-x64.tar.gz</p>
 </blockquote>
-<pre><code class="hljs bash">tar xvfz jdk-8u241-linux-x64.tar.gz -C /usr <span class="hljs-comment">#解压</span>
+<div class="hljs"><pre><code class="hljs bash">tar xvfz jdk-8u241-linux-x64.tar.gz -C /usr <span class="hljs-comment">#解压</span>
 ln -s /usr/jdk1.8.0_241 /usr/jdk
 
 <span class="hljs-comment">#设置环境变量</span>
@@ -296,12 +296,12 @@ cat&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span>
 
 <span class="hljs-comment">#测试</span>
 <span class="hljs-built_in">source</span> /etc/profile
-java -version</code></pre>
+java -version</code></pre></div>
 <p>安装maven</p>
 <blockquote>
 <p>下载apache-maven-3.6.3-bin.tar.gz</p>
 </blockquote>
-<pre><code class="hljs bash">tar xvf apache-maven-3.6.3-bin.tar.gz -C /usr
+<div class="hljs"><pre><code class="hljs bash">tar xvf apache-maven-3.6.3-bin.tar.gz -C /usr
 mv /usr/apache-maven-3.6.3 /usr/maven
 
 cat&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span>
@@ -313,12 +313,12 @@ cat&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span>
 
 <span class="hljs-comment">#测试</span>
 <span class="hljs-built_in">source</span> /etc/profile
-mvn -version</code></pre>
+mvn -version</code></pre></div>
 <p>安装protobuf 2.5.0</p>
 <blockquote>
 <p>下载protobuf-2.5.0.tar.gz</p>
 </blockquote>
-<pre><code class="hljs bash">tar xvfz protobuf-2.5.0.tar.gz -C /usr/<span class="hljs-built_in">local</span>
+<div class="hljs"><pre><code class="hljs bash">tar xvfz protobuf-2.5.0.tar.gz -C /usr/<span class="hljs-built_in">local</span>
 <span class="hljs-built_in">cd</span> /usr/ <span class="hljs-built_in">local</span> /protobuf-2.5.0
 ./autogen.sh
 <span class="hljs-comment">#指定安装路径</span>
@@ -336,12 +336,12 @@ vi /etc/profile
 
 <span class="hljs-comment">#测试</span>
 <span class="hljs-built_in">source</span> /etc/profile
-protoc --version</code></pre>
+protoc --version</code></pre></div>
 <p>安装findbugs</p>
 <blockquote>
 <p>下载findbugs-3.0.1.tar.gz</p>
 </blockquote>
-<pre><code class="hljs bash">tar xvfz findbugs-3.0.1.tar.gz -C /usr
+<div class="hljs"><pre><code class="hljs bash">tar xvfz findbugs-3.0.1.tar.gz -C /usr
 
 cat&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span>
 <span class="hljs-string">export FINDBUGS_HOME=/usr/findbugs-3.0.1</span>
@@ -350,12 +350,12 @@ cat&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span>
 
 <span class="hljs-comment">#测试</span>
 <span class="hljs-built_in">source</span> /etc/profile
-findbugs -version</code></pre>
+findbugs -version</code></pre></div>
 <p>安装ant</p>
 <blockquote>
 <p>下载apache-ant-1.10.7-bin.tar.gz</p>
 </blockquote>
-<pre><code class="hljs bash">tar xvfz apache-ant-1.10.7-bin.tar.gz -C /usr
+<div class="hljs"><pre><code class="hljs bash">tar xvfz apache-ant-1.10.7-bin.tar.gz -C /usr
 <span class="hljs-comment">#设置环境变量</span>
 cat&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span>
 <span class="hljs-string">export ANT_HOME=/usr/apache-ant-1.10.7</span>
@@ -364,24 +364,24 @@ cat&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span>
 
 <span class="hljs-comment">#测试</span>
 <span class="hljs-built_in">source</span> /etc/profile
-ant  -version</code></pre>
+ant  -version</code></pre></div>
 <h3 id="编译hadoop313"><a class="markdownIt-Anchor" href="#编译hadoop313"></a> 编译Hadoop3.1.3</h3>
 <blockquote>
 <p>下载hadoop-3.1.3-src.tar.gz源码</p>
 </blockquote>
-<pre><code class="hljs bash">tar xvfz hadoop-3.1.3-src.tar.gz -C /usr
+<div class="hljs"><pre><code class="hljs bash">tar xvfz hadoop-3.1.3-src.tar.gz -C /usr
 <span class="hljs-built_in">cd</span> /usr/hadoop-3.1.3-src
 <span class="hljs-built_in">export</span> MAVEN_OPTS=<span class="hljs-string">&quot;-Xms256m -Xmx512m&quot;</span>
-mvn package -Pdist,native  -DskipTests  -Dtar</code></pre>
+mvn package -Pdist,native  -DskipTests  -Dtar</code></pre></div>
 <p>编译成功：</p>
 <img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/IMG_3054.png" srcset="/img/loading.gif" style="zoom:100%;" />
 <h3 id="编译成功后释放至opt"><a class="markdownIt-Anchor" href="#编译成功后释放至opt"></a> 编译成功后释放至/opt</h3>
 <p>编译完成后的Hadoop在hadoop-dist/target/hadoop-3.1.3.tar.gz</p>
 <p>解压释放：</p>
-<pre><code class="hljs bash">解压释放：
+<div class="hljs"><pre><code class="hljs bash">解压释放：
 tar xvfz hadoop-3.1.3.tar.gz -C /opt
 然后确定文件夹名为hadoop
-mv hadoop-3.1.3 hadoop</code></pre>
+mv hadoop-3.1.3 hadoop</code></pre></div>
 
             </div>
             <hr>

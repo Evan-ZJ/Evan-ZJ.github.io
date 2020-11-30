@@ -29,7 +29,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/ocean.min.css" />
     
   
 
@@ -249,47 +249,47 @@
             <div class="markdown-body">
               <p>个人常用命令记录</p>
 <h3 id="bbr"><a class="markdownIt-Anchor" href="#bbr"></a> bbr</h3>
-<pre><code class="hljs bash">wget -N --no-check-certificate <span class="hljs-string">&quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&quot;</span> &amp;&amp; chmod +x tcp.sh &amp;&amp; ./tcp.sh</code></pre>
+<div class="hljs"><pre><code class="hljs bash">wget -N --no-check-certificate <span class="hljs-string">&quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&quot;</span> &amp;&amp; chmod +x tcp.sh &amp;&amp; ./tcp.sh</code></pre></div>
 <h3 id="ubuntu-ssh-root"><a class="markdownIt-Anchor" href="#ubuntu-ssh-root"></a> Ubuntu ssh root</h3>
-<pre><code class="hljs bash">sudo apt-get install openssh-server
+<div class="hljs"><pre><code class="hljs bash">sudo apt-get install openssh-server
 sudo vi /etc/ssh/sshd_config
 <span class="hljs-comment">#PermitRootLogin prohibit-password</span>
 PermitRootLogin yes
 
 sudo passwd root
 
-sudo service ssh restart</code></pre>
+sudo service ssh restart</code></pre></div>
 <h3 id="终端代理"><a class="markdownIt-Anchor" href="#终端代理"></a> 终端代理</h3>
-<pre><code class="hljs bash"><span class="hljs-built_in">export</span> http_proxy=<span class="hljs-string">&quot;http://ip:port&quot;</span>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> http_proxy=<span class="hljs-string">&quot;http://ip:port&quot;</span>
 <span class="hljs-built_in">export</span> https_proxy=<span class="hljs-string">&quot;https://ip:port&quot;</span>
-<span class="hljs-built_in">export</span> ALL_PROXY=socks5://ip:port</code></pre>
+<span class="hljs-built_in">export</span> ALL_PROXY=socks5://ip:port</code></pre></div>
 <h3 id="文件proxy"><a class="markdownIt-Anchor" href="#文件proxy"></a> 文件proxy</h3>
-<pre><code class="hljs bash">Acquire::http::proxy=<span class="hljs-string">&quot;http://ip:port/&quot;</span></code></pre>
+<div class="hljs"><pre><code class="hljs bash">Acquire::http::proxy=<span class="hljs-string">&quot;http://ip:port/&quot;</span></code></pre></div>
 <h3 id="docker代理"><a class="markdownIt-Anchor" href="#docker代理"></a> docker代理</h3>
 <p>1.创建docker服务插件目录</p>
-<pre><code class="hljs bash">sudo mkdir -p /etc/systemd/system/docker.service.d</code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo mkdir -p /etc/systemd/system/docker.service.d</code></pre></div>
 <p>2.创建一个名为http-proxy.conf的文件</p>
 <a id="more"></a>
-<pre><code class="hljs bash">sudo touch /etc/systemd/system/docker.service.d/http-proxy.conf</code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo touch /etc/systemd/system/docker.service.d/http-proxy.conf</code></pre></div>
 <p>3.编辑http-proxy.conf的文件</p>
-<pre><code class="hljs bash">sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf</code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf</code></pre></div>
 <p>4.写入内容(将代理ip和代理端口修改)</p>
-<pre><code class="hljs bash">[Service]
-Environment=<span class="hljs-string">&quot;HTTP_PROXY=socks5://ip:port/&quot;</span></code></pre>
+<div class="hljs"><pre><code class="hljs bash">[Service]
+Environment=<span class="hljs-string">&quot;HTTP_PROXY=socks5://ip:port/&quot;</span></code></pre></div>
 <p>5.重新加载服务程序的配置文件</p>
-<pre><code class="hljs bash">sudo systemctl daemon-reload</code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo systemctl daemon-reload</code></pre></div>
 <p>6.重启docker</p>
-<pre><code class="hljs bash">sudo systemctl restart docker</code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo systemctl restart docker</code></pre></div>
 <p>7.验证</p>
-<pre><code class="hljs bash">systemctl show --property=Environment docker</code></pre>
+<div class="hljs"><pre><code class="hljs bash">systemctl show --property=Environment docker</code></pre></div>
 <h3 id="后台运行"><a class="markdownIt-Anchor" href="#后台运行"></a> 后台运行</h3>
-<pre><code class="hljs bash">`nohup ./test.sh &amp;`</code></pre>
+<div class="hljs"><pre><code class="hljs bash">`nohup ./test.sh &amp;`</code></pre></div>
 <h3 id="进入容器"><a class="markdownIt-Anchor" href="#进入容器"></a> 进入容器</h3>
-<pre><code class="hljs bash">``sudo docker start “容器ID”`
+<div class="hljs"><pre><code class="hljs bash">``sudo docker start “容器ID”`
 `sudo docker <span class="hljs-built_in">exec</span> -it “容器ID” bash` 
-sudo docker run --name my-pytorch -itd -p 8080:8080 -p 6622:22`</code></pre>
+sudo docker run --name my-pytorch -itd -p 8080:8080 -p 6622:22`</code></pre></div>
 <h3 id="git"><a class="markdownIt-Anchor" href="#git"></a> Git</h3>
-<pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> ...
+<div class="hljs"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> ...
 
 文件复制到<span class="hljs-built_in">clone</span>的目录下
 
@@ -303,31 +303,31 @@ git commit -m <span class="hljs-string">&quot;...&quot;</span>
 
 git pull
 
-git push</code></pre>
+git push</code></pre></div>
 <h3 id="docker端口转发"><a class="markdownIt-Anchor" href="#docker端口转发"></a> docker端口转发</h3>
-<pre><code class="hljs bash">docker run -it -d -p 5000:22 -p 6000:80 ubuntu /bin/bash</code></pre>
+<div class="hljs"><pre><code class="hljs bash">docker run -it -d -p 5000:22 -p 6000:80 ubuntu /bin/bash</code></pre></div>
 <h3 id="docker容器导入导出"><a class="markdownIt-Anchor" href="#docker容器导入导出"></a> docker容器导入导出</h3>
 <p>导出—export</p>
-<pre><code class="hljs bash">docker <span class="hljs-built_in">export</span> web01 &gt; /home/centos7-web01.tar</code></pre>
+<div class="hljs"><pre><code class="hljs bash">docker <span class="hljs-built_in">export</span> web01 &gt; /home/centos7-web01.tar</code></pre></div>
 <blockquote>
 <p><strong>-o</strong>来指定导出的tar文件名，也可以直接通过重定向来实现</p>
 </blockquote>
 <p>导入—import</p>
-<pre><code class="hljs bash">docker import  centos7-web01.tar text/web02:7.4</code></pre>
+<div class="hljs"><pre><code class="hljs bash">docker import  centos7-web01.tar text/web02:7.4</code></pre></div>
 <blockquote>
 <p>-c 选项可以在导入的同时执行对容器进行修改的Dockerfile指令（网络等修改）</p>
 </blockquote>
 <h3 id="docker镜像保存加载"><a class="markdownIt-Anchor" href="#docker镜像保存加载"></a> <strong>docker镜像保存加载</strong></h3>
 <p>导出镜像</p>
-<pre><code class="hljs bash">docker save d3949e34634c &gt; /home/centos7.4.tar</code></pre>
+<div class="hljs"><pre><code class="hljs bash">docker save d3949e34634c &gt; /home/centos7.4.tar</code></pre></div>
 <p>导入镜像</p>
-<pre><code class="hljs bash">docker load &lt; /home/centos7.4.tar</code></pre>
+<div class="hljs"><pre><code class="hljs bash">docker load &lt; /home/centos7.4.tar</code></pre></div>
 <p>批量打包</p>
-<pre><code class="hljs bash">docker save $(docker images | grep -v REPOSITORY | awk <span class="hljs-string">&#x27;BEGIN&#123;OFS=&quot;:&quot;;ORS=&quot; &quot;&#125;&#123;print $1,$2&#125;&#x27;</span>) -o haha.tar</code></pre>
+<div class="hljs"><pre><code class="hljs bash">docker save $(docker images | grep -v REPOSITORY | awk <span class="hljs-string">&#x27;BEGIN&#123;OFS=&quot;:&quot;;ORS=&quot; &quot;&#125;&#123;print $1,$2&#125;&#x27;</span>) -o haha.tar</code></pre></div>
 <p>加载镜像</p>
-<pre><code class="hljs bash">docker load -i haha.tar</code></pre>
+<div class="hljs"><pre><code class="hljs bash">docker load -i haha.tar</code></pre></div>
 <p>保存配置完成的容器提交成镜像</p>
-<pre><code class="hljs bash">docker commit -m <span class="hljs-string">&quot;web01&quot;</span> cca5f5d4c240 slave/centos:7.4.1709</code></pre>
+<div class="hljs"><pre><code class="hljs bash">docker commit -m <span class="hljs-string">&quot;web01&quot;</span> cca5f5d4c240 slave/centos:7.4.1709</code></pre></div>
 
             </div>
             <hr>

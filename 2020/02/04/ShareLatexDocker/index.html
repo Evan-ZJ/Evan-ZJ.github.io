@@ -29,7 +29,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/ocean.min.css" />
     
   
 
@@ -250,23 +250,23 @@
               <p><strong>服务器操作系统</strong></p>
 <p>Ubuntu 16.04.6 LTS</p>
 <p><strong>安装docker</strong></p>
-<pre><code class="hljs bash">sudo apt install docker.io</code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo apt install docker.io</code></pre></div>
 <p>查看是否安装成功</p>
-<pre><code class="hljs bash">docker -v</code></pre>
+<div class="hljs"><pre><code class="hljs bash">docker -v</code></pre></div>
 <a id="more"></a>
 <p>确认curl等工具已安装**</p>
-<pre><code class="hljs bash">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</code></pre></div>
 <p><strong>下载ShareLaTeX及compose file</strong></p>
-<pre><code class="hljs bash">sudo docker pull sharelatex/sharelatex</code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo docker pull sharelatex/sharelatex</code></pre></div>
 <p>配置数据文件夹**</p>
-<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~
 mkdir sharelatex
 <span class="hljs-built_in">cd</span> sharelatex
 mkdir sharelatex_data
 mkdir mongo_data
-mkdir redis_data</code></pre>
+mkdir redis_data</code></pre></div>
 <p>下载<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/sharelatex/sharelatex/master/docker-compose.yml">docker-compose.yml</a>，并存在<code>~/sharelatex/</code>目录下</p>
-<pre><code class="hljs bash">version: <span class="hljs-string">&#x27;2.2&#x27;</span>
+<div class="hljs"><pre><code class="hljs bash">version: <span class="hljs-string">&#x27;2.2&#x27;</span>
 services:
     sharelatex:
         restart: always
@@ -404,15 +404,15 @@ services:
     <span class="hljs-comment">#       - &quot;443:443&quot;</span>
     <span class="hljs-comment">#     volumes:</span>
     <span class="hljs-comment">#       - /var/run/docker.sock:/tmp/docker.sock:ro</span>
-    <span class="hljs-comment">#       - /home/sharelatex/tmp:/etc/nginx/certs</span></code></pre>
+    <span class="hljs-comment">#       - /home/sharelatex/tmp:/etc/nginx/certs</span></code></pre></div>
 <p><strong>安装ShareLaTeX</strong></p>
-<pre><code class="hljs bash">sudo docker-compose up</code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo docker-compose up</code></pre></div>
 <p><strong>新建管理员账号</strong></p>
-<pre><code class="hljs bash">sudo docker <span class="hljs-built_in">exec</span> sharelatex /bin/bash -c <span class="hljs-string">&quot;cd /var/www/sharelatex; grunt user:create-admin --email=admin@university.edu&quot;</span></code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo docker <span class="hljs-built_in">exec</span> sharelatex /bin/bash -c <span class="hljs-string">&quot;cd /var/www/sharelatex; grunt user:create-admin --email=admin@university.edu&quot;</span></code></pre></div>
 <p><strong>设置账号密码</strong></p>
 <p><strong>进入容器</strong></p>
-<pre><code class="hljs bash">sudo docker <span class="hljs-built_in">exec</span> -it sharelatex bash</code></pre>
-<pre><code class="hljs bash"><span class="hljs-comment"># 下载并运行升级脚本</span>
+<div class="hljs"><pre><code class="hljs bash">sudo docker <span class="hljs-built_in">exec</span> -it sharelatex bash</code></pre></div>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 下载并运行升级脚本</span>
 wget http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh
 sh update-tlmgr-latest.sh -- --upgrade
 
@@ -430,13 +430,13 @@ tlmgr install scheme-full
 
 <span class="hljs-comment"># 推出sharelatex的命令行界面，并重启sharelatex容器</span>
 <span class="hljs-built_in">exit</span>
-docker restart sharelatex</code></pre>
+docker restart sharelatex</code></pre></div>
 <p><strong>配置中文写作环境</strong></p>
 <ul>
 <li>将Windows字体库（即目录C:\windows\fonts）上传到host机，如果Windows安装了Git可以使用scp命令直接上传</li>
 <li>在host机下把fonts目录打包并传到sharelatex容器中</li>
 </ul>
-<pre><code class="hljs bash"><span class="hljs-comment"># 进入fonts目录</span>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 进入fonts目录</span>
 <span class="hljs-built_in">cd</span> fonts/
 
 <span class="hljs-comment"># 删除其中的.fon字体文件（该种格式文件在后面建立字体目录时会报错），只保留TrueType和OpenType字体，即.ttf和.otf</span>
@@ -448,11 +448,11 @@ rm -r *.fon
 tar -zcvf winfonts.tar.gz fonts/
 
 <span class="hljs-comment"># 把压缩文件传到sharelatex容器的root目录下</span>
-docker cp winfonts.tar.gz sharelatex:/root</code></pre>
+docker cp winfonts.tar.gz sharelatex:/root</code></pre></div>
 <ul>
 <li>在容器中安装Windows字体</li>
 </ul>
-<pre><code class="hljs bash"><span class="hljs-comment"># 进入容器的命令行界面</span>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 进入容器的命令行界面</span>
 $ docker <span class="hljs-built_in">exec</span> -it sharelatex bash
 
 <span class="hljs-comment"># 通过安装wqy字体同时安装xfont工具</span>
@@ -470,7 +470,7 @@ mkfontdir
 fc-cache -fv
 
 <span class="hljs-comment"># 检查确认中文字体安装成功</span>
-fc-list :lang=zh-cn</code></pre>
+fc-list :lang=zh-cn</code></pre></div>
 <ul>
 <li>回到ShareLaTeX网站，创建一个新项目，使用CTEX宏集和XeLaTeX编译器，即可生成中文pdf。</li>
 </ul>

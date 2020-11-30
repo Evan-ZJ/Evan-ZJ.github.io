@@ -29,7 +29,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/ocean.min.css" />
     
   
 
@@ -283,7 +283,7 @@
 <ol>
 <li>输入</li>
 </ol>
-<pre><code class="hljs shell">ls /dev | grep serial</code></pre>
+<div class="hljs"><pre><code class="hljs shell">ls /dev | grep serial</code></pre></div>
 </li>
 </ul>
 <p>​	列出所有设备</p>
@@ -292,7 +292,7 @@
 <ol start="2">
 <li>输入</li>
 </ol>
-<pre><code class="hljs shell">screen /dev/cu.usbserial-AG0K61TM 9600 -L</code></pre>
+<div class="hljs"><pre><code class="hljs shell">screen /dev/cu.usbserial-AG0K61TM 9600 -L</code></pre></div>
 <ul>
 <li>注意<code>cu.usbserial-AG0K61TM1</code>是本次案例中购买绿联调试线的设备名称，不同线会有不同，所以要根据前一步<code>ls /dev | grep serial</code>列出的结果进行输入，可能会有其他设备，可以自行断开查找一下自己所连接的设备名字。</li>
 </ul>
@@ -316,7 +316,7 @@
 <ol start="5">
 <li>输入</li>
 </ol>
-<pre><code class="hljs shell">dis int brief</code></pre>
+<div class="hljs"><pre><code class="hljs shell">dis int brief</code></pre></div>
 <ul>
 <li>
 <p>这里列出了所有网口，可以看到网口2、3、4、5均被红框标的ADM（管理员）给禁用了</p>
@@ -334,7 +334,7 @@
 <ol start="6">
 <li>输入</li>
 </ol>
-<pre><code class="hljs shell">sys</code></pre>
+<div class="hljs"><pre><code class="hljs shell">sys</code></pre></div>
 <ul>
 <li>
 <p>进入编辑模式（此时终端前会由<XXXXX>转变未[XXXXX]）,如图</p>
@@ -346,13 +346,13 @@
 <ol start="7">
 <li>进入网口2编辑</li>
 </ol>
-<pre><code class="hljs shell">int GE1/0/2</code></pre>
+<div class="hljs"><pre><code class="hljs shell">int GE1/0/2</code></pre></div>
 </li>
 <li>
 <ol start="8">
 <li>关闭禁用，打开网口</li>
 </ol>
-<pre><code class="hljs shell">undo shutdown</code></pre>
+<div class="hljs"><pre><code class="hljs shell">undo shutdown</code></pre></div>
 </li>
 <li>
 <ol start="9">
@@ -368,7 +368,7 @@
 <p>再次输入</p>
 </li>
 </ol>
-<pre><code class="hljs shell">dis int brief</code></pre>
+<div class="hljs"><pre><code class="hljs shell">dis int brief</code></pre></div>
 <img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201023132446.png" srcset="/img/loading.gif" style="zoom:50%;" />
 <p>​	可以看到2号网口已经连接，并且速度是千兆</p>
 <p><strong>注：还没结束</strong></p>
@@ -381,7 +381,7 @@
 <ol>
 <li>简要列出vlan</li>
 </ol>
-<pre><code class="hljs shell">dis vlan brief</code></pre>
+<div class="hljs"><pre><code class="hljs shell">dis vlan brief</code></pre></div>
 <ul>
 <li>这个步骤主要是查看vlan的ID，一般默认为3个。分别是：1、2001、2002</li>
 </ul>
@@ -390,7 +390,7 @@
 <ol start="2">
 <li>查看vlan信息，确认其有WLAN</li>
 </ol>
-<pre><code class="hljs shell">dis vlan 2002</code></pre>
+<div class="hljs"><pre><code class="hljs shell">dis vlan 2002</code></pre></div>
 <ul>
 <li>多次测试，是ID为2002的vlan带有WLAN</li>
 <li>有时候<code>dis vlan 2002</code>不会显示WLAN（如图第一次dis vlan 2002），这时候可以用自己手机正常连接USTB-Student登录上网后，再次<code>dis vlan 2002</code>就会有显示（如图第二次 dis vlan 2002）。</li>
@@ -402,13 +402,13 @@
 <ol start="3">
 <li>编辑vlan 2002（2002根据你上一步确认的带有WLAN的ID），终端输入</li>
 </ol>
-<pre><code class="hljs shell">vlan 2002</code></pre>
+<div class="hljs"><pre><code class="hljs shell">vlan 2002</code></pre></div>
 </li>
 <li>
 <ol start="4">
 <li>指定网口2，输入</li>
 </ol>
-<pre><code class="hljs shell">port GE1/0/2</code></pre>
+<div class="hljs"><pre><code class="hljs shell">port GE1/0/2</code></pre></div>
 <ul>
 <li>
 <p>其他网口依次输入<code>port GE1/0/3</code>、<code>port GE1/0/4</code>、<code>port GE1/0/5</code></p>

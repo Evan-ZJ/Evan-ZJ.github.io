@@ -29,7 +29,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/ocean.min.css" />
     
   
 
@@ -251,23 +251,23 @@
 <p>因为类 Latex 格式书写的数学公式下划线<code>_</code>表示下标，有特殊的含义，如果被强制转换为``标签，那么 MathJax 引擎在渲染数学公式的时候就会出错。</p>
 <p>类似的语义冲突的符号还包括<code>*</code>, <code>&#123;</code>, <code>&#125;</code>, <code>\\</code>等。</p>
 <h5 id="更换-hexo-的-markdown-渲染引擎"><a class="markdownIt-Anchor" href="#更换-hexo-的-markdown-渲染引擎"></a> 更换 Hexo 的 markdown 渲染引擎</h5>
-<pre><code class="hljs bash">npm uninstall hexo-renderer-marked --save  
-npm install hexo-renderer-kramed --save</code></pre>
+<div class="hljs"><pre><code class="hljs bash">npm uninstall hexo-renderer-marked --save  
+npm install hexo-renderer-kramed --save</code></pre></div>
 <a id="more"></a>
 <p>找到node_modules\kramed\lib\rules\inline.js，把第11行的 escape 变量的值做相应的修改：</p>
-<pre><code class="hljs bash">//escape: /^\\([\\`*&#123;&#125;\[\]()<span class="hljs-comment">#$+\-.!_&gt;])/,</span>
-escape: /^\\([`*\[\]()<span class="hljs-comment">#$+\-.!_&gt;])/,</span></code></pre>
+<div class="hljs"><pre><code class="hljs bash">//escape: /^\\([\\`*&#123;&#125;\[\]()<span class="hljs-comment">#$+\-.!_&gt;])/,</span>
+escape: /^\\([`*\[\]()<span class="hljs-comment">#$+\-.!_&gt;])/,</span></code></pre></div>
 <p>同时把第20行的em变量也要做相应的修改</p>
-<pre><code class="hljs bash">//em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
-em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</code></pre>
+<div class="hljs"><pre><code class="hljs bash">//em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</code></pre></div>
 <h5 id="主题中开启-mathjax-开关"><a class="markdownIt-Anchor" href="#主题中开启-mathjax-开关"></a> 主题中开启 MathJax 开关</h5>
 <h4 id="在文章的front-matter里打开mathjax开关"><a class="markdownIt-Anchor" href="#在文章的front-matter里打开mathjax开关"></a> 在文章的Front-matter里打开mathjax开关</h4>
-<pre><code class="hljs bash">---
+<div class="hljs"><pre><code class="hljs bash">---
 title: index.html
 date: 2018-07-05 12:01:30
 tags: 
 mathjax: <span class="hljs-literal">true</span>
---</code></pre>
+--</code></pre></div>
 
             </div>
             <hr>

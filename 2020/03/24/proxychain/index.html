@@ -29,7 +29,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/ocean.min.css" />
     
   
 
@@ -249,19 +249,19 @@
             <div class="markdown-body">
               <h3 id="使用proxychains终端代理"><a class="markdownIt-Anchor" href="#使用proxychains终端代理"></a> 使用ProxyChains终端代理</h3>
 <p>在源里有这个软件，直接安装</p>
-<pre><code class="hljs bash">sudo apt-get install proxychains</code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo apt-get install proxychains</code></pre></div>
 <p>编辑/etc/proxychains.conf</p>
-<pre><code class="hljs bash">vi /etc/proxychains.conf</code></pre>
+<div class="hljs"><pre><code class="hljs bash">vi /etc/proxychains.conf</code></pre></div>
 <p>在最后的ProxyList里加入Shawdowsocks的代理设置：</p>
-<pre><code class="hljs bash">socks5    ip    port
-<span class="hljs-comment">#socks5    127.0.0.1    108</span></code></pre>
+<div class="hljs"><pre><code class="hljs bash">socks5    ip    port
+<span class="hljs-comment">#socks5    127.0.0.1    108</span></code></pre></div>
 <a id="more"></a>
 <p>复制libproxychains.so.3路径</p>
-<pre><code class="hljs bash">find /usr/ -name libproxychains.so.3 -<span class="hljs-built_in">print</span></code></pre>
+<div class="hljs"><pre><code class="hljs bash">find /usr/ -name libproxychains.so.3 -<span class="hljs-built_in">print</span></code></pre></div>
 <p>编辑/usr/bin/proxychains</p>
-<pre><code class="hljs bash">vi /usr/bin/proxychains</code></pre>
+<div class="hljs"><pre><code class="hljs bash">vi /usr/bin/proxychains</code></pre></div>
 <p>修改如下：</p>
-<pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span>
 <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;ProxyChains-3.1 (http://proxychains.sf.net)&quot;</span>
 <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$#</span> = 0 ] ; <span class="hljs-keyword">then</span>
     <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;  usage:&quot;</span>
@@ -271,9 +271,9 @@
 <span class="hljs-comment">#export LD_PRELOAD=libproxychains.so.3</span>
 <span class="hljs-comment">#此处修改为实际路径</span>
 <span class="hljs-built_in">export</span> LD_PRELOAD=/usr/lib/i386-linux-gnu/libproxychains.so.3                                                                  
-<span class="hljs-built_in">exec</span> <span class="hljs-string">&quot;<span class="hljs-variable">$@</span></span></code></pre>
+<span class="hljs-built_in">exec</span> <span class="hljs-string">&quot;<span class="hljs-variable">$@</span></span></code></pre></div>
 <p>使用，例</p>
-<pre><code class="hljs bash">proxychains dropbox start -i</code></pre>
+<div class="hljs"><pre><code class="hljs bash">proxychains dropbox start -i</code></pre></div>
 
             </div>
             <hr>

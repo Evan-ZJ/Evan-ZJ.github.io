@@ -29,7 +29,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/ocean.min.css" />
     
   
 
@@ -249,7 +249,7 @@
             <div class="markdown-body">
               <h2 id="1-hexo部署到vps"><a class="markdownIt-Anchor" href="#1-hexo部署到vps"></a> 1. hexo部署到VPS</h2>
 <h3 id="安装git"><a class="markdownIt-Anchor" href="#安装git"></a> 安装Git</h3>
-<pre><code class="hljs bash">apt-get install git</code></pre>
+<div class="hljs"><pre><code class="hljs bash">apt-get install git</code></pre></div>
 <h3 id="配置-ssh-免密访问"><a class="markdownIt-Anchor" href="#配置-ssh-免密访问"></a> 配置 SSH 免密访问</h3>
 <a id="more"></a>
 <ul>
@@ -269,7 +269,7 @@
 <p>创建rsa</p>
 </li>
 <li>
-<pre class="highlight"><code class="bash">ssh-keygen -t rsa
+<div class="hljs"><pre class="hljs highlight"><code class="bash">ssh-keygen -t rsa
 <pre><code class="hljs autohotkey">
   * 一路回车，会在 `~/.ssh/` 目录下生成 `id_rsa` 和 `id_rsa.pub` 两个文件
 
@@ -278,7 +278,7 @@
 * 客户端免密登录到 VPS 
 
   ```bash
-  ssh root@ip</code></pre>
+  ssh root@ip</code></pre></div>
 
 </code></pre>
 </li>
@@ -286,7 +286,7 @@
 <p>如果出现不能登录的情况，可能是文件权限有问题，VPS 上做如下修改：</p>
 </li>
 <li>
-<pre class="highlight"><code class="bash">chmod 700 ~/.ssh
+<div class="hljs"><pre class="hljs highlight"><code class="bash">chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
 <pre><code class="hljs jboss-cli">
 <span class="hljs-comment">### 在 VPS 上创建仓库</span>
@@ -295,7 +295,7 @@ chmod 600 ~/.ssh/authorized_keys
 <span class="hljs-keyword">cd</span> ~
 mkdir hexo.git
 <span class="hljs-keyword">cd</span> hexo.git
-git init <span class="hljs-params">--bare</span></code></pre>
+git init <span class="hljs-params">--bare</span></code></pre></div>
 
 </code></pre>
 </li>
@@ -305,46 +305,46 @@ git init <span class="hljs-params">--bare</span></code></pre>
 <h3 id="git-hook-自动-clone-收到提交的仓库到网站根目录"><a class="markdownIt-Anchor" href="#git-hook-自动-clone-收到提交的仓库到网站根目录"></a> Git Hook 自动 Clone 收到提交的仓库到网站根目录</h3>
 <p>VPS的 hexo网站目录为 <code>/root/wwwroot/hexo/</code></p>
 <p>建立一个仓库内容转移的缓存目录：</p>
-<pre><code class="hljs bash">mkdir -p /root/tmp/hexo_tmp</code></pre>
+<div class="hljs"><pre><code class="hljs bash">mkdir -p /root/tmp/hexo_tmp</code></pre></div>
 <p>然后处理 hexo.git 提交的事件，自动更新内容到 hexo网站目录。</p>
-<pre><code class="hljs bash">vi /root/hexo.git/hooks/post-receive</code></pre>
+<div class="hljs"><pre><code class="hljs bash">vi /root/hexo.git/hooks/post-receive</code></pre></div>
 <p>编辑 post-receive 文件：</p>
-<pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash -l</span>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash -l</span>
 GIT_REPO=/root/hexo.git
 TMP_GIT_CLONE=/root/tmp/hexo_tmp
 PUBLIC_HEXO=/root/wwwroot/hexo
 rm -rf <span class="hljs-variable">$&#123;TMP_GIT_CLONE&#125;</span>
 git <span class="hljs-built_in">clone</span> <span class="hljs-variable">$GIT_REPO</span> <span class="hljs-variable">$TMP_GIT_CLONE</span>
 rm -rf <span class="hljs-variable">$&#123;PUBLIC_HEXO&#125;</span>/*
-cp -rf <span class="hljs-variable">$&#123;TMP_GIT_CLONE&#125;</span>/* <span class="hljs-variable">$&#123;PUBLIC_HEXO&#125;</span></code></pre>
+cp -rf <span class="hljs-variable">$&#123;TMP_GIT_CLONE&#125;</span>/* <span class="hljs-variable">$&#123;PUBLIC_HEXO&#125;</span></code></pre></div>
 <blockquote>
 <p>脚本可以实现完全更新，即先删除原网站内所有内容，再拷贝新仓库内容到网站目录</p>
 </blockquote>
 <p>给脚本加上执行权限：</p>
-<pre><code class="hljs bash">chmod +x /root/hexo.git/hooks/post-receive</code></pre>
+<div class="hljs"><pre><code class="hljs bash">chmod +x /root/hexo.git/hooks/post-receive</code></pre></div>
 <h3 id="多部署vpsgithub"><a class="markdownIt-Anchor" href="#多部署vpsgithub"></a> 多部署(vps+github)</h3>
 <p>配置 <code>_config.xml</code></p>
-<pre><code class="hljs bash">deploy:
+<div class="hljs"><pre><code class="hljs bash">deploy:
 - <span class="hljs-built_in">type</span>: git
   repository:  git@github.com:Evan-ZJ/Evan-ZJ.github.io.git
   branch: master
 - <span class="hljs-built_in">type</span>: git
   repository:  root@39.106.97.116:hexo.git
-  branch: master</code></pre>
+  branch: master</code></pre></div>
 <h2 id="2-nginx安装与设置"><a class="markdownIt-Anchor" href="#2-nginx安装与设置"></a> 2. nginx安装与设置</h2>
 <ul>
 <li>安装nginx</li>
 </ul>
-<pre><code class="hljs bash">sudo apt install nginx</code></pre>
+<div class="hljs"><pre><code class="hljs bash">sudo apt install nginx</code></pre></div>
 <ul>
 <li>向 nginx 写入配置，将<code>/root/wwwroot/hexo</code>作为主目录</li>
 </ul>
-<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /etc/nginx/sites-available 
-vi default</code></pre>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /etc/nginx/sites-available 
+vi default</code></pre></div>
 <ul>
 <li>内容删除，写上：</li>
 </ul>
-<pre><code class="hljs bash">server &#123;
+<div class="hljs"><pre><code class="hljs bash">server &#123;
         listen 80;
         listen [::]:80;
 
@@ -369,9 +369,9 @@ vi default</code></pre>
                         rewrite ^/(.*)$  /<span class="hljs-variable">$1</span> <span class="hljs-built_in">break</span>;
                 &#125;
         &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>保存退出，然后使用</p>
-<pre><code class="hljs bash">service nginx restart</code></pre>
+<div class="hljs"><pre><code class="hljs bash">service nginx restart</code></pre></div>
 <h2 id="3-错误解决"><a class="markdownIt-Anchor" href="#3-错误解决"></a> 3. 错误解决</h2>
 <h4 id="多rsa问题"><a class="markdownIt-Anchor" href="#多rsa问题"></a> 多rsa问题</h4>
 <ul>
@@ -381,16 +381,16 @@ vi default</code></pre>
 <p>ssh 可以登陆，但在 hexo 部署时报错，错误是远程权限拒绝;</p>
 <p>执行 <code>hexo d</code>命令时，默认使用的不是添加到 VPS中的<code>~/.ssh/authorized_keys</code>的Key的对应的 <code>id_rsa.pub</code></p>
 <p>在本地<code>~/.ssh</code>目录中，（添加一个名为<code>config</code>的文件，这样写：</p>
-<pre><code class="hljs bash">Host 106.186.33.133
+<div class="hljs"><pre><code class="hljs bash">Host 106.186.33.133
     HostName        ip
     User            用户名
-    IdentityFile    .ssh/id_rsa</code></pre>
+    IdentityFile    .ssh/id_rsa</code></pre></div>
 <p>清空<code>known_hosts</code>，然后重新连接部署</p>
 <h4 id="nginx-出现-403-forbidden"><a class="markdownIt-Anchor" href="#nginx-出现-403-forbidden"></a> Nginx 出现 403 Forbidden</h4>
 <h5 id="目录权限"><a class="markdownIt-Anchor" href="#目录权限"></a> 目录权限</h5>
-<pre><code class="hljs bash">chmod -R 755 /root/wwwroot/hexo</code></pre>
+<div class="hljs"><pre><code class="hljs bash">chmod -R 755 /root/wwwroot/hexo</code></pre></div>
 <h5 id="打开nginxconf"><a class="markdownIt-Anchor" href="#打开nginxconf"></a> 打开nginx.conf</h5>
-<pre><code class="hljs bash">vi /etc/nginx/nginx.conf</code></pre>
+<div class="hljs"><pre><code class="hljs bash">vi /etc/nginx/nginx.conf</code></pre></div>
 <p>把<code>user 用户名</code>改为 <code>user root</code></p>
 <p><a target="_blank" rel="noopener" href="https://yanzai.me/hexo-git-deploy.html">参考</a></p>
 

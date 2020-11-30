@@ -29,7 +29,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/ocean.min.css" />
     
   
 
@@ -290,30 +290,30 @@
 </li>
 <li>
 <p><a target="_blank" rel="noopener" href="https://github.com/TimeBye/oneindex">拉取镜像创建</a></p>
-<pre><code class="hljs bash">docker run -d --name oneindex \
+<div class="hljs"><pre><code class="hljs bash">docker run -d --name oneindex \
     -p 80:80 --restart=always \
     -v ~/oneindex/config:/var/www/html/config \
     -v ~/oneindex/cache:/var/www/html/cache \
     -e REFRESH_TOKEN=<span class="hljs-string">&#x27;0 * * * *&#x27;</span> \
     -e REFRESH_CACHE=<span class="hljs-string">&#x27;*/10 * * * *&#x27;</span> \
-    setzero/oneindex</code></pre>
+    setzero/oneindex</code></pre></div>
 <ul>
 <li>
 <ul>
 <li>
 <p>停止删除容器：</p>
-<pre><code class="hljs arduino">docker <span class="hljs-built_in">stop</span> oneindex
-docker rm -v oneindex</code></pre>
+<div class="hljs"><pre><code class="hljs arduino">docker <span class="hljs-built_in">stop</span> oneindex
+docker rm -v oneindex</code></pre></div>
 </li>
 </ul>
 </li>
 <li>
 <p>使用<code>docker-compose</code>运行：</p>
-<pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span></code></pre>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker-compose up -d</span></code></pre></div>
 <ul>
 <li>
 <p>停止删除容器：</p>
-<pre><code class="hljs bash">docker-compose down</code></pre>
+<div class="hljs"><pre><code class="hljs bash">docker-compose down</code></pre></div>
 </li>
 </ul>
 </li>
