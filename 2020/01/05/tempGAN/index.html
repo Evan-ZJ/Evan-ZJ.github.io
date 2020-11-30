@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -19,26 +19,33 @@
   <meta name="keywords" content="">
   <title>tempoGAN Notes - ZhouJing</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/ocean.min.css" />
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
   
 
   
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -46,8 +53,13 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"evan-zj.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -108,7 +120,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="https://file.zhoujing.nl" target="_blank" rel="noopener">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://file.zhoujing.nl">
                 <i class="iconfont icon-th-large"></i>
                 网盘
               </a>
@@ -127,10 +139,28 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://www.moerats.com/kms/">
+                <i class="iconfont icon-archive-fill"></i>
+                KMS激活
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -138,25 +168,28 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/wallhaven-q6kmql.webp') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="tempoGAN Notes">
               
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-01-05 13:55">
-      2020年1月5日 下午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-01-05 13:55" pubdate>
+        2020年1月5日 下午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -209,11 +242,13 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">tempoGAN Notes</h1>
             
-            <article class="markdown-body">
-              <h2 id="tempogan-a-temporally-coherent-volumetric-gan-for-super-resolution-fluid-flow"><a class="markdownIt-Anchor" href="#tempogan-a-temporally-coherent-volumetric-gan-for-super-resolution-fluid-flow"></a> <a href="https://arxiv.org/pdf/1801.09710.pdf" target="_blank" rel="noopener">tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow</a></h2>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 110009.png)</p>
+            <div class="markdown-body">
+              <h2 id="tempogan-a-temporally-coherent-volumetric-gan-for-super-resolution-fluid-flow"><a class="markdownIt-Anchor" href="#tempogan-a-temporally-coherent-volumetric-gan-for-super-resolution-fluid-flow"></a> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1801.09710.pdf">tempoGAN: A Temporally Coherent, Volumetric GAN for Super-resolution Fluid Flow</a></h2>
+<p>![](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 110009.png)</p>
 <p>图1.本文卷积神经网络学习基于包含单个时间步长的密度和速度数据的低分辨率字段，生成高度详细的时间相关特征。 引入了一种新颖的鉴别器，可确保合成的细节随时间平滑变化。</p>
 <h4 id="摘要"><a class="markdownIt-Anchor" href="#摘要"></a> 摘要</h4>
 <ul>
@@ -526,7 +561,7 @@
 </li>
 <li>
 <p>这个损耗项使生成器趋向于逼真的细节。图 2</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-05 222417.png)</p>
+<p>![](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-05 222417.png)</p>
 </li>
 </ul>
 <p><em>图 2. 从左到右：a）一个样本，低分辨率输入；b）具有原始的L2损失的CNN输出（无GAN训练）；c）我们的tempoGAN输出；以及d）高分辨率参考。</em></p>
@@ -592,7 +627,7 @@
 </li>
 <li>
 <p>新的时间鉴别器<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">D_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>主要专注于驱动<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G(x )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">G</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>寻求与真实<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>的时间演化相匹配的解决方案</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 114044.png)</p>
+<p>![](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 114044.png)</p>
 </li>
 </ul>
 <p><em>图3. 时间连贯性不同方法的比较。 最上面的两行显示了推断的密度，而下面的两行包含了在帧<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69841em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>之间存在有限差而计算出的帧内容的时间导数。正值和负值分别用红色和蓝色进行颜色编码。 从左到右：没有施加时间损失，没有施加<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">L_{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>损失，即没有对流作用的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><msubsup><mi>D</mi><mi>t</mi><mo mathvariant="normal">′</mo></msubsup></msub></mrow><annotation encoding="application/x-tex">L_{D&#x27;_t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06105em;vertical-align:-0.37772000000000006em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5256600000000002em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7416285714285715em;"><span style="top:-2.209457142857143em;margin-left:-0.02778em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">t</span></span></span><span style="top:-2.8448em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29054285714285716em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.37772000000000006em;"><span></span></span></span></span></span></span></span></span></span>，有对流作用的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><msub><mi>D</mi><mi>t</mi></msub></msub></mrow><annotation encoding="application/x-tex">L_{D_t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.93343em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.29634285714285713em;"><span style="top:-2.357em;margin-left:-0.02778em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span></span></span></span>（本文的全tempoGAN方法），以及真实<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>。 从左到右，在不同的版本中，派生变得更少锯齿和更少的噪音，以及更加结构化和狭窄。 这意味着时间相干性得到改善。</em></p>
@@ -687,7 +722,7 @@
 </li>
 <li>
 <p>图3 中与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><mrow><mn>2</mn><mo separator="true">,</mo><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">L_{2,t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>相比，此版本可提高结果，但未达到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><msub><mi>D</mi><mi>t</mi></msub></msub></mrow><annotation encoding="application/x-tex">L_{D_{t}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.93343em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.29634285714285713em;"><span style="top:-2.357em;margin-left:-0.02778em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span></span></span></span>的质量水平。</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 133055.png)</p>
+<p>![](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 133055.png)</p>
 </li>
 <li>
 <p>发现<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><msub><mi>D</mi><mi>t</mi></msub></msub></mrow><annotation encoding="application/x-tex">L_{D_{t}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.93343em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.29634285714285713em;"><span style="top:-2.357em;margin-left:-0.02778em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span></span></span></span>在训练过程中通常表现出更快的收敛性→这表明使用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><msubsup><mi>D</mi><mi>t</mi><mo mathvariant="normal">′</mo></msubsup></msub></mrow><annotation encoding="application/x-tex">L_{D&#x27;_t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06105em;vertical-align:-0.37772000000000006em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5256600000000002em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7416285714285715em;"><span style="top:-2.209457142857143em;margin-left:-0.02778em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">t</span></span></span><span style="top:-2.8448em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29054285714285716em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.37772000000000006em;"><span></span></span></span></span></span></span></span></span></span>时，基础神经网络很难自行对齐和比较数据。由图 4 可以说明：</p>
@@ -842,7 +877,7 @@
 </li>
 <li>
 <p>神经网络的架构概述如图5所示</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 162653.png)</p>
+<p>![](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 162653.png)</p>
 </li>
 </ul>
 <p><em>图5 结合训练了三个神经网络（蓝色框）。 它们之间的数据流由红色和黑色箭头突出显示。</em></p>
@@ -889,7 +924,7 @@
 <ul>
 <li>
 <p>进行大量训练的过程中，我们注意到为网络提供有关基础物理的更多信息会大大提高推断结果的收敛性和质量。</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 181813.webp)</p>
+<p>![](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 181813.webp)</p>
 <p><em>图6.经过40k次迭代后，使用不同的输入字段</em><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo stretchy="false">)</mo><mi>ρ</mi><mo separator="true">,</mo><mi>b</mi><mo stretchy="false">)</mo><mi>ρ</mi><mo>+</mo><mi mathvariant="bold">v</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo><mi>ρ</mi><mo>+</mo><mi mathvariant="bold">v</mi><mo>+</mo><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a) \rho , b) \rho + \mathbf{v} , c) \rho + \mathbf{v} + \mathbf(w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mclose">)</span><span class="mord mathdefault">ρ</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mclose">)</span><span class="mord mathdefault">ρ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">v</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mclose">)</span><span class="mord mathdefault">ρ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">v</span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span>  <em>（均具有相似的网络大小）的不同训练结果的说明。 仅</em><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">ρ</span></span></span></span> <em>的版本d）的权数是其两倍。 图像中的接缝显示了训练补丁的大小。 补充的物理场导致b）和c）的明显改进，即使附加的重量也无法弥补。</em></p>
 </li>
 <li>
@@ -980,7 +1015,7 @@
 </li>
 <li>
 <p>发现上面应用于速度场的空间变换在时间变化方面给出了足够的方差。</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 1855 45.webp)</p>
+<p>![](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E6%89%B9%E6%B3%A8">https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/批注</a> 2020-01-06 1855 45.webp)</p>
 <p><em>图7.一个训练有相同输入数据集的GAN网络。 尽管版本a）没有使用数据增强，但由于带有条纹的伪影而导致模糊的结果，而版本b）和数据增强却产生了清晰而详细的输出。</em></p>
 </li>
 <li>
@@ -1000,7 +1035,7 @@
 </li>
 </ul>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -1019,11 +1054,11 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/01/05/Pic/">
@@ -1032,8 +1067,8 @@
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/01/05/HexoMath/">
@@ -1042,13 +1077,13 @@
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -1056,7 +1091,7 @@
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -1068,16 +1103,15 @@
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -1098,44 +1132,16 @@
     </div>
   </div>
 </div>
-  
+    
 
-  
+    
+  </main>
 
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
   
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <span id="timeDate">载入天数...</span>
-    <span id="times">载入时分秒...</span>
-    <script>
-    var now = new Date();
-    function createtime(){
-        var grt= new Date("10/19/2019 23:30:00");//此处修改你的建站时间或者网站上线时间
-        now.setTime(now.getTime()+250);
-        days = (now - grt ) / 1000 / 60 / 60 / 24;
-        dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-        hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){
-            hnum = "0" + hnum;
-        }
-        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes);
-        if(String(mnum).length ==1 ){
-                  mnum = "0" + mnum;
-        }
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds);
-        if(String(snum).length ==1 ){
-                  snum = "0" + snum;
-        }
-        document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp"+dnum+"&nbsp天";
-        document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-    }
-    setInterval("createtime()",250);
-    </script>
-        
   <div class="statistics">
     
     
@@ -1161,17 +1167,33 @@
   </div>
 
 
-        
+  
 
-        
-  </div>
+  
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
@@ -1182,8 +1204,23 @@
 
 
 
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -1191,96 +1228,29 @@
 
 
 
-
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "tempoGAN Notes&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
       }
-    );
+    })()
   </script>
 
 
@@ -1291,63 +1261,8 @@
 
   
     <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.12.0/katex.min.css" />
   
-
-
-
-  
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
-    </script>
-  
-
-
-
 
 
 
@@ -1369,6 +1284,11 @@
   
 
 
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 

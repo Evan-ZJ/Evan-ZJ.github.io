@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -19,26 +19,33 @@
   <meta name="keywords" content="">
   <title>小米路由器青春版刷华硕固件 - ZhouJing</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/ocean.min.css" />
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
   
 
   
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -46,8 +53,13 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"evan-zj.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -108,7 +120,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="https://file.zhoujing.nl" target="_blank" rel="noopener">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://file.zhoujing.nl">
                 <i class="iconfont icon-th-large"></i>
                 网盘
               </a>
@@ -127,10 +139,28 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://www.moerats.com/kms/">
+                <i class="iconfont icon-archive-fill"></i>
+                KMS激活
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -138,32 +168,35 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201111164453.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="小米路由器青春版刷华硕固件">
               
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-11-11 15:17">
-      2020年11月11日 下午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-11 15:17" pubdate>
+        2020年11月11日 下午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      732 字
+      736 字
     </span>
   
 
@@ -209,12 +242,14 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">小米路由器青春版刷华硕固件</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body">
               <h2 id="准备"><a class="markdownIt-Anchor" href="#准备"></a> 准备</h2>
 <p>小米路由器青春版 *1、网线 *1、电脑 *1</p>
-<p>文件链接：<a href="https://file.zhoujing.nl/?/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%9B%BA%E4%BB%B6/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%9D%92%E6%98%A5%E7%89%88%E5%88%B7%E6%9C%BA/" target="_blank" rel="noopener">小米路由器青春版刷机.zip</a></p>
+<p>文件链接：<a target="_blank" rel="noopener" href="https://file.zhoujing.nl/?/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%9B%BA%E4%BB%B6/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%9D%92%E6%98%A5%E7%89%88%E5%88%B7%E6%9C%BA/">小米路由器青春版刷机.zip</a></p>
 <p><em>最主要的还是小米路由器青春版的老版开发版固件</em></p>
 <h2 id="刷入开发版rom"><a class="markdownIt-Anchor" href="#刷入开发版rom"></a> <strong>刷入开发版ROM</strong></h2>
 <p>解压提供的压缩包<br />
@@ -227,11 +262,11 @@
 <code>http://192.168.31.1/cgi-bin/luci/;stok=075a9192918557c27cdbcae2175281d9/web/home#router</code></li>
 <li>更改管理员密码和系统的root密码<br />
 将以上的地址URL中<code>/web/home#router</code>改成<code>/api/xqsystem/set_name_password?oldPwd=当前路由的密码&amp;newPwd=新的路由密码</code>，<br />
-然后查看网页的返回结果，如果返回的JSON字符串是<code>{&quot;code&quot;:0}</code>，那就任务完成，如果返回是说参数错误的，那十有八九是系统是新版，小米官方修补了这个漏洞。 <strong>需要刷上文提供的旧版系统</strong></li>
+然后查看网页的返回结果，如果返回的JSON字符串是<code>&#123;&quot;code&quot;:0&#125;</code>，那就任务完成，如果返回是说参数错误的，那十有八九是系统是新版，小米官方修补了这个漏洞。 <strong>需要刷上文提供的旧版系统</strong></li>
 <li>启用路由的telnet登录方式<br />
-同第二步中的修改网址URL，把<code>/web/home#router</code>改为<code>/api/xqnetwork/set_wifi_ap?ssid=xiaomi&amp;encryption=NONE&amp;enctype=NONE&amp;channel=1%3B%2Fusr%2Fsbin%2Ftelnetd</code>，然后查看返回的JSON数据<code>{&quot;msg&quot;:&quot;未能连接到指定WiFi(Probe timeout)&quot;,&quot;code&quot;:1616}</code>，返回码有可能不同，但是这里已经可以通过telnet的方式来登录路由器了</li>
+同第二步中的修改网址URL，把<code>/web/home#router</code>改为<code>/api/xqnetwork/set_wifi_ap?ssid=xiaomi&amp;encryption=NONE&amp;enctype=NONE&amp;channel=1%3B%2Fusr%2Fsbin%2Ftelnetd</code>，然后查看返回的JSON数据<code>&#123;&quot;msg&quot;:&quot;未能连接到指定WiFi(Probe timeout)&quot;,&quot;code&quot;:1616&#125;</code>，返回码有可能不同，但是这里已经可以通过telnet的方式来登录路由器了</li>
 <li>用putty的telnet方式登录<br />
-下载一个<a href="http://pan.baidu.com/s/1hsquhxy" target="_blank" rel="noopener">Putty</a> ，密码：gqxa。然后打开选填以下参数，连接类型：telnet;主机名称：192.168.31.1.打开后看到login，输入root，密码则为以上第二步中修改的新密码。然后依次执行下面的三条指令：<br />
+下载一个<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1hsquhxy">Putty</a> ，密码：gqxa。然后打开选填以下参数，连接类型：telnet;主机名称：192.168.31.1.打开后看到login，输入root，密码则为以上第二步中修改的新密码。然后依次执行下面的三条指令：<br />
 4.1 <code>sed -i &quot;:x;N;s/if \[.*\; then\n.*return 0\n.*fi/#tb/;b x&quot; /etc/init.d/dropbear</code><br />
 4.2 <code>/etc/init.d/dropbear start</code><br />
 4.3 <code>nvram set ssh_en=1; nvram commit</code></li>
@@ -255,7 +290,7 @@
 <p>浏览器登录：192.168.123.1，账号密码默认均为：admin</p>
 <p>至此华硕固件已经刷入完毕，自行配置吧。</p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -278,15 +313,21 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
-                  </div>
-                  <div class="post-next col-6">
+                      <a href="/2020/11/25/PBFC/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">基于位置的流体控制实现记录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/11/11/H3B/">
@@ -295,13 +336,13 @@
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -309,7 +350,7 @@
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -321,16 +362,15 @@
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -351,44 +391,16 @@
     </div>
   </div>
 </div>
-  
+    
 
-  
+    
+  </main>
 
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
   
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <span id="timeDate">载入天数...</span>
-    <span id="times">载入时分秒...</span>
-    <script>
-    var now = new Date();
-    function createtime(){
-        var grt= new Date("10/19/2019 23:30:00");//此处修改你的建站时间或者网站上线时间
-        now.setTime(now.getTime()+250);
-        days = (now - grt ) / 1000 / 60 / 60 / 24;
-        dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-        hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){
-            hnum = "0" + hnum;
-        }
-        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes);
-        if(String(mnum).length ==1 ){
-                  mnum = "0" + mnum;
-        }
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds);
-        if(String(snum).length ==1 ){
-                  snum = "0" + snum;
-        }
-        document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp"+dnum+"&nbsp天";
-        document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-    }
-    setInterval("createtime()",250);
-    </script>
-        
   <div class="statistics">
     
     
@@ -414,17 +426,33 @@
   </div>
 
 
-        
+  
 
-        
-  </div>
+  
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
@@ -435,8 +463,23 @@
 
 
 
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -444,96 +487,29 @@
 
 
 
-
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "小米路由器青春版刷华硕固件&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
       }
-    );
+    })()
   </script>
 
 
@@ -544,63 +520,8 @@
 
   
     <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.12.0/katex.min.css" />
   
-
-
-
-  
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
-    </script>
-  
-
-
-
 
 
 
@@ -622,6 +543,11 @@
   
 
 
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 

@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -19,26 +19,33 @@
   <meta name="keywords" content="">
   <title>ShareLaTeX安装、配置与部署 - ZhouJing</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/ocean.min.css" />
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
   
 
   
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -46,8 +53,13 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"evan-zj.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -108,7 +120,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="https://file.zhoujing.nl" target="_blank" rel="noopener">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://file.zhoujing.nl">
                 <i class="iconfont icon-th-large"></i>
                 网盘
               </a>
@@ -127,10 +139,28 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://www.moerats.com/kms/">
+                <i class="iconfont icon-archive-fill"></i>
+                KMS激活
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -138,32 +168,35 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/wallhaven-q6kmql.webp') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="ShareLaTeX安装、配置与部署">
               
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-02-04 17:11">
-      2020年2月4日 下午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-04 17:11" pubdate>
+        2020年2月4日 下午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      1.1k 字
     </span>
   
 
@@ -173,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      18
        分钟
     </span>
   
@@ -209,29 +242,31 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ShareLaTeX安装、配置与部署</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body">
               <p><strong>服务器操作系统</strong></p>
 <p>Ubuntu 16.04.6 LTS</p>
 <p><strong>安装docker</strong></p>
-<div class="hljs"><pre><code class="hljs bash">sudo apt install docker.io</code></pre></div>
+<pre><code class="hljs bash">sudo apt install docker.io</code></pre>
 <p>查看是否安装成功</p>
-<div class="hljs"><pre><code class="hljs bash">docker -v</code></pre></div>
+<pre><code class="hljs bash">docker -v</code></pre>
 <a id="more"></a>
 <p>确认curl等工具已安装**</p>
-<div class="hljs"><pre><code class="hljs bash">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</code></pre></div>
+<pre><code class="hljs bash">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</code></pre>
 <p><strong>下载ShareLaTeX及compose file</strong></p>
-<div class="hljs"><pre><code class="hljs bash">sudo docker pull sharelatex/sharelatex</code></pre></div>
+<pre><code class="hljs bash">sudo docker pull sharelatex/sharelatex</code></pre>
 <p>配置数据文件夹**</p>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~
+<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~
 mkdir sharelatex
 <span class="hljs-built_in">cd</span> sharelatex
 mkdir sharelatex_data
 mkdir mongo_data
-mkdir redis_data</code></pre></div>
-<p>下载<a href="https://raw.githubusercontent.com/sharelatex/sharelatex/master/docker-compose.yml" target="_blank" rel="noopener">docker-compose.yml</a>，并存在<code>~/sharelatex/</code>目录下</p>
-<div class="hljs"><pre><code class="hljs bash">version: <span class="hljs-string">'2.2'</span>
+mkdir redis_data</code></pre>
+<p>下载<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/sharelatex/sharelatex/master/docker-compose.yml">docker-compose.yml</a>，并存在<code>~/sharelatex/</code>目录下</p>
+<pre><code class="hljs bash">version: <span class="hljs-string">&#x27;2.2&#x27;</span>
 services:
     sharelatex:
         restart: always
@@ -264,13 +299,13 @@ services:
             SHARELATEX_REDIS_HOST: redis
             REDIS_HOST: redis
 
-            ENABLED_LINKED_FILE_TYPES: <span class="hljs-string">'url,project_file'</span>
+            ENABLED_LINKED_FILE_TYPES: <span class="hljs-string">&#x27;url,project_file&#x27;</span>
 
             <span class="hljs-comment"># Enables Thumbnail generation using ImageMagick</span>
-            ENABLE_CONVERSIONS: <span class="hljs-string">'true'</span>
+            ENABLE_CONVERSIONS: <span class="hljs-string">&#x27;true&#x27;</span>
             
             <span class="hljs-comment"># Disables email confirmation requirement</span>
-            EMAIL_CONFIRMATION_DISABLED: <span class="hljs-string">'true'</span>
+            EMAIL_CONFIRMATION_DISABLED: <span class="hljs-string">&#x27;true&#x27;</span>
 
             <span class="hljs-comment">## Set for SSL via nginx-proxy</span>
             <span class="hljs-comment">#VIRTUAL_HOST: 103.112.212.22</span>
@@ -280,10 +315,10 @@ services:
             <span class="hljs-comment"># SHARELATEX_HEADER_IMAGE_URL: http://somewhere.com/mylogo.png</span>
             <span class="hljs-comment"># SHARELATEX_ADMIN_EMAIL: support@it.com</span>
 
-            <span class="hljs-comment"># SHARELATEX_LEFT_FOOTER: '[&#123;"text": "Powered by &lt;a href=\"https://www.sharelatex.com\"&gt;ShareLaTeX&lt;/a&gt; 2016"&#125;,&#123;"text": "Another page I want to link to can be found &lt;a href=\"here\"&gt;here&lt;/a&gt;"&#125; ]'</span>
-            <span class="hljs-comment"># SHARELATEX_RIGHT_FOOTER: '[&#123;"text": "Hello I am on the Right"&#125; ]'</span>
+            <span class="hljs-comment"># SHARELATEX_LEFT_FOOTER: &#x27;[&#123;&quot;text&quot;: &quot;Powered by &lt;a href=\&quot;https://www.sharelatex.com\&quot;&gt;ShareLaTeX&lt;/a&gt; 2016&quot;&#125;,&#123;&quot;text&quot;: &quot;Another page I want to link to can be found &lt;a href=\&quot;here\&quot;&gt;here&lt;/a&gt;&quot;&#125; ]&#x27;</span>
+            <span class="hljs-comment"># SHARELATEX_RIGHT_FOOTER: &#x27;[&#123;&quot;text&quot;: &quot;Hello I am on the Right&quot;&#125; ]&#x27;</span>
 
-            <span class="hljs-comment"># SHARELATEX_EMAIL_FROM_ADDRESS: "team@sharelatex.com"</span>
+            <span class="hljs-comment"># SHARELATEX_EMAIL_FROM_ADDRESS: &quot;team@sharelatex.com&quot;</span>
 
             <span class="hljs-comment"># SHARELATEX_EMAIL_AWS_SES_ACCESS_KEY_ID:</span>
             <span class="hljs-comment"># SHARELATEX_EMAIL_AWS_SES_SECRET_KEY:</span>
@@ -295,36 +330,36 @@ services:
             <span class="hljs-comment"># SHARELATEX_EMAIL_SMTP_PASS:</span>
             <span class="hljs-comment"># SHARELATEX_EMAIL_SMTP_TLS_REJECT_UNAUTH: true</span>
             <span class="hljs-comment"># SHARELATEX_EMAIL_SMTP_IGNORE_TLS: false</span>
-            <span class="hljs-comment"># SHARELATEX_CUSTOM_EMAIL_FOOTER: "&lt;div&gt;This system is run by department x &lt;/div&gt;"</span>
+            <span class="hljs-comment"># SHARELATEX_CUSTOM_EMAIL_FOOTER: &quot;&lt;div&gt;This system is run by department x &lt;/div&gt;&quot;</span>
 
             <span class="hljs-comment">################</span>
             <span class="hljs-comment">## Server Pro ##</span>
             <span class="hljs-comment">################</span>
 
-            <span class="hljs-comment"># SANDBOXED_COMPILES: 'true'</span>
+            <span class="hljs-comment"># SANDBOXED_COMPILES: &#x27;true&#x27;</span>
 
-            <span class="hljs-comment"># SANDBOXED_COMPILES_SIBLING_CONTAINERS: 'true'</span>
-            <span class="hljs-comment"># SANDBOXED_COMPILES_HOST_DIR: '/var/sharelatex_data/data/compiles'</span>
-            <span class="hljs-comment"># SYNCTEX_BIN_HOST_PATH: '/var/sharelatex_data/bin/synctex'</span>
+            <span class="hljs-comment"># SANDBOXED_COMPILES_SIBLING_CONTAINERS: &#x27;true&#x27;</span>
+            <span class="hljs-comment"># SANDBOXED_COMPILES_HOST_DIR: &#x27;/var/sharelatex_data/data/compiles&#x27;</span>
+            <span class="hljs-comment"># SYNCTEX_BIN_HOST_PATH: &#x27;/var/sharelatex_data/bin/synctex&#x27;</span>
 
-            <span class="hljs-comment"># DOCKER_RUNNER: 'false'</span>
+            <span class="hljs-comment"># DOCKER_RUNNER: &#x27;false&#x27;</span>
 
             <span class="hljs-comment">## Works with test LDAP server shown at bottom of docker compose</span>
-            <span class="hljs-comment"># SHARELATEX_LDAP_URL: 'ldap://ldap:389'</span>
-            <span class="hljs-comment"># SHARELATEX_LDAP_SEARCH_BASE: 'ou=people,dc=planetexpress,dc=com'</span>
-            <span class="hljs-comment"># SHARELATEX_LDAP_SEARCH_FILTER: '(uid=&#123;&#123;username&#125;&#125;)'</span>
-            <span class="hljs-comment"># SHARELATEX_LDAP_BIND_DN: 'cn=admin,dc=planetexpress,dc=com'</span>
-            <span class="hljs-comment"># SHARELATEX_LDAP_BIND_CREDENTIALS: 'GoodNewsEveryone'</span>
-            <span class="hljs-comment"># SHARELATEX_LDAP_EMAIL_ATT: 'mail'</span>
-            <span class="hljs-comment"># SHARELATEX_LDAP_NAME_ATT: 'cn'</span>
-            <span class="hljs-comment"># SHARELATEX_LDAP_LAST_NAME_ATT: 'sn'</span>
-            <span class="hljs-comment"># SHARELATEX_LDAP_UPDATE_USER_DETAILS_ON_LOGIN: 'true'</span>
+            <span class="hljs-comment"># SHARELATEX_LDAP_URL: &#x27;ldap://ldap:389&#x27;</span>
+            <span class="hljs-comment"># SHARELATEX_LDAP_SEARCH_BASE: &#x27;ou=people,dc=planetexpress,dc=com&#x27;</span>
+            <span class="hljs-comment"># SHARELATEX_LDAP_SEARCH_FILTER: &#x27;(uid=&#123;&#123;username&#125;&#125;)&#x27;</span>
+            <span class="hljs-comment"># SHARELATEX_LDAP_BIND_DN: &#x27;cn=admin,dc=planetexpress,dc=com&#x27;</span>
+            <span class="hljs-comment"># SHARELATEX_LDAP_BIND_CREDENTIALS: &#x27;GoodNewsEveryone&#x27;</span>
+            <span class="hljs-comment"># SHARELATEX_LDAP_EMAIL_ATT: &#x27;mail&#x27;</span>
+            <span class="hljs-comment"># SHARELATEX_LDAP_NAME_ATT: &#x27;cn&#x27;</span>
+            <span class="hljs-comment"># SHARELATEX_LDAP_LAST_NAME_ATT: &#x27;sn&#x27;</span>
+            <span class="hljs-comment"># SHARELATEX_LDAP_UPDATE_USER_DETAILS_ON_LOGIN: &#x27;true&#x27;</span>
 
-            <span class="hljs-comment"># SHARELATEX_TEMPLATES_USER_ID: "578773160210479700917ee5"</span>
-            <span class="hljs-comment"># SHARELATEX_NEW_PROJECT_TEMPLATE_LINKS: '[ &#123;"name":"All Templates","url":"/templates/all"&#125;]'</span>
+            <span class="hljs-comment"># SHARELATEX_TEMPLATES_USER_ID: &quot;578773160210479700917ee5&quot;</span>
+            <span class="hljs-comment"># SHARELATEX_NEW_PROJECT_TEMPLATE_LINKS: &#x27;[ &#123;&quot;name&quot;:&quot;All Templates&quot;,&quot;url&quot;:&quot;/templates/all&quot;&#125;]&#x27;</span>
 
 
-            <span class="hljs-comment"># SHARELATEX_PROXY_LEARN: "true"</span>
+            <span class="hljs-comment"># SHARELATEX_PROXY_LEARN: &quot;true&quot;</span>
 
     mongo:
         restart: always
@@ -335,7 +370,7 @@ services:
         volumes:
             - ~/mongo_data:/data/db
         healthcheck:
-            <span class="hljs-built_in">test</span>: <span class="hljs-built_in">echo</span> <span class="hljs-string">'db.stats().ok'</span> | mongo localhost:27017/<span class="hljs-built_in">test</span> --quiet
+            <span class="hljs-built_in">test</span>: <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;db.stats().ok&#x27;</span> | mongo localhost:27017/<span class="hljs-built_in">test</span> --quiet
             interval: 10s
             timeout: 10s
             retries: 5
@@ -359,25 +394,25 @@ services:
     <span class="hljs-comment"># See https://github.com/jwilder/nginx-proxy for documentation on how to configure the nginx-proxy container,</span>
     <span class="hljs-comment"># and https://github.com/overleaf/overleaf/wiki/HTTPS-reverse-proxy-using-Nginx for an example of some recommended</span>
     <span class="hljs-comment"># settings. We recommend using a properly managed nginx instance outside of the Overleaf Server Pro setup,</span>
-    <span class="hljs-comment"># but the example here can be used if you'd prefer to run everything with docker-compose</span>
+    <span class="hljs-comment"># but the example here can be used if you&#x27;d prefer to run everything with docker-compose</span>
     
     <span class="hljs-comment"># nginx-proxy:</span>
     <span class="hljs-comment">#     image: jwilder/nginx-proxy</span>
     <span class="hljs-comment">#     container_name: nginx-proxy</span>
     <span class="hljs-comment">#     ports:</span>
-    <span class="hljs-comment">#       #- "80:80"</span>
-    <span class="hljs-comment">#       - "443:443"</span>
+    <span class="hljs-comment">#       #- &quot;80:80&quot;</span>
+    <span class="hljs-comment">#       - &quot;443:443&quot;</span>
     <span class="hljs-comment">#     volumes:</span>
     <span class="hljs-comment">#       - /var/run/docker.sock:/tmp/docker.sock:ro</span>
-    <span class="hljs-comment">#       - /home/sharelatex/tmp:/etc/nginx/certs</span></code></pre></div>
+    <span class="hljs-comment">#       - /home/sharelatex/tmp:/etc/nginx/certs</span></code></pre>
 <p><strong>安装ShareLaTeX</strong></p>
-<div class="hljs"><pre><code class="hljs bash">sudo docker-compose up</code></pre></div>
+<pre><code class="hljs bash">sudo docker-compose up</code></pre>
 <p><strong>新建管理员账号</strong></p>
-<div class="hljs"><pre><code class="hljs bash">sudo docker <span class="hljs-built_in">exec</span> sharelatex /bin/bash -c <span class="hljs-string">"cd /var/www/sharelatex; grunt user:create-admin --email=admin@university.edu"</span></code></pre></div>
+<pre><code class="hljs bash">sudo docker <span class="hljs-built_in">exec</span> sharelatex /bin/bash -c <span class="hljs-string">&quot;cd /var/www/sharelatex; grunt user:create-admin --email=admin@university.edu&quot;</span></code></pre>
 <p><strong>设置账号密码</strong></p>
 <p><strong>进入容器</strong></p>
-<div class="hljs"><pre><code class="hljs bash">sudo docker <span class="hljs-built_in">exec</span> -it sharelatex bash</code></pre></div>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 下载并运行升级脚本</span>
+<pre><code class="hljs bash">sudo docker <span class="hljs-built_in">exec</span> -it sharelatex bash</code></pre>
+<pre><code class="hljs bash"><span class="hljs-comment"># 下载并运行升级脚本</span>
 wget http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh
 sh update-tlmgr-latest.sh -- --upgrade
 
@@ -395,13 +430,13 @@ tlmgr install scheme-full
 
 <span class="hljs-comment"># 推出sharelatex的命令行界面，并重启sharelatex容器</span>
 <span class="hljs-built_in">exit</span>
-docker restart sharelatex</code></pre></div>
+docker restart sharelatex</code></pre>
 <p><strong>配置中文写作环境</strong></p>
 <ul>
 <li>将Windows字体库（即目录C:\windows\fonts）上传到host机，如果Windows安装了Git可以使用scp命令直接上传</li>
 <li>在host机下把fonts目录打包并传到sharelatex容器中</li>
 </ul>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 进入fonts目录</span>
+<pre><code class="hljs bash"><span class="hljs-comment"># 进入fonts目录</span>
 <span class="hljs-built_in">cd</span> fonts/
 
 <span class="hljs-comment"># 删除其中的.fon字体文件（该种格式文件在后面建立字体目录时会报错），只保留TrueType和OpenType字体，即.ttf和.otf</span>
@@ -413,11 +448,11 @@ rm -r *.fon
 tar -zcvf winfonts.tar.gz fonts/
 
 <span class="hljs-comment"># 把压缩文件传到sharelatex容器的root目录下</span>
-docker cp winfonts.tar.gz sharelatex:/root</code></pre></div>
+docker cp winfonts.tar.gz sharelatex:/root</code></pre>
 <ul>
 <li>在容器中安装Windows字体</li>
 </ul>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment"># 进入容器的命令行界面</span>
+<pre><code class="hljs bash"><span class="hljs-comment"># 进入容器的命令行界面</span>
 $ docker <span class="hljs-built_in">exec</span> -it sharelatex bash
 
 <span class="hljs-comment"># 通过安装wqy字体同时安装xfont工具</span>
@@ -432,10 +467,10 @@ mv winfonts /usr/share/fonts/
 <span class="hljs-built_in">cd</span> /usr/share/fonts/winfonts
 mkfontscale
 mkfontdir
-<span class="hljs-built_in">fc</span>-cache -fv
+fc-cache -fv
 
 <span class="hljs-comment"># 检查确认中文字体安装成功</span>
-<span class="hljs-built_in">fc</span>-list :lang=zh-cn</code></pre></div>
+fc-list :lang=zh-cn</code></pre>
 <ul>
 <li>回到ShareLaTeX网站，创建一个新项目，使用CTEX宏集和XeLaTeX编译器，即可生成中文pdf。</li>
 </ul>
@@ -445,7 +480,7 @@ mkfontdir
 <li>列出sharelatex的用户：<code>mongoexport -d sharelatex -c users -f email</code> (需要先进入数据库)</li>
 </ol>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -464,11 +499,11 @@ mkfontdir
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/02/08/VpsGit/">
@@ -477,8 +512,8 @@ mkfontdir
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/02/01/dante/">
@@ -487,13 +522,13 @@ mkfontdir
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -501,7 +536,7 @@ mkfontdir
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -513,16 +548,15 @@ mkfontdir
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -543,44 +577,16 @@ mkfontdir
     </div>
   </div>
 </div>
-  
+    
 
-  
+    
+  </main>
 
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
   
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <span id="timeDate">载入天数...</span>
-    <span id="times">载入时分秒...</span>
-    <script>
-    var now = new Date();
-    function createtime(){
-        var grt= new Date("10/19/2019 23:30:00");//此处修改你的建站时间或者网站上线时间
-        now.setTime(now.getTime()+250);
-        days = (now - grt ) / 1000 / 60 / 60 / 24;
-        dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-        hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){
-            hnum = "0" + hnum;
-        }
-        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes);
-        if(String(mnum).length ==1 ){
-                  mnum = "0" + mnum;
-        }
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds);
-        if(String(snum).length ==1 ){
-                  snum = "0" + snum;
-        }
-        document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp"+dnum+"&nbsp天";
-        document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-    }
-    setInterval("createtime()",250);
-    </script>
-        
   <div class="statistics">
     
     
@@ -606,17 +612,33 @@ mkfontdir
   </div>
 
 
-        
+  
 
-        
-  </div>
+  
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
@@ -627,8 +649,23 @@ mkfontdir
 
 
 
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -636,96 +673,29 @@ mkfontdir
 
 
 
-
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "ShareLaTeX安装、配置与部署&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
       }
-    );
+    })()
   </script>
 
 
@@ -736,63 +706,8 @@ mkfontdir
 
   
     <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.12.0/katex.min.css" />
   
-
-
-
-  
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
-    </script>
-  
-
-
-
 
 
 
@@ -814,6 +729,11 @@ mkfontdir
   
 
 
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 

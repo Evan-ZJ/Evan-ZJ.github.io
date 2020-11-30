@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -19,26 +19,33 @@
   <meta name="keywords" content="">
   <title>编译Hadoop3.1.3 eclipse插件 - ZhouJing</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/ocean.min.css" />
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
   
 
   
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -46,8 +53,13 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"evan-zj.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -108,7 +120,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="https://file.zhoujing.nl" target="_blank" rel="noopener">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://file.zhoujing.nl">
                 <i class="iconfont icon-th-large"></i>
                 网盘
               </a>
@@ -127,10 +139,28 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://www.moerats.com/kms/">
+                <i class="iconfont icon-archive-fill"></i>
+                KMS激活
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -138,25 +168,28 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/wallhaven-q6kmql.webp') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="编译Hadoop3.1.3 eclipse插件">
               
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-04-23 23:42">
-      2020年4月23日 晚上
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-23 23:42" pubdate>
+        2020年4月23日 晚上
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -209,54 +242,56 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">编译Hadoop3.1.3 eclipse插件</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body">
               <h4 id="hadoop313源代码编译成功后解压释放到opt目录下"><a class="markdownIt-Anchor" href="#hadoop313源代码编译成功后解压释放到opt目录下"></a> Hadoop3.1.3源代码编译成功后，解压释放到/opt目录下</h4>
-<div class="hljs"><pre><code class="hljs bash">解压释放：
+<pre><code class="hljs bash">解压释放：
 tar xvfz hadoop-3.1.3.tar.gz -C /opt
 然后确定文件夹名为hadoop
-mv hadoop-3.1.3 hadoop</code></pre></div>
+mv hadoop-3.1.3 hadoop</code></pre>
 <h4 id="安装eclipse"><a class="markdownIt-Anchor" href="#安装eclipse"></a> 安装eclipse</h4>
-<p>eclipse<a href="https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz" target="_blank" rel="noopener">下载链接</a></p>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#解压Eclipse软件</span>
+<p>eclipse<a target="_blank" rel="noopener" href="https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz">下载链接</a></p>
+<pre><code class="hljs bash"><span class="hljs-comment">#解压Eclipse软件</span>
 tar xvfz eclipse-java-2020-03-R-linux-gtk-x86_64.tar.gz -C /opt
 <span class="hljs-comment">#确保opt目录下解压的文件夹名为eclipse，不是的话mv修改</span>
 <span class="hljs-comment">#添加环境变量</span>
-cat&gt;&gt; /etc/profile&lt;&lt;EOF
-<span class="hljs-built_in">export</span> ECLIPSE_HOME=/opt/eclipse
-<span class="hljs-built_in">export</span> PATH=\<span class="hljs-variable">$ECLIPSE_HOME</span>:\<span class="hljs-variable">$PATH</span>
-EOF
+cat&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span>
+<span class="hljs-string">export ECLIPSE_HOME=/opt/eclipse</span>
+<span class="hljs-string">export PATH=\$ECLIPSE_HOME:\$PATH</span>
+<span class="hljs-string">EOF</span>
 <span class="hljs-comment">#重启</span>
 reboot
 <span class="hljs-comment">#或</span>
-<span class="hljs-built_in">source</span> /etc/profile</code></pre></div>
+<span class="hljs-built_in">source</span> /etc/profile</code></pre>
 <h4 id="下载hadoop3x-eclipse-plugin源代码"><a class="markdownIt-Anchor" href="#下载hadoop3x-eclipse-plugin源代码"></a> 下载hadoop3x-eclipse-plugin源代码</h4>
-<div class="hljs"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/Woooosz/eclipse-hadoop3x
-<span class="hljs-built_in">cd</span> eclipse-hadoop3x</code></pre></div>
+<pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/Woooosz/eclipse-hadoop3x
+<span class="hljs-built_in">cd</span> eclipse-hadoop3x</code></pre>
 <a id="more"></a>
 <h6 id="修改依赖包版本文件librariesproperties"><a class="markdownIt-Anchor" href="#修改依赖包版本文件librariesproperties"></a> 修改依赖包版本文件libraries.properties</h6>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/ivy<span class="hljs-comment">#文件路径</span></code></pre></div>
+<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/ivy<span class="hljs-comment">#文件路径</span></code></pre>
 <p>修改办法：</p>
-<div class="hljs"><pre><code class="hljs bahs">#列出相应的版本号
+<pre><code class="hljs bahs">#列出相应的版本号
 cd &#x2F;opt&#x2F;hadoop&#x2F;share&#x2F;hadoop&#x2F;common&#x2F;lib
-ls</code></pre></div>
+ls</code></pre>
 <p>对着列出来的版本一个个修改libraries.properties里面的版本号（对的上的就改，对不上的就忽略，如果编译失败看一下输出的信息是那个jar版本对不上了，然后在bulid.xml里面看xxx.jar在哪里，说明xxx.jar前面的jar都找到了，这样去校对libraries.properties的时候可以直接从xxx.jar后面开始校对）。</p>
 <p>额外注意：</p>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#修改</span>
+<pre><code class="hljs bash"><span class="hljs-comment">#修改</span>
 commons-httpclient.version=3.0.1
 <span class="hljs-comment">#添加</span>
 stax2.version=3.1.4
-woodstox.version=5.0.3</code></pre></div>
+woodstox.version=5.0.3</code></pre>
 <p>测试可编译通过libraries.properties：</p>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#   Licensed under the Apache License, Version 2.0 (the "License");</span>
+<pre><code class="hljs bash"><span class="hljs-comment">#   Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
 <span class="hljs-comment">#   you may not use this file except in compliance with the License.</span>
 <span class="hljs-comment">#   You may obtain a copy of the License at</span>
 <span class="hljs-comment">#</span>
 <span class="hljs-comment">#       http://www.apache.org/licenses/LICENSE-2.0</span>
 <span class="hljs-comment">#</span>
 <span class="hljs-comment">#   Unless required by applicable law or agreed to in writing, software</span>
-<span class="hljs-comment">#   distributed under the License is distributed on an "AS IS" BASIS,</span>
+<span class="hljs-comment">#   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
 <span class="hljs-comment">#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
 <span class="hljs-comment">#   See the License for the specific language governing permissions and</span>
 <span class="hljs-comment">#   limitations under the License.</span>
@@ -341,10 +376,10 @@ guava.version=27.0
 wagon-http.version=1.0-beta-2
 woodstox.version=5.0.3
 xmlenc.version=0.52
-xerces.version=1.4.4</code></pre></div>
+xerces.version=1.4.4</code></pre>
 <h6 id="修改buildxml文件"><a class="markdownIt-Anchor" href="#修改buildxml文件"></a> 修改build.xml文件</h6>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#路径</span>
-<span class="hljs-built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin</code></pre></div>
+<pre><code class="hljs bash"><span class="hljs-comment">#路径</span>
+<span class="hljs-built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin</code></pre>
 <ul>
 <li>第1处修改：跳过查找不到的jar包</li>
 </ul>
@@ -360,11 +395,11 @@ xerces.version=1.4.4</code></pre></div>
 </li>
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001219.png" srcset="/img/loading.gif" alt="" /></p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- new add start--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"$&#123;hadoop.root&#125;"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"**/*.jar"</span> /&gt;</span>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- new add start--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;$&#123;hadoop.root&#125;&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/*.jar&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- new add end--&gt;</span></code></pre></div>
+<span class="hljs-comment">&lt;!-- new add end--&gt;</span></code></pre>
 <ul>
 <li>第3处修改：包含ant runtime</li>
 </ul>
@@ -376,14 +411,14 @@ xerces.version=1.4.4</code></pre></div>
 <li>第4处修改：解决Add New Location没有反应的问题</li>
 </ul>
 <p>在120行左右添加</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">file</span>=<span class="hljs-string">"$&#123;hadoop.home&#125;/libexec/share/hadoop/common/lib/woodstox-core-$&#123;woodstox.version&#125;.jar"</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">"$&#123;build.dir&#125;/lib"</span> <span class="hljs-attr">verbose</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">file</span>=<span class="hljs-string">"$&#123;hadoop.home&#125;/libexec/share/hadoop/common/lib/stax2-api-$&#123;stax2.version&#125;.jar"</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">"$&#123;build.dir&#125;/lib"</span> <span class="hljs-attr">verbose</span>=<span class="hljs-string">"true"</span>/&gt;</span></code></pre></div>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;$&#123;hadoop.home&#125;/libexec/share/hadoop/common/lib/woodstox-core-$&#123;woodstox.version&#125;.jar&quot;</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">&quot;$&#123;build.dir&#125;/lib&quot;</span> <span class="hljs-attr">verbose</span>=<span class="hljs-string">&quot;true&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">copy</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;$&#123;hadoop.home&#125;/libexec/share/hadoop/common/lib/stax2-api-$&#123;stax2.version&#125;.jar&quot;</span> <span class="hljs-attr">todir</span>=<span class="hljs-string">&quot;$&#123;build.dir&#125;/lib&quot;</span> <span class="hljs-attr">verbose</span>=<span class="hljs-string">&quot;true&quot;</span>/&gt;</span></code></pre>
 <ul>
 <li>第5处修改：确保编译能找到hadoop的jar包</li>
 </ul>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#建议不修改xml文件，直接创建链接：</span>
+<pre><code class="hljs bash"><span class="hljs-comment">#建议不修改xml文件，直接创建链接：</span>
 <span class="hljs-built_in">cd</span> /opt/hadoop/libexec
-ln -s /opt/hadoop/share share</code></pre></div>
+ln -s /opt/hadoop/share share</code></pre>
 <ul>
 <li>第6处修改：guava的jar包文件命和hadoop3.1.3不一致</li>
 </ul>
@@ -392,16 +427,16 @@ ln -s /opt/hadoop/share share</code></pre></div>
 <p>修改后：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%872.png" srcset="/img/loading.gif" alt="" /></p>
 <h4 id="编译eclipse插件"><a class="markdownIt-Anchor" href="#编译eclipse插件"></a> 编译eclipse插件</h4>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin
+<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin
 
 ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
 -Declipse.home=/opt/eclipse \
--Dhadoop.home=/opt/hadoop -debug</code></pre></div>
+-Dhadoop.home=/opt/hadoop -debug</code></pre>
 <p>编译好的jar包:</p>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/build/contrib/eclipse-plugin</code></pre></div>
+<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/build/contrib/eclipse-plugin</code></pre>
 <p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%873.png" srcset="/img/loading.gif" alt="" /></p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -420,11 +455,11 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/05/05/frp/">
@@ -433,8 +468,8 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/04/23/hadoop313/">
@@ -443,13 +478,13 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -457,7 +492,7 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -469,16 +504,15 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -499,44 +533,16 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
     </div>
   </div>
 </div>
-  
+    
 
-  
+    
+  </main>
 
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
   
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <span id="timeDate">载入天数...</span>
-    <span id="times">载入时分秒...</span>
-    <script>
-    var now = new Date();
-    function createtime(){
-        var grt= new Date("10/19/2019 23:30:00");//此处修改你的建站时间或者网站上线时间
-        now.setTime(now.getTime()+250);
-        days = (now - grt ) / 1000 / 60 / 60 / 24;
-        dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-        hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){
-            hnum = "0" + hnum;
-        }
-        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes);
-        if(String(mnum).length ==1 ){
-                  mnum = "0" + mnum;
-        }
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds);
-        if(String(snum).length ==1 ){
-                  snum = "0" + snum;
-        }
-        document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp"+dnum+"&nbsp天";
-        document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-    }
-    setInterval("createtime()",250);
-    </script>
-        
   <div class="statistics">
     
     
@@ -562,17 +568,33 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
   </div>
 
 
-        
+  
 
-        
-  </div>
+  
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
@@ -583,8 +605,23 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
 
 
 
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -592,96 +629,29 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
 
 
 
-
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "编译Hadoop3.1.3 eclipse插件&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
       }
-    );
+    })()
   </script>
 
 
@@ -692,63 +662,8 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
 
   
     <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.12.0/katex.min.css" />
   
-
-
-
-  
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
-    </script>
-  
-
-
-
 
 
 
@@ -770,6 +685,11 @@ ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \
   
 
 
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 

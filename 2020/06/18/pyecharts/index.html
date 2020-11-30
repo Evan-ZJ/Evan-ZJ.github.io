@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -19,26 +19,33 @@
   <meta name="keywords" content="">
   <title>使用Pyecharts绘制热力图 - ZhouJing</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/ocean.min.css" />
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
   
 
   
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -46,8 +53,13 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"evan-zj.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
   <script  src="/js/utils.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 
 <body>
@@ -108,7 +120,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="https://file.zhoujing.nl" target="_blank" rel="noopener">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://file.zhoujing.nl">
                 <i class="iconfont icon-th-large"></i>
                 网盘
               </a>
@@ -127,10 +139,28 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://www.moerats.com/kms/">
+                <i class="iconfont icon-archive-fill"></i>
+                KMS激活
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -138,32 +168,35 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200722201559.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="使用Pyecharts绘制热力图">
               
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-06-18 15:01">
-      2020年6月18日 下午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-06-18 15:01" pubdate>
+        2020年6月18日 下午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      354 字
+      374 字
     </span>
   
 
@@ -209,29 +242,31 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用Pyecharts绘制热力图</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body">
               <h1 id="使用pyecharts绘制热力图"><a class="markdownIt-Anchor" href="#使用pyecharts绘制热力图"></a> 使用Pyecharts绘制热力图</h1>
 <blockquote>
 <p>因为论文需要描述数据，先开始发现百度Echarts，但是习惯用Python处理数据，发现也有这个库，记录一下折腾过程~其实之前图方便看了CSDN结果发现都是老版本，问题很多，还是看了官方文档成功使用并批量渲染图片</p>
-<p><a href="http://pyecharts.org/#/" target="_blank" rel="noopener">官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="http://pyecharts.org/#/">官方文档</a></p>
 </blockquote>
 <h2 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h2>
 <p>推荐源码安装</p>
-<div class="hljs"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/pyecharts/pyecharts.git
+<pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/pyecharts/pyecharts.git
 <span class="hljs-built_in">cd</span> pyecharts
 pip install -r requirements.txt
-python setup.py install</code></pre></div>
+python setup.py install</code></pre>
 <p>或者运气好pip安装</p>
-<div class="hljs"><pre><code class="hljs bash"><span class="hljs-comment">#可能会出现安装以后无法导入库的问题</span>
-pip(3) install pyecharts</code></pre></div>
+<pre><code class="hljs bash"><span class="hljs-comment">#可能会出现安装以后无法导入库的问题</span>
+pip(3) install pyecharts</code></pre>
 <h2 id="heatmap热力图"><a class="markdownIt-Anchor" href="#heatmap热力图"></a> HeatMap：热力图</h2>
 <blockquote>
 <p>本次是为了根据坐标点数据强度绘制颜色深浅表示</p>
 </blockquote>
 <h3 id="导入包"><a class="markdownIt-Anchor" href="#导入包"></a> 导入包</h3>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#配置</span>
+<pre><code class="hljs python"><span class="hljs-comment">#配置</span>
 <span class="hljs-keyword">import</span> pyecharts.options <span class="hljs-keyword">as</span> opts
 <span class="hljs-comment">#热图</span>
 <span class="hljs-keyword">from</span> pyecharts.charts <span class="hljs-keyword">import</span> HeatMap
@@ -239,21 +274,21 @@ pip(3) install pyecharts</code></pre></div>
 <span class="hljs-keyword">from</span> pyecharts.render <span class="hljs-keyword">import</span> make_snapshot
 <span class="hljs-keyword">from</span> snapshot_selenium <span class="hljs-keyword">import</span> snapshot
 <span class="hljs-comment">#numpy计算</span>
-<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</code></pre></div>
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</code></pre>
 <h3 id="设置x-y轴"><a class="markdownIt-Anchor" href="#设置x-y轴"></a> 设置x, y轴</h3>
-<div class="hljs"><pre><code class="hljs python">x = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">67</span>, <span class="hljs-number">68</span>)
-y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51</span>, <span class="hljs-number">52</span>)</code></pre></div>
+<pre><code class="hljs python">x = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">67</span>, <span class="hljs-number">68</span>)
+y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51</span>, <span class="hljs-number">52</span>)</code></pre>
 <h3 id="heatmap代码"><a class="markdownIt-Anchor" href="#heatmap代码"></a> HeatMap代码</h3>
-<p><a href="https://github.com/Evan-ZJ/MyScripts/blob/master/heatmap_1890.txt" target="_blank" rel="noopener">测试数据test.txt下载</a></p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1830</span>, <span class="hljs-number">5581</span>, <span class="hljs-number">10</span>):
-        data = np.loadtxt(<span class="hljs-string">"test.txt"</span>)
+<p><a target="_blank" rel="noopener" href="https://github.com/Evan-ZJ/MyScripts/blob/master/heatmap_1890.txt">测试数据test.txt下载</a></p>
+<pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1830</span>, <span class="hljs-number">5581</span>, <span class="hljs-number">10</span>):
+        data = np.loadtxt(<span class="hljs-string">&quot;test.txt&quot;</span>)
         data = data.tolist()<span class="hljs-comment">#转为list</span>
 
         heatmap = (
             HeatMap()
                 .add_xaxis(x)
                 .add_yaxis(
-                series_name=<span class="hljs-string">"vortex"</span>,
+                series_name=<span class="hljs-string">&quot;vortex&quot;</span>,
                 yaxis_data=y,
                 value=data,
             )
@@ -261,28 +296,28 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
                 .set_global_opts(
                 legend_opts=opts.LegendOpts(is_show=<span class="hljs-literal">False</span>),
                 xaxis_opts=opts.AxisOpts(
-                    type_=<span class="hljs-string">"category"</span>,
+                    type_=<span class="hljs-string">&quot;category&quot;</span>,
                     splitarea_opts=opts.SplitAreaOpts(
                         is_show=<span class="hljs-literal">True</span>, areastyle_opts=opts.AreaStyleOpts(opacity=<span class="hljs-number">1</span>)
                     ),
                 ),
                 yaxis_opts=opts.AxisOpts(
-                    type_=<span class="hljs-string">"category"</span>,
+                    type_=<span class="hljs-string">&quot;category&quot;</span>,
                     splitarea_opts=opts.SplitAreaOpts(
                         is_show=<span class="hljs-literal">True</span>, areastyle_opts=opts.AreaStyleOpts(opacity=<span class="hljs-number">1</span>)
                     ),
                 ),
                 visualmap_opts=opts.VisualMapOpts(
-                    min_=<span class="hljs-number">0</span>, max_=<span class="hljs-number">10</span>, is_calculable=<span class="hljs-literal">True</span>, orient=<span class="hljs-string">"horizontal"</span>, pos_left=<span class="hljs-string">"center"</span>
+                    min_=<span class="hljs-number">0</span>, max_=<span class="hljs-number">10</span>, is_calculable=<span class="hljs-literal">True</span>, orient=<span class="hljs-string">&quot;horizontal&quot;</span>, pos_left=<span class="hljs-string">&quot;center&quot;</span>
                 ),
             )
-            .render(<span class="hljs-string">"heatmap_on_cartesian.html"</span>)<span class="hljs-comment">#渲染为Html，渲染图片时可注释</span>
-        )</code></pre></div>
+            .render(<span class="hljs-string">&quot;heatmap_on_cartesian.html&quot;</span>)<span class="hljs-comment">#渲染为Html，渲染图片时可注释</span>
+        )</code></pre>
 <h3 id="渲染为图片"><a class="markdownIt-Anchor" href="#渲染为图片"></a> 渲染为图片</h3>
-<div class="hljs"><pre><code class="hljs python">make_snapshot(snapshot, heatmap.render(<span class="hljs-string">"VR.html"</span>), <span class="hljs-string">"./"</span> + str(i) + <span class="hljs-string">".png"</span>)</code></pre></div>
+<pre><code class="hljs python">make_snapshot(snapshot, heatmap.render(<span class="hljs-string">&quot;VR.html&quot;</span>), <span class="hljs-string">&quot;./&quot;</span> + <span class="hljs-built_in">str</span>(i) + <span class="hljs-string">&quot;.png&quot;</span>)</code></pre>
 <p><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/VR-1690.png" srcset="/img/loading.gif" alt="" /></p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -299,11 +334,11 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/07/21/SPHSolid/">
@@ -312,8 +347,8 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/05/16/fail2ban/">
@@ -322,13 +357,13 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -336,7 +371,7 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -348,16 +383,15 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -378,44 +412,16 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
     </div>
   </div>
 </div>
-  
+    
 
-  
+    
+  </main>
 
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
   
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <span id="timeDate">载入天数...</span>
-    <span id="times">载入时分秒...</span>
-    <script>
-    var now = new Date();
-    function createtime(){
-        var grt= new Date("10/19/2019 23:30:00");//此处修改你的建站时间或者网站上线时间
-        now.setTime(now.getTime()+250);
-        days = (now - grt ) / 1000 / 60 / 60 / 24;
-        dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-        hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){
-            hnum = "0" + hnum;
-        }
-        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes);
-        if(String(mnum).length ==1 ){
-                  mnum = "0" + mnum;
-        }
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds);
-        if(String(snum).length ==1 ){
-                  snum = "0" + snum;
-        }
-        document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp"+dnum+"&nbsp天";
-        document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-    }
-    setInterval("createtime()",250);
-    </script>
-        
   <div class="statistics">
     
     
@@ -441,17 +447,33 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
   </div>
 
 
-        
+  
 
-        
-  </div>
+  
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
@@ -462,8 +484,23 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
 
 
 
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -471,96 +508,29 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
 
 
 
-
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "使用Pyecharts绘制热力图&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
       }
-    );
+    })()
   </script>
 
 
@@ -571,63 +541,8 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
 
   
     <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.12.0/katex.min.css" />
   
-
-
-
-  
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
-    </script>
-  
-
-
-
 
 
 
@@ -649,6 +564,11 @@ y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51
   
 
 
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 
