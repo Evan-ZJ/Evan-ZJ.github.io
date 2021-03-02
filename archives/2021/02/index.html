@@ -17,25 +17,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>latex图片布局参考 - ZhouJing</title>
+  <title>归档 - Evan Zhou</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/ocean.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-  
 
 
 
@@ -63,11 +47,11 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>ZhouJing's note</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>EvanZhou's blog</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -120,7 +104,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" target="_blank" rel="noopener" href="https://file.zhoujing.nl">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://file.evanzj.com">
                 <i class="iconfont icon-th-large"></i>
                 网盘
               </a>
@@ -157,59 +141,14 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/wallhaven-q6kmql.webp') no-repeat center center;
+         style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="latex图片布局参考">
+            <span class="h2" id="subtitle" title="归档">
               
             </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-01-04 22:41" pubdate>
-        2020年1月4日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      317 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      4
-       分钟
-    </span>
-  
-
-  
-  
-    
-      <!-- 不蒜子统计文章PV -->
-      <span id="busuanzi_container_page_pv" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="busuanzi_value_page_pv"></span> 次
-      </span>
-    
-  
-</div>
 
             
           </div>
@@ -222,118 +161,40 @@
 
   <main>
     
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 17 篇文章</p>
+  <hr>
+  
+  
+    
       
+      <p class="h5">2021</p>
+    
+    <a href="/2021/02/05/XiaomiCamera/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">关于我给家里监控加5120GB空间的事</span>
+      <time style="float: right;">02-05</time>
+    </a>
+  
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">latex图片布局参考</h1>
-            
-            <div class="markdown-body">
-              <h2 id="latex图片布局参考"><a class="markdownIt-Anchor" href="#latex图片布局参考"></a> latex图片布局参考</h2>
-<div class="hljs"><pre><code class="hljs latex"><span class="hljs-keyword">\usepackage</span>&#123;graphicx&#125; <span class="hljs-comment">%插入图片的宏包</span>
-<span class="hljs-keyword">\usepackage</span>&#123;float&#125; <span class="hljs-comment">%设置图片浮动位置的宏包</span>
-<span class="hljs-keyword">\usepackage</span>&#123;subfigure&#125; <span class="hljs-comment">%插入多图时用子图显示的宏包</span>
 
-<span class="hljs-keyword">\begin</span>&#123;figure&#125;[H] <span class="hljs-comment">%这里使用的是强制位置</span>
-  <span class="hljs-keyword">\centering</span> <span class="hljs-comment">%图片全局居中</span>
-  <span class="hljs-keyword">\vspace</span>&#123;-0.35cm&#125; <span class="hljs-comment">%设置与上面正文的距离</span>
-  <span class="hljs-keyword">\subfigtopskip</span>=2pt <span class="hljs-comment">%设置子图与上面正文或别的内容的距离</span></code></pre></div>
-  <a id="more"></a>
-<div class="hljs"><pre><code class="hljs latex"><span class="hljs-keyword">\subfigbottomskip</span>=2pt <span class="hljs-comment">%设置第二行子图与第一行子图的距离，即下面的头与上面的脚的距离</span>
- <span class="hljs-keyword">\subfigcapskip</span>=-5pt <span class="hljs-comment">%设置子图与子标题之间的距离</span>
- <span class="hljs-keyword">\subfigure</span>[original]&#123;
-   <span class="hljs-keyword">\label</span>&#123;level.sub.1&#125;
-   <span class="hljs-keyword">\includegraphics</span>[width=0.32<span class="hljs-keyword">\linewidth</span>]&#123;./figure/original.png&#125;&#125;
- <span class="hljs-keyword">\quad</span> <span class="hljs-comment">%默认情况下两个子图之间空的较少，使用这个命令加大宽度</span>
- <span class="hljs-keyword">\subfigure</span>[level=9]&#123;
-   <span class="hljs-keyword">\label</span>&#123;level.sub.2&#125;
-   <span class="hljs-keyword">\includegraphics</span>[width=0.32<span class="hljs-keyword">\linewidth</span>]&#123;./figure/level9.png&#125;&#125;
-  <span class="hljs-comment">%这里是空了一行，能够实现强制将四张图分成两行两列显示，而不是放不下图了再换行，使用\\也行。</span>
- <span class="hljs-keyword">\subfigure</span>[level=8]&#123;
-   <span class="hljs-keyword">\label</span>&#123;level.sub.3&#125;
-   <span class="hljs-keyword">\includegraphics</span>[width=0.32<span class="hljs-keyword">\linewidth</span>]&#123;./figure/level8.png&#125;&#125;
- <span class="hljs-keyword">\quad</span>
- <span class="hljs-keyword">\subfigure</span>[level=7]&#123;
-   <span class="hljs-keyword">\label</span>&#123;level.sub.4&#125;
-   <span class="hljs-keyword">\includegraphics</span>[width=0.32<span class="hljs-keyword">\linewidth</span>]&#123;./figure/level7.png&#125;&#125;
- <span class="hljs-keyword">\caption</span>&#123;不同level的渲染效果&#125;
- <span class="hljs-keyword">\label</span>&#123;level&#125;</code></pre></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/latex/">latex</a>
-                    
-                  </div>
-                
+
+
               </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2020/01/05/HexoMath/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hexo显示数学公式</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2020/01/04/HexoGit/">
-                        <span class="hidden-mobile">hexo搭建个人博客记录</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-  <div class="col-lg-7 mx-auto nopadding-md">
-    <div class="container custom post-custom mx-auto">
-      <img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201205151340.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;"> <br> <center>觉得可以的话支付宝领个红包吧</center> 
-    </div>
-  </div>
-
-
     
 
     
@@ -440,15 +301,9 @@
 
 
 
-  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 
@@ -488,13 +343,6 @@
 
 
 
-
-  
-
-  
-    <!-- KaTeX -->
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.12.0/katex.min.css" />
-  
 
 
 

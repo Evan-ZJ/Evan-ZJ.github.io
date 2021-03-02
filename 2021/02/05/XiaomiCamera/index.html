@@ -1,0 +1,767 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201130201150.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <title>关于我给家里监控加5120GB空间的事 - Evan Zhou</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/ocean.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"evan-zj.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>EvanZhou's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://file.evanzj.com">
+                <i class="iconfont icon-th-large"></i>
+                网盘
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20210302194911.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="关于我给家里监控加5120GB空间的事">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-05 16:25" pubdate>
+        2021年2月5日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">关于我给家里监控加5120GB空间的事</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>家里有个小米监控，但是存储卡只能存一个月不到的视频，当然监控我希望存得越久越好。之前了解了很多工具，包括硬件香橙派（类似于树莓派）、rclone硬盘挂载、samba服务等，这些工具串起来就能达到目的了</p>
+</blockquote>
+<h2 id="硬件准备"><a class="markdownIt-Anchor" href="#硬件准备"></a> 硬件准备</h2>
+<p><strong>香橙派*1</strong>及其相关<strong>内存卡、适配器</strong>：其实<strong>树莓派</strong>也可以，型号没有严格的限制，只要能跑Linux系统（<strong>Ubuntu 16.04或者18.04</strong>），有网口、低功耗极本就可以了。后期需要装一个软件。</p>
+<h2 id="软件准备"><a class="markdownIt-Anchor" href="#软件准备"></a> 软件准备</h2>
+<p>下载rclone：<a target="_blank" rel="noopener" href="https://rclone.org/downloads/">https://rclone.org/downloads/</a> Windows电脑一般下载Intel/AMD - 64 Bit就可以</p>
+<p>一个有5T的Onedrive网盘账户：</p>
+<ul>
+<li>一种情况：如果你的监控就是拍一下家里院子户外，不在意隐私，可以直接在淘宝10元购买一个5T账户（你的管理员（淘宝卖家）有权限查看你的文件）</li>
+<li>另一种情况：如果介意隐私，可以去自己申请开发者账户，开发者账户会有3个月有效期，这时候需要加入接口保持续订状态<a target="_blank" rel="noopener" href="https://e5.qyi.io/">E5续订</a>。</li>
+</ul>
+<h3 id="香橙派系统刷入"><a class="markdownIt-Anchor" href="#香橙派系统刷入"></a> 香橙派系统刷入</h3>
+<p>如果用的是树莓派，那么网上资料应该更多，不再赘述。</p>
+<p>如果用的是香橙派，可以参考官网教程，刷一个Ubuntu系统</p>
+<p>香橙派官网: <a target="_blank" rel="noopener" href="http://www.orangepi.cn/">http://www.orangepi.cn/</a></p>
+<h3 id="ubuntu上使用rclone挂载onedrive网盘"><a class="markdownIt-Anchor" href="#ubuntu上使用rclone挂载onedrive网盘"></a> Ubuntu上使用rclone挂载OneDrive网盘</h3>
+<h4 id=""><a class="markdownIt-Anchor" href="#"></a> </h4>
+<h4 id="这个步骤主要参考这篇博客httpswwwmoeratscomarchives491"><a class="markdownIt-Anchor" href="#这个步骤主要参考这篇博客httpswwwmoeratscomarchives491"></a> <strong>这个步骤主要参考这篇博客</strong>：<a target="_blank" rel="noopener" href="https://www.moerats.com/archives/491/">https://www.moerats.com/archives/491/</a></h4>
+<h4 id="客户端授权"><a class="markdownIt-Anchor" href="#客户端授权"></a> 客户端授权</h4>
+<p>下载Intel/AMD - 64 Bit版本的rclone以后，解压，在当前文件夹用cmd命令行执行</p>
+<div class="hljs"><pre><code class="hljs dockerfile">rclone authorize <span class="hljs-string">&quot;onedrive&quot;</span><span class="hljs-keyword">Copy</span></code></pre></div>
+<p>会自动打开浏览器，登录你准备的Onedrive账户，授权</p>
+<p>然后cmd命令行窗口会出现授权码</p>
+<div class="hljs"><pre><code class="hljs clean">Waiting for <span class="hljs-keyword">code</span>...
+Got <span class="hljs-keyword">code</span>
+Paste the following into your remote machine ---&gt;
+&#123;<span class="hljs-string">&quot;access_token&quot;</span>:<span class="hljs-string">&quot;xxxx&quot;</span>&#125;  #请复制&#123;xx&#125;整个内容，后面需要用到
+&lt;---End pasteCopy</code></pre></div>
+<p>复制access_token的相关内容保存。</p>
+<h4 id="香橙派安装rclone"><a class="markdownIt-Anchor" href="#香橙派安装rclone"></a> 香橙派安装rclone</h4>
+<p>以下是对教程博客的补充</p>
+<p>当然这其中会出现很多问题：</p>
+<ul>
+<li>
+<p>rclone安装问题：</p>
+<ul>
+<li>
+<p>不要使用Ubuntu自带的源用apt-get install命令来安装rclone，估计是版本问题，最后会出现授权失败的情况</p>
+</li>
+<li>
+<p>博客里面的安装方法，对于部分网络没法下载一些文件，另外香橙派属于ARM架构，存在不兼容</p>
+</li>
+<li>
+<p>解决方法：通过在rclone官网提供的官方命令进行安装</p>
+<div class="hljs"><pre><code class="hljs awk">curl https:<span class="hljs-regexp">//</span>rclone.org/install.sh | sudo bashCopy</code></pre></div>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20210205124412.png"><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20210205124412.png" srcset="/img/loading.gif" alt="img" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>rclone更新问题</p>
+<p>参考博客时间比较长，所以有些rclone提示的命令会不一样，这时候需要自己读一下提示，如果出现有过的提示，就按照教程选择，如果没有就默认回车即可</p>
+<p>下面提供2021年2月的操作记录：</p>
+<div class="hljs"><pre><code class="hljs livescript">rclone config<span class="hljs-comment">#输入执行</span>
+n/s/q&gt; n<span class="hljs-comment">#输入n新建一个</span>
+name&gt; One<span class="hljs-comment">#名字自取，后面用到</span>
+Type <span class="hljs-keyword">of</span> storage <span class="hljs-keyword">to</span> configure.
+Enter a string value. Press Enter <span class="hljs-keyword">for</span> the <span class="hljs-keyword">default</span> (<span class="hljs-string">&quot;&quot;</span>).
+Choose a number <span class="hljs-keyword">from</span> below, <span class="hljs-keyword">or</span> type <span class="hljs-keyword">in</span> your own value
+ <span class="hljs-number">1</span> / <span class="hljs-number">1</span>Fichier
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;fichier&quot;</span>
+ <span class="hljs-number">2</span> / Alias <span class="hljs-keyword">for</span> an existing remote
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;alias&quot;</span>
+ <span class="hljs-number">3</span> / Amazon Drive
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;amazon cloud drive&quot;</span>
+ <span class="hljs-number">4</span> / Amazon S3 Compliant Storage Provider (AWS, Alibaba, Ceph, Digital Ocean, Dreamhost, IBM COS, Minio, Tencent COS, etc)
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;s3&quot;</span>
+ <span class="hljs-number">5</span> / Backblaze B2
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;b2&quot;</span>
+ <span class="hljs-number">6</span> / Box
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;box&quot;</span>
+ <span class="hljs-number">7</span> / Cache a remote
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;cache&quot;</span>
+ <span class="hljs-number">8</span> / Citrix Sharefile
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;sharefile&quot;</span>
+ <span class="hljs-number">9</span> / Dropbox
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;dropbox&quot;</span>
+<span class="hljs-number">10</span> / Encrypt/Decrypt a remote
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;crypt&quot;</span>
+<span class="hljs-number">11</span> / FTP Connection
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;ftp&quot;</span>
+<span class="hljs-number">12</span> / Google Cloud Storage (<span class="hljs-built_in">this</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> Google Drive)
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;google cloud storage&quot;</span>
+<span class="hljs-number">13</span> / Google Drive
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;drive&quot;</span>
+<span class="hljs-number">14</span> / Google Photos
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;google photos&quot;</span>
+<span class="hljs-number">15</span> / Hubic
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;hubic&quot;</span>
+<span class="hljs-number">16</span> / In memory object storage system.
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;memory&quot;</span>
+<span class="hljs-number">17</span> / Jottacloud
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;jottacloud&quot;</span>
+<span class="hljs-number">18</span> / Koofr
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;koofr&quot;</span>
+<span class="hljs-number">19</span> / Local Disk
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;local&quot;</span>
+<span class="hljs-number">20</span> / Mail.ru Cloud
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;mailru&quot;</span>
+<span class="hljs-number">21</span> / Mega
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;mega&quot;</span>
+<span class="hljs-number">22</span> / Microsoft Azure Blob Storage
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;azureblob&quot;</span>
+<span class="hljs-number">23</span> / Microsoft OneDrive
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;onedrive&quot;</span>
+<span class="hljs-number">24</span> / OpenDrive
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;opendrive&quot;</span>
+<span class="hljs-number">25</span> / OpenStack Swift (Rackspace Cloud Files, Memset Memstore, OVH)
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;swift&quot;</span>
+<span class="hljs-number">26</span> / Pcloud
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;pcloud&quot;</span>
+<span class="hljs-number">27</span> / Put.io
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;putio&quot;</span>
+<span class="hljs-number">28</span> / QingCloud <span class="hljs-built_in">Object</span> Storage
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;qingstor&quot;</span>
+<span class="hljs-number">29</span> / SSH/SFTP Connection
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;sftp&quot;</span>
+<span class="hljs-number">30</span> / Sugarsync
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;sugarsync&quot;</span>
+<span class="hljs-number">31</span> / Tardigrade Decentralized Cloud Storage
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;tardigrade&quot;</span>
+<span class="hljs-number">32</span> / Transparently chunk/split large files
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;chunker&quot;</span>
+<span class="hljs-number">33</span> / Union merges the contents <span class="hljs-keyword">of</span> several upstream fs
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;union&quot;</span>
+<span class="hljs-number">34</span> / Webdav
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;webdav&quot;</span>
+<span class="hljs-number">35</span> / Yandex Disk
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;yandex&quot;</span>
+<span class="hljs-number">36</span> / http Connection
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;http&quot;</span>
+<span class="hljs-number">37</span> / premiumize.me
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;premiumizeme&quot;</span>
+<span class="hljs-number">38</span> / seafile
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;seafile&quot;</span>
+Storage&gt; <span class="hljs-number">23</span><span class="hljs-comment">#选23 onedrive，注意序号，版本不同序号不同</span>
+** See help <span class="hljs-keyword">for</span> onedrive backend at: https:<span class="hljs-regexp">//rclone.org/onedrive/ **</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp">OAuth Client Id</span>
+<span class="hljs-regexp">Leave blank normally.</span>
+<span class="hljs-regexp">Enter a string value. Press Enter for the default (&quot;&quot;).</span>
+<span class="hljs-regexp">client_id&gt; <span class="hljs-comment">#留空，直接回车</span></span>
+<span class="hljs-regexp">OAuth Client Secret</span>
+<span class="hljs-regexp">Leave blank normally.</span>
+<span class="hljs-regexp">Enter a string value. Press Enter for the default (&quot;&quot;).</span>
+<span class="hljs-regexp">client_secret&gt;  <span class="hljs-comment">#留空，直接回车</span></span>
+<span class="hljs-regexp">Edit advanced config? (y/n)</span>
+<span class="hljs-regexp">y) Yes</span>
+<span class="hljs-regexp">n) No (default)</span>
+<span class="hljs-regexp">y/n&gt; n<span class="hljs-comment">#输入n</span></span>
+<span class="hljs-regexp">Remote config</span>
+<span class="hljs-regexp">Use auto config?</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp"> * Say Y if not sure</span>
+<span class="hljs-regexp"> * Say N if you are working on a remote or headless machine</span>
+<span class="hljs-regexp">   y) Yes (default)</span>
+<span class="hljs-regexp">   n) No</span>
+<span class="hljs-regexp">   y/n&gt; n<span class="hljs-comment">#输入n</span></span>
+<span class="hljs-regexp">   For this to work, you will need rclone available on a machine that has</span>
+<span class="hljs-regexp">   a web browser available.</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp">For more help and alternate methods see: https://</span>rclone.org/remote_setup/
+
+Execute the following <span class="hljs-literal">on</span> the machine <span class="hljs-keyword">with</span> the web browser (same rclone
+version recommended):
+
+truerclone authorize <span class="hljs-string">&quot;onedrive&quot;</span>
+
+Then paste the result below:
+result&gt; &#123;<span class="hljs-string">&quot;access_token&quot;</span>:<span class="hljs-string">&quot;xxxxxxxxxxxxxx&quot;</span>&#125;<span class="hljs-comment">#粘贴刚刚保存的客户端认证</span>
+Choose a number <span class="hljs-keyword">from</span> below, <span class="hljs-keyword">or</span> type <span class="hljs-keyword">in</span> an existing value
+ <span class="hljs-number">1</span> / OneDrive Personal <span class="hljs-keyword">or</span> Business
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;onedrive&quot;</span>
+ <span class="hljs-number">2</span> / Root Sharepoint site
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;sharepoint&quot;</span>
+ <span class="hljs-number">3</span> / Type <span class="hljs-keyword">in</span> driveID
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;driveid&quot;</span>
+ <span class="hljs-number">4</span> / Type <span class="hljs-keyword">in</span> SiteID
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;siteid&quot;</span>
+ <span class="hljs-number">5</span> / Search a Sharepoint site
+   <span class="hljs-string">\</span> <span class="hljs-string">&quot;search&quot;</span>
+Your choice&gt; <span class="hljs-number">1</span><span class="hljs-comment">#选择使用类别</span>
+Found <span class="hljs-number">1</span> drives, please select the one you want <span class="hljs-keyword">to</span> use:
+<span class="hljs-number">0</span>: OneDrive (business) id=xxxxxxxxx
+Chose drive <span class="hljs-keyword">to</span> use:&gt; <span class="hljs-number">0</span><span class="hljs-comment">#只有0: Onedrive，输入0回车即可</span>
+Found drive <span class="hljs-string">&#x27;root&#x27;</span> <span class="hljs-keyword">of</span> type <span class="hljs-string">&#x27;business&#x27;</span>, URL: xxxxxxxxxx
+Is <span class="hljs-literal">that</span> okay?
+y) Yes (<span class="hljs-keyword">default</span>)
+n) No
+
+y/n&gt; y
+--------------------
+
+[One]
+type = onedrive
+token = &#123;<span class="hljs-string">&quot;access_token&quot;</span>:<span class="hljs-string">&quot;xxxxxxxxxxxx&quot;</span>&#125;
+drive_id = xxxxxxxxxxxxxxxxxxxxxx
+
+drive_type = business
+--------------------
+
+y) Yes <span class="hljs-built_in">this</span> <span class="hljs-keyword">is</span> OK (<span class="hljs-keyword">default</span>)
+e) Edit <span class="hljs-built_in">this</span> remote
+d) Delete <span class="hljs-built_in">this</span> remote
+y/e/d&gt; y<span class="hljs-comment">#确认</span>
+Current remotes:
+
+Name                 Type
+====                 ====
+One                  onedrive
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) <span class="hljs-built_in">Set</span> configuration password
+q) Quit config
+e/n/d/r/c/s/q&gt; q<span class="hljs-comment">#输入q退出</span>
+Copy</code></pre></div>
+<p>按照教程挂载好以后可以看到香橙派就会出现一个5T空间的目录，注意按照教程设置好开机自启</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20210205125353.png"><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20210205125353.png" srcset="/img/loading.gif" alt="img" /></a></p>
+</li>
+</ul>
+<h3 id="开启局域网samba服务"><a class="markdownIt-Anchor" href="#开启局域网samba服务"></a> 开启局域网samba服务</h3>
+<p>到了这一步，就可以直接百度网上各种教程了</p>
+<p>sudo -s 切换至root用户(如果不切到root用户每次输入命令前都要加sudo,比较麻烦)</p>
+<p>先检查下更新：</p>
+<div class="hljs"><pre><code class="hljs routeros">apt-<span class="hljs-builtin-name">get</span> update
+apt-<span class="hljs-builtin-name">get</span> upgradeCopy</code></pre></div>
+<ol>
+<li>确定Onedrive的挂载路径，比如上图就是 <code>/OneDrive</code></li>
+</ol>
+<p>2.修改目录的权限</p>
+<div class="hljs"><pre><code class="hljs apache"><span class="hljs-attribute">chmod</span> <span class="hljs-number">777</span> /OneDriveCopy</code></pre></div>
+<p>3.在smb.conf文件最后边加入信息</p>
+<div class="hljs"><pre><code class="hljs awk">vi <span class="hljs-regexp">/etc/</span>samba/smb.confCopy</code></pre></div>
+<p>在文件末尾加入[share]中的配置信息</p>
+<div class="hljs"><pre><code class="hljs ini"><span class="hljs-section">[share]</span><span class="hljs-comment">#名字可以随便取</span>
+<span class="hljs-attr">truepath</span> = /<span class="hljs-literal">On</span>eDrive <span class="hljs-comment">#Onedrive挂载路径</span>
+<span class="hljs-attr">trueavailable</span> = <span class="hljs-literal">yes</span>
+<span class="hljs-attr">truebrowseable</span> = <span class="hljs-literal">yes</span>
+<span class="hljs-attr">truepublic</span> = <span class="hljs-literal">yes</span> 
+<span class="hljs-attr">truewritable</span> = <span class="hljs-literal">yes</span>Copy</code></pre></div>
+<ol>
+<li>
+<p>创建samba账号</p>
+<p>账户需要时系统中已经有的账户</p>
+<div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">lsmbpasswd - a orangepiCopy</span></code></pre></div>
+</li>
+<li>
+<p>重启samba服务</p>
+<div class="hljs"><pre><code class="hljs awk"><span class="hljs-regexp">/etc/i</span>nit.d/smbd restart   
+或service smbd restartCopy</code></pre></div>
+</li>
+<li>
+<p>给samba设置开机自启</p>
+</li>
+</ol>
+<h3 id="设置小米摄像头存储路径"><a class="markdownIt-Anchor" href="#设置小米摄像头存储路径"></a> 设置小米摄像头存储路径</h3>
+<p>存储设置-Nas网络存储，然后搜索局域网下的samba共享服务添加即可</p>
+<p><strong>注意：</strong></p>
+<p><strong>香橙派和小米摄像头需要在同一个路由器下</strong></p>
+<p><strong>小米摄像头设置完成以后需要重启一下</strong></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20210205131008.jpg"><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20210205131008.jpg" srcset="/img/loading.gif" alt="img" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20210205131042.jpg"><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20210205131042.jpg" srcset="/img/loading.gif" alt="img" /></a></p>
+<h3 id="查看文件"><a class="markdownIt-Anchor" href="#查看文件"></a> 查看文件</h3>
+<p>当然在米家APP暂时看不到所有保存的视频，可以电脑登录OneDrive账户查看</p>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20210205165642.jpg"><img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20210205165642.jpg" srcset="/img/loading.gif" alt="img" /></a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/OneDrive/">OneDrive</a>
+                    
+                      <a class="hover-with-bg" href="/tags/OrangePi/">OrangePi</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/04/HIbSPH/">
+                        <span class="hidden-mobile">中文笔记：Haptic interaction based SPH fluid control</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201205151340.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;"> <br> <center>觉得可以的话支付宝领个红包吧</center> 
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.12.0/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
