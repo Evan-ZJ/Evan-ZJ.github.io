@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201130201150.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="准备 搭建一个完整的frp服务链，我们需要  VPS一台（也可以是具有公网IP的实体机） 访问目标设备（就是你最终要访问的设备） 系统使用Ubuntu 16.04 x64，frp客户端和服务端本身同时均支持Linux和Windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内网穿透frp使用">
+<meta property="og:url" content="https://evan-zj.github.io/2020/05/05/frp/index.html">
+<meta property="og:site_name" content="Evan Zhou">
+<meta property="og:description" content="准备 搭建一个完整的frp服务链，我们需要  VPS一台（也可以是具有公网IP的实体机） 访问目标设备（就是你最终要访问的设备） 系统使用Ubuntu 16.04 x64，frp客户端和服务端本身同时均支持Linux和Windows">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110846.jpg">
+<meta property="article:published_time" content="2020-05-05T15:28:37.000Z">
+<meta property="article:modified_time" content="2022-08-04T13:18:40.368Z">
+<meta property="article:tag" content="hide">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="vps">
+<meta property="article:tag" content="frp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110846.jpg">
+  
+  
+  <title>内网穿透frp使用 - Evan Zhou</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/ocean.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"evan-zj.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>EvanZhou&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://file.evanzj.com">
+                <i class="iconfont icon-th-large"></i>
+                网盘
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://gitpy.evanzj.com/">
+                <i class="iconfont icon-archive-fill"></i>
+                git加速
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200722201558.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="内网穿透frp使用">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-05 23:28" pubdate>
+        2020年5月5日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">内网穿透frp使用</h1>
+            
+            <div class="markdown-body">
+              <h2 id="准备"><a class="markdownIt-Anchor" href="#准备"></a> 准备</h2>
+<p>搭建一个完整的frp服务链，我们需要</p>
+<ol>
+<li>VPS一台（也可以是具有公网IP的实体机）</li>
+<li>访问目标设备（就是你最终要访问的设备）</li>
+<li>系统使用Ubuntu 16.04 x64，frp客户端和服务端本身同时均支持Linux和Windows</li>
+</ol>
+<span id="more"></span>
+<h2 id="服务端"><a class="markdownIt-Anchor" href="#服务端"></a> 服务端</h2>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment">#SSH连接到VPS之后运行如下命令查看处理器架构，根据架构下载不同版本的frp</span><br><span class="hljs-built_in">arch</span><br><span class="hljs-comment">#下载</span><br>wget https://github.com/fatedier/frp/releases/download/v0.33.0/frp_0.33.0_linux_amd64.tar.gz<br><span class="hljs-comment">#解压</span><br>tar -zxvf frp_0.33.0_linux_amd64.tar.gz<br><span class="hljs-comment">#重命名</span><br><span class="hljs-built_in">mv</span> frp_0.33.0_linux_amd64 frp<br><span class="hljs-built_in">cd</span> frp<br><span class="hljs-comment">#修改配置文件frps.ini</span><br>vi frps.ini<br></code></pre></div></td></tr></table></figure>
+<!--more-->
+<p>文件应有如下格式</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">[common]<br>bind_port = 7000<br>dashboard_port = 7500<br>token = 12345678<br>dashboard_user = admin<br>dashboard_pwd = admin<br>vhost_http_port = 10080<br>vhost_https_port = 10443<br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p>如果没有必要，端口均可使用默认值，token、user和password项请自行设置。</p>
+</blockquote>
+<ul>
+<li>“bind_port”表示用于客户端和服务端连接的端口，这个端口号我们之后在配置客户端的时候要用到。</li>
+<li>“dashboard_port”是服务端仪表板的端口，若使用7500端口，在配置完成服务启动后可以通过浏览器访问 x.x.x.x:7500 （其中x.x.x.x为VPS的IP）查看frp服务运行信息。</li>
+<li>“token”是用于客户端和服务端连接的口令，请自行设置并记录，稍后会用到。</li>
+<li>“dashboard_user”和“dashboard_pwd”表示打开仪表板页面登录的用户名和密码，自行设置即可。</li>
+<li>“vhost_http_port”和“vhost_https_port”用于反向代理HTTP主机时使用，本文不涉及HTTP协议，因而照抄或者删除这两条均可。</li>
+</ul>
+<p>编辑完成后保存</p>
+<figure class="highlight elixir"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs elixir"><span class="hljs-title class_">ECS</span><br><span class="hljs-symbol">:wq</span><br></code></pre></div></td></tr></table></figure>
+<p>运行服务端测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">./frps -c frps.ini<br></code></pre></div></td></tr></table></figure>
+<p>如果看到屏幕输出这样一段内容，即表示运行正常，如果出现错误提示，请检查上面的步骤。</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-number">2019</span><span class="hljs-regexp">/01/</span><span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [service.go:<span class="hljs-number">130</span>] frps tcp listen on <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>:<span class="hljs-number">7000</span><br><span class="hljs-number">2019</span><span class="hljs-regexp">/01/</span><span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [service.go:<span class="hljs-number">172</span>] http service listen on <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>:<span class="hljs-number">10080</span><br><span class="hljs-number">2019</span><span class="hljs-regexp">/01/</span><span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [service.go:<span class="hljs-number">193</span>] https service listen on <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>:<span class="hljs-number">10443</span><br><span class="hljs-number">2019</span><span class="hljs-regexp">/01/</span><span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [service.go:<span class="hljs-number">216</span>] Dashboard listen on <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>:<span class="hljs-number">7500</span><br><span class="hljs-number">2019</span><span class="hljs-regexp">/01/</span><span class="hljs-number">12</span> <span class="hljs-number">15</span>:<span class="hljs-number">22</span>:<span class="hljs-number">39</span> [I] [root.go:<span class="hljs-number">210</span>] Start frps success<br></code></pre></div></td></tr></table></figure>
+<p>此时访问 x.x.x.x:7500 并使用自己设置的用户名密码登录，即可看到仪表板界面</p>
+<h2 id="服务端后台运行"><a class="markdownIt-Anchor" href="#服务端后台运行"></a> 服务端后台运行</h2>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> ./frps -c frps.ini &amp;<br></code></pre></div></td></tr></table></figure>
+<h2 id="客户端设置"><a class="markdownIt-Anchor" href="#客户端设置"></a> 客户端设置</h2>
+<blockquote>
+<p>frp的客户端就是我们想要真正进行访问的那台设备，大多数情况下应该会是一台Windows主机，因而本文使用Windows主机做例子；Linux配置方法类似，不再赘述。</p>
+</blockquote>
+<p>根据客户端设备的情况选择相应的frp程序进行<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">下载</a>，</p>
+<p>将其解压在了C盘根目录下，并且将文件夹重命名为“frp”，可以删除其中的frps和frps.ini文件。<br />
+用文本编辑器打开frpc.ini，与服务端类似，内容如下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">[common]<br>server_addr = x.x.x.x<br>server_port = 7000<br>token = won517574356<br>[rdp]<br><span class="hljs-built_in">type</span> = tcp<br>local_ip = 127.0.0.1           <br>local_port = 3389<br>remote_port = 7001  <br>[smb]<br><span class="hljs-built_in">type</span> = tcp<br>local_ip = 127.0.0.1<br>local_port = 445<br>remote_port = 7002<br></code></pre></div></td></tr></table></figure>
+<p>其中common字段下的三项即为服务端的设置。</p>
+<ul>
+<li>“server_addr”为服务端IP地址，填入即可。</li>
+<li>“server_port”为服务器端口，填入你设置的端口号即可，如果未改变就是7000</li>
+<li>“token”是你在服务器上设置的连接口令，原样填入即可。</li>
+</ul>
+<h2 id="自定义规则"><a class="markdownIt-Anchor" href="#自定义规则"></a> 自定义规则</h2>
+<p>上面frpc.ini的rdp、smb字段都是自己定义的规则，自定义端口对应时格式如下。</p>
+<ul>
+<li>“[xxx]”表示一个规则名称，自己定义，便于查询即可。</li>
+<li>“type”表示转发的协议类型，有TCP和UDP等选项可以选择，如有需要请自行查询frp手册。</li>
+<li>“local_port”是本地应用的端口号，按照实际应用工作在本机的端口号填写即可。</li>
+<li>“remote_port”是该条规则在服务端开放的端口号，自己填写并记录即可。</li>
+</ul>
+<blockquote>
+<p>RDP，即Remote Desktop 远程桌面，Windows的RDP默认端口是3389，协议为TCP，建议使用frp远程连接前，在局域网中测试好，能够成功连接后再使用frp穿透连接。</p>
+<p>SMB，即Windows文件共享所使用的协议，默认端口号445，协议TCP，本条规则可实现远程文件访问。</p>
+</blockquote>
+<p>配置完成frpc.ini后，就可以运行frpc了</p>
+<blockquote>
+<p>frpc程序不能直接双击运行！</p>
+</blockquote>
+<p>使用命令提示符或Powershell进入该目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> C:\frp<br></code></pre></div></td></tr></table></figure>
+<p>并执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">./frpc -c frpc.ini<br></code></pre></div></td></tr></table></figure>
+<p>运行frpc程序，窗口中输出如下内容表示运行正常。</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">16</span>:<span class="hljs-number">14</span>:<span class="hljs-number">56</span><span class="hljs-meta"> [I] [service.go:205] login to server success, get run id [2b65b4e58a5917ac], server udp port [0]</span><br><span class="hljs-attribute">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">16</span>:<span class="hljs-number">14</span>:<span class="hljs-number">56</span><span class="hljs-meta"> [I] [proxy_manager.go:136] [2b65b4e58a5917ac] proxy added: [rdp smb]</span><br><span class="hljs-attribute">2019</span>/<span class="hljs-number">01</span>/<span class="hljs-number">12</span> <span class="hljs-number">16</span>:<span class="hljs-number">14</span>:<span class="hljs-number">56</span><span class="hljs-meta"> [I] [control.go:143] [smb] start proxy success</span><br><span class="hljs-meta">2019/01/12 16:14:56 [I] [control.go:143] [rdp] start proxy success</span><br></code></pre></div></td></tr></table></figure>
+<p>不要关闭命令行窗口，此时可以在局域网外使用相应程序访问 x.x.x.x:xxxx （IP为VPS的IP，端口为自定义的remote_port）即可访问到相应服务。</p>
+<h2 id="客户端后台运行及开机自启"><a class="markdownIt-Anchor" href="#客户端后台运行及开机自启"></a> 客户端后台运行及开机自启</h2>
+<p>在任何一个目录下新建一个文本文件并将其重命名为“frpc.bat”，编辑，粘贴如下内容并保存。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell">@<span class="hljs-built_in">echo</span> off<br><span class="hljs-keyword">if</span> <span class="hljs-string">&quot;%1&quot;</span> == <span class="hljs-string">&quot;h&quot;</span> goto <span class="hljs-keyword">begin</span><br>mshta vbscript:createobject(<span class="hljs-string">&quot;wscript.shell&quot;</span>).run(<span class="hljs-string">&quot;&quot;</span><span class="hljs-string">&quot;%~nx0&quot;</span><span class="hljs-string">&quot; h&quot;</span>,<span class="hljs-number">0</span>)(window.close)&amp;&amp;<span class="hljs-keyword">exit</span><br>:<span class="hljs-keyword">begin</span><br>REM<br><span class="hljs-built_in">cd</span> C:\frp<br>frpc <span class="hljs-literal">-c</span> frpc.ini<br><span class="hljs-keyword">exit</span><br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p>将cd后的路径更改为你的frpc实际存放的目录</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://sspai.com/post/52523">参考</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/hide/">hide</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/vps/">vps</a>
+                    
+                      <a class="hover-with-bg" href="/tags/frp/">frp</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/08/Onedrive/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">OneIndex的Docker安装部署</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/04/23/Hadoop313-eclipse/">
+                        <span class="hidden-mobile">编译Hadoop3.1.3 eclipse插件</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

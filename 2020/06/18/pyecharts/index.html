@@ -1,0 +1,535 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201130201150.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="使用Pyecharts绘制热力图  因为论文需要描述数据，先开始发现百度Echarts，但是习惯用Python处理数据，发现也有这个库，记录一下折腾过程~其实之前图方便看了CSDN结果发现都是老版本，问题很多，还是看了官方文档成功使用并批量渲染图片 官方文档   安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Pyecharts绘制热力图">
+<meta property="og:url" content="https://evan-zj.github.io/2020/06/18/pyecharts/index.html">
+<meta property="og:site_name" content="Evan Zhou">
+<meta property="og:description" content="使用Pyecharts绘制热力图  因为论文需要描述数据，先开始发现百度Echarts，但是习惯用Python处理数据，发现也有这个库，记录一下折腾过程~其实之前图方便看了CSDN结果发现都是老版本，问题很多，还是看了官方文档成功使用并批量渲染图片 官方文档   安装">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618150736.jpg">
+<meta property="article:published_time" content="2020-06-18T07:01:38.000Z">
+<meta property="article:modified_time" content="2022-08-04T13:18:40.366Z">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Echarts">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618150736.jpg">
+  
+  
+  <title>使用Pyecharts绘制热力图 - Evan Zhou</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/ocean.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"evan-zj.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>EvanZhou&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://file.evanzj.com">
+                <i class="iconfont icon-th-large"></i>
+                网盘
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://gitpy.evanzj.com/">
+                <i class="iconfont icon-archive-fill"></i>
+                git加速
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200722201559.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="使用Pyecharts绘制热力图">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-06-18 15:01" pubdate>
+        2020年6月18日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      13 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用Pyecharts绘制热力图</h1>
+            
+            <div class="markdown-body">
+              <h1 id="使用pyecharts绘制热力图"><a class="markdownIt-Anchor" href="#使用pyecharts绘制热力图"></a> 使用Pyecharts绘制热力图</h1>
+<blockquote>
+<p>因为论文需要描述数据，先开始发现百度Echarts，但是习惯用Python处理数据，发现也有这个库，记录一下折腾过程~其实之前图方便看了CSDN结果发现都是老版本，问题很多，还是看了官方文档成功使用并批量渲染图片</p>
+<p><a target="_blank" rel="noopener" href="http://pyecharts.org/#/">官方文档</a></p>
+</blockquote>
+<h2 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h2>
+<span id="more"></span>
+<p>推荐源码安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/pyecharts/pyecharts.git<br><span class="hljs-built_in">cd</span> pyecharts<br>pip install -r requirements.txt<br>python setup.py install<br></code></pre></div></td></tr></table></figure>
+<p>或者运气好pip安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment">#可能会出现安装以后无法导入库的问题</span><br>pip(3) install pyecharts<br></code></pre></div></td></tr></table></figure>
+<h2 id="heatmap热力图"><a class="markdownIt-Anchor" href="#heatmap热力图"></a> HeatMap：热力图</h2>
+<blockquote>
+<p>本次是为了根据坐标点数据强度绘制颜色深浅表示</p>
+</blockquote>
+<h3 id="导入包"><a class="markdownIt-Anchor" href="#导入包"></a> 导入包</h3>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#配置</span><br><span class="hljs-keyword">import</span> pyecharts.options <span class="hljs-keyword">as</span> opts<br><span class="hljs-comment">#热图</span><br><span class="hljs-keyword">from</span> pyecharts.charts <span class="hljs-keyword">import</span> HeatMap<br><span class="hljs-comment">#渲染html为图片</span><br><span class="hljs-keyword">from</span> pyecharts.render <span class="hljs-keyword">import</span> make_snapshot<br><span class="hljs-keyword">from</span> snapshot_selenium <span class="hljs-keyword">import</span> snapshot<br><span class="hljs-comment">#numpy计算</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br></code></pre></div></td></tr></table></figure>
+<h3 id="设置x-y轴"><a class="markdownIt-Anchor" href="#设置x-y轴"></a> 设置x, y轴</h3>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">x = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">67</span>, <span class="hljs-number">68</span>)<br>y = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">51</span>, <span class="hljs-number">52</span>)<br></code></pre></div></td></tr></table></figure>
+<h3 id="heatmap代码"><a class="markdownIt-Anchor" href="#heatmap代码"></a> HeatMap代码</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/Evan-ZJ/MyScripts/blob/master/heatmap_1890.txt">测试数据test.txt下载</a></p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1830</span>, <span class="hljs-number">5581</span>, <span class="hljs-number">10</span>):<br>        data = np.loadtxt(<span class="hljs-string">&quot;test.txt&quot;</span>)<br>        data = data.tolist()<span class="hljs-comment">#转为list</span><br><br>        heatmap = (<br>            HeatMap()<br>                .add_xaxis(x)<br>                .add_yaxis(<br>                series_name=<span class="hljs-string">&quot;vortex&quot;</span>,<br>                yaxis_data=y,<br>                value=data,<br>            )<br>                .set_series_opts()<br>                .set_global_opts(<br>                legend_opts=opts.LegendOpts(is_show=<span class="hljs-literal">False</span>),<br>                xaxis_opts=opts.AxisOpts(<br>                    type_=<span class="hljs-string">&quot;category&quot;</span>,<br>                    splitarea_opts=opts.SplitAreaOpts(<br>                        is_show=<span class="hljs-literal">True</span>, areastyle_opts=opts.AreaStyleOpts(opacity=<span class="hljs-number">1</span>)<br>                    ),<br>                ),<br>                yaxis_opts=opts.AxisOpts(<br>                    type_=<span class="hljs-string">&quot;category&quot;</span>,<br>                    splitarea_opts=opts.SplitAreaOpts(<br>                        is_show=<span class="hljs-literal">True</span>, areastyle_opts=opts.AreaStyleOpts(opacity=<span class="hljs-number">1</span>)<br>                    ),<br>                ),<br>                visualmap_opts=opts.VisualMapOpts(<br>                    min_=<span class="hljs-number">0</span>, max_=<span class="hljs-number">10</span>, is_calculable=<span class="hljs-literal">True</span>, orient=<span class="hljs-string">&quot;horizontal&quot;</span>, pos_left=<span class="hljs-string">&quot;center&quot;</span><br>                ),<br>            )<br>            .render(<span class="hljs-string">&quot;heatmap_on_cartesian.html&quot;</span>)<span class="hljs-comment">#渲染为Html，渲染图片时可注释</span><br>        )<br></code></pre></div></td></tr></table></figure>
+<h3 id="渲染为图片"><a class="markdownIt-Anchor" href="#渲染为图片"></a> 渲染为图片</h3>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">make_snapshot(snapshot, heatmap.render(<span class="hljs-string">&quot;VR.html&quot;</span>), <span class="hljs-string">&quot;./&quot;</span> + <span class="hljs-built_in">str</span>(i) + <span class="hljs-string">&quot;.png&quot;</span>)<br></code></pre></div></td></tr></table></figure>
+<p><img src="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/VR-1690.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Echarts/">Echarts</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/21/SPHSolid/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">光滑粒子流体动力学流体中物体背后湍流细节的真实稳定模拟</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/08/Onedrive/">
+                        <span class="hidden-mobile">OneIndex的Docker安装部署</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

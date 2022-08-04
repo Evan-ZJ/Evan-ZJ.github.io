@@ -1,0 +1,598 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201130201150.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在openwrt作为二级路由时一些情况下需要NAT6 NAT的缺点: (1) NAT会增加延迟,因为要转换每个数据包包头的IP地址,自然要增加延迟. (2) NAT会使某些要使用内嵌地址的应用不能正常工作.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Openwrt 配置NAT6">
+<meta property="og:url" content="https://evan-zj.github.io/2021/12/20/NAT6/index.html">
+<meta property="og:site_name" content="Evan Zhou">
+<meta property="og:description" content="在openwrt作为二级路由时一些情况下需要NAT6 NAT的缺点: (1) NAT会增加延迟,因为要转换每个数据包包头的IP地址,自然要增加延迟. (2) NAT会使某些要使用内嵌地址的应用不能正常工作.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20211225151535.png">
+<meta property="article:published_time" content="2021-12-20T07:20:15.000Z">
+<meta property="article:modified_time" content="2022-08-04T13:18:40.370Z">
+<meta property="article:tag" content="openwrt">
+<meta property="article:tag" content="ipv6">
+<meta property="article:tag" content="Nat">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20211225151535.png">
+  
+  
+  <title>Openwrt 配置NAT6 - Evan Zhou</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/ocean.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"evan-zj.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>EvanZhou&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://file.evanzj.com">
+                <i class="iconfont icon-th-large"></i>
+                网盘
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://gitpy.evanzj.com/">
+                <i class="iconfont icon-archive-fill"></i>
+                git加速
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20211225151345.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Openwrt 配置NAT6">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-20 15:20" pubdate>
+        2021年12月20日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      57 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Openwrt 配置NAT6</h1>
+            
+            <div class="markdown-body">
+              <p>在openwrt作为二级路由时一些情况下需要NAT6</p>
+<p>NAT的缺点:<br />
+(1) NAT会增加延迟,因为要转换每个数据包包头的IP地址,自然要增加延迟.<br />
+(2) NAT会使某些要使用内嵌地址的应用不能正常工作.</p>
+<span id="more"></span>
+<h4 id="1准备工作"><a class="markdownIt-Anchor" href="#1准备工作"></a> 1.准备工作</h4>
+<p>注意以下不是必要操作，如有luci界面自行略过。</p>
+<p>固件是在lede官网下载的官方lede固件<br />
+LZ的设备是HG255D比较老，因此官网lede固件没有luci界面，需要自己安装，LZ先将路由器单独接入可以直接联网的网络，电脑使用网线接入HG255D，lede默认的dropbear开启了ssh端口22，我们使用xshell等终端连接到路由器<br />
+帐号密码root/admin<br />
+然后终端内输入命令</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mipsasm">opkg update<br>opkg <span class="hljs-keyword">install </span>luci<br>opkg <span class="hljs-keyword">install </span>luci-i18n-<span class="hljs-keyword">base-zh-cn</span><br><span class="hljs-keyword"></span>opkg <span class="hljs-keyword">install </span>luci-i18n-firewall-zh-cn<br>opkg <span class="hljs-keyword">install </span>nano<br></code></pre></div></td></tr></table></figure>
+<p>这样luci界面就安装好了并且有了中文。</p>
+<h4 id="2安装ipk包"><a class="markdownIt-Anchor" href="#2安装ipk包"></a> 2.安装IPK包</h4>
+<p>将设备接入有提供IPv6的接口，<br />
+在luci界面里-接口-一栏设置好IPv4联网（pppoe或者其他），联网成功后，<br />
+然后使用ping ipv6.google.com查看是否可以ping通<br />
+可以通过则继续以下操作，此处默认是可以</p>
+<p>安装本次nat的必要包</p>
+<figure class="highlight cmake"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cmake">opkg <span class="hljs-keyword">install</span> ip6tables<br>opkg <span class="hljs-keyword">install</span> kmod-ipt-nat6<br></code></pre></div></td></tr></table></figure>
+<p>这两个包对内核要求还是蛮高的所以选择lede 其他的固件lz没有尝试</p>
+<h4 id="3开始配置"><a class="markdownIt-Anchor" href="#3开始配置"></a> 3.开始配置</h4>
+<p>使用终端nano、vi等命令修改也可以使用winscp工具打开<br />
+修改/etc/config/network文件，添加以下字段，若已存在字段仅地址不同，可以不用修改。或者改成你喜欢的前缀。</p>
+<figure class="highlight gams"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gams">config globals <span class="hljs-string">&#x27;globals&#x27;</span><br><span class="hljs-keyword">option</span> ula_prefix <span class="hljs-string">&#x27;eeee:eeee:eeee::/48&#x27;</span> <br></code></pre></div></td></tr></table></figure>
+<p>→等效于<br />
+在luci的web界面修改<br />
+接口-全局网络选项-IPv6 ULA 前缀，前缀可以不和lz一样可以自定义</p>
+<h4 id="4配置dhcpv6"><a class="markdownIt-Anchor" href="#4配置dhcpv6"></a> 4.配置DHCPv6</h4>
+<p>终端内使用nano、vi、winscp</p>
+<p>修改/etc/config/dhcp文件，将config dhcp 'lan’那一栏修改为以下内容:</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs angelscript">config dhcp <span class="hljs-string">&#x27;lan&#x27;</span><br>option <span class="hljs-keyword">interface</span> &#x27;<span class="hljs-symbol">lan</span>&#x27;<br><span class="hljs-symbol">option</span> <span class="hljs-symbol">start</span> &#x27;<span class="hljs-symbol">100</span>&#x27;<br><span class="hljs-symbol">option</span> <span class="hljs-symbol">limit</span> &#x27;<span class="hljs-symbol">150</span>&#x27;<br><span class="hljs-symbol">option</span> <span class="hljs-symbol">leasetime</span> &#x27;<span class="hljs-symbol">12h</span>&#x27;<br><span class="hljs-symbol">option</span> <span class="hljs-symbol">dhcpv6</span> &#x27;<span class="hljs-symbol">server</span>&#x27;<br><span class="hljs-symbol">option</span> <span class="hljs-symbol">ra</span> &#x27;<span class="hljs-symbol">server</span>&#x27;<br><span class="hljs-symbol">option</span> <span class="hljs-symbol">ra_management</span> &#x27;<span class="hljs-symbol">1</span>&#x27;<br><span class="hljs-symbol">option</span> <span class="hljs-symbol">ra_default</span> &#x27;<span class="hljs-symbol">1</span>&#x27;<br></code></pre></div></td></tr></table></figure>
+<p>等效于<br />
+luci界面里打开<br />
+接口-lan-下方 DHCP服务器-ipv6设置<br />
+DHCPv6 服务 (DHCPv6-Service) 服务器模式<br />
+路由通告服务 (Router Advertisement-Service) 服务器模式<br />
+NDP 代理 (NDP-Proxy) 禁用<br />
+DHCPv6 模式 (DHCPv6-Mode) 无状态的 + 有状态的<br />
+总是通告默认路由(Always announce default Router) 勾选</p>
+<h4 id="5添加防火墙脚本"><a class="markdownIt-Anchor" href="#5添加防火墙脚本"></a> 5.添加防火墙脚本</h4>
+<p>修改/etc/firewall.user在文末添加<br />
+假设WAN对应的接口为eth0.2，不是eth0.2的，自行修改成你的wan口设备名，添加以下内容：</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">ip6tables</span> -t nat -A POSTROUTING -o eth0.<span class="hljs-number">2</span> -j MASQUERADE<br></code></pre></div></td></tr></table></figure>
+<p>等效于在luci界面<br />
+网络-防火墙-自定义规则 添加这一行 保存应用</p>
+<h4 id="6配置网关"><a class="markdownIt-Anchor" href="#6配置网关"></a> 6.配置网关</h4>
+<p>在终端内使用</p>
+<figure class="highlight gradle"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gradle">ip -<span class="hljs-number">6</span> route | <span class="hljs-keyword">grep</span> <span class="hljs-keyword">default</span><br></code></pre></div></td></tr></table></figure>
+<p>查看当前IPv6默认路由<br />
+结果显示如下<br />
+default from (your ipv6) via (gateway) dev eth0.2 proto static metric 512</p>
+<p>其中(gateway)括号里的 就是你网络状态下的网关<br />
+例如楼主这里显示<br />
+default from 2001:ebcd🔡:d:abcd via fe80::224e:71ff:bbbb:cccc dev eth0.2 proto static metric 512</p>
+<p>那么其中的<br />
+fe80::224e:71ff:bbbb:cccc<br />
+就是当前网络的默认网关，这一步至关重要<br />
+我们需要将其添加到默认路由<br />
+终端里输入命令</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">route</span> -A inet6 add default gw fe80::<span class="hljs-number">224</span>e:<span class="hljs-number">71</span>ff:bbbb:cccc dev eth0.<span class="hljs-number">2</span><br></code></pre></div></td></tr></table></figure>
+<p>至此配置方面就好了<br />
+接下来重启下服务使设置生效</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">/etc/i</span>nit.d/firewall restart<br><span class="hljs-regexp">/etc/i</span>nit.d/network restart<br></code></pre></div></td></tr></table></figure>
+<p>注意：<br />
+如果是使用其他低内核的固件做如上的操作，<br />
+firewall那条命令的输出显示可能会提示什么ip6tables错误的 说明最开始安装的ip6tables不支持此固件的低内核 请换高版本内核使用此教程。network 重启会有短暂的断网 耐心等待网卡的DHCP。</p>
+<p>两条命令结束后 电脑仍然无法打开ipv6的话 请重启电脑的网卡 具体操作网络和共享中心-更改适配器设置，右击禁用网卡，再启用网卡。</p>
+<p>此时电脑就应该可以正常访问v6了。</p>
+<h4 id="7添加开机自动加入ipv6路由"><a class="markdownIt-Anchor" href="#7添加开机自动加入ipv6路由"></a> 7.添加开机自动加入IPv6路由</h4>
+<p>由于route -A inet6 add default gw 命令重启会失效所以我们需要建立一个脚本让路由器开机自动添加<br />
+具体操作<br />
+在/etc/hotplug.d/iface/目录下新建名字为 90-ipv6 的文件<br />
+修改内容为</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br>[ <span class="hljs-string">&quot;<span class="hljs-variable">$ACTION</span>&quot;</span> = ifup ] || <span class="hljs-built_in">exit</span> 0<br>route -A inet6 add default gw fe80::224e:71ff:bbbb:cccc dev eth0.2<br></code></pre></div></td></tr></table></figure>
+<p>注意：记得修改成自己的网关<br />
+然后给予可执行权限：</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">chmod</span> +x <span class="hljs-number">90</span>-ipv6<br></code></pre></div></td></tr></table></figure>
+<p>至此开机启动也完成了。</p>
+<h4 id="8ula设置"><a class="markdownIt-Anchor" href="#8ula设置"></a> 8.ULA设置</h4>
+<p>在 网络-接口 中，将 IPv6 ULA 前缀 的第一个字母 f 改为 d</p>
+<h4 id="9设置lan口dhcp-在ssh中输入以下命令"><a class="markdownIt-Anchor" href="#9设置lan口dhcp-在ssh中输入以下命令"></a> 9.设置LAN口dhcp 。在ssh中输入以下命令：</h4>
+<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">uci <span class="hljs-built_in">set</span> dhcp.lan.<span class="hljs-attribute">ra_default</span>=<span class="hljs-string">&#x27;1&#x27;</span><br><br>uci commit dhcp<br></code></pre></div></td></tr></table></figure>
+<h4 id="10新建nat6服务-在-etcinitd-目录下新建一个-nat6-文件文件内容如下"><a class="markdownIt-Anchor" href="#10新建nat6服务-在-etcinitd-目录下新建一个-nat6-文件文件内容如下"></a> 10.新建NAT6服务 。在 /etc/init.d/ 目录下，新建一个 nat6 文件，文件内容如下：</h4>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-meta">#!/bin/sh /etc/rc.common</span><br><span class="hljs-comment"># NAT6 init script for OpenWrt // Depends on package: kmod-ipt-nat6</span><br><br>START=55<br><br><span class="hljs-comment"># Options</span><br><span class="hljs-comment"># -------</span><br><br><span class="hljs-comment"># Use temporary addresses (IPv6 privacy extensions) for outgoing connections? Yes: 1 / No: 0</span><br>PRIVACY=1<br><br><span class="hljs-comment"># Maximum number of attempts before this script will stop in case no IPv6 route is available</span><br><span class="hljs-comment"># This limits the execution time of the IPv6 route lookup to (MAX_TRIES+1)*(MAX_TRIES/2) seconds. The default (15) equals 120 seconds.</span><br>MAX_TRIES=15<br><br><span class="hljs-comment"># An initial delay (in seconds) helps to avoid looking for the IPv6 network too early. Ideally, the first probe is successful.</span><br><span class="hljs-comment"># This would be the case if the time passed between the system log messages &quot;Probing IPv6 route&quot; and &quot;Setting up NAT6&quot; is 1 second.</span><br>DELAY=10<br><br><span class="hljs-comment"># Logical interface name of outbound IPv6 connection</span><br><span class="hljs-comment"># There should be no need to modify this, unless you changed the default network interface names</span><br><span class="hljs-comment"># Edit by Vincent: I never changed my default network interface names, but still I have to change the WAN6_NAME to &quot;wan&quot; instead of &quot;wan6&quot;</span><br>WAN6_NAME=<span class="hljs-string">&quot;wan6&quot;</span><br><br><span class="hljs-comment"># ---------------------------------------------------</span><br><span class="hljs-comment"># Options end here - no need to change anything below</span><br><br><span class="hljs-function"><span class="hljs-title">boot</span></span>() &#123;<br>        [ <span class="hljs-variable">$DELAY</span> -gt 0 ] &amp;&amp; <span class="hljs-built_in">sleep</span> <span class="hljs-variable">$DELAY</span><br>        logger -t NAT6 <span class="hljs-string">&quot;Probing IPv6 route&quot;</span><br>        PROBE=0<br>        COUNT=1<br>        <span class="hljs-keyword">while</span> [ <span class="hljs-variable">$PROBE</span> -eq 0 ]<br>        <span class="hljs-keyword">do</span><br>                <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$COUNT</span> -gt <span class="hljs-variable">$MAX_TRIES</span> ]<br>                <span class="hljs-keyword">then</span><br>                        logger -t NAT6 <span class="hljs-string">&quot;Fatal error: No IPv6 route found (reached retry limit)&quot;</span> &amp;&amp; <span class="hljs-built_in">exit</span> 1<br>                <span class="hljs-keyword">fi</span><br>                <span class="hljs-built_in">sleep</span> <span class="hljs-variable">$COUNT</span><br>                COUNT=$((COUNT+<span class="hljs-number">1</span>))<br>                PROBE=$(route -A inet6 | grep -c <span class="hljs-string">&#x27;::/0&#x27;</span>)<br>        <span class="hljs-keyword">done</span><br><br>        logger -t NAT6 <span class="hljs-string">&quot;Setting up NAT6&quot;</span><br><br>        WAN6_INTERFACE=$(uci get <span class="hljs-string">&quot;network.<span class="hljs-variable">$WAN6_NAME</span>.ifname&quot;</span>)<br>        <span class="hljs-keyword">if</span> [ -z <span class="hljs-string">&quot;<span class="hljs-variable">$WAN6_INTERFACE</span>&quot;</span> ] || [ ! -e <span class="hljs-string">&quot;/sys/class/net/<span class="hljs-variable">$WAN6_INTERFACE</span>/&quot;</span> ] ; <span class="hljs-keyword">then</span><br>                logger -t NAT6 <span class="hljs-string">&quot;Fatal error: Lookup of <span class="hljs-variable">$WAN6_NAME</span> interface failed. Were the default interface names changed?&quot;</span> &amp;&amp; <span class="hljs-built_in">exit</span> 1<br>        <span class="hljs-keyword">fi</span><br>        WAN6_GATEWAY=$(route -A inet6 -e | grep <span class="hljs-string">&quot;<span class="hljs-variable">$WAN6_INTERFACE</span>&quot;</span> | awk <span class="hljs-string">&#x27;/::\/0/&#123;print $2; exit&#125;&#x27;</span>)<br>        <span class="hljs-keyword">if</span> [ -z <span class="hljs-string">&quot;<span class="hljs-variable">$WAN6_GATEWAY</span>&quot;</span> ] ; <span class="hljs-keyword">then</span><br>                logger -t NAT6 <span class="hljs-string">&quot;Fatal error: No IPv6 gateway for <span class="hljs-variable">$WAN6_INTERFACE</span> found&quot;</span> &amp;&amp; <span class="hljs-built_in">exit</span> 1<br>        <span class="hljs-keyword">fi</span><br>        LAN_ULA_PREFIX=$(uci get network.globals.ula_prefix)<br>        <span class="hljs-keyword">if</span> [ $(<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$LAN_ULA_PREFIX</span>&quot;</span> | grep -c -E <span class="hljs-string">&quot;^([0-9a-fA-F]&#123;4&#125;):([0-9a-fA-F]&#123;0,4&#125;):&quot;</span>) -ne 1 ] ; <span class="hljs-keyword">then</span><br>                logger -t NAT6 <span class="hljs-string">&quot;Fatal error: IPv6 ULA prefix <span class="hljs-variable">$LAN_ULA_PREFIX</span> seems invalid. Please verify that a prefix is set and valid.&quot;</span> &amp;&amp; <span class="hljs-built_in">exit</span> 1<br>        <span class="hljs-keyword">fi</span><br><br>        ip6tables -t nat -I POSTROUTING -s <span class="hljs-string">&quot;<span class="hljs-variable">$LAN_ULA_PREFIX</span>&quot;</span> -o <span class="hljs-string">&quot;<span class="hljs-variable">$WAN6_INTERFACE</span>&quot;</span> -j MASQUERADE<br>        <span class="hljs-keyword">if</span> [ $? -eq 0 ] ; <span class="hljs-keyword">then</span><br>                logger -t NAT6 <span class="hljs-string">&quot;Added IPv6 masquerading rule to the firewall (Src: <span class="hljs-variable">$LAN_ULA_PREFIX</span> - Dst: <span class="hljs-variable">$WAN6_INTERFACE</span>)&quot;</span><br>        <span class="hljs-keyword">else</span><br>                logger -t NAT6 <span class="hljs-string">&quot;Fatal error: Failed to add IPv6 masquerading rule to the firewall (Src: <span class="hljs-variable">$LAN_ULA_PREFIX</span> - Dst: <span class="hljs-variable">$WAN6_INTERFACE</span>)&quot;</span> &amp;&amp; <span class="hljs-built_in">exit</span> 1<br>        <span class="hljs-keyword">fi</span><br><br>        route -A inet6 add 2000::/3 gw <span class="hljs-string">&quot;<span class="hljs-variable">$WAN6_GATEWAY</span>&quot;</span> dev <span class="hljs-string">&quot;<span class="hljs-variable">$WAN6_INTERFACE</span>&quot;</span><br>        <span class="hljs-keyword">if</span> [ $? -eq 0 ] ; <span class="hljs-keyword">then</span><br>                logger -t NAT6 <span class="hljs-string">&quot;Added <span class="hljs-variable">$WAN6_GATEWAY</span> to routing table as gateway on <span class="hljs-variable">$WAN6_INTERFACE</span> for outgoing connections&quot;</span><br>        <span class="hljs-keyword">else</span><br>                logger -t NAT6 <span class="hljs-string">&quot;Error: Failed to add <span class="hljs-variable">$WAN6_GATEWAY</span> to routing table as gateway on <span class="hljs-variable">$WAN6_INTERFACE</span> for outgoing connections&quot;</span><br>        <span class="hljs-keyword">fi</span><br><br>        <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$PRIVACY</span> -eq 1 ] ; <span class="hljs-keyword">then</span><br>                <span class="hljs-built_in">echo</span> 2 &gt; <span class="hljs-string">&quot;/proc/sys/net/ipv6/conf/<span class="hljs-variable">$WAN6_INTERFACE</span>/accept_ra&quot;</span><br>                <span class="hljs-keyword">if</span> [ $? -eq 0 ] ; <span class="hljs-keyword">then</span><br>                        logger -t NAT6 <span class="hljs-string">&quot;Accepting router advertisements on <span class="hljs-variable">$WAN6_INTERFACE</span> even if forwarding is enabled (required for temporary addresses)&quot;</span><br>                <span class="hljs-keyword">else</span><br>                        logger -t NAT6 <span class="hljs-string">&quot;Error: Failed to change router advertisements accept policy on <span class="hljs-variable">$WAN6_INTERFACE</span> (required for temporary addresses)&quot;</span><br>                <span class="hljs-keyword">fi</span><br>                <span class="hljs-built_in">echo</span> 2 &gt; <span class="hljs-string">&quot;/proc/sys/net/ipv6/conf/<span class="hljs-variable">$WAN6_INTERFACE</span>/use_tempaddr&quot;</span><br>                <span class="hljs-keyword">if</span> [ $? -eq 0 ] ; <span class="hljs-keyword">then</span><br>                        logger -t NAT6 <span class="hljs-string">&quot;Using temporary addresses for outgoing connections on interface <span class="hljs-variable">$WAN6_INTERFACE</span>&quot;</span><br>                <span class="hljs-keyword">else</span><br>                        logger -t NAT6 <span class="hljs-string">&quot;Error: Failed to enable temporary addresses for outgoing connections on interface <span class="hljs-variable">$WAN6_INTERFACE</span>&quot;</span><br>                <span class="hljs-keyword">fi</span><br>        <span class="hljs-keyword">fi</span><br><br>        <span class="hljs-built_in">exit</span> 0<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="11启动nat6服务-命令如下"><a class="markdownIt-Anchor" href="#11启动nat6服务-命令如下"></a> 11.启动NAT6服务 。命令如下：</h4>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-built_in">chmod</span> +x /etc/init.d/nat6<br>/etc/init.d/nat6 <span class="hljs-built_in">enable</span><br></code></pre></div></td></tr></table></figure>
+<h4 id="12修改-etcsysctlconf-文件添加以下内容如果没有的话"><a class="markdownIt-Anchor" href="#12修改-etcsysctlconf-文件添加以下内容如果没有的话"></a> 12.修改 /etc/sysctl.conf 文件，添加以下内容（如果没有的话）：</h4>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">net.ipv6.conf.default.forwarding=2<br>net.ipv6.conf.all.forwarding=2<br>net.ipv6.conf.default.accept_ra=2<br>net.ipv6.conf.all.accept_ra=2<br></code></pre></div></td></tr></table></figure>
+<h4 id="13重启路由器测试路由器下设备能否正常使用ipv6-如果还有问题可尝试在ssh输入以下命令一般情况下可省略此步骤"><a class="markdownIt-Anchor" href="#13重启路由器测试路由器下设备能否正常使用ipv6-如果还有问题可尝试在ssh输入以下命令一般情况下可省略此步骤"></a> 13.重启路由器，测试路由器下设备能否正常使用ipv6。如果还有问题可尝试在ssh输入以下命令（一般情况下可省略此步骤）：</h4>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">uci <span class="hljs-built_in">set</span> firewall.@rule[<span class="hljs-string">&quot;<span class="hljs-subst">$(uci show firewall | grep &#x27;Allow-ICMPv6-Forward&#x27; | cut -d&#x27;[&#x27; -f2 | cut -d&#x27;]&#x27; -f1)</span>&quot;</span>].enabled=<span class="hljs-string">&#x27;0&#x27;</span><br>uci commit firewall<br></code></pre></div></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/openwrt/">openwrt</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ipv6/">ipv6</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Nat/">Nat</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/29/H3B2/">
+                        <span class="hidden-mobile">校园网无线AP自动开网口脚本</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

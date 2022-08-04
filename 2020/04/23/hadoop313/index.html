@@ -1,0 +1,563 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20201130201150.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="编译环境 Vultr 美国新泽西皮斯 4CPU 4GB vps Centos 7.7 jdk-8u241-linux-x64.tar.gz maven3.6.3 protocbuf 2.5.0 findbugs-3.0.1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hadoop3.1.3编译">
+<meta property="og:url" content="https://evan-zj.github.io/2020/04/23/hadoop313/index.html">
+<meta property="og:site_name" content="Evan Zhou">
+<meta property="og:description" content="编译环境 Vultr 美国新泽西皮斯 4CPU 4GB vps Centos 7.7 jdk-8u241-linux-x64.tar.gz maven3.6.3 protocbuf 2.5.0 findbugs-3.0.1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110820.jpg">
+<meta property="article:published_time" content="2020-04-23T14:40:57.000Z">
+<meta property="article:modified_time" content="2022-08-04T13:18:40.371Z">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Hadoop">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110820.jpg">
+  
+  
+  <title>hadoop3.1.3编译 - Evan Zhou</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/ocean.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"evan-zj.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>EvanZhou&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://file.evanzj.com">
+                <i class="iconfont icon-th-large"></i>
+                网盘
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://gitpy.evanzj.com/">
+                <i class="iconfont icon-archive-fill"></i>
+                git加速
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/Evan-ZJ/MyPic/img/wallhaven-q6kmql.webp') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="hadoop3.1.3编译">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-23 22:40" pubdate>
+        2020年4月23日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">hadoop3.1.3编译</h1>
+            
+            <div class="markdown-body">
+              <h3 id="编译环境"><a class="markdownIt-Anchor" href="#编译环境"></a> 编译环境</h3>
+<p>Vultr 美国新泽西皮斯 4CPU 4GB vps</p>
+<p>Centos 7.7<br />
+jdk-8u241-linux-x64.tar.gz<br />
+maven3.6.3<br />
+protocbuf 2.5.0<br />
+findbugs-3.0.1</p>
+<span id="more"></span>
+<h3 id="编译前准备"><a class="markdownIt-Anchor" href="#编译前准备"></a> 编译前准备</h3>
+<p>安装C和C++编译器</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">yum -y install gcc gcc-c++<br></code></pre></div></td></tr></table></figure>
+<p>安装Cmake 3.13.5</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">wget https://cmake.org/files/v3.13/cmake-3.13.5.tar.gz<br>tar -zxvf cmake-3.13.5.tar.gz  <br><span class="hljs-built_in">cd</span> cmake-3.13.5<br>./bootstrap --prefix=/usr/local<br>gmake<br>make install<br>/usr/local/bin/cmake --version <span class="hljs-comment">#查看编译后的cmake版本</span><br><br><span class="hljs-built_in">cd</span> ..<span class="hljs-comment">#记得切换目录，别把自己安装得新版卸载了</span><br>yum remove cmake -y <span class="hljs-comment">#移除原来的cmake版本</span><br><br><span class="hljs-built_in">ln</span> -s /usr/local/bin/cmake /usr/bin/ <span class="hljs-comment">#新建软连接</span><br>cmake --version <span class="hljs-comment">#终端查看版本</span><br></code></pre></div></td></tr></table></figure>
+<p>安装其他软件包</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">yum -y install autoconf automake libtool curl<br>yum -y install lzo-devel zlib-devel openssl openssl-devel ncurses-devel<br>yum -y install snappy snappy-devel bzip2 bzip2-devel lzo lzo-devel lzop libXtst<br></code></pre></div></td></tr></table></figure>
+<!--more-->
+<p>安装Java 8环境</p>
+<blockquote>
+<p>下载Java 8SE</p>
+<p>jdk-8u241-linux-x64.tar.gz</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">tar xvfz jdk-8u241-linux-x64.tar.gz -C /usr <span class="hljs-comment">#解压</span><br><span class="hljs-built_in">ln</span> -s /usr/jdk1.8.0_241 /usr/jdk<br><br><span class="hljs-comment">#设置环境变量</span><br><span class="hljs-built_in">cat</span>&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">JAVA_HOME=/usr/jdk</span><br><span class="hljs-string">export JAVA_HOME</span><br><span class="hljs-string">CLASSPATH=.:\$JAVA_HOME/lib:\$CLASSPATH</span><br><span class="hljs-string">export CLASSPATH</span><br><span class="hljs-string">PATH=\$JAVA_HOME/bin:\$PATH</span><br><span class="hljs-string">export PATH</span><br><span class="hljs-string">EOF</span><br><br><span class="hljs-comment">#测试</span><br><span class="hljs-built_in">source</span> /etc/profile<br>java -version<br></code></pre></div></td></tr></table></figure>
+<p>安装maven</p>
+<blockquote>
+<p>下载apache-maven-3.6.3-bin.tar.gz</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">tar xvf apache-maven-3.6.3-bin.tar.gz -C /usr<br><span class="hljs-built_in">mv</span> /usr/apache-maven-3.6.3 /usr/maven<br><br><span class="hljs-built_in">cat</span>&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">MAVEN_HOME=/usr/maven</span><br><span class="hljs-string">export  MAVEN_HOME</span><br><span class="hljs-string">PATH=/usr/maven/bin:\$PATH</span><br><span class="hljs-string">export PATH</span><br><span class="hljs-string">EOF</span><br><br><span class="hljs-comment">#测试</span><br><span class="hljs-built_in">source</span> /etc/profile<br>mvn -version<br></code></pre></div></td></tr></table></figure>
+<p>安装protobuf 2.5.0</p>
+<blockquote>
+<p>下载protobuf-2.5.0.tar.gz</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">tar xvfz protobuf-2.5.0.tar.gz -C /usr/local<br><span class="hljs-built_in">cd</span> /usr/ <span class="hljs-built_in">local</span> /protobuf-2.5.0<br>./autogen.sh<br><span class="hljs-comment">#指定安装路径</span><br>./configure --prefix=/usr/local/protobuf<br><span class="hljs-comment">#编译</span><br>make<br>make check<br>make install<br>ldconfig<br><span class="hljs-comment">#设置环境变量</span><br>vi /etc/profile<br><br><span class="hljs-built_in">export</span> LIBRARY_PATH=<span class="hljs-variable">$LIBRARY_PATH</span>:/usr/local/protobuf/lib<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:/usr/local/protobuf/bin<br><br><span class="hljs-comment">#测试</span><br><span class="hljs-built_in">source</span> /etc/profile<br>protoc --version<br></code></pre></div></td></tr></table></figure>
+<p>安装findbugs</p>
+<blockquote>
+<p>下载findbugs-3.0.1.tar.gz</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">tar xvfz findbugs-3.0.1.tar.gz -C /usr<br><br><span class="hljs-built_in">cat</span>&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">export FINDBUGS_HOME=/usr/findbugs-3.0.1</span><br><span class="hljs-string">export PATH=\$PATH:\$FINDBUGS_HOME/bin</span><br><span class="hljs-string">EOF</span><br><br><span class="hljs-comment">#测试</span><br><span class="hljs-built_in">source</span> /etc/profile<br>findbugs -version<br></code></pre></div></td></tr></table></figure>
+<p>安装ant</p>
+<blockquote>
+<p>下载apache-ant-1.10.7-bin.tar.gz</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">tar xvfz apache-ant-1.10.7-bin.tar.gz -C /usr<br><span class="hljs-comment">#设置环境变量</span><br><span class="hljs-built_in">cat</span>&gt;&gt; /etc/profile&lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">export ANT_HOME=/usr/apache-ant-1.10.7</span><br><span class="hljs-string">export PATH=\$ANT_HOME/bin:\$PATH</span><br><span class="hljs-string">EOF</span><br><br><span class="hljs-comment">#测试</span><br><span class="hljs-built_in">source</span> /etc/profile<br>ant  -version<br></code></pre></div></td></tr></table></figure>
+<h3 id="编译hadoop313"><a class="markdownIt-Anchor" href="#编译hadoop313"></a> 编译Hadoop3.1.3</h3>
+<blockquote>
+<p>下载hadoop-3.1.3-src.tar.gz源码</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">tar xvfz hadoop-3.1.3-src.tar.gz -C /usr<br><span class="hljs-built_in">cd</span> /usr/hadoop-3.1.3-src<br><span class="hljs-built_in">export</span> MAVEN_OPTS=<span class="hljs-string">&quot;-Xms256m -Xmx512m&quot;</span><br>mvn package -Pdist,native  -DskipTests  -Dtar<br></code></pre></div></td></tr></table></figure>
+<p>编译成功：</p>
+<img src="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/IMG_3054.png" srcset="/img/loading.gif" lazyload style="zoom:100%;" />
+<h3 id="编译成功后释放至opt"><a class="markdownIt-Anchor" href="#编译成功后释放至opt"></a> 编译成功后释放至/opt</h3>
+<p>编译完成后的Hadoop在hadoop-dist/target/hadoop-3.1.3.tar.gz</p>
+<p>解压释放：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">解压释放：<br>tar xvfz hadoop-3.1.3.tar.gz -C /opt<br>然后确定文件夹名为hadoop<br><span class="hljs-built_in">mv</span> hadoop-3.1.3 hadoop<br></code></pre></div></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Hadoop/">Hadoop</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/04/23/Hadoop313-eclipse/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">编译Hadoop3.1.3 eclipse插件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/24/proxychain/">
+                        <span class="hidden-mobile">使用ProxyChains终端代理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
