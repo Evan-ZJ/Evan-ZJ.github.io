@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="Evan Zhou">
 <meta property="og:description" content="Hadoop3.1.3源代码编译成功后，解压释放到&#x2F;opt目录下 1234解压释放：tar xvfz hadoop-3.1.3.tar.gz -C &#x2F;opt然后确定文件夹名为hadoopmv hadoop-3.1.3 hadoop  安装eclipse">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110833.jpg">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110833.jpg">
 <meta property="article:published_time" content="2020-04-23T15:42:43.000Z">
-<meta property="article:modified_time" content="2022-08-04T13:18:40.366Z">
+<meta property="article:modified_time" content="2023-12-16T11:05:10.847Z">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Hadoop">
 <meta property="article:tag" content="eclipse">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110833.jpg">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200618110833.jpg">
   
   
   <title>编译Hadoop3.1.3 eclipse插件 - Evan Zhou</title>
@@ -286,24 +286,24 @@
 </ul>
 <p>修改66行，将原来的target中的depends=“init, ivy-retrieve-common” 去掉其中的 ivy-retrieve-common</p>
 <p>修改前：</p>
-<p><img src="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001028.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://gcore.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001028.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>修改后：</p>
-<p><img src="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001112.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://gcore.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001112.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>
 <p>第2处修改：让classpath包含Hadoop的jar</p>
 <p>添加</p>
 </li>
 </ul>
-<p><img src="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001219.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://gcore.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001219.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- new add start--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">fileset</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">&quot;$&#123;hadoop.root&#125;&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;**/*.jar&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">fileset</span>&gt;</span><br><span class="hljs-comment">&lt;!-- new add end--&gt;</span><br></code></pre></div></td></tr></table></figure>
 <ul>
 <li>第3处修改：包含ant runtime</li>
 </ul>
 <p>修改前：</p>
-<p><img src="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001347.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://gcore.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001347.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>修改后：</p>
-<p><img src="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001411.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://gcore.jsdelivr.net/gh/Evan-ZJ/MyPic/img/20200424001411.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>第4处修改：解决Add New Location没有反应的问题</li>
 </ul>
@@ -317,14 +317,14 @@
 <li>第6处修改：guava的jar包文件命和hadoop3.1.3不一致</li>
 </ul>
 <p>修改前：</p>
-<p><img src="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%871.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://gcore.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%871.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>修改后：</p>
-<p><img src="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%872.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://gcore.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%872.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h4 id="编译eclipse插件"><a class="markdownIt-Anchor" href="#编译eclipse插件"></a> 编译eclipse插件</h4>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/src/contrib/eclipse-plugin<br><br>ant jar -Dversion=3.1.3  -Dhadoop.version=3.1.3 \<br>-Declipse.home=/opt/eclipse \<br>-Dhadoop.home=/opt/hadoop -debug <br></code></pre></div></td></tr></table></figure>
 <p>编译好的jar包:</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> eclipse-hadoop3x/build/contrib/eclipse-plugin<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://test1.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%873.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://gcore.jsdelivr.net/gh/Evan-ZJ/MyPic/img/%E5%9B%BE%E7%89%873.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 
             </div>
             <hr>
